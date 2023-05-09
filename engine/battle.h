@@ -1,0 +1,2 @@
+int battle();
+int setupBattle();
