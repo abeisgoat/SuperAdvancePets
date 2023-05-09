@@ -1,14 +1,10 @@
-//
-// Created by abe on 5/9/23.
-//
-
 #ifndef SUPERADVANCEPETS_ANIMALS_H
 #define SUPERADVANCEPETS_ANIMALS_H
 #include "ant.h"
-#include "bad_rat.h"
+#include "apply.h"
 #include "badger.h"
+#include "bad_rat.h"
 #include "beaver.h"
-
 #include "bee.h"
 #include "bison.h"
 #include "blowfish.h"
@@ -60,6 +56,7 @@
 #include "pizza.h"
 #include "rabbit.h"
 #include "ram.h"
+#include "rat.h"
 #include "rhino.h"
 #include "rooster.h"
 #include "salad.h"

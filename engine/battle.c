@@ -4,7 +4,6 @@
 #include "2_pet_beaver.h"
 #include "3_pet_cricket.h"
 #include "4_pet_cricket_zombie.h"
-
 #include <time.h>
 
 enum TriggerTransitionType {

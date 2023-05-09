@@ -1,0 +1,4 @@
+Cannot generate into /home/abe/Development/SuperAdvancePets
+It was created with incompatible generator 'Unix Makefiles'
+
+Please either delete it manually or select another generation directory

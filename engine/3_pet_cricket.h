@@ -1,4 +1,5 @@
 #include "pets.h"
+#include "../sprites/cricket.h"
 
 struct PetText CricketText = {
         .name = "Cricket",

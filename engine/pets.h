@@ -10,6 +10,7 @@ struct Pet {
     int battleModifierAttack;
     int level;
     int experience;
+    const unsigned int *sprite[40];
 };
 
 struct PetText {

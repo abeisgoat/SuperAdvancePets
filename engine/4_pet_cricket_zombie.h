@@ -1,4 +1,5 @@
 #include "pets.h"
+#include "../sprites/zombie_cricket.h"
 
 struct PetText CricketZombieText = {
         .name = "Cricket (Zombie)",
@@ -12,4 +13,5 @@ struct Pet CricketZombie = {
         // Always 0
         .battleModifierDefense = 0,
         .battleModifierAttack = 0,
+        .sprite = zombie_cricketTiles
 };

@@ -1,4 +1,5 @@
 #include "pets.h"
+#include "../sprites/beaver.h"
 
 struct PetText AntText = {
         .name = "Ant",
