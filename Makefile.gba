@@ -6,13 +6,15 @@ include $(DEVKITARM)/gba_rules
 
 PROJ = sap
 
-SOURCES		:=	src sprites engine
+SOURCES		:=	src sprites engine audio
 CFILES		:=	$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c))
 AUDIO       :=  audio
-AUDIOFILES := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.wav))
-BINFILES	:=	generated/soundbank.bin
+BINFILES	:=	soundbank.bin
 OFILES := $(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o)
 
+export AUDIOFILES := $(foreach dir,$(notdir $(wildcard $(AUDIO)/*.*)),$(CURDIR)/$(AUDIO)/$(dir))
+
+$(info $$AUDIOFILES is [${AUDIOFILES}])
 
 INCLUDES = -I$(DEVKITPRO)/libtonc/include -I$(DEVKITPRO)/libgba/include
 LIBS = -L$(DEVKITPRO)/libtonc/lib -L$(DEVKITPRO)/libgba/lib -ltonc -lmm
@@ -45,7 +47,7 @@ $(PROJ).elf: $(OFILES)
 #-------------------------------------------------------------
 soundbank.bin:	$(AUDIOFILES)
 #-------------------------------------------------------------
-	@mmutil $^ -ogenerated/soundbank.bin -hgenerated/soundbank.h
+	@mmutil $^ -osoundbank.bin -hsoundbank.h
 
 .PHONY: clean
 clean:

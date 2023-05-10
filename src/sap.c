@@ -7,8 +7,8 @@
 #include <time.h>
 #include "../sprites/sprites.h"
 #include "mem_manager.h"
-#include "../generated/soundbank_bin.h"
-#include "../generated/soundbank.h"
+#include "../soundbank_bin.h"
+#include "../soundbank.h"
 #include <maxmod.h>
 
 #define CBB_4 0
