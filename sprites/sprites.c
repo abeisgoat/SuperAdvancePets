@@ -8,13 +8,13 @@
 //	+ palette 57 entries, not compressed
 //	Total size: 114 = 114
 //
-//	Time-stamp: 2023-05-09, 15:00:21
-//	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
+//	Time-stamp: 2023-05-10, 12:05:26
+//	Exported by Cearn's GBA Image Transmogrifier, v0.9.2
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
 
-const unsigned short spritesPal[58] __attribute__((aligned(4)))=
+const unsigned short spritesPal[58] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
 {
 	0x7EBF,0x0000,0x318B,0x2E9E,0x1AED,0x08D7,0x3E55,0x294A,
 	0x56B5,0x6F58,0x637E,0x017F,0x2970,0x1633,0x732B,0x06DF,

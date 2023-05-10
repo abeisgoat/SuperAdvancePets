@@ -9,7 +9,7 @@ void cricketTriggerFeint(int usOrThem, PetTeam us, PetTeam them, struct Pet * pe
     printf("[>> Animate poof to zombie at pos %i<<]\n", petPos);
 
     pet->id = 4;
-    switch (pet->level) {
+    switch (expToLevel(pet->experience)) {
         case 1:
             pet->battleModifierAttack = -pet->attack + 1;
             pet->battleModifierDefense = -pet->attack + 1;

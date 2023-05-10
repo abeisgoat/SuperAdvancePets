@@ -5,6 +5,7 @@
 #include "3_pet_cricket.h"
 #include "4_pet_cricket_zombie.h"
 #include <time.h>
+#include <stdlib.h>
 
 enum TriggerTransitionType {
     Junk=0,
@@ -54,7 +55,7 @@ void applyBeforeAttackTrigger(int usOrThem, int step, PetTeam us, PetTeam them, 
 }
 
 struct Pet * getPlayerFighter() {
-    for (int i=4; i>0; i--) {
+    for (int i=4; i>=0; i--) {
         if (playerTeam[i].id > 0 && !isDead(&playerTeam[i])) {
             return &playerTeam[i];
         }
@@ -75,17 +76,6 @@ void resetTeams() {
     }
     for (int i=0; i<=4; i++) {
         enemyTeam[i] = EmptyPet;
-    }
-}
-
-void resetBattleModifiers() {
-    for (int i=0; i<=4; i++) {
-        playerTeam[i].battleModifierDefense = 0;
-        playerTeam[i].battleModifierAttack = 0;
-    }
-    for (int i=0; i<=4; i++) {
-        enemyTeam[i].battleModifierDefense = 0;
-        enemyTeam[i].battleModifierAttack = 0;
     }
 }
 
@@ -130,7 +120,7 @@ int stepForward(int step) {
 
 int battle() {
     int step = 0;
-    for (int i=4; i>0; i--) {
+    for (int i=4; i>=0; i--) {
         if (playerTeam[i].id > 0) {
             applyBattleStartTrigger(
                     0,
@@ -140,7 +130,7 @@ int battle() {
                     &playerTeam[i]);
         }
     }
-    for (int i=4; i>0; i--) {
+    for (int i=4; i>=0; i--) {
         if (enemyTeam[i].id > 0) {
             applyBattleStartTrigger(
                     0,
@@ -163,6 +153,7 @@ int battle() {
     while (isBattleOver() == 0) {
         PlayerFighter = getPlayerFighter();
         EnemyFighter = getEnemyFighter();
+
 
         applyBeforeAttackTrigger(
                 0,
@@ -226,7 +217,7 @@ int battle() {
     }
 }
 
-void setupBattle() {
+void prepareEngine() {
     srand(time(NULL));
     registerPet(1, &Ant, &AntText);
     registerPet(2, &Beaver, &BeaverText);
@@ -234,12 +225,37 @@ void setupBattle() {
     registerPet(4, &CricketZombie, &CricketZombieText);
 
     resetTeams();
+}
 
-    spawnPet(1, &playerTeam[1]);
-    spawnPet(1, &playerTeam[2]);
-    spawnPet(3, &playerTeam[3]);
-    spawnPet(1, &enemyTeam[0]);
-    spawnPet(2, &enemyTeam[4]);
+void prepareTeams(int friendly[5], int enemies[5]) {
+    printf("Friendly Team:\n");
+    for (int i=0; i <= 4; i++) {
+        if (friendly[i] > 0) {
+            printf("Pet[%i] %i\n", i, friendly[i]);
+
+            deserializePet(friendly[i], &playerTeam[i]);
+        } else {
+            printf("Skipped pet in %i\n", i);
+            playerTeam[i] = EmptyPet;
+        }
+    }
+    printf("Enemy Team:\n");
+    for (int i=0; i <= 4; i++) {
+        if (enemies[i] > 0) {
+            printf("Pet[%i] %i\n", i, enemies[i]);
+            deserializePet(enemies[i], &enemyTeam[i]);
+        } else {
+            printf("Skipped pet in %i\n", i);
+            enemyTeam[i] = EmptyPet;
+        }
+    }
+}
+
+struct Pet * getPlayerTeamPet(int index) {
+    return &playerTeam[index];
+}
+struct Pet * getEnemyTeamPet(int index) {
+    return &enemyTeam[index];
 }
 
 /* Battle:

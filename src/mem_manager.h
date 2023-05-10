@@ -4,5 +4,6 @@
 
 #ifndef SUPERADVANCEPETS_PET_DATA_H
 #define SUPERADVANCEPETS_PET_DATA_H
-int getPetGfxMem(int id);
+int usePetGfxMem(int id);
+int unusePetGfxMem(int id);
 #endif //SUPERADVANCEPETS_PET_DATA_H

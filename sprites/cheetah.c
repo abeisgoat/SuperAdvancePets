@@ -9,21 +9,21 @@
 //	+ regular map (flat), not compressed, 2x2 
 //	Total size: 128 + 8 = 136
 //
-//	Time-stamp: 2023-05-09, 15:00:21
-//	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
+//	Time-stamp: 2023-05-10, 12:05:26
+//	Exported by Cearn's GBA Image Transmogrifier, v0.9.2
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
 
-const unsigned int cheetahTiles[32] __attribute__((aligned(4)))=
+const unsigned int cheetahTiles[32] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
 {
-
+	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
 	0x00000000,0x00000000,0x00000000,0x00000000,0x00110000,0x00131110,0x00133310,0x01131331,
 	0x13333331,0x33331110,0x33333100,0x33331000,0x11113100,0x11313100,0x00111000,0x00000000,
 	0x00011111,0x00133333,0x01331333,0x01311333,0x13313311,0x01101113,0x00000131,0x00000010,
 };
 
-const unsigned short cheetahMap[4] __attribute__((aligned(4)))=
+const unsigned short cheetahMap[4] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
 {
 	0x0001,0x0000,0x0002,0x0003,
 };

@@ -11,4 +11,6 @@ int getPetAttack(struct Pet *pet);
 int getPetDefence(struct Pet *pet);
 int isDead(struct Pet *pet);
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
+int expToLevel(int exp);
+void deserializePet(int petId, struct Pet * dest);
 #endif

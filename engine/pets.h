@@ -8,9 +8,8 @@ struct Pet {
     int defence;
     int battleModifierDefense;
     int battleModifierAttack;
-    int level;
     int experience;
-    const unsigned int *sprite[40];
+    int heldItem;
 };
 
 struct PetText {

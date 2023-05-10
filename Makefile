@@ -2569,12 +2569,37 @@ sprites/zombie_fly.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/zombie_fly.c.s
 .PHONY : sprites/zombie_fly.c.s
 
+src/mem_manager.o: src/mem_manager.c.o
+.PHONY : src/mem_manager.o
+
+# target to build an object file
+src/mem_manager.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.o
+.PHONY : src/mem_manager.c.o
+
+src/mem_manager.i: src/mem_manager.c.i
+.PHONY : src/mem_manager.i
+
+# target to preprocess a source file
+src/mem_manager.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.i
+.PHONY : src/mem_manager.c.i
+
+src/mem_manager.s: src/mem_manager.c.s
+.PHONY : src/mem_manager.s
+
+# target to generate assembly for a file
+src/mem_manager.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.s
+.PHONY : src/mem_manager.c.s
+
 src/sap.o: src/sap.c.o
 .PHONY : src/sap.o
 
 # target to build an object file
 src/sap.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.o
 .PHONY : src/sap.c.o
 
 src/sap.i: src/sap.c.i
@@ -2583,6 +2608,7 @@ src/sap.i: src/sap.c.i
 # target to preprocess a source file
 src/sap.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.i
 .PHONY : src/sap.c.i
 
 src/sap.s: src/sap.c.s
@@ -2591,6 +2617,7 @@ src/sap.s: src/sap.c.s
 # target to generate assembly for a file
 src/sap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.s
 .PHONY : src/sap.c.s
 
 # Help Target
@@ -2873,6 +2900,9 @@ help:
 	@echo "... sprites/zombie_fly.o"
 	@echo "... sprites/zombie_fly.i"
 	@echo "... sprites/zombie_fly.s"
+	@echo "... src/mem_manager.o"
+	@echo "... src/mem_manager.i"
+	@echo "... src/mem_manager.s"
 	@echo "... src/sap.o"
 	@echo "... src/sap.i"
 	@echo "... src/sap.s"

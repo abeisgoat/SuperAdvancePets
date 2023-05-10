@@ -829,8 +829,15 @@
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager.c">
+			<Option target="SuperAdvancePetsCLI"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager.h">
+			<Option target="SuperAdvancePetsCLI"/>
+		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/sap.c">
 			<Option target="SuperAdvancePets"/>
+			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/opt/devkitpro/libtonc/include/tonc.h">
 			<Option target="SuperAdvancePets"/>

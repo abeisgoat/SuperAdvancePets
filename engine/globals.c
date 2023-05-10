@@ -1,5 +1,6 @@
 #include "pets.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 struct Pet NoOpPet = {
     .id = 0
@@ -7,6 +8,16 @@ struct Pet NoOpPet = {
 
 int isDead(struct Pet *pet) {
     return pet->defence + pet->battleModifierDefense <= 0 ? 1 : 0;
+}
+
+int expToLevel(int exp) {
+    if (exp == 5) {
+        return 3;
+    }
+    if (exp >= 2) {
+        return 2;
+    }
+    return 1;
 }
 
 struct Pet * randomOtherTeamMember(PetTeam team, struct Pet * exclude) {
@@ -78,8 +89,30 @@ void spawnPet(int petId, struct Pet * dest) {
     dest->battleModifierDefense = pet->battleModifierDefense;
     dest->battleModifierAttack = pet->battleModifierAttack;
     dest->experience = pet->experience;
+}
 
-    dest->level = 1;
-    dest->battleModifierDefense = 0;
-    dest->battleModifierAttack = 0;
+void printPet(struct Pet * pet) {
+    struct PetText * text = getPetTextByID(pet->id);
+    if ((text->name) == 0) {
+        printf("Unknown Pet!! Something is wrong %d", pet->id);
+        return;
+    }
+    printf("Pet :: %s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->defence, expToLevel(pet->experience), pet->experience);
+}
+
+void deserializePet(int num, struct Pet * dest) {
+    int attack,defence,id,heldItem,experience;
+
+    defence = num % 100;
+    attack = ((num % 10000) - defence) / 100;
+    experience = ((num % 100000) - attack - defence) / 10000;
+    heldItem = ((num % 1000000) - attack - defence - experience) / 100000;
+    id = ((num % 100000000) - attack - defence - experience - heldItem) / 1000000;
+
+    dest->id = id;
+    dest->attack = attack;
+    dest->defence = defence;
+    dest->heldItem = heldItem;
+    dest->experience = experience;
+    printPet(dest);
 }

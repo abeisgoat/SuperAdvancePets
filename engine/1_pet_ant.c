@@ -16,7 +16,7 @@ void antTriggerFeint(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet) {
 
     printf("[>> Animate Stat Boost from pos %i to pos %i <<]\n", givePos, takePos);
 
-    switch (pet->level) {
+    switch (expToLevel(pet->experience)) {
         case 1:
             teammate->battleModifierAttack += 1;
             teammate->battleModifierDefense += 1;

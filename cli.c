@@ -1,17 +1,33 @@
-#include "stdio.h"
 #include "./engine/battle.h"
 
 void main() {
-    setupBattle();
-    battle();
+    prepareEngine();
 
-    int team[20] = {
-                // ID H L E HE DE
-                813220910,
+    int friendly[5] = {
+            1320910,
+                1310910,
+
+    };
+    int enemies[5] = {
+            1320910,
+            1320910,
 
     };
 
-    for (int i=0; i < 20; i++) {
-        printf("Team[%i] %i\n", i, team[i]);
-    }
+    prepareTeams(friendly, enemies);
+    battle();
+
+    int friendly2[5] = {
+            1320910,
+            1310910,
+
+    };
+    int enemies2[5] = {
+            2320910,
+            1320910,
+
+    };
+
+    prepareTeams(friendly2, enemies2);
+    battle();
 }

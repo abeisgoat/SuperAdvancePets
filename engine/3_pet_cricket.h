@@ -1,5 +1,4 @@
 #include "pets.h"
-#include "../sprites/cricket.h"
 
 struct PetText CricketText = {
         .name = "Cricket",
@@ -13,8 +12,5 @@ struct Pet Cricket = {
         .id =  3,
         .attack =  1,
         .defence =  1,
-        // Always 0
-        .battleModifierDefense = 0,
-        .battleModifierAttack = 0,
 };
 void cricketTriggerFeint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * pet);

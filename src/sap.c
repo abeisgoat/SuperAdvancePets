@@ -10,6 +10,7 @@
 #include "../soundbank_bin.h"
 #include "../soundbank.h"
 #include <maxmod.h>
+#include "../engine/globals.h"
 
 #define CBB_4 0
 #define SBB_4 2
@@ -20,9 +21,33 @@
 OBJ_ATTR obj_buffer[128];
 OBJ_AFFINE *obj_aff_buffer= (OBJ_AFFINE*)obj_buffer;
 
+struct PetSprite {
+    int x;
+    int y;
+    int flip;
+    struct Pet * pet;
+};
+
+struct PetSprite petSprites[10] = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
+
+
 void main() {
-    setupBattle();
+    prepareEngine();
+
+    int friendly[5] = {
+            1320950,
+            2310910,
+
+    };
+    int enemies[5] = {
+            1320910,
+            2320910,
+
+    };
+
+    prepareTeams(friendly, enemies);
     int result = battle();
+
 
     // Background
     memcpy(pal_bg_mem, bgPal, bgPalLen);
@@ -66,11 +91,10 @@ void main() {
 
     pal_bg_bank[4][14]= CLR_GRAY;
 
-    tte_set_pos(8, 59);
+    tte_set_pos(80, 80);
 
     char msg[50];
-    sprintf(msg, "Random: %i", rand());
-    tte_write(msg);
+
 
     if (result == -1) {
         tte_write(" #{cx:0x1000}You tied.\n");
@@ -79,7 +103,7 @@ void main() {
         tte_write(" #{cx:0x3000}You lost.\n");
     }
     if (result == -3) {
-        tte_write(" #{cx:0x2000}You won!.\n");
+        tte_write(" #{cx:0x2000}You won!\n");
     }
 //    tte_write(" #{cx:0x1000}Hello world! in red\n");
 //    tte_write(" #{cx:0x2000}Hello world! in green\n");
@@ -95,18 +119,56 @@ void main() {
     REG_BG0VOFS= bg_y;
     int frame=0;
 
-    int sp_x= 170, sp_y= 75;
-    int antGfxMem = getPetGfxMem(1);
+    int petSpritesCount = 0;
+    int xOffset=50;
+    for (int i=0; i <=4; i++) {
+        struct Pet *pet = getPlayerTeamPet(i);
+        if (pet->id) {
+            petSprites[petSpritesCount].pet = pet;
+            petSprites[petSpritesCount].x = xOffset  + (20 * i);
+            petSprites[petSpritesCount].y = 50;
+            petSprites[petSpritesCount].flip = 1;
+            petSpritesCount++;
+        }
+    }
 
-    u32 tid = 0, pb= antGfxMem;      // (3) tile id, pal-bank
-    OBJ_ATTR *PetSprite0= &obj_buffer[0];
+    for (int i=0; i <=4; i++) {
+        struct Pet *pet = getEnemyTeamPet(i);
+        if (pet->id) {
+            petSprites[petSpritesCount].pet = pet;
+            petSprites[petSpritesCount].x = xOffset + 100 + (20 * i);
+            petSprites[petSpritesCount].y = 50;
+            petSprites[petSpritesCount].flip = 0;
+            petSpritesCount++;
+        }
+    }
 
-    obj_set_attr(PetSprite0,
-                 ATTR0_SQUARE,              // Square, regular sprite
-                 ATTR1_SIZE_16,              // 64x64p,
-                 ATTR2_PALBANK(pb) | tid);   // palbank 0, tile 0
+//    sprintf(msg, "ID: %i", petSprites[1].pet->id);
+//    tte_write(msg);
 
-    obj_set_pos(PetSprite0, sp_x, sp_y);
+    int spriteCount=0;
+    for (int s=0; s<10; s++) {
+        struct PetSprite * ps = &petSprites[s];
+
+        if (ps->pet != 0) {
+            int gfxMem = usePetGfxMem(ps->pet->id);
+
+            u32 tid = gfxMem, pb = 0;
+            OBJ_ATTR *sprite = &obj_buffer[spriteCount];
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE,              // Square, regular sprite
+                         ATTR1_SIZE_16,              // 64x64p,
+                         ATTR2_PALBANK(pb) | tid);   // palbank 0, tile 0
+
+            obj_set_pos(sprite, ps->x, ps->y);
+
+            if (ps->flip) {
+                sprite->attr1 ^= ATTR1_HFLIP;
+            }
+            spriteCount++;
+        }
+    }
 
     while(1)
     {
@@ -132,36 +194,50 @@ void main() {
         key_poll();
         mmFrame();
 
-        sp_x += 2*key_tri_horz();
-        sp_y += 2*key_tri_vert();
+//        sp0_x += 2*key_tri_horz();
+//        sp0_y += 2*key_tri_vert();
 
         // increment/decrement starting tile with R/L
-        tid += bit_tribool(key_hit(-1), KI_R, KI_L);
-        tid += bit_tribool(key_hit(-1), KI_R, KI_L);
-        tid += bit_tribool(key_hit(-1), KI_R, KI_L);
-        tid += bit_tribool(key_hit(-1), KI_R, KI_L);
+//        tid0 += bit_tribool(key_hit(-1), KI_R, KI_L);
+//        tid0 += bit_tribool(key_hit(-1), KI_R, KI_L);
+//        tid0 += bit_tribool(key_hit(-1), KI_R, KI_L);
+//        tid0 += bit_tribool(key_hit(-1), KI_R, KI_L);
         // flip
-        if(key_hit(KEY_A))  // horizontally
-        {
-            PetSprite0->attr1 ^= ATTR1_HFLIP;
-            mmEffect(SFX_AUDIO_SHOOT);
-        }
-
-        if(key_hit(KEY_B))  // vertically
-            PetSprite0->attr1 ^= ATTR1_VFLIP;
+//        if(key_hit(KEY_A))  // horizontally
+//        {
+//            PetSprite0->attr1 ^= ATTR1_HFLIP;
+//            mmEffect(SFX_AUDIO_SHOOT);
+//        }
+//
+//        if(key_hit(KEY_B))  // vertically
+//            PetSprite0->attr1 ^= ATTR1_VFLIP;
 
         // make it glow (via palette swapping)
-        pb= key_is_down(KEY_SELECT) ? 1 : 0;
+//        pb0= key_is_down(KEY_SELECT) ? 1 : 0;
 
         // toggle mapping mode
         if(key_hit(KEY_START))
             REG_DISPCNT ^= DCNT_OBJ_1D;
 
-        // Hey look, it's one of them build macros!
-        PetSprite0->attr2= ATTR2_BUILD(tid, pb, 0);
-        obj_set_pos(PetSprite0, sp_x, sp_y);
+        spriteCount=0;
+        for (int s=0; s<10; s++) {
+            struct PetSprite * ps = &petSprites[s];
+            if (ps->pet != 0) {
+                OBJ_ATTR *sprite = &obj_buffer[spriteCount];
+//                sprite->attr2= ATTR2_BUILD(tid0, pb0, 0);
+                 obj_set_pos(sprite, ps->x, ps->y);
+                spriteCount++;
+            }
+        }
 
-        oam_copy(oam_mem, obj_buffer, 1);   // (6) Update OAM (only one now)
+        // Hey look, it's one of them build macros!
+//        PetSprite0->attr2= ATTR2_BUILD(tid0, pb0, 0);
+//        obj_set_pos(PetSprite0, sp0_x, sp0_y);
+//
+//        PetSprite1->attr2= ATTR2_BUILD(tid1, pb1, 0);
+//        obj_set_pos(PetSprite1, sp1_x, sp1_y);
+
+        oam_copy(oam_mem, obj_buffer, spriteCount);   // (6) Update OAM (only one now)
     }
 }
 
@@ -237,24 +313,25 @@ void main() {
 //    int speed = 4;
 //
 //    while (true) {
-//        quarterNote(E_FLAT, 0, speed);
-//        quarterNote(B_FLAT, 0, speed);
-//        halfNote(G_FLAT, 0, speed);
+//        int octave = 1;
+//        quarterNote(E_FLAT, octave, speed);
+//        quarterNote(B_FLAT, octave, speed);
+//        halfNote(G_FLAT, octave, speed);
 //
 //        VBlankIntrDelay(12 * speed);
 ////    VBlankIntrDelay(12*speed);
 //
-//        tripletNote(B_FLAT, 0, speed);
-//        tripletNote(G_SHARP, 0, speed);
+//        tripletNote(B_FLAT, octave, speed);
+//        tripletNote(G_SHARP, octave, speed);
 //
 //        VBlankIntrDelay(3 * speed);
 //
-//        tripletNote(B_FLAT, 0, speed);
-//        tripletNote(F_SHARP, 0, speed);
+//        tripletNote(B_FLAT, octave, speed);
+//        tripletNote(F_SHARP, octave, speed);
 //
 //        VBlankIntrDelay(3 * speed);
 //
-//        tripletNote(F, 0, speed);
+//        tripletNote(F, octave, speed);
 //
 ////        quarterNote(E_FLAT, 0, speed);
 ////        quarterNote(B_FLAT, 0, speed);
