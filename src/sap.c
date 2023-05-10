@@ -7,13 +7,7 @@
 #include <time.h>
 #include "../sprites/sprites.h"
 #include "mem_manager.h"
-#include "../sprites/animals.h"
 
-// --------------------------------------------------------------------
-// PROTOTYPES
-// --------------------------------------------------------------------
-
-// --- bmp16, bmp8, chr4 slideshow demos ---
 #define CBB_4 0
 #define SBB_4 2
 

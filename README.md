@@ -1,5 +1,16 @@
 # Super Advance Pets
 
+## Building CLI (Standalone Engine)
+
+```bash
+make SuperAutoPetsCLI
+```
+
+## Building GBA (Full Game)
+```bash
+make -f Makefile.gba
+```
+
 ## Building Sprites
 
 Convert regular bmps to pink background
