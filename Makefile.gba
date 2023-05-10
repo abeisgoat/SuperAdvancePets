@@ -8,17 +8,17 @@ PROJ = sap
 
 SOURCES		:=	src sprites engine
 CFILES		:=	$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c))
-OFILES := $(CFILES:.c=.o)
+AUDIO       :=  audio
+AUDIOFILES := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.wav))
+BINFILES	:=	generated/soundbank.bin
+OFILES := $(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o)
 
-INCLUDES = -I$(DEVKITPRO)/libtonc/include
-LIBS = -L$(DEVKITPRO)/libtonc/lib -ltonc
+
+INCLUDES = -I$(DEVKITPRO)/libtonc/include -I$(DEVKITPRO)/libgba/include
+LIBS = -L$(DEVKITPRO)/libtonc/lib -L$(DEVKITPRO)/libgba/lib -ltonc -lmm
 
 CFLAGS = -mthumb-interwork -mthumb -O2 -Wall -fno-strict-aliasing $(INCLUDES)
 LDFLAGS = -mthumb-interwork -mthumb -specs=gba.specs
-
-$(info $$CFILES is [${CFILES}])
-$(info $$OFILES is [${OFILES}])
-
 
 DEPENDS	:=	$(OFILES:.o=.d)
 
@@ -32,6 +32,20 @@ $(PROJ).gba: $(PROJ).elf
 $(PROJ).elf: $(OFILES)
 	$(CC) $(LDFLAGS) $(OFILES) $(LIBS) -o $(PROJ).elf
 
+#---------------------------------------------------------------------------------
+# This rule links in binary data with the .bin extension
+#---------------------------------------------------------------------------------
+%.bin.o	:	%.bin
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+#-------------------------------------------------------------
+# rule for generating soundbank file from audio files
+#-------------------------------------------------------------
+soundbank.bin:	$(AUDIOFILES)
+#-------------------------------------------------------------
+	@mmutil $^ -ogenerated/soundbank.bin -hgenerated/soundbank.h
 
 .PHONY: clean
 clean:

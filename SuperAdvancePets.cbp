@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="SuperAdvancePets"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SuperAutoPetsEngine">
+				<Option output="/home/abe/Development/SuperAdvancePets/SuperAutoPetsEngine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/devkitpro/libtonc/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 SuperAutoPetsEngine"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SuperAutoPetsEngine/fast">
+				<Option output="/home/abe/Development/SuperAdvancePets/SuperAutoPetsEngine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/devkitpro/libtonc/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 SuperAutoPetsEngine/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SuperAutoPets">
+				<Option output="/home/abe/Development/SuperAdvancePets/SuperAutoPets" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/devkitpro/libtonc/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 SuperAutoPets"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SuperAutoPets/fast">
+				<Option output="/home/abe/Development/SuperAdvancePets/SuperAutoPets" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/devkitpro/libtonc/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 SuperAutoPets/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/abe/Development/SuperAdvancePets"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/abe/Development/SuperAdvancePets/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/cli.c">
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/1_pet_ant.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/1_pet_ant.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/2_pet_beaver.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/2_pet_beaver.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/3_pet_cricket.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/3_pet_cricket.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/4_pet_cricket_zombie.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/battle.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/battle.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/globals.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/globals.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_data.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pets.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/animals.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/ant.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/ant.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/apply.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/apply.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bad_rat.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bad_rat.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/badger.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/badger.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/beaver.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/beaver.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bee.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bee.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bg.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bg.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bison.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bison.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/blowfish.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/blowfish.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bus.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/bus.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/camel.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/camel.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/can.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/can.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cat.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cat.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cheetah.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cheetah.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/chick.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/chick.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/chocolate.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/chocolate.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cow.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cow.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/crab.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/crab.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cricket.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cricket.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/crocodile.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/crocodile.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cupcake.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/cupcake.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/deer.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/deer.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dodo.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dodo.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dog.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dog.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dolphin.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dolphin.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dragon.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/dragon.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/duck.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/duck.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/elephant.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/elephant.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/fish.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/fish.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/flamingo.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/flamingo.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/fly.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/fly.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/garlic.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/garlic.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/gorilla.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/gorilla.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/hedgehog.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/hedgehog.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/hog.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/hog.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/honey.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/honey.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/horse.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/horse.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/kangaroo.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/kangaroo.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mammoth.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mammoth.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/meat.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/meat.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/melon.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/melon.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/milk.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/milk.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/monkey.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/monkey.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mosquito.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mosquito.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mushroom.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/mushroom.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/otter.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/otter.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/oxen.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/oxen.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/parrot.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/parrot.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/peacock.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/peacock.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pear.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pear.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/penguin.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/penguin.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pepper.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pepper.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pig.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pig.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pill.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pill.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pizza.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/pizza.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rabbit.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rabbit.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/ram.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/ram.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rat.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rat.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rhino.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rhino.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rooster.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/rooster.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/salad.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/salad.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/scorpion.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/scorpion.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/seal.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/seal.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/shark.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/shark.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sheep.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sheep.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/shrimp.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/shrimp.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/skunk.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/skunk.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sloth.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sloth.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/snail.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/snail.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/snake.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/snake.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/spider.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/spider.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sprites.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sprites.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/squirrel.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/squirrel.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/steak.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/steak.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sushi.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/sushi.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/swan.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/swan.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/tiger.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/tiger.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/turkey.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/turkey.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/turtle.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/turtle.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/whale.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/whale.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/worm.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/worm.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/zombie_cricket.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/zombie_cricket.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/zombie_fly.c">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/zombie_fly.h">
+			<Option target="SuperAutoPetsEngine"/>
+			<Option target="SuperAutoPets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/sap.c">
+			<Option target="SuperAutoPetsEngine"/>
+		</Unit>
+		<Unit filename="/opt/devkitpro/libtonc/include/tonc.h">
+			<Option target="SuperAutoPetsEngine"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

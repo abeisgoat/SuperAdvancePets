@@ -11,6 +11,10 @@ make SuperAutoPetsCLI
 make -f Makefile.gba
 ```
 
+```bash
+make -f Makefile.gba && vba --video-4x sap.gba
+```
+
 ## Building Sprites
 
 Convert regular bmps to pink background
@@ -26,7 +30,7 @@ Generate sprite data
 
 ```bash
 cd sprites
-wine ~/Desktop/grit/grit.exe bmps/animals/*.bmp -pS -gB4 -gTFFAAFF -mRtpf -ftc -Osprites
+/opt/devkitpro/tools/bin/grit bmps/animals/*.bmp -pS -gB4 -gTFFAAFF -mRtpf -ftc -Osprites
 ```
 
 Generate animals.h

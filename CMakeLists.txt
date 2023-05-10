@@ -3,7 +3,9 @@ project(SuperAdvancePets C)
 
 set(CMAKE_C_STANDARD 11)
 set(TONC /opt/devkitpro/libtonc/include)
+set(GBA /opt/devkitpro/libgba/include)
 include_directories(SYSTEM ${TONC})
+include_directories(SYSTEM ${GBA})
 
 FILE(GLOB EngineC engine/*.c)
 FILE(GLOB EngineH engine/*.h)

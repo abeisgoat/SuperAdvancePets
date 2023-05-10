@@ -1,0 +1,8 @@
+.cmake
+SuperAutoPetsCLI
+sap.elf
+**/*.o
+*.o
+cmake-build-debug
+CMakeFiles
+generated
