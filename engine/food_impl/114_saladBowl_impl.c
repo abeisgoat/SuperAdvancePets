@@ -8,7 +8,7 @@ void saladTriggerBuy(int _, PetTeam us, PetTeam them, struct Pet * itemPet, stru
     struct Pet * friend1 = randomOtherTeamMember(them, itemPet);
     struct Pet * friend2 = randomOtherTeamMember(them, friend1);
 
-    int givePos = itemPosition(store, itemPet);
+    int givePos = storePosition(store, itemPet);
     int friend1Pos = petPosition(1, store, them, friend1);
     int friend2Pos = petPosition(1, store, them, friend2);
 

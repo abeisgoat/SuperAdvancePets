@@ -53,22 +53,6 @@ void applyBeforeAttackTrigger(int usOrThem, int step, PetTeam us, PetTeam them, 
     }
 }
 
-struct Pet * getPlayerFighter() {
-    for (int i=4; i>=0; i--) {
-        if (playerTeam[i].id > 0 && !isDead(&playerTeam[i])) {
-            return &playerTeam[i];
-        }
-    }
-}
-
-struct Pet * getEnemyFighter() {
-    for (int i=0; i<=4; i++) {
-        if (enemyTeam[i].id > 0 && !isDead(&enemyTeam[i])) {
-            return &enemyTeam[i];
-        }
-    }
-}
-
 void printTeam() {
     printf("Player Team: ");
     for (int i=0; i<=4; i++) {
@@ -196,9 +180,8 @@ int battle() {
 
     while (isBattleOver() == 0) {
 
-        PlayerFighter = getPlayerFighter();
-        EnemyFighter = getEnemyFighter();
-
+        PlayerFighter = getPlayerFighter(playerTeam);
+        EnemyFighter = getEnemyFighter(enemyTeam);
 
         applyBeforeAttackTrigger(
                 0,
@@ -223,10 +206,10 @@ int battle() {
                step,
                *getPetTextByID(PlayerFighter->id)->name,
                getPetAttack(PlayerFighter),
-               getPetDefence(PlayerFighter),
+               getPetHealth(PlayerFighter),
                *getPetTextByID(EnemyFighter->id)->name,
                getPetAttack(EnemyFighter),
-               getPetDefence(EnemyFighter));
+               getPetHealth(EnemyFighter));
 
         PlayerFighter->battleModifierHealth -= getPetAttack(EnemyFighter);
         EnemyFighter->battleModifierHealth -= getPetAttack(PlayerFighter);

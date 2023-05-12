@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText FlamingoText = {
         .abilities = {
                 "Faint: Give the two friends behind +1/+1.",
                 "Faint: Give the two friends behind +2/+2.",
-                "Faint: Give the two friends behind +2/+2."},
+                "Faint: Give the two friends behind +3/+3."},
 };
 
 EWRAM_DATA const static struct Pet Flamingo = {

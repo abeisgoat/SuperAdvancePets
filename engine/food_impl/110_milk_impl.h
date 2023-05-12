@@ -4,7 +4,7 @@
 EWRAM_DATA const static struct PetText MilkText = {
         .name = "Milk",
         .abilities = {
-                "Give an animal +2/+2",
+                "Give an animal a stat boost.",
                 "",
                 ""},
 };

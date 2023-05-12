@@ -20,6 +20,9 @@ void crabTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet
         }
     }
 
+    maxHealth *= .5;
+    maxHealth *= expToLevel(selfPet->health);
+
     animateStatHealthToTeamPosition(petPosition(1, store, them, selfPet), healerPos);
     resolveAnimation();
     selfPet->health = maxHealth;

@@ -5,8 +5,8 @@ EWRAM_DATA const static struct PetText OtterText = {
         .name = "Otter",
         .abilities = {
                 "Buy: Give a random friend +1/+1",
-                "Buy: Give a random friend +2/+2",
-                "Buy: Give a random friend +2/+2"},
+                "Buy: Give two random friends +1/+1",
+                "Buy: Give three random friends +1/+1"},
 };
 
 EWRAM_DATA const static struct Pet Otter = {

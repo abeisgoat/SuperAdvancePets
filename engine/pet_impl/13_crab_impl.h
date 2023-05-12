@@ -4,7 +4,9 @@
 EWRAM_DATA const static struct PetText CrabText = {
         .name = "Crab",
         .abilities = {
-                "Buy: Copy Health from the most healthy friend", "", ""},
+                "Buy: Copy 50% Health from the most healthy friend",
+                "Buy: Copy 100% Health from the most healthy friend",
+                "Buy: Copy 150% Health from the most healthy friend"},
 };
 
 EWRAM_DATA const static struct Pet Crab = {

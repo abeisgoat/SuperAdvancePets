@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText HedgehogText = {
         .abilities = {
                 "Faint: Deal 2 damage to all.",
                 "Faint: Deal 4 damage to all.",
-                "Faint: Deal 4 damage to all."},
+                "Faint: Deal 6 damage to all."},
 };
 
 EWRAM_DATA const static struct Pet Hedgehog = {

@@ -4,7 +4,7 @@
 EWRAM_DATA const static struct PetText CannedFoodText = {
         .name = "Canned Food",
         .abilities = {
-                "Give all current and future shop animals +2/+2.",
+                "Give all current and future shop extras +2/+2.",
                 "",
                 ""},
 };

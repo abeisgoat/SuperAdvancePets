@@ -4,14 +4,14 @@
 EWRAM_DATA const static struct PetText PeacockText = {
         .name = "Peacock",
         .abilities = {
-                "Hurt: Gain 50% more Attack. Works 1 time(s) per turn.",
-                "Hurt: Gain 50% more Attack. Works 2 time(s) per turn.",
-                "Hurt: Gain 50% more Attack. Works 2 time(s) per turn."},
+                "Hurt: Gain +4 Attack.",
+                "Hurt: Gain +8 Attack.",
+                "Hurt: Gain +12 more Attack."},
 };
 
 EWRAM_DATA const static struct Pet Peacock = {
         .id =  40,
-        .attack =  1,
+        .attack =  2,
         .health =  5,
         .tier = 2
 };

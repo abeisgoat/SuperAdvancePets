@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText ElephantText = {
         .abilities = {
                 "Before Attack: Deal 1 damage to 1 friends behind.",
                 "Before Attack: Deal 1 damage to 2 friends behind.",
-                "Before Attack: Deal 1 damage to 2 friends behind."},
+                "Before Attack: Deal 1 damage to 3 friends behind."},
 };
 
 EWRAM_DATA const static struct Pet Elephant = {

@@ -4,12 +4,11 @@
 EWRAM_DATA const static struct PetText RamText = {
         .name = "Ram",
         .abilities = {
-                "",
-                "",
-                ""},
+                "It's a ram :|",
+                "It's a big ram :)",
+                "It's the biggest ram :O"},
 };
 
 EWRAM_DATA const static struct Pet Ram = {
         .id =  44
 };
-void ramTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

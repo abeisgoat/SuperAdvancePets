@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText KangarooText = {
         .abilities = {
                 "Friend ahead attacks: Gain +2/+2",
                 "Friend ahead attacks: Gain +4/+4",
-                "Friend ahead attacks: Gain +4/+4"},
+                "Friend ahead attacks: Gain +6/+6"},
 };
 
 EWRAM_DATA const static struct Pet Kangaroo = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Kangaroo = {
         .health =  2,
         .tier = 3
 };
-void kangarooTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void kangarooTriggerFriendAttacks(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

@@ -13,6 +13,7 @@ struct Pet {
     int tier;
     int hurt;
     int cost;
+    int activations;
 };
 
 const struct PetText {

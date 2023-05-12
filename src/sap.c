@@ -5,7 +5,7 @@
 #include "../engine/battle.h"
 #include <stdio.h>
 #include <time.h>
-#include "../sprites/sprites.h"
+#include "../sprites/generated/sprites.h"
 #include "mem_manager.h"
 #include "../soundbank_bin.h"
 #include "../soundbank.h"
@@ -13,6 +13,13 @@
 #include "../engine/globals.h"
 #include "../engine/impl.h"
 #include "../sprites/animals.h"
+#include "../sprites/generated/uiBannerTopLvl1.h"
+#include "../sprites/generated/uiBannerTopLvl2.h"
+#include "../sprites/generated/uiBannerBottomEmpty.h"
+#include "../sprites/generated/num0.h"
+#include "../sprites/generated/num1.h"
+#include "../sprites/generated/num2.h"
+#include "../sprites/generated/num3.h"
 
 #define CBB_4 0
 #define SBB_4 2
@@ -37,7 +44,7 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            1320950, // 1 Ant
+            1360953, // 1 Ant
             24310910, // 24 Fish
             34310910, // 34 Mammoth
             32310910, // 32 Kangaroo
@@ -114,7 +121,11 @@ void main() {
     if (result == -3) {
         tte_write(" #{cx:0x2000}You won!\n");
     }
+
+
     tte_write("#{cx:0x0000}");
+    tte_set_pos(88, 78);
+
 //    tte_write(" #{cx:0x1000}Hello world! in red\n");
 //    tte_write(" #{cx:0x2000}Hello world! in green\n");
 ////    tte_set_pos(8, 64);
@@ -139,6 +150,15 @@ void main() {
             petSprites[petSpritesCount].y = 50;
             petSprites[petSpritesCount].flip = 1;
             petSpritesCount++;
+
+//            int x = 24 + (24*i);
+//            sprintf(msg, "#{P:%d,20}%d   \n", x, expToLevel(pet->experience));
+//            tte_write(msg);
+//            sprintf(msg, "#{P:%d,28}%d   \n", x, pet->health);
+//            tte_write(msg);
+//            sprintf(msg, "#{P:%d,36}%d   \n", x, pet->attack);
+//            tte_write(msg);
+
         }
     }
 
@@ -152,6 +172,127 @@ void main() {
             petSpritesCount++;
         }
     }
+
+    u32 tid = 100, pb = 0;
+    memcpy(&tile_mem[4][tid], uiBannerTopLvl2Tiles, uiBannerTopLvl2TilesLen);
+    memcpy(&tile_mem[4][tid+10], uiBannerBottomEmptyTiles, uiBannerBottomEmptyTilesLen);
+    memcpy(&tile_mem[4][tid+20], num0Tiles, num0TilesLen);
+    memcpy(&tile_mem[4][tid+30], num1Tiles, num1TilesLen);
+    memcpy(&tile_mem[4][tid+40], num2Tiles, num2TilesLen);
+    memcpy(&tile_mem[4][tid+50], num3Tiles, num3TilesLen);
+    memcpy(&tile_mem[4][tid+60], uiBannerTopLvl1Tiles, uiBannerTopLvl1TilesLen);
+
+    OBJ_ATTR *sprite = &obj_buffer[10];
+    int ui_x = 20;
+    int ui_y = 20;
+
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16,
+                 ATTR2_PALBANK(pb) | (tid + 2));
+
+    obj_set_pos(sprite, ui_x, ui_y);
+
+   sprite = &obj_buffer[11];
+
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16,
+                 ATTR2_PALBANK(pb) | (tid+12));
+
+    obj_set_pos(sprite, ui_x, ui_y+16);
+
+    sprite = &obj_buffer[12];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+32));
+
+    obj_set_pos(sprite, ui_x+6, ui_y+8);
+
+    sprite = &obj_buffer[13];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+32));
+
+    obj_set_pos(sprite, ui_x+6, ui_y+16);
+
+    sprite = &obj_buffer[14];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+42));
+
+    obj_set_pos(sprite, ui_x+10, ui_y+8);
+
+
+    sprite = &obj_buffer[15];
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+52));
+
+    obj_set_pos(sprite, ui_x+10, ui_y+16);
+
+    ui_x = 20+20;
+    ui_y = 20;
+
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16,
+                 ATTR2_PALBANK(pb) | (tid + 62));
+
+    obj_set_pos(sprite, ui_x, ui_y);
+
+    sprite = &obj_buffer[16];
+
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16,
+                 ATTR2_PALBANK(pb) | (tid+12));
+
+    obj_set_pos(sprite, ui_x, ui_y+16);
+
+    sprite = &obj_buffer[17];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+52));
+
+    obj_set_pos(sprite, ui_x+6, ui_y+8);
+
+    sprite = &obj_buffer[18];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+32));
+
+    obj_set_pos(sprite, ui_x+6, ui_y+16);
+
+    sprite = &obj_buffer[19];
+
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+42));
+
+    obj_set_pos(sprite, ui_x+10, ui_y+8);
+
+
+    sprite = &obj_buffer[20];
+    obj_set_attr(sprite,
+                 ATTR0_TALL | ATTR0_8BPP,
+                 ATTR1_SIZE_8,
+                 ATTR2_PALBANK(pb) | (tid+52));
+
+    obj_set_pos(sprite, ui_x+10, ui_y+16);
+
 
     int spriteCount=0;
     for (int s=0; s<10; s++) {
@@ -196,13 +337,19 @@ void main() {
 //                tte_write(msg);
 //            }
 //        }
-//        REG_BG1HOFS= x;
-//        REG_BG1VOFS= y;
+//        REG_BG0HOFS= 6;
+//        REG_BG0VOFS= 0;
         frame++;
 
         vid_vsync();
         key_poll();
         mmFrame();
+
+//        OBJ_ATTR *sprite = &obj_buffer[10];
+//        obj_set_pos(sprite, 10, 10);
+//
+//        sprite = &obj_buffer[11];
+//        obj_set_pos(sprite, 10, 26);
 
 //        sp0_x += 2*key_tri_horz();
 //        sp0_y += 2*key_tri_vert();
@@ -247,7 +394,7 @@ void main() {
 //        PetSprite1->attr2= ATTR2_BUILD(tid1, pb1, 0);
 //        obj_set_pos(PetSprite1, sp1_x, sp1_y);
 
-        oam_copy(oam_mem, obj_buffer, spriteCount);   // (6) Update OAM (only one now)
+        oam_copy(oam_mem, obj_buffer, 23);   // (6) Update OAM (only one now)
     }
 }
 

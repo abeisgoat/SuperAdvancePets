@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText HorseText = {
         .abilities = {
                 "Friend summoned: Give it +1 Attack until end of battle",
                 "Friend summoned: Give it +2 Attack until end of battle",
-                "Friend summoned: Give it +2 Attack until end of battle"},
+                "Friend summoned: Give it +3 Attack until end of battle"},
 };
 
 EWRAM_DATA const static struct Pet Horse = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Horse = {
         .health =  1,
         .tier = 1
 };
-void horseTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void horseTriggerFriendSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

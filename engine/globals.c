@@ -7,7 +7,7 @@ int isDead(struct Pet *pet) {
 }
 
 int expToLevel(int exp) {
-    if (exp == 5) {
+    if (exp >= 5) {
         return 3;
     }
     if (exp >= 2) {
@@ -24,6 +24,8 @@ struct Pet EmptyPet = {
         .battleModifierHealth = 0,
         .battleModifierAttack = 0,
         .heldItem = 0,
+        .activations=0,
+//        .hurt=0
 };
 
 struct Pet * randomOtherTeamMember(PetTeam team, struct Pet * exclude) {
@@ -61,8 +63,8 @@ struct Pet * getPetByID(int petId) {
     return pets[petId];
 }
 
-int itemPosition(PetTeam store, struct Pet * pet) {
-    for (int i=0; i<=4; i++) {
+int storePosition(PetTeam store, struct Pet *pet) {
+    for (int i=0; i<=7; i++) {
         if (&store[i] == pet) {
             return 100+i;
         }
@@ -144,7 +146,7 @@ int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet) {
 int getPetAttack(struct Pet *pet) {
     return pet->attack + pet->battleModifierAttack;
 }
-int getPetDefence(struct Pet *pet) {
+int getPetHealth(struct Pet *pet) {
     return pet->health + pet->battleModifierHealth;
 }
 
@@ -168,6 +170,23 @@ void spawnPet(int petId, struct Pet * dest) {
 void emptyPet(struct Pet * dest) {
     clonePet(&EmptyPet, dest);
 }
+
+struct Pet * getPlayerFighter(PetTeam playerTeam) {
+    for (int i=4; i>=0; i--) {
+        if (playerTeam[i].id > 0 && !isDead(&playerTeam[i])) {
+            return &playerTeam[i];
+        }
+    }
+}
+
+struct Pet * getEnemyFighter(PetTeam enemyTeam) {
+    for (int i=0; i<=4; i++) {
+        if (enemyTeam[i].id > 0 && !isDead(&enemyTeam[i])) {
+            return &enemyTeam[i];
+        }
+    }
+}
+
 
 
 

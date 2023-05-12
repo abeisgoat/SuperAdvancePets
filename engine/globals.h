@@ -11,13 +11,16 @@ struct Pet * spawnPet(int petId, struct Pet * dest);
 struct Pet * emptyPet(struct Pet * dest);
 struct Pet * clonePet(struct Pet * src, struct Pet * dest);
 int getPetAttack(struct Pet *pet);
-int getPetDefence(struct Pet *pet);
+int getPetHealth(struct Pet *pet);
 int isDead(struct Pet *pet);
 void damagePet(struct Pet *pet, int damage);
 int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them);
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
 struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos);
-int itemPosition(PetTeam store, PetTeam them);
+int storePosition(PetTeam store, struct Pet *pet);
 int expToLevel(int exp);
 void deserializePet(int petId, struct Pet * dest);
+struct Pet * getPlayerFighter(PetTeam playerTeam);
+struct Pet * getEnemyFighter(PetTeam enemyTeam);
+
 #endif

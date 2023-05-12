@@ -4,7 +4,7 @@
 EWRAM_DATA const static struct PetText SaladBowlText = {
         .name = "Salad Bowl",
         .abilities = {
-                "Give 2 random animals +1/+1.",
+                "Give 2 random extras +1/+1.",
                 "",
                 ""},
 };

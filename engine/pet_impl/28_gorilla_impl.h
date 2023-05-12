@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText GorillaText = {
         .name = "Gorilla",
         .abilities = {
-                "Hurt: Gain Coconut Shield.",
-                "Hurt: Gain Coconut Shield.",
-                "Hurt: Gain Coconut Shield."},
+                "Hurt: Gain Coconut Shield (Works 1x).",
+                "Hurt: Gain Coconut Shield (Works 2x).",
+                "Hurt: Gain Coconut Shield (Works 3x)."},
 };
 
 EWRAM_DATA const static struct Pet Gorilla = {

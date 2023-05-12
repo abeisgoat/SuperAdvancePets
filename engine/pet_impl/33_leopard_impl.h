@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText LeopardText = {
         .abilities = {
                 "Start of battle: Deal 50% Attack damage to a random enemy.",
                 "Start of battle: Deal 50% Attack damage to 2 random enemies.",
-                "Start of battle: Deal 50% Attack damage to 2 random enemies."},
+                "Start of battle: Deal 50% Attack damage to 3 random enemies."},
 };
 
 EWRAM_DATA const static struct Pet Leopard = {

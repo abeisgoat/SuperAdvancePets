@@ -5,7 +5,7 @@
 void honeyTriggerBuy(int _, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Honey trigger Buy");
 
-    int givePos = itemPosition(store, itemPet);
+    int givePos = storePosition(store, itemPet);
     int takePos = petPosition(1, store, them, targetPet);
 
     animateToTeamPosition(givePos, takePos);

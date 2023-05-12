@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText FishText = {
         .abilities = {
                 "Level-up: Give all friends +1/+1",
                 "Level-up: Give all friends +2/+2",
-                "Level-up: Give all friends +2/+2"},
+                "Level-up: Give all friends +3/+3"},
 };
 
 EWRAM_DATA const static struct Pet Fish = {

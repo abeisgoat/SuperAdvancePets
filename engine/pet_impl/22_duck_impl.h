@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText DuckText = {
         .name = "Duck",
         .abilities = {
-                "Sell: Give shop animals +1 Health",
-                "Sell: Give shop animals +2 Health",
-                "Sell: Give shop animals +2 Health"},
+                "Sell: Give shop extras +1 Health",
+                "Sell: Give shop extras +2 Health",
+                "Sell: Give shop extras +3 Health"},
 };
 
 EWRAM_DATA const static struct Pet Duck = {

@@ -271,9 +271,6 @@
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/16_deer_impl.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/17_dirtyRat_impl.c">
-			<Option target="SuperAdvancePetsCLI"/>
-		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/17_dirtyRat_impl.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>

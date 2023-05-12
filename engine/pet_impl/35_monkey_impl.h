@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText MonkeyText = {
         .abilities = {
                 "End turn: Give right-most friend +2/+3",
                 "End turn: Give right-most friend +4/+6",
-                "End turn: Give right-most friend +4/+6"},
+                "End turn: Give right-most friend +6/+9"},
 };
 
 EWRAM_DATA const static struct Pet Monkey = {

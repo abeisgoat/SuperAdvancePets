@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText DolphinText = {
         .abilities = {
                 "Start of battle: Deal 5 damage to the lowest health enemy",
                 "Start of battle: Deal 10 damage to the lowest health enemy",
-                "Start of battle: Deal 10 damage to the lowest health enemy"},
+                "Start of battle: Deal 15 damage to the lowest health enemy"},
 };
 
 EWRAM_DATA const static struct Pet Dolphin = {

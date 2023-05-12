@@ -4,12 +4,11 @@
 EWRAM_DATA const static struct PetText ZombieFlyText = {
         .name = "Zombie Fly",
         .abilities = {
-                "",
-                "",
-                ""},
+                "Dang flies.",
+                "Dang big flies.",
+                "Dang huge flies."},
 };
 
 EWRAM_DATA const static struct Pet ZombieFly = {
         .id =  66
 };
-void zombieFlyTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

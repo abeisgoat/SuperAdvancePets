@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText RabbitText = {
         .abilities = {
                 "Pet eats shop food: Give it +1 Health",
                 "Pet eats shop food: Give it +2 Health",
-                "Pet eats shop food: Give it +2 Health"},
+                "Pet eats shop food: Give it +3 Health"},
 };
 
 EWRAM_DATA const static struct Pet Rabbit = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Rabbit = {
         .health =  2,
         .tier = 3
 };
-void rabbitTriggerEatsShopFood(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void rabbitTriggerPetEatsShopFood(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

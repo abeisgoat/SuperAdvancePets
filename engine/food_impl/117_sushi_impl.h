@@ -4,7 +4,7 @@
 EWRAM_DATA const static struct PetText SushiText = {
         .name = "Sushi",
         .abilities = {
-                "Give 2 random animals +2/+2.",
+                "Give 2 random extras +2/+2.",
                 "",
                 ""},
 };

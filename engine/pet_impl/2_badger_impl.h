@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText BadgerText = {
         .name = "Badger",
         .abilities = {
-                "Faint: Deal Attack x1 damage to adjacent animals",
-                "Faint: Deal Attack x2 damage to adjacent animals",
-                "Faint: Deal Attack x2 damage to adjacent animals"},
+                "Faint: Deal Attack x1 damage to adjacent extras",
+                "Faint: Deal Attack x2 damage to adjacent extras",
+                "Faint: Deal Attack x2 damage to adjacent extras"},
 };
 
 EWRAM_DATA const static struct Pet Badger = {

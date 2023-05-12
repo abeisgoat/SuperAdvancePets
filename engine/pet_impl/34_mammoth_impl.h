@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText MammothText = {
         .abilities = {
                 "Faint: Give all friends +2/+2",
                 "Faint: Give all friends +4/+4",
-                "Faint: Give all friends +4/+4"},
+                "Faint: Give all friends +6/+6"},
 };
 
 EWRAM_DATA const static struct Pet Mammoth = {
