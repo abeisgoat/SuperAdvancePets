@@ -235,13 +235,7 @@
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/10_cat_impl.c">
-			<Option target="SuperAdvancePetsCLI"/>
-		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/10_cat_impl.h">
-			<Option target="SuperAdvancePetsCLI"/>
-		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/11_chick_impl.c">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/11_chick_impl.h">
@@ -614,9 +608,6 @@
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/7_boar_impl.h">
-			<Option target="SuperAdvancePetsCLI"/>
-		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/8_bus_impl.c">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_impl/8_bus_impl.h">

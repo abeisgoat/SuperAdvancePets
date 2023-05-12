@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Sushi = {
         .health =  0,
         .tier = 5
 };
-void sushiTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void sushiTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

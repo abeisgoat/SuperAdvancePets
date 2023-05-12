@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Snake = {
         .health =  6,
         .tier = 6
 };
-void snakeTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void snakeTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

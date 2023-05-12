@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Cupcake = {
         .health =  0,
         .tier = 2
 };
-void cupcakeTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void cupcakeTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

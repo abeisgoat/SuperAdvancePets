@@ -3,7 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void antTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void antTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Ant trigger Faint\n");
 
     struct Pet * teammate = randomOtherTeamMember(us, selfPet);

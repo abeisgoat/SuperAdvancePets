@@ -3,6 +3,6 @@
 #include <stdio.h>
 
 // TODO: Implement Rabbit EatsShopFood
-void rabbitTriggerEatsShopFood(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void rabbitTriggerEatsShopFood(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Rabbit trigger EatsShopFood");
 }

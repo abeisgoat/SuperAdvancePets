@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Mosquito = {
         .health =  2,
         .tier = 1
 };
-void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

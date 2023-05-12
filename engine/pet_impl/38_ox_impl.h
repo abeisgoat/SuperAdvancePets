@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Ox = {
         .health =  4,
         .tier = 3
 };
-void oxTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void oxTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

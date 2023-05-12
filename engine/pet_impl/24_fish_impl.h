@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Fish = {
         .health =  3,
         .tier = 1
 };
-void fishTriggerLevelUp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void fishTriggerLevelUp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

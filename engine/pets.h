@@ -11,6 +11,8 @@ struct Pet {
     int experience;
     int heldItem;
     int tier;
+    int hurt;
+    int cost;
 };
 
 const struct PetText {
@@ -18,5 +20,5 @@ const struct PetText {
     PetAbilities abilities;
 };
 
-typedef struct Pet PetTeam[5];
+typedef struct Pet PetTeam[7];
 #endif

@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Peacock = {
         .health =  5,
         .tier = 2
 };
-void peacockTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void peacockTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

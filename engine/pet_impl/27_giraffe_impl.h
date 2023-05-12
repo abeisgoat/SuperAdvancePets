@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Giraffe = {
         .health =  5,
         .tier = 3
 };
-void giraffeTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void giraffeTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

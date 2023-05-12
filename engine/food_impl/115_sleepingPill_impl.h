@@ -13,6 +13,7 @@ EWRAM_DATA const static struct Pet SleepingPill = {
         .id =  115,
         .attack =  0,
         .health =  0,
-        .tier = 2
+        .tier = 2,
+        .cost = 1
 };
-void sleepingPillTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void sleepingPillTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

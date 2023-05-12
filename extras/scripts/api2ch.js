@@ -6,7 +6,7 @@ const c_file = `
 #include <stdio.h>
 
 // TODO: Implement {{NAME}} {{TRIGGER}}
-void {{LNAME}}Trigger{{TRIGGER}}(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void {{LNAME}}Trigger{{TRIGGER}}(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated {{NAME}} trigger {{TRIGGER}}");
 }
 `
@@ -27,7 +27,7 @@ struct Pet {{NAME}} = {
         .defence =  {{DEFENSE}},
         .tier = {{TIER}}
 };
-void {{LNAME}}Trigger{{TRIGGER}}(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);`
+void {{LNAME}}Trigger{{TRIGGER}}(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);`
 
 const petNames = Object.keys(api.pets);
 petNames.sort();

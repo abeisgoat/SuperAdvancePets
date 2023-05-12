@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Mammoth = {
         .health =  10,
         .tier = 6
 };
-void mammothTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void mammothTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

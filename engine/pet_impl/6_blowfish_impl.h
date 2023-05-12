@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Blowfish = {
         .health =  5,
         .tier = 3
 };
-void blowfishTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void blowfishTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

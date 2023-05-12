@@ -12,4 +12,4 @@ EWRAM_DATA const static struct PetText RamText = {
 EWRAM_DATA const static struct Pet Ram = {
         .id =  44
 };
-void ramTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void ramTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

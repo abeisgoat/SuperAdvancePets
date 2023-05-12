@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Rabbit = {
         .health =  2,
         .tier = 3
 };
-void rabbitTriggerEatsShopFood(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void rabbitTriggerEatsShopFood(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

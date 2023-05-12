@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText DirtyRatText = {
         .name = "Dirty Rat",
         .abilities = {
-                "Friend ahead attacks: Deal it 1 damage",
-                "Friend ahead attacks: Deal it 2 damage",
-                "Friend ahead attacks: Deal it 2 damage"},
+                "Rude lil rat guy.",
+                "",
+                ""},
 };
 
 EWRAM_DATA const static struct Pet DirtyRat = {
@@ -14,4 +14,3 @@ EWRAM_DATA const static struct Pet DirtyRat = {
         .attack =  1,
         .health =  1,
 };
-void dirtyRatTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Flamingo = {
         .health =  1,
         .tier = 2
 };
-void flamingoTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void flamingoTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

@@ -3,6 +3,6 @@
 #include <stdio.h>
 
 // TODO: Implement Otter Buy
-void otterTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void otterTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Otter trigger Buy");
 }

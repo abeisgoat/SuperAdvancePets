@@ -4,7 +4,7 @@
 EWRAM_DATA const static struct PetText CrabText = {
         .name = "Crab",
         .abilities = {
-                "Buy: Copy Health from the most healthy friend"},
+                "Buy: Copy Health from the most healthy friend", "", ""},
 };
 
 EWRAM_DATA const static struct Pet Crab = {
@@ -13,4 +13,4 @@ EWRAM_DATA const static struct Pet Crab = {
         .health =  3,
         .tier = 2
 };
-void crabTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void crabTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

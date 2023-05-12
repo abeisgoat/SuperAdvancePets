@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Swan = {
         .health =  3,
         .tier = 2
 };
-void swanTriggerStartOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void swanTriggerStartOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

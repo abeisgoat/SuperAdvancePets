@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Skunk = {
         .health =  6,
         .tier = 4
 };
-void skunkTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void skunkTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

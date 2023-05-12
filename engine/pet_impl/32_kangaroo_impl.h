@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Kangaroo = {
         .health =  2,
         .tier = 3
 };
-void kangarooTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void kangarooTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

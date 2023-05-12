@@ -7,7 +7,7 @@ void main() {
 
     int friendly[5] = {
             1320910,
-                1310910,
+            2310910,
 
     };
     int enemies[5] = {
@@ -19,17 +19,18 @@ void main() {
     prepareTeams(friendly, enemies);
     battle();
 
-    int friendly2[5] = {
-            1320910,
-            1310910,
-
-    };
-    int enemies2[5] = {
-            2320910,
-            1320910,
-
-    };
-
-    prepareTeams(friendly2, enemies2);
-    battle();
+//    int friendly2[5] = {
+//            1320910,
+//            1310910,
+//
+//    };
+//    int enemies2[5] = {
+//            2320910,
+//            1320910,
+//
+//    };
+//
+//    prepareTeams(friendly2, enemies2);
+//    battle();
+//}
 }

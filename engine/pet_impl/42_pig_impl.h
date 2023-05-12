@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Pig = {
         .health =  1,
         .tier = 1
 };
-void pigTriggerSell(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void pigTriggerSell(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

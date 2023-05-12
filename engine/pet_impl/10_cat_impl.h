@@ -1,12 +1,13 @@
 #include "../pets.h"
 #include <tonc_types.h>
 
+// TODO Implement modifier for food eatin
 EWRAM_DATA const static struct PetText CatText = {
         .name = "Cat",
         .abilities = {
-                "Food with Health and Attack effects are doubled.",
-                "Food with Health and Attack effects are tripled.",
-                "Food with Health and Attack effects are tripled."},
+                "Food with Health and Attack effects are 2x.",
+                "Food with Health and Attack effects are 3x.",
+                "Food with Health and Attack effects are 4x."},
 };
 
 EWRAM_DATA const static struct Pet Cat = {
@@ -15,4 +16,3 @@ EWRAM_DATA const static struct Pet Cat = {
         .health =  5,
         .tier = 6
 };
-void catTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

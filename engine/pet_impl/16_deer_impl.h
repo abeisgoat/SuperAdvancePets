@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText DeerText = {
         .abilities = {
                 "Faint: Summon a 5/5 Bus with Splash Attack",
                 "Faint: Summon a 10/10 Bus with Splash Attack",
-                "Faint: Summon a 10/10 Bus with Splash Attack"},
+                "Faint: Summon a 15/15 Bus with Splash Attack"},
 };
 
 EWRAM_DATA const static struct Pet Deer = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Deer = {
         .health =  1,
         .tier = 4
 };
-void deerTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void deerTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

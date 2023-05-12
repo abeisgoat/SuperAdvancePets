@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Dolphin = {
         .health =  6,
         .tier = 4
 };
-void dolphinTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void dolphinTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

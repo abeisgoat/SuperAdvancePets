@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText DodoText = {
         .abilities = {
                 "Start of battle: Give 50% Attack to friend ahead.",
                 "Start of battle: Give 100% Attack to friend ahead.",
-                "Start of battle: Give 100% Attack to friend ahead."},
+                "Start of battle: Give 150% Attack to friend ahead."},
 };
 
 EWRAM_DATA const static struct Pet Dodo = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Dodo = {
         .health =  3,
         .tier = 2
 };
-void dodoTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void dodoTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

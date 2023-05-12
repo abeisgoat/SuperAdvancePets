@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet SaladBowl = {
         .health =  0,
         .tier = 3
 };
-void saladBowlTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void saladBowlTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

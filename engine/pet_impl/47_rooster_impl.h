@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Rooster = {
         .health =  3,
         .tier = 4
 };
-void roosterTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void roosterTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

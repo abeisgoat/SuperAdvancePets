@@ -3,7 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void appleTriggerBuy(int _, PetTeam store, PetTeam them, struct Pet * itemPet, struct Pet * targetPet) {
+void appleTriggerBuy(int _, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Apple trigger Buy");
 
     int givePos = itemPosition(store, itemPet);

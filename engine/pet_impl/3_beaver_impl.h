@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText BeaverText = {
         .abilities = {
                 "Sell: Give two random friends +1 health",
                 "Sell: Give two random friends +2 health",
-                "Sell: Give two random friends +2 health"},
+                "Sell: Give two random friends +3 health"},
 };
 
 EWRAM_DATA const static struct Pet Beaver = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Beaver = {
         .health =  2,
         .tier = 1
 };
-void beaverTriggerSell(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void beaverTriggerSell(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

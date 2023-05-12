@@ -15,36 +15,38 @@ struct TriggerTransition {
     enum TriggerTransitionType type;
 };
 
-struct Pet EmptyPet = {
-        .id = 0
-};
-
 PetTeam playerTeam = {
         {},{},{},{},{}
 };
 PetTeam enemyTeam = {
         {},{},{},{},{}
 };
+PetTeam storeTeam = {
+        {},{},{},{},{}, {}, {}
+};
 
 void applyFaintTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet) {
     switch (pet->id) {
         case 1: // Ant
-            antTriggerFaint(usOrThem, us, them, pet, pet);
+            antTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
+            break;
+        case 2: // Badger
+            badgerTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
             break;
         case 3: // Cricket
-            cricketTriggerFaint(usOrThem, us, them, pet, pet);
+            cricketTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
             break;
     }
 }
 
-void applyBattleStartTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet) {
+void applyBattleStartTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
         default:
             break;
     }
 }
 
-void applyBeforeAttackTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet) {
+void applyBeforeAttackTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
         default:
             break;
@@ -67,12 +69,53 @@ struct Pet * getEnemyFighter() {
     }
 }
 
+void printTeam() {
+    printf("Player Team: ");
+    for (int i=0; i<=4; i++) {
+        if (playerTeam[i].id == 0) {
+            printf("Empty ");
+        } else {
+            printf("%s ", *getPetTextByID(playerTeam[i].id)->name);
+        }
+    }
+    printf("\n");
+}
+
+int shuffleForwardOnce() {
+    int shuffled = 0;
+    for (int i=3; i>=0; i--) {
+        if (playerTeam[i+1].id == 0 && playerTeam[i].id != 0) {
+            clonePet(&playerTeam[i], &playerTeam[i+1]);
+            emptyPet(&playerTeam[i]);
+            shuffled = 1;
+            printf(">>> shuffling %d to %d\n", i, i+1);
+        }
+    }
+
+    for (int i=1; i<=4; i++) {
+        if (enemyTeam[i-1].id == 0  && enemyTeam[i].id != 0) {
+            clonePet(&enemyTeam[i], &enemyTeam[i-1]);
+            emptyPet(&enemyTeam[i]);
+            shuffled = 1;
+        }
+    }
+    return shuffled;
+}
+
+int shuffleForward() {
+//    printTeam();
+    while (shuffleForwardOnce() == 1) {
+//        printTeam();
+    }
+}
+
+
 void resetTeams() {
     for (int i=0; i<=4; i++) {
-        playerTeam[i] = EmptyPet;
+        emptyPet(&playerTeam[i]);
     }
     for (int i=0; i<=4; i++) {
-        enemyTeam[i] = EmptyPet;
+        emptyPet(&enemyTeam[i]);
     }
 }
 
@@ -124,7 +167,8 @@ int battle() {
                     step,
                     playerTeam,
                     enemyTeam,
-                    &playerTeam[i]);
+                    &playerTeam[i],
+                    storeTeam);
         }
     }
     for (int i=4; i>=0; i--) {
@@ -134,7 +178,8 @@ int battle() {
                     step,
                     playerTeam,
                     enemyTeam,
-                    &playerTeam[i]);
+                    &playerTeam[i],
+                    storeTeam);
         }
     }
     step = stepForward(step);
@@ -145,9 +190,12 @@ int battle() {
     struct Pet *PlayerFighter;
     struct Pet *EnemyFighter;
 
+
+    shuffleForward();
     printf("[Battle begin %i vs %i]\n", playerTeamSize(), enemyTeamSize());
 
     while (isBattleOver() == 0) {
+
         PlayerFighter = getPlayerFighter();
         EnemyFighter = getEnemyFighter();
 
@@ -157,14 +205,14 @@ int battle() {
                 step,
             playerTeam,
             enemyTeam,
-            PlayerFighter);
+            PlayerFighter, storeTeam);
 
         applyBeforeAttackTrigger(
                 1,
                 step,
                 enemyTeam,
                 playerTeam,
-                EnemyFighter);
+                EnemyFighter, storeTeam);
 
         step = stepForward(step);
         if (step < 0) {
@@ -314,7 +362,7 @@ void prepareTeams(int friendly[5], int enemies[5]) {
             deserializePet(friendly[i], &playerTeam[i]);
         } else {
             printf("Skipped pet in %i\n", i);
-            playerTeam[i] = EmptyPet;
+            emptyPet(&playerTeam[i]);
         }
     }
     printf("Enemy Team:\n");
@@ -324,7 +372,7 @@ void prepareTeams(int friendly[5], int enemies[5]) {
             deserializePet(enemies[i], &enemyTeam[i]);
         } else {
             printf("Skipped pet in %i\n", i);
-            enemyTeam[i] = EmptyPet;
+            emptyPet(&enemyTeam[i]);
         }
     }
 }

@@ -5,3 +5,4 @@ struct Pet * getPlayerTeamPet(int index);
 struct Pet * getEnemyTeamPet(int index);
 const struct PetText * getPlayerTeamPetText(int index);
 const struct PetText * getEnemyTeamPetText(int index);
+int shuffleForward();

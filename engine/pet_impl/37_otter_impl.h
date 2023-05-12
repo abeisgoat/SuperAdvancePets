@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Otter = {
         .health =  2,
         .tier = 1
 };
-void otterTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void otterTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

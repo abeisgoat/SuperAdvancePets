@@ -655,54 +655,6 @@ engine/pet_data.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_data.c.s
 .PHONY : engine/pet_data.c.s
 
-engine/pet_impl/10_cat_impl.o: engine/pet_impl/10_cat_impl.c.o
-.PHONY : engine/pet_impl/10_cat_impl.o
-
-# target to build an object file
-engine/pet_impl/10_cat_impl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.o
-.PHONY : engine/pet_impl/10_cat_impl.c.o
-
-engine/pet_impl/10_cat_impl.i: engine/pet_impl/10_cat_impl.c.i
-.PHONY : engine/pet_impl/10_cat_impl.i
-
-# target to preprocess a source file
-engine/pet_impl/10_cat_impl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.i
-.PHONY : engine/pet_impl/10_cat_impl.c.i
-
-engine/pet_impl/10_cat_impl.s: engine/pet_impl/10_cat_impl.c.s
-.PHONY : engine/pet_impl/10_cat_impl.s
-
-# target to generate assembly for a file
-engine/pet_impl/10_cat_impl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.s
-.PHONY : engine/pet_impl/10_cat_impl.c.s
-
-engine/pet_impl/11_chick_impl.o: engine/pet_impl/11_chick_impl.c.o
-.PHONY : engine/pet_impl/11_chick_impl.o
-
-# target to build an object file
-engine/pet_impl/11_chick_impl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.o
-.PHONY : engine/pet_impl/11_chick_impl.c.o
-
-engine/pet_impl/11_chick_impl.i: engine/pet_impl/11_chick_impl.c.i
-.PHONY : engine/pet_impl/11_chick_impl.i
-
-# target to preprocess a source file
-engine/pet_impl/11_chick_impl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.i
-.PHONY : engine/pet_impl/11_chick_impl.c.i
-
-engine/pet_impl/11_chick_impl.s: engine/pet_impl/11_chick_impl.c.s
-.PHONY : engine/pet_impl/11_chick_impl.s
-
-# target to generate assembly for a file
-engine/pet_impl/11_chick_impl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.s
-.PHONY : engine/pet_impl/11_chick_impl.c.s
-
 engine/pet_impl/12_cow_impl.o: engine/pet_impl/12_cow_impl.c.o
 .PHONY : engine/pet_impl/12_cow_impl.o
 
@@ -2166,30 +2118,6 @@ engine/pet_impl/7_boar_impl.s: engine/pet_impl/7_boar_impl.c.s
 engine/pet_impl/7_boar_impl.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/7_boar_impl.c.s
 .PHONY : engine/pet_impl/7_boar_impl.c.s
-
-engine/pet_impl/8_bus_impl.o: engine/pet_impl/8_bus_impl.c.o
-.PHONY : engine/pet_impl/8_bus_impl.o
-
-# target to build an object file
-engine/pet_impl/8_bus_impl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.o
-.PHONY : engine/pet_impl/8_bus_impl.c.o
-
-engine/pet_impl/8_bus_impl.i: engine/pet_impl/8_bus_impl.c.i
-.PHONY : engine/pet_impl/8_bus_impl.i
-
-# target to preprocess a source file
-engine/pet_impl/8_bus_impl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.i
-.PHONY : engine/pet_impl/8_bus_impl.c.i
-
-engine/pet_impl/8_bus_impl.s: engine/pet_impl/8_bus_impl.c.s
-.PHONY : engine/pet_impl/8_bus_impl.s
-
-# target to generate assembly for a file
-engine/pet_impl/8_bus_impl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.s
-.PHONY : engine/pet_impl/8_bus_impl.c.s
 
 engine/pet_impl/9_camel_impl.o: engine/pet_impl/9_camel_impl.c.o
 .PHONY : engine/pet_impl/9_camel_impl.o
@@ -4577,12 +4505,6 @@ help:
 	@echo "... engine/pet_data.o"
 	@echo "... engine/pet_data.i"
 	@echo "... engine/pet_data.s"
-	@echo "... engine/pet_impl/10_cat_impl.o"
-	@echo "... engine/pet_impl/10_cat_impl.i"
-	@echo "... engine/pet_impl/10_cat_impl.s"
-	@echo "... engine/pet_impl/11_chick_impl.o"
-	@echo "... engine/pet_impl/11_chick_impl.i"
-	@echo "... engine/pet_impl/11_chick_impl.s"
 	@echo "... engine/pet_impl/12_cow_impl.o"
 	@echo "... engine/pet_impl/12_cow_impl.i"
 	@echo "... engine/pet_impl/12_cow_impl.s"
@@ -4766,9 +4688,6 @@ help:
 	@echo "... engine/pet_impl/7_boar_impl.o"
 	@echo "... engine/pet_impl/7_boar_impl.i"
 	@echo "... engine/pet_impl/7_boar_impl.s"
-	@echo "... engine/pet_impl/8_bus_impl.o"
-	@echo "... engine/pet_impl/8_bus_impl.i"
-	@echo "... engine/pet_impl/8_bus_impl.s"
 	@echo "... engine/pet_impl/9_camel_impl.o"
 	@echo "... engine/pet_impl/9_camel_impl.i"
 	@echo "... engine/pet_impl/9_camel_impl.s"

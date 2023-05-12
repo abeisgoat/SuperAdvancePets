@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Horse = {
         .health =  1,
         .tier = 1
 };
-void horseTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void horseTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

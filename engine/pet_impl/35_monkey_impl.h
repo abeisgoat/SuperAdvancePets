@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Monkey = {
         .health =  2,
         .tier = 5
 };
-void monkeyTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void monkeyTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

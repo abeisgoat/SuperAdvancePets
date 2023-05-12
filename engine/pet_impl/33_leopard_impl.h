@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Leopard = {
         .health =  4,
         .tier = 6
 };
-void leopardTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void leopardTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

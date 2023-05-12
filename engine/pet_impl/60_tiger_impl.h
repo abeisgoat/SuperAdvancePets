@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Tiger = {
         .health =  3,
         .tier = 6
 };
-void tigerTriggerCastsAbility(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
+void tigerTriggerCastsAbility(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
