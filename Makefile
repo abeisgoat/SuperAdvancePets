@@ -166,87 +166,6 @@ cli.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/cli.c.s
 .PHONY : cli.c.s
 
-engine/1_pet_ant.o: engine/1_pet_ant.c.o
-.PHONY : engine/1_pet_ant.o
-
-# target to build an object file
-engine/1_pet_ant.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/1_pet_ant.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/1_pet_ant.c.o
-.PHONY : engine/1_pet_ant.c.o
-
-engine/1_pet_ant.i: engine/1_pet_ant.c.i
-.PHONY : engine/1_pet_ant.i
-
-# target to preprocess a source file
-engine/1_pet_ant.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/1_pet_ant.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/1_pet_ant.c.i
-.PHONY : engine/1_pet_ant.c.i
-
-engine/1_pet_ant.s: engine/1_pet_ant.c.s
-.PHONY : engine/1_pet_ant.s
-
-# target to generate assembly for a file
-engine/1_pet_ant.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/1_pet_ant.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/1_pet_ant.c.s
-.PHONY : engine/1_pet_ant.c.s
-
-engine/2_pet_beaver.o: engine/2_pet_beaver.c.o
-.PHONY : engine/2_pet_beaver.o
-
-# target to build an object file
-engine/2_pet_beaver.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/2_pet_beaver.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/2_pet_beaver.c.o
-.PHONY : engine/2_pet_beaver.c.o
-
-engine/2_pet_beaver.i: engine/2_pet_beaver.c.i
-.PHONY : engine/2_pet_beaver.i
-
-# target to preprocess a source file
-engine/2_pet_beaver.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/2_pet_beaver.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/2_pet_beaver.c.i
-.PHONY : engine/2_pet_beaver.c.i
-
-engine/2_pet_beaver.s: engine/2_pet_beaver.c.s
-.PHONY : engine/2_pet_beaver.s
-
-# target to generate assembly for a file
-engine/2_pet_beaver.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/2_pet_beaver.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/2_pet_beaver.c.s
-.PHONY : engine/2_pet_beaver.c.s
-
-engine/3_pet_cricket.o: engine/3_pet_cricket.c.o
-.PHONY : engine/3_pet_cricket.o
-
-# target to build an object file
-engine/3_pet_cricket.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/3_pet_cricket.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/3_pet_cricket.c.o
-.PHONY : engine/3_pet_cricket.c.o
-
-engine/3_pet_cricket.i: engine/3_pet_cricket.c.i
-.PHONY : engine/3_pet_cricket.i
-
-# target to preprocess a source file
-engine/3_pet_cricket.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/3_pet_cricket.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/3_pet_cricket.c.i
-.PHONY : engine/3_pet_cricket.c.i
-
-engine/3_pet_cricket.s: engine/3_pet_cricket.c.s
-.PHONY : engine/3_pet_cricket.s
-
-# target to generate assembly for a file
-engine/3_pet_cricket.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/3_pet_cricket.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/3_pet_cricket.c.s
-.PHONY : engine/3_pet_cricket.c.s
-
 engine/battle.o: engine/battle.c.o
 .PHONY : engine/battle.o
 
@@ -273,6 +192,414 @@ engine/battle.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/battle.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/battle.c.s
 .PHONY : engine/battle.c.s
+
+engine/food_impl/101_apple_impl.o: engine/food_impl/101_apple_impl.c.o
+.PHONY : engine/food_impl/101_apple_impl.o
+
+# target to build an object file
+engine/food_impl/101_apple_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/101_apple_impl.c.o
+.PHONY : engine/food_impl/101_apple_impl.c.o
+
+engine/food_impl/101_apple_impl.i: engine/food_impl/101_apple_impl.c.i
+.PHONY : engine/food_impl/101_apple_impl.i
+
+# target to preprocess a source file
+engine/food_impl/101_apple_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/101_apple_impl.c.i
+.PHONY : engine/food_impl/101_apple_impl.c.i
+
+engine/food_impl/101_apple_impl.s: engine/food_impl/101_apple_impl.c.s
+.PHONY : engine/food_impl/101_apple_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/101_apple_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/101_apple_impl.c.s
+.PHONY : engine/food_impl/101_apple_impl.c.s
+
+engine/food_impl/102_cannedFood_impl.o: engine/food_impl/102_cannedFood_impl.c.o
+.PHONY : engine/food_impl/102_cannedFood_impl.o
+
+# target to build an object file
+engine/food_impl/102_cannedFood_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/102_cannedFood_impl.c.o
+.PHONY : engine/food_impl/102_cannedFood_impl.c.o
+
+engine/food_impl/102_cannedFood_impl.i: engine/food_impl/102_cannedFood_impl.c.i
+.PHONY : engine/food_impl/102_cannedFood_impl.i
+
+# target to preprocess a source file
+engine/food_impl/102_cannedFood_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/102_cannedFood_impl.c.i
+.PHONY : engine/food_impl/102_cannedFood_impl.c.i
+
+engine/food_impl/102_cannedFood_impl.s: engine/food_impl/102_cannedFood_impl.c.s
+.PHONY : engine/food_impl/102_cannedFood_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/102_cannedFood_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/102_cannedFood_impl.c.s
+.PHONY : engine/food_impl/102_cannedFood_impl.c.s
+
+engine/food_impl/103_chili_impl.o: engine/food_impl/103_chili_impl.c.o
+.PHONY : engine/food_impl/103_chili_impl.o
+
+# target to build an object file
+engine/food_impl/103_chili_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/103_chili_impl.c.o
+.PHONY : engine/food_impl/103_chili_impl.c.o
+
+engine/food_impl/103_chili_impl.i: engine/food_impl/103_chili_impl.c.i
+.PHONY : engine/food_impl/103_chili_impl.i
+
+# target to preprocess a source file
+engine/food_impl/103_chili_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/103_chili_impl.c.i
+.PHONY : engine/food_impl/103_chili_impl.c.i
+
+engine/food_impl/103_chili_impl.s: engine/food_impl/103_chili_impl.c.s
+.PHONY : engine/food_impl/103_chili_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/103_chili_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/103_chili_impl.c.s
+.PHONY : engine/food_impl/103_chili_impl.c.s
+
+engine/food_impl/104_chocolate_impl.o: engine/food_impl/104_chocolate_impl.c.o
+.PHONY : engine/food_impl/104_chocolate_impl.o
+
+# target to build an object file
+engine/food_impl/104_chocolate_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/104_chocolate_impl.c.o
+.PHONY : engine/food_impl/104_chocolate_impl.c.o
+
+engine/food_impl/104_chocolate_impl.i: engine/food_impl/104_chocolate_impl.c.i
+.PHONY : engine/food_impl/104_chocolate_impl.i
+
+# target to preprocess a source file
+engine/food_impl/104_chocolate_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/104_chocolate_impl.c.i
+.PHONY : engine/food_impl/104_chocolate_impl.c.i
+
+engine/food_impl/104_chocolate_impl.s: engine/food_impl/104_chocolate_impl.c.s
+.PHONY : engine/food_impl/104_chocolate_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/104_chocolate_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/104_chocolate_impl.c.s
+.PHONY : engine/food_impl/104_chocolate_impl.c.s
+
+engine/food_impl/105_cupcake_impl.o: engine/food_impl/105_cupcake_impl.c.o
+.PHONY : engine/food_impl/105_cupcake_impl.o
+
+# target to build an object file
+engine/food_impl/105_cupcake_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/105_cupcake_impl.c.o
+.PHONY : engine/food_impl/105_cupcake_impl.c.o
+
+engine/food_impl/105_cupcake_impl.i: engine/food_impl/105_cupcake_impl.c.i
+.PHONY : engine/food_impl/105_cupcake_impl.i
+
+# target to preprocess a source file
+engine/food_impl/105_cupcake_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/105_cupcake_impl.c.i
+.PHONY : engine/food_impl/105_cupcake_impl.c.i
+
+engine/food_impl/105_cupcake_impl.s: engine/food_impl/105_cupcake_impl.c.s
+.PHONY : engine/food_impl/105_cupcake_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/105_cupcake_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/105_cupcake_impl.c.s
+.PHONY : engine/food_impl/105_cupcake_impl.c.s
+
+engine/food_impl/106_garlic_impl.o: engine/food_impl/106_garlic_impl.c.o
+.PHONY : engine/food_impl/106_garlic_impl.o
+
+# target to build an object file
+engine/food_impl/106_garlic_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/106_garlic_impl.c.o
+.PHONY : engine/food_impl/106_garlic_impl.c.o
+
+engine/food_impl/106_garlic_impl.i: engine/food_impl/106_garlic_impl.c.i
+.PHONY : engine/food_impl/106_garlic_impl.i
+
+# target to preprocess a source file
+engine/food_impl/106_garlic_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/106_garlic_impl.c.i
+.PHONY : engine/food_impl/106_garlic_impl.c.i
+
+engine/food_impl/106_garlic_impl.s: engine/food_impl/106_garlic_impl.c.s
+.PHONY : engine/food_impl/106_garlic_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/106_garlic_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/106_garlic_impl.c.s
+.PHONY : engine/food_impl/106_garlic_impl.c.s
+
+engine/food_impl/107_honey_impl.o: engine/food_impl/107_honey_impl.c.o
+.PHONY : engine/food_impl/107_honey_impl.o
+
+# target to build an object file
+engine/food_impl/107_honey_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/107_honey_impl.c.o
+.PHONY : engine/food_impl/107_honey_impl.c.o
+
+engine/food_impl/107_honey_impl.i: engine/food_impl/107_honey_impl.c.i
+.PHONY : engine/food_impl/107_honey_impl.i
+
+# target to preprocess a source file
+engine/food_impl/107_honey_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/107_honey_impl.c.i
+.PHONY : engine/food_impl/107_honey_impl.c.i
+
+engine/food_impl/107_honey_impl.s: engine/food_impl/107_honey_impl.c.s
+.PHONY : engine/food_impl/107_honey_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/107_honey_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/107_honey_impl.c.s
+.PHONY : engine/food_impl/107_honey_impl.c.s
+
+engine/food_impl/108_meatBone_impl.o: engine/food_impl/108_meatBone_impl.c.o
+.PHONY : engine/food_impl/108_meatBone_impl.o
+
+# target to build an object file
+engine/food_impl/108_meatBone_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/108_meatBone_impl.c.o
+.PHONY : engine/food_impl/108_meatBone_impl.c.o
+
+engine/food_impl/108_meatBone_impl.i: engine/food_impl/108_meatBone_impl.c.i
+.PHONY : engine/food_impl/108_meatBone_impl.i
+
+# target to preprocess a source file
+engine/food_impl/108_meatBone_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/108_meatBone_impl.c.i
+.PHONY : engine/food_impl/108_meatBone_impl.c.i
+
+engine/food_impl/108_meatBone_impl.s: engine/food_impl/108_meatBone_impl.c.s
+.PHONY : engine/food_impl/108_meatBone_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/108_meatBone_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/108_meatBone_impl.c.s
+.PHONY : engine/food_impl/108_meatBone_impl.c.s
+
+engine/food_impl/109_melon_impl.o: engine/food_impl/109_melon_impl.c.o
+.PHONY : engine/food_impl/109_melon_impl.o
+
+# target to build an object file
+engine/food_impl/109_melon_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/109_melon_impl.c.o
+.PHONY : engine/food_impl/109_melon_impl.c.o
+
+engine/food_impl/109_melon_impl.i: engine/food_impl/109_melon_impl.c.i
+.PHONY : engine/food_impl/109_melon_impl.i
+
+# target to preprocess a source file
+engine/food_impl/109_melon_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/109_melon_impl.c.i
+.PHONY : engine/food_impl/109_melon_impl.c.i
+
+engine/food_impl/109_melon_impl.s: engine/food_impl/109_melon_impl.c.s
+.PHONY : engine/food_impl/109_melon_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/109_melon_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/109_melon_impl.c.s
+.PHONY : engine/food_impl/109_melon_impl.c.s
+
+engine/food_impl/110_milk_impl.o: engine/food_impl/110_milk_impl.c.o
+.PHONY : engine/food_impl/110_milk_impl.o
+
+# target to build an object file
+engine/food_impl/110_milk_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/110_milk_impl.c.o
+.PHONY : engine/food_impl/110_milk_impl.c.o
+
+engine/food_impl/110_milk_impl.i: engine/food_impl/110_milk_impl.c.i
+.PHONY : engine/food_impl/110_milk_impl.i
+
+# target to preprocess a source file
+engine/food_impl/110_milk_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/110_milk_impl.c.i
+.PHONY : engine/food_impl/110_milk_impl.c.i
+
+engine/food_impl/110_milk_impl.s: engine/food_impl/110_milk_impl.c.s
+.PHONY : engine/food_impl/110_milk_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/110_milk_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/110_milk_impl.c.s
+.PHONY : engine/food_impl/110_milk_impl.c.s
+
+engine/food_impl/111_mushroom_impl.o: engine/food_impl/111_mushroom_impl.c.o
+.PHONY : engine/food_impl/111_mushroom_impl.o
+
+# target to build an object file
+engine/food_impl/111_mushroom_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/111_mushroom_impl.c.o
+.PHONY : engine/food_impl/111_mushroom_impl.c.o
+
+engine/food_impl/111_mushroom_impl.i: engine/food_impl/111_mushroom_impl.c.i
+.PHONY : engine/food_impl/111_mushroom_impl.i
+
+# target to preprocess a source file
+engine/food_impl/111_mushroom_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/111_mushroom_impl.c.i
+.PHONY : engine/food_impl/111_mushroom_impl.c.i
+
+engine/food_impl/111_mushroom_impl.s: engine/food_impl/111_mushroom_impl.c.s
+.PHONY : engine/food_impl/111_mushroom_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/111_mushroom_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/111_mushroom_impl.c.s
+.PHONY : engine/food_impl/111_mushroom_impl.c.s
+
+engine/food_impl/112_pear_impl.o: engine/food_impl/112_pear_impl.c.o
+.PHONY : engine/food_impl/112_pear_impl.o
+
+# target to build an object file
+engine/food_impl/112_pear_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/112_pear_impl.c.o
+.PHONY : engine/food_impl/112_pear_impl.c.o
+
+engine/food_impl/112_pear_impl.i: engine/food_impl/112_pear_impl.c.i
+.PHONY : engine/food_impl/112_pear_impl.i
+
+# target to preprocess a source file
+engine/food_impl/112_pear_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/112_pear_impl.c.i
+.PHONY : engine/food_impl/112_pear_impl.c.i
+
+engine/food_impl/112_pear_impl.s: engine/food_impl/112_pear_impl.c.s
+.PHONY : engine/food_impl/112_pear_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/112_pear_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/112_pear_impl.c.s
+.PHONY : engine/food_impl/112_pear_impl.c.s
+
+engine/food_impl/113_pizza_impl.o: engine/food_impl/113_pizza_impl.c.o
+.PHONY : engine/food_impl/113_pizza_impl.o
+
+# target to build an object file
+engine/food_impl/113_pizza_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/113_pizza_impl.c.o
+.PHONY : engine/food_impl/113_pizza_impl.c.o
+
+engine/food_impl/113_pizza_impl.i: engine/food_impl/113_pizza_impl.c.i
+.PHONY : engine/food_impl/113_pizza_impl.i
+
+# target to preprocess a source file
+engine/food_impl/113_pizza_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/113_pizza_impl.c.i
+.PHONY : engine/food_impl/113_pizza_impl.c.i
+
+engine/food_impl/113_pizza_impl.s: engine/food_impl/113_pizza_impl.c.s
+.PHONY : engine/food_impl/113_pizza_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/113_pizza_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/113_pizza_impl.c.s
+.PHONY : engine/food_impl/113_pizza_impl.c.s
+
+engine/food_impl/114_saladBowl_impl.o: engine/food_impl/114_saladBowl_impl.c.o
+.PHONY : engine/food_impl/114_saladBowl_impl.o
+
+# target to build an object file
+engine/food_impl/114_saladBowl_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/114_saladBowl_impl.c.o
+.PHONY : engine/food_impl/114_saladBowl_impl.c.o
+
+engine/food_impl/114_saladBowl_impl.i: engine/food_impl/114_saladBowl_impl.c.i
+.PHONY : engine/food_impl/114_saladBowl_impl.i
+
+# target to preprocess a source file
+engine/food_impl/114_saladBowl_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/114_saladBowl_impl.c.i
+.PHONY : engine/food_impl/114_saladBowl_impl.c.i
+
+engine/food_impl/114_saladBowl_impl.s: engine/food_impl/114_saladBowl_impl.c.s
+.PHONY : engine/food_impl/114_saladBowl_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/114_saladBowl_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/114_saladBowl_impl.c.s
+.PHONY : engine/food_impl/114_saladBowl_impl.c.s
+
+engine/food_impl/115_sleepingPill_impl.o: engine/food_impl/115_sleepingPill_impl.c.o
+.PHONY : engine/food_impl/115_sleepingPill_impl.o
+
+# target to build an object file
+engine/food_impl/115_sleepingPill_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/115_sleepingPill_impl.c.o
+.PHONY : engine/food_impl/115_sleepingPill_impl.c.o
+
+engine/food_impl/115_sleepingPill_impl.i: engine/food_impl/115_sleepingPill_impl.c.i
+.PHONY : engine/food_impl/115_sleepingPill_impl.i
+
+# target to preprocess a source file
+engine/food_impl/115_sleepingPill_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/115_sleepingPill_impl.c.i
+.PHONY : engine/food_impl/115_sleepingPill_impl.c.i
+
+engine/food_impl/115_sleepingPill_impl.s: engine/food_impl/115_sleepingPill_impl.c.s
+.PHONY : engine/food_impl/115_sleepingPill_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/115_sleepingPill_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/115_sleepingPill_impl.c.s
+.PHONY : engine/food_impl/115_sleepingPill_impl.c.s
+
+engine/food_impl/116_steak_impl.o: engine/food_impl/116_steak_impl.c.o
+.PHONY : engine/food_impl/116_steak_impl.o
+
+# target to build an object file
+engine/food_impl/116_steak_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/116_steak_impl.c.o
+.PHONY : engine/food_impl/116_steak_impl.c.o
+
+engine/food_impl/116_steak_impl.i: engine/food_impl/116_steak_impl.c.i
+.PHONY : engine/food_impl/116_steak_impl.i
+
+# target to preprocess a source file
+engine/food_impl/116_steak_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/116_steak_impl.c.i
+.PHONY : engine/food_impl/116_steak_impl.c.i
+
+engine/food_impl/116_steak_impl.s: engine/food_impl/116_steak_impl.c.s
+.PHONY : engine/food_impl/116_steak_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/116_steak_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/116_steak_impl.c.s
+.PHONY : engine/food_impl/116_steak_impl.c.s
+
+engine/food_impl/117_sushi_impl.o: engine/food_impl/117_sushi_impl.c.o
+.PHONY : engine/food_impl/117_sushi_impl.o
+
+# target to build an object file
+engine/food_impl/117_sushi_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/117_sushi_impl.c.o
+.PHONY : engine/food_impl/117_sushi_impl.c.o
+
+engine/food_impl/117_sushi_impl.i: engine/food_impl/117_sushi_impl.c.i
+.PHONY : engine/food_impl/117_sushi_impl.i
+
+# target to preprocess a source file
+engine/food_impl/117_sushi_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/117_sushi_impl.c.i
+.PHONY : engine/food_impl/117_sushi_impl.c.i
+
+engine/food_impl/117_sushi_impl.s: engine/food_impl/117_sushi_impl.c.s
+.PHONY : engine/food_impl/117_sushi_impl.s
+
+# target to generate assembly for a file
+engine/food_impl/117_sushi_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/117_sushi_impl.c.s
+.PHONY : engine/food_impl/117_sushi_impl.c.s
 
 engine/globals.o: engine/globals.c.o
 .PHONY : engine/globals.o
@@ -327,6 +654,1566 @@ engine/pet_data.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/pet_data.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_data.c.s
 .PHONY : engine/pet_data.c.s
+
+engine/pet_impl/10_cat_impl.o: engine/pet_impl/10_cat_impl.c.o
+.PHONY : engine/pet_impl/10_cat_impl.o
+
+# target to build an object file
+engine/pet_impl/10_cat_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.o
+.PHONY : engine/pet_impl/10_cat_impl.c.o
+
+engine/pet_impl/10_cat_impl.i: engine/pet_impl/10_cat_impl.c.i
+.PHONY : engine/pet_impl/10_cat_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/10_cat_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.i
+.PHONY : engine/pet_impl/10_cat_impl.c.i
+
+engine/pet_impl/10_cat_impl.s: engine/pet_impl/10_cat_impl.c.s
+.PHONY : engine/pet_impl/10_cat_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/10_cat_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/10_cat_impl.c.s
+.PHONY : engine/pet_impl/10_cat_impl.c.s
+
+engine/pet_impl/11_chick_impl.o: engine/pet_impl/11_chick_impl.c.o
+.PHONY : engine/pet_impl/11_chick_impl.o
+
+# target to build an object file
+engine/pet_impl/11_chick_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.o
+.PHONY : engine/pet_impl/11_chick_impl.c.o
+
+engine/pet_impl/11_chick_impl.i: engine/pet_impl/11_chick_impl.c.i
+.PHONY : engine/pet_impl/11_chick_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/11_chick_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.i
+.PHONY : engine/pet_impl/11_chick_impl.c.i
+
+engine/pet_impl/11_chick_impl.s: engine/pet_impl/11_chick_impl.c.s
+.PHONY : engine/pet_impl/11_chick_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/11_chick_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/11_chick_impl.c.s
+.PHONY : engine/pet_impl/11_chick_impl.c.s
+
+engine/pet_impl/12_cow_impl.o: engine/pet_impl/12_cow_impl.c.o
+.PHONY : engine/pet_impl/12_cow_impl.o
+
+# target to build an object file
+engine/pet_impl/12_cow_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/12_cow_impl.c.o
+.PHONY : engine/pet_impl/12_cow_impl.c.o
+
+engine/pet_impl/12_cow_impl.i: engine/pet_impl/12_cow_impl.c.i
+.PHONY : engine/pet_impl/12_cow_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/12_cow_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/12_cow_impl.c.i
+.PHONY : engine/pet_impl/12_cow_impl.c.i
+
+engine/pet_impl/12_cow_impl.s: engine/pet_impl/12_cow_impl.c.s
+.PHONY : engine/pet_impl/12_cow_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/12_cow_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/12_cow_impl.c.s
+.PHONY : engine/pet_impl/12_cow_impl.c.s
+
+engine/pet_impl/13_crab_impl.o: engine/pet_impl/13_crab_impl.c.o
+.PHONY : engine/pet_impl/13_crab_impl.o
+
+# target to build an object file
+engine/pet_impl/13_crab_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/13_crab_impl.c.o
+.PHONY : engine/pet_impl/13_crab_impl.c.o
+
+engine/pet_impl/13_crab_impl.i: engine/pet_impl/13_crab_impl.c.i
+.PHONY : engine/pet_impl/13_crab_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/13_crab_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/13_crab_impl.c.i
+.PHONY : engine/pet_impl/13_crab_impl.c.i
+
+engine/pet_impl/13_crab_impl.s: engine/pet_impl/13_crab_impl.c.s
+.PHONY : engine/pet_impl/13_crab_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/13_crab_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/13_crab_impl.c.s
+.PHONY : engine/pet_impl/13_crab_impl.c.s
+
+engine/pet_impl/14_cricket_impl.o: engine/pet_impl/14_cricket_impl.c.o
+.PHONY : engine/pet_impl/14_cricket_impl.o
+
+# target to build an object file
+engine/pet_impl/14_cricket_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/14_cricket_impl.c.o
+.PHONY : engine/pet_impl/14_cricket_impl.c.o
+
+engine/pet_impl/14_cricket_impl.i: engine/pet_impl/14_cricket_impl.c.i
+.PHONY : engine/pet_impl/14_cricket_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/14_cricket_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/14_cricket_impl.c.i
+.PHONY : engine/pet_impl/14_cricket_impl.c.i
+
+engine/pet_impl/14_cricket_impl.s: engine/pet_impl/14_cricket_impl.c.s
+.PHONY : engine/pet_impl/14_cricket_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/14_cricket_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/14_cricket_impl.c.s
+.PHONY : engine/pet_impl/14_cricket_impl.c.s
+
+engine/pet_impl/15_crocodile_impl.o: engine/pet_impl/15_crocodile_impl.c.o
+.PHONY : engine/pet_impl/15_crocodile_impl.o
+
+# target to build an object file
+engine/pet_impl/15_crocodile_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/15_crocodile_impl.c.o
+.PHONY : engine/pet_impl/15_crocodile_impl.c.o
+
+engine/pet_impl/15_crocodile_impl.i: engine/pet_impl/15_crocodile_impl.c.i
+.PHONY : engine/pet_impl/15_crocodile_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/15_crocodile_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/15_crocodile_impl.c.i
+.PHONY : engine/pet_impl/15_crocodile_impl.c.i
+
+engine/pet_impl/15_crocodile_impl.s: engine/pet_impl/15_crocodile_impl.c.s
+.PHONY : engine/pet_impl/15_crocodile_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/15_crocodile_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/15_crocodile_impl.c.s
+.PHONY : engine/pet_impl/15_crocodile_impl.c.s
+
+engine/pet_impl/16_deer_impl.o: engine/pet_impl/16_deer_impl.c.o
+.PHONY : engine/pet_impl/16_deer_impl.o
+
+# target to build an object file
+engine/pet_impl/16_deer_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/16_deer_impl.c.o
+.PHONY : engine/pet_impl/16_deer_impl.c.o
+
+engine/pet_impl/16_deer_impl.i: engine/pet_impl/16_deer_impl.c.i
+.PHONY : engine/pet_impl/16_deer_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/16_deer_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/16_deer_impl.c.i
+.PHONY : engine/pet_impl/16_deer_impl.c.i
+
+engine/pet_impl/16_deer_impl.s: engine/pet_impl/16_deer_impl.c.s
+.PHONY : engine/pet_impl/16_deer_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/16_deer_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/16_deer_impl.c.s
+.PHONY : engine/pet_impl/16_deer_impl.c.s
+
+engine/pet_impl/17_dirtyRat_impl.o: engine/pet_impl/17_dirtyRat_impl.c.o
+.PHONY : engine/pet_impl/17_dirtyRat_impl.o
+
+# target to build an object file
+engine/pet_impl/17_dirtyRat_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/17_dirtyRat_impl.c.o
+.PHONY : engine/pet_impl/17_dirtyRat_impl.c.o
+
+engine/pet_impl/17_dirtyRat_impl.i: engine/pet_impl/17_dirtyRat_impl.c.i
+.PHONY : engine/pet_impl/17_dirtyRat_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/17_dirtyRat_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/17_dirtyRat_impl.c.i
+.PHONY : engine/pet_impl/17_dirtyRat_impl.c.i
+
+engine/pet_impl/17_dirtyRat_impl.s: engine/pet_impl/17_dirtyRat_impl.c.s
+.PHONY : engine/pet_impl/17_dirtyRat_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/17_dirtyRat_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/17_dirtyRat_impl.c.s
+.PHONY : engine/pet_impl/17_dirtyRat_impl.c.s
+
+engine/pet_impl/18_dodo_impl.o: engine/pet_impl/18_dodo_impl.c.o
+.PHONY : engine/pet_impl/18_dodo_impl.o
+
+# target to build an object file
+engine/pet_impl/18_dodo_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/18_dodo_impl.c.o
+.PHONY : engine/pet_impl/18_dodo_impl.c.o
+
+engine/pet_impl/18_dodo_impl.i: engine/pet_impl/18_dodo_impl.c.i
+.PHONY : engine/pet_impl/18_dodo_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/18_dodo_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/18_dodo_impl.c.i
+.PHONY : engine/pet_impl/18_dodo_impl.c.i
+
+engine/pet_impl/18_dodo_impl.s: engine/pet_impl/18_dodo_impl.c.s
+.PHONY : engine/pet_impl/18_dodo_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/18_dodo_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/18_dodo_impl.c.s
+.PHONY : engine/pet_impl/18_dodo_impl.c.s
+
+engine/pet_impl/19_dog_impl.o: engine/pet_impl/19_dog_impl.c.o
+.PHONY : engine/pet_impl/19_dog_impl.o
+
+# target to build an object file
+engine/pet_impl/19_dog_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/19_dog_impl.c.o
+.PHONY : engine/pet_impl/19_dog_impl.c.o
+
+engine/pet_impl/19_dog_impl.i: engine/pet_impl/19_dog_impl.c.i
+.PHONY : engine/pet_impl/19_dog_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/19_dog_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/19_dog_impl.c.i
+.PHONY : engine/pet_impl/19_dog_impl.c.i
+
+engine/pet_impl/19_dog_impl.s: engine/pet_impl/19_dog_impl.c.s
+.PHONY : engine/pet_impl/19_dog_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/19_dog_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/19_dog_impl.c.s
+.PHONY : engine/pet_impl/19_dog_impl.c.s
+
+engine/pet_impl/1_ant_impl.o: engine/pet_impl/1_ant_impl.c.o
+.PHONY : engine/pet_impl/1_ant_impl.o
+
+# target to build an object file
+engine/pet_impl/1_ant_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/1_ant_impl.c.o
+.PHONY : engine/pet_impl/1_ant_impl.c.o
+
+engine/pet_impl/1_ant_impl.i: engine/pet_impl/1_ant_impl.c.i
+.PHONY : engine/pet_impl/1_ant_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/1_ant_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/1_ant_impl.c.i
+.PHONY : engine/pet_impl/1_ant_impl.c.i
+
+engine/pet_impl/1_ant_impl.s: engine/pet_impl/1_ant_impl.c.s
+.PHONY : engine/pet_impl/1_ant_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/1_ant_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/1_ant_impl.c.s
+.PHONY : engine/pet_impl/1_ant_impl.c.s
+
+engine/pet_impl/20_dolphin_impl.o: engine/pet_impl/20_dolphin_impl.c.o
+.PHONY : engine/pet_impl/20_dolphin_impl.o
+
+# target to build an object file
+engine/pet_impl/20_dolphin_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/20_dolphin_impl.c.o
+.PHONY : engine/pet_impl/20_dolphin_impl.c.o
+
+engine/pet_impl/20_dolphin_impl.i: engine/pet_impl/20_dolphin_impl.c.i
+.PHONY : engine/pet_impl/20_dolphin_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/20_dolphin_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/20_dolphin_impl.c.i
+.PHONY : engine/pet_impl/20_dolphin_impl.c.i
+
+engine/pet_impl/20_dolphin_impl.s: engine/pet_impl/20_dolphin_impl.c.s
+.PHONY : engine/pet_impl/20_dolphin_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/20_dolphin_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/20_dolphin_impl.c.s
+.PHONY : engine/pet_impl/20_dolphin_impl.c.s
+
+engine/pet_impl/21_dragon_impl.o: engine/pet_impl/21_dragon_impl.c.o
+.PHONY : engine/pet_impl/21_dragon_impl.o
+
+# target to build an object file
+engine/pet_impl/21_dragon_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/21_dragon_impl.c.o
+.PHONY : engine/pet_impl/21_dragon_impl.c.o
+
+engine/pet_impl/21_dragon_impl.i: engine/pet_impl/21_dragon_impl.c.i
+.PHONY : engine/pet_impl/21_dragon_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/21_dragon_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/21_dragon_impl.c.i
+.PHONY : engine/pet_impl/21_dragon_impl.c.i
+
+engine/pet_impl/21_dragon_impl.s: engine/pet_impl/21_dragon_impl.c.s
+.PHONY : engine/pet_impl/21_dragon_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/21_dragon_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/21_dragon_impl.c.s
+.PHONY : engine/pet_impl/21_dragon_impl.c.s
+
+engine/pet_impl/22_duck_impl.o: engine/pet_impl/22_duck_impl.c.o
+.PHONY : engine/pet_impl/22_duck_impl.o
+
+# target to build an object file
+engine/pet_impl/22_duck_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/22_duck_impl.c.o
+.PHONY : engine/pet_impl/22_duck_impl.c.o
+
+engine/pet_impl/22_duck_impl.i: engine/pet_impl/22_duck_impl.c.i
+.PHONY : engine/pet_impl/22_duck_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/22_duck_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/22_duck_impl.c.i
+.PHONY : engine/pet_impl/22_duck_impl.c.i
+
+engine/pet_impl/22_duck_impl.s: engine/pet_impl/22_duck_impl.c.s
+.PHONY : engine/pet_impl/22_duck_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/22_duck_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/22_duck_impl.c.s
+.PHONY : engine/pet_impl/22_duck_impl.c.s
+
+engine/pet_impl/23_elephant_impl.o: engine/pet_impl/23_elephant_impl.c.o
+.PHONY : engine/pet_impl/23_elephant_impl.o
+
+# target to build an object file
+engine/pet_impl/23_elephant_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/23_elephant_impl.c.o
+.PHONY : engine/pet_impl/23_elephant_impl.c.o
+
+engine/pet_impl/23_elephant_impl.i: engine/pet_impl/23_elephant_impl.c.i
+.PHONY : engine/pet_impl/23_elephant_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/23_elephant_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/23_elephant_impl.c.i
+.PHONY : engine/pet_impl/23_elephant_impl.c.i
+
+engine/pet_impl/23_elephant_impl.s: engine/pet_impl/23_elephant_impl.c.s
+.PHONY : engine/pet_impl/23_elephant_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/23_elephant_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/23_elephant_impl.c.s
+.PHONY : engine/pet_impl/23_elephant_impl.c.s
+
+engine/pet_impl/24_fish_impl.o: engine/pet_impl/24_fish_impl.c.o
+.PHONY : engine/pet_impl/24_fish_impl.o
+
+# target to build an object file
+engine/pet_impl/24_fish_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/24_fish_impl.c.o
+.PHONY : engine/pet_impl/24_fish_impl.c.o
+
+engine/pet_impl/24_fish_impl.i: engine/pet_impl/24_fish_impl.c.i
+.PHONY : engine/pet_impl/24_fish_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/24_fish_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/24_fish_impl.c.i
+.PHONY : engine/pet_impl/24_fish_impl.c.i
+
+engine/pet_impl/24_fish_impl.s: engine/pet_impl/24_fish_impl.c.s
+.PHONY : engine/pet_impl/24_fish_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/24_fish_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/24_fish_impl.c.s
+.PHONY : engine/pet_impl/24_fish_impl.c.s
+
+engine/pet_impl/25_flamingo_impl.o: engine/pet_impl/25_flamingo_impl.c.o
+.PHONY : engine/pet_impl/25_flamingo_impl.o
+
+# target to build an object file
+engine/pet_impl/25_flamingo_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/25_flamingo_impl.c.o
+.PHONY : engine/pet_impl/25_flamingo_impl.c.o
+
+engine/pet_impl/25_flamingo_impl.i: engine/pet_impl/25_flamingo_impl.c.i
+.PHONY : engine/pet_impl/25_flamingo_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/25_flamingo_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/25_flamingo_impl.c.i
+.PHONY : engine/pet_impl/25_flamingo_impl.c.i
+
+engine/pet_impl/25_flamingo_impl.s: engine/pet_impl/25_flamingo_impl.c.s
+.PHONY : engine/pet_impl/25_flamingo_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/25_flamingo_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/25_flamingo_impl.c.s
+.PHONY : engine/pet_impl/25_flamingo_impl.c.s
+
+engine/pet_impl/26_fly_impl.o: engine/pet_impl/26_fly_impl.c.o
+.PHONY : engine/pet_impl/26_fly_impl.o
+
+# target to build an object file
+engine/pet_impl/26_fly_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/26_fly_impl.c.o
+.PHONY : engine/pet_impl/26_fly_impl.c.o
+
+engine/pet_impl/26_fly_impl.i: engine/pet_impl/26_fly_impl.c.i
+.PHONY : engine/pet_impl/26_fly_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/26_fly_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/26_fly_impl.c.i
+.PHONY : engine/pet_impl/26_fly_impl.c.i
+
+engine/pet_impl/26_fly_impl.s: engine/pet_impl/26_fly_impl.c.s
+.PHONY : engine/pet_impl/26_fly_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/26_fly_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/26_fly_impl.c.s
+.PHONY : engine/pet_impl/26_fly_impl.c.s
+
+engine/pet_impl/27_giraffe_impl.o: engine/pet_impl/27_giraffe_impl.c.o
+.PHONY : engine/pet_impl/27_giraffe_impl.o
+
+# target to build an object file
+engine/pet_impl/27_giraffe_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/27_giraffe_impl.c.o
+.PHONY : engine/pet_impl/27_giraffe_impl.c.o
+
+engine/pet_impl/27_giraffe_impl.i: engine/pet_impl/27_giraffe_impl.c.i
+.PHONY : engine/pet_impl/27_giraffe_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/27_giraffe_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/27_giraffe_impl.c.i
+.PHONY : engine/pet_impl/27_giraffe_impl.c.i
+
+engine/pet_impl/27_giraffe_impl.s: engine/pet_impl/27_giraffe_impl.c.s
+.PHONY : engine/pet_impl/27_giraffe_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/27_giraffe_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/27_giraffe_impl.c.s
+.PHONY : engine/pet_impl/27_giraffe_impl.c.s
+
+engine/pet_impl/28_gorilla_impl.o: engine/pet_impl/28_gorilla_impl.c.o
+.PHONY : engine/pet_impl/28_gorilla_impl.o
+
+# target to build an object file
+engine/pet_impl/28_gorilla_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/28_gorilla_impl.c.o
+.PHONY : engine/pet_impl/28_gorilla_impl.c.o
+
+engine/pet_impl/28_gorilla_impl.i: engine/pet_impl/28_gorilla_impl.c.i
+.PHONY : engine/pet_impl/28_gorilla_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/28_gorilla_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/28_gorilla_impl.c.i
+.PHONY : engine/pet_impl/28_gorilla_impl.c.i
+
+engine/pet_impl/28_gorilla_impl.s: engine/pet_impl/28_gorilla_impl.c.s
+.PHONY : engine/pet_impl/28_gorilla_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/28_gorilla_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/28_gorilla_impl.c.s
+.PHONY : engine/pet_impl/28_gorilla_impl.c.s
+
+engine/pet_impl/29_hedgehog_impl.o: engine/pet_impl/29_hedgehog_impl.c.o
+.PHONY : engine/pet_impl/29_hedgehog_impl.o
+
+# target to build an object file
+engine/pet_impl/29_hedgehog_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/29_hedgehog_impl.c.o
+.PHONY : engine/pet_impl/29_hedgehog_impl.c.o
+
+engine/pet_impl/29_hedgehog_impl.i: engine/pet_impl/29_hedgehog_impl.c.i
+.PHONY : engine/pet_impl/29_hedgehog_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/29_hedgehog_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/29_hedgehog_impl.c.i
+.PHONY : engine/pet_impl/29_hedgehog_impl.c.i
+
+engine/pet_impl/29_hedgehog_impl.s: engine/pet_impl/29_hedgehog_impl.c.s
+.PHONY : engine/pet_impl/29_hedgehog_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/29_hedgehog_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/29_hedgehog_impl.c.s
+.PHONY : engine/pet_impl/29_hedgehog_impl.c.s
+
+engine/pet_impl/2_badger_impl.o: engine/pet_impl/2_badger_impl.c.o
+.PHONY : engine/pet_impl/2_badger_impl.o
+
+# target to build an object file
+engine/pet_impl/2_badger_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/2_badger_impl.c.o
+.PHONY : engine/pet_impl/2_badger_impl.c.o
+
+engine/pet_impl/2_badger_impl.i: engine/pet_impl/2_badger_impl.c.i
+.PHONY : engine/pet_impl/2_badger_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/2_badger_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/2_badger_impl.c.i
+.PHONY : engine/pet_impl/2_badger_impl.c.i
+
+engine/pet_impl/2_badger_impl.s: engine/pet_impl/2_badger_impl.c.s
+.PHONY : engine/pet_impl/2_badger_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/2_badger_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/2_badger_impl.c.s
+.PHONY : engine/pet_impl/2_badger_impl.c.s
+
+engine/pet_impl/30_hippo_impl.o: engine/pet_impl/30_hippo_impl.c.o
+.PHONY : engine/pet_impl/30_hippo_impl.o
+
+# target to build an object file
+engine/pet_impl/30_hippo_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/30_hippo_impl.c.o
+.PHONY : engine/pet_impl/30_hippo_impl.c.o
+
+engine/pet_impl/30_hippo_impl.i: engine/pet_impl/30_hippo_impl.c.i
+.PHONY : engine/pet_impl/30_hippo_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/30_hippo_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/30_hippo_impl.c.i
+.PHONY : engine/pet_impl/30_hippo_impl.c.i
+
+engine/pet_impl/30_hippo_impl.s: engine/pet_impl/30_hippo_impl.c.s
+.PHONY : engine/pet_impl/30_hippo_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/30_hippo_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/30_hippo_impl.c.s
+.PHONY : engine/pet_impl/30_hippo_impl.c.s
+
+engine/pet_impl/31_horse_impl.o: engine/pet_impl/31_horse_impl.c.o
+.PHONY : engine/pet_impl/31_horse_impl.o
+
+# target to build an object file
+engine/pet_impl/31_horse_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/31_horse_impl.c.o
+.PHONY : engine/pet_impl/31_horse_impl.c.o
+
+engine/pet_impl/31_horse_impl.i: engine/pet_impl/31_horse_impl.c.i
+.PHONY : engine/pet_impl/31_horse_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/31_horse_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/31_horse_impl.c.i
+.PHONY : engine/pet_impl/31_horse_impl.c.i
+
+engine/pet_impl/31_horse_impl.s: engine/pet_impl/31_horse_impl.c.s
+.PHONY : engine/pet_impl/31_horse_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/31_horse_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/31_horse_impl.c.s
+.PHONY : engine/pet_impl/31_horse_impl.c.s
+
+engine/pet_impl/32_kangaroo_impl.o: engine/pet_impl/32_kangaroo_impl.c.o
+.PHONY : engine/pet_impl/32_kangaroo_impl.o
+
+# target to build an object file
+engine/pet_impl/32_kangaroo_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/32_kangaroo_impl.c.o
+.PHONY : engine/pet_impl/32_kangaroo_impl.c.o
+
+engine/pet_impl/32_kangaroo_impl.i: engine/pet_impl/32_kangaroo_impl.c.i
+.PHONY : engine/pet_impl/32_kangaroo_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/32_kangaroo_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/32_kangaroo_impl.c.i
+.PHONY : engine/pet_impl/32_kangaroo_impl.c.i
+
+engine/pet_impl/32_kangaroo_impl.s: engine/pet_impl/32_kangaroo_impl.c.s
+.PHONY : engine/pet_impl/32_kangaroo_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/32_kangaroo_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/32_kangaroo_impl.c.s
+.PHONY : engine/pet_impl/32_kangaroo_impl.c.s
+
+engine/pet_impl/33_leopard_impl.o: engine/pet_impl/33_leopard_impl.c.o
+.PHONY : engine/pet_impl/33_leopard_impl.o
+
+# target to build an object file
+engine/pet_impl/33_leopard_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/33_leopard_impl.c.o
+.PHONY : engine/pet_impl/33_leopard_impl.c.o
+
+engine/pet_impl/33_leopard_impl.i: engine/pet_impl/33_leopard_impl.c.i
+.PHONY : engine/pet_impl/33_leopard_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/33_leopard_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/33_leopard_impl.c.i
+.PHONY : engine/pet_impl/33_leopard_impl.c.i
+
+engine/pet_impl/33_leopard_impl.s: engine/pet_impl/33_leopard_impl.c.s
+.PHONY : engine/pet_impl/33_leopard_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/33_leopard_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/33_leopard_impl.c.s
+.PHONY : engine/pet_impl/33_leopard_impl.c.s
+
+engine/pet_impl/34_mammoth_impl.o: engine/pet_impl/34_mammoth_impl.c.o
+.PHONY : engine/pet_impl/34_mammoth_impl.o
+
+# target to build an object file
+engine/pet_impl/34_mammoth_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/34_mammoth_impl.c.o
+.PHONY : engine/pet_impl/34_mammoth_impl.c.o
+
+engine/pet_impl/34_mammoth_impl.i: engine/pet_impl/34_mammoth_impl.c.i
+.PHONY : engine/pet_impl/34_mammoth_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/34_mammoth_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/34_mammoth_impl.c.i
+.PHONY : engine/pet_impl/34_mammoth_impl.c.i
+
+engine/pet_impl/34_mammoth_impl.s: engine/pet_impl/34_mammoth_impl.c.s
+.PHONY : engine/pet_impl/34_mammoth_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/34_mammoth_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/34_mammoth_impl.c.s
+.PHONY : engine/pet_impl/34_mammoth_impl.c.s
+
+engine/pet_impl/35_monkey_impl.o: engine/pet_impl/35_monkey_impl.c.o
+.PHONY : engine/pet_impl/35_monkey_impl.o
+
+# target to build an object file
+engine/pet_impl/35_monkey_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/35_monkey_impl.c.o
+.PHONY : engine/pet_impl/35_monkey_impl.c.o
+
+engine/pet_impl/35_monkey_impl.i: engine/pet_impl/35_monkey_impl.c.i
+.PHONY : engine/pet_impl/35_monkey_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/35_monkey_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/35_monkey_impl.c.i
+.PHONY : engine/pet_impl/35_monkey_impl.c.i
+
+engine/pet_impl/35_monkey_impl.s: engine/pet_impl/35_monkey_impl.c.s
+.PHONY : engine/pet_impl/35_monkey_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/35_monkey_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/35_monkey_impl.c.s
+.PHONY : engine/pet_impl/35_monkey_impl.c.s
+
+engine/pet_impl/36_mosquito_impl.o: engine/pet_impl/36_mosquito_impl.c.o
+.PHONY : engine/pet_impl/36_mosquito_impl.o
+
+# target to build an object file
+engine/pet_impl/36_mosquito_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/36_mosquito_impl.c.o
+.PHONY : engine/pet_impl/36_mosquito_impl.c.o
+
+engine/pet_impl/36_mosquito_impl.i: engine/pet_impl/36_mosquito_impl.c.i
+.PHONY : engine/pet_impl/36_mosquito_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/36_mosquito_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/36_mosquito_impl.c.i
+.PHONY : engine/pet_impl/36_mosquito_impl.c.i
+
+engine/pet_impl/36_mosquito_impl.s: engine/pet_impl/36_mosquito_impl.c.s
+.PHONY : engine/pet_impl/36_mosquito_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/36_mosquito_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/36_mosquito_impl.c.s
+.PHONY : engine/pet_impl/36_mosquito_impl.c.s
+
+engine/pet_impl/37_otter_impl.o: engine/pet_impl/37_otter_impl.c.o
+.PHONY : engine/pet_impl/37_otter_impl.o
+
+# target to build an object file
+engine/pet_impl/37_otter_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/37_otter_impl.c.o
+.PHONY : engine/pet_impl/37_otter_impl.c.o
+
+engine/pet_impl/37_otter_impl.i: engine/pet_impl/37_otter_impl.c.i
+.PHONY : engine/pet_impl/37_otter_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/37_otter_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/37_otter_impl.c.i
+.PHONY : engine/pet_impl/37_otter_impl.c.i
+
+engine/pet_impl/37_otter_impl.s: engine/pet_impl/37_otter_impl.c.s
+.PHONY : engine/pet_impl/37_otter_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/37_otter_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/37_otter_impl.c.s
+.PHONY : engine/pet_impl/37_otter_impl.c.s
+
+engine/pet_impl/38_ox_impl.o: engine/pet_impl/38_ox_impl.c.o
+.PHONY : engine/pet_impl/38_ox_impl.o
+
+# target to build an object file
+engine/pet_impl/38_ox_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/38_ox_impl.c.o
+.PHONY : engine/pet_impl/38_ox_impl.c.o
+
+engine/pet_impl/38_ox_impl.i: engine/pet_impl/38_ox_impl.c.i
+.PHONY : engine/pet_impl/38_ox_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/38_ox_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/38_ox_impl.c.i
+.PHONY : engine/pet_impl/38_ox_impl.c.i
+
+engine/pet_impl/38_ox_impl.s: engine/pet_impl/38_ox_impl.c.s
+.PHONY : engine/pet_impl/38_ox_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/38_ox_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/38_ox_impl.c.s
+.PHONY : engine/pet_impl/38_ox_impl.c.s
+
+engine/pet_impl/39_parrot_impl.o: engine/pet_impl/39_parrot_impl.c.o
+.PHONY : engine/pet_impl/39_parrot_impl.o
+
+# target to build an object file
+engine/pet_impl/39_parrot_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/39_parrot_impl.c.o
+.PHONY : engine/pet_impl/39_parrot_impl.c.o
+
+engine/pet_impl/39_parrot_impl.i: engine/pet_impl/39_parrot_impl.c.i
+.PHONY : engine/pet_impl/39_parrot_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/39_parrot_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/39_parrot_impl.c.i
+.PHONY : engine/pet_impl/39_parrot_impl.c.i
+
+engine/pet_impl/39_parrot_impl.s: engine/pet_impl/39_parrot_impl.c.s
+.PHONY : engine/pet_impl/39_parrot_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/39_parrot_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/39_parrot_impl.c.s
+.PHONY : engine/pet_impl/39_parrot_impl.c.s
+
+engine/pet_impl/3_beaver_impl.o: engine/pet_impl/3_beaver_impl.c.o
+.PHONY : engine/pet_impl/3_beaver_impl.o
+
+# target to build an object file
+engine/pet_impl/3_beaver_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/3_beaver_impl.c.o
+.PHONY : engine/pet_impl/3_beaver_impl.c.o
+
+engine/pet_impl/3_beaver_impl.i: engine/pet_impl/3_beaver_impl.c.i
+.PHONY : engine/pet_impl/3_beaver_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/3_beaver_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/3_beaver_impl.c.i
+.PHONY : engine/pet_impl/3_beaver_impl.c.i
+
+engine/pet_impl/3_beaver_impl.s: engine/pet_impl/3_beaver_impl.c.s
+.PHONY : engine/pet_impl/3_beaver_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/3_beaver_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/3_beaver_impl.c.s
+.PHONY : engine/pet_impl/3_beaver_impl.c.s
+
+engine/pet_impl/40_peacock_impl.o: engine/pet_impl/40_peacock_impl.c.o
+.PHONY : engine/pet_impl/40_peacock_impl.o
+
+# target to build an object file
+engine/pet_impl/40_peacock_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/40_peacock_impl.c.o
+.PHONY : engine/pet_impl/40_peacock_impl.c.o
+
+engine/pet_impl/40_peacock_impl.i: engine/pet_impl/40_peacock_impl.c.i
+.PHONY : engine/pet_impl/40_peacock_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/40_peacock_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/40_peacock_impl.c.i
+.PHONY : engine/pet_impl/40_peacock_impl.c.i
+
+engine/pet_impl/40_peacock_impl.s: engine/pet_impl/40_peacock_impl.c.s
+.PHONY : engine/pet_impl/40_peacock_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/40_peacock_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/40_peacock_impl.c.s
+.PHONY : engine/pet_impl/40_peacock_impl.c.s
+
+engine/pet_impl/41_penguin_impl.o: engine/pet_impl/41_penguin_impl.c.o
+.PHONY : engine/pet_impl/41_penguin_impl.o
+
+# target to build an object file
+engine/pet_impl/41_penguin_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/41_penguin_impl.c.o
+.PHONY : engine/pet_impl/41_penguin_impl.c.o
+
+engine/pet_impl/41_penguin_impl.i: engine/pet_impl/41_penguin_impl.c.i
+.PHONY : engine/pet_impl/41_penguin_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/41_penguin_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/41_penguin_impl.c.i
+.PHONY : engine/pet_impl/41_penguin_impl.c.i
+
+engine/pet_impl/41_penguin_impl.s: engine/pet_impl/41_penguin_impl.c.s
+.PHONY : engine/pet_impl/41_penguin_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/41_penguin_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/41_penguin_impl.c.s
+.PHONY : engine/pet_impl/41_penguin_impl.c.s
+
+engine/pet_impl/42_pig_impl.o: engine/pet_impl/42_pig_impl.c.o
+.PHONY : engine/pet_impl/42_pig_impl.o
+
+# target to build an object file
+engine/pet_impl/42_pig_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/42_pig_impl.c.o
+.PHONY : engine/pet_impl/42_pig_impl.c.o
+
+engine/pet_impl/42_pig_impl.i: engine/pet_impl/42_pig_impl.c.i
+.PHONY : engine/pet_impl/42_pig_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/42_pig_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/42_pig_impl.c.i
+.PHONY : engine/pet_impl/42_pig_impl.c.i
+
+engine/pet_impl/42_pig_impl.s: engine/pet_impl/42_pig_impl.c.s
+.PHONY : engine/pet_impl/42_pig_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/42_pig_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/42_pig_impl.c.s
+.PHONY : engine/pet_impl/42_pig_impl.c.s
+
+engine/pet_impl/43_rabbit_impl.o: engine/pet_impl/43_rabbit_impl.c.o
+.PHONY : engine/pet_impl/43_rabbit_impl.o
+
+# target to build an object file
+engine/pet_impl/43_rabbit_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/43_rabbit_impl.c.o
+.PHONY : engine/pet_impl/43_rabbit_impl.c.o
+
+engine/pet_impl/43_rabbit_impl.i: engine/pet_impl/43_rabbit_impl.c.i
+.PHONY : engine/pet_impl/43_rabbit_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/43_rabbit_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/43_rabbit_impl.c.i
+.PHONY : engine/pet_impl/43_rabbit_impl.c.i
+
+engine/pet_impl/43_rabbit_impl.s: engine/pet_impl/43_rabbit_impl.c.s
+.PHONY : engine/pet_impl/43_rabbit_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/43_rabbit_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/43_rabbit_impl.c.s
+.PHONY : engine/pet_impl/43_rabbit_impl.c.s
+
+engine/pet_impl/44_ram_impl.o: engine/pet_impl/44_ram_impl.c.o
+.PHONY : engine/pet_impl/44_ram_impl.o
+
+# target to build an object file
+engine/pet_impl/44_ram_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/44_ram_impl.c.o
+.PHONY : engine/pet_impl/44_ram_impl.c.o
+
+engine/pet_impl/44_ram_impl.i: engine/pet_impl/44_ram_impl.c.i
+.PHONY : engine/pet_impl/44_ram_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/44_ram_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/44_ram_impl.c.i
+.PHONY : engine/pet_impl/44_ram_impl.c.i
+
+engine/pet_impl/44_ram_impl.s: engine/pet_impl/44_ram_impl.c.s
+.PHONY : engine/pet_impl/44_ram_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/44_ram_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/44_ram_impl.c.s
+.PHONY : engine/pet_impl/44_ram_impl.c.s
+
+engine/pet_impl/45_rat_impl.o: engine/pet_impl/45_rat_impl.c.o
+.PHONY : engine/pet_impl/45_rat_impl.o
+
+# target to build an object file
+engine/pet_impl/45_rat_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/45_rat_impl.c.o
+.PHONY : engine/pet_impl/45_rat_impl.c.o
+
+engine/pet_impl/45_rat_impl.i: engine/pet_impl/45_rat_impl.c.i
+.PHONY : engine/pet_impl/45_rat_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/45_rat_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/45_rat_impl.c.i
+.PHONY : engine/pet_impl/45_rat_impl.c.i
+
+engine/pet_impl/45_rat_impl.s: engine/pet_impl/45_rat_impl.c.s
+.PHONY : engine/pet_impl/45_rat_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/45_rat_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/45_rat_impl.c.s
+.PHONY : engine/pet_impl/45_rat_impl.c.s
+
+engine/pet_impl/46_rhino_impl.o: engine/pet_impl/46_rhino_impl.c.o
+.PHONY : engine/pet_impl/46_rhino_impl.o
+
+# target to build an object file
+engine/pet_impl/46_rhino_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/46_rhino_impl.c.o
+.PHONY : engine/pet_impl/46_rhino_impl.c.o
+
+engine/pet_impl/46_rhino_impl.i: engine/pet_impl/46_rhino_impl.c.i
+.PHONY : engine/pet_impl/46_rhino_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/46_rhino_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/46_rhino_impl.c.i
+.PHONY : engine/pet_impl/46_rhino_impl.c.i
+
+engine/pet_impl/46_rhino_impl.s: engine/pet_impl/46_rhino_impl.c.s
+.PHONY : engine/pet_impl/46_rhino_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/46_rhino_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/46_rhino_impl.c.s
+.PHONY : engine/pet_impl/46_rhino_impl.c.s
+
+engine/pet_impl/47_rooster_impl.o: engine/pet_impl/47_rooster_impl.c.o
+.PHONY : engine/pet_impl/47_rooster_impl.o
+
+# target to build an object file
+engine/pet_impl/47_rooster_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/47_rooster_impl.c.o
+.PHONY : engine/pet_impl/47_rooster_impl.c.o
+
+engine/pet_impl/47_rooster_impl.i: engine/pet_impl/47_rooster_impl.c.i
+.PHONY : engine/pet_impl/47_rooster_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/47_rooster_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/47_rooster_impl.c.i
+.PHONY : engine/pet_impl/47_rooster_impl.c.i
+
+engine/pet_impl/47_rooster_impl.s: engine/pet_impl/47_rooster_impl.c.s
+.PHONY : engine/pet_impl/47_rooster_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/47_rooster_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/47_rooster_impl.c.s
+.PHONY : engine/pet_impl/47_rooster_impl.c.s
+
+engine/pet_impl/48_scorpion_impl.o: engine/pet_impl/48_scorpion_impl.c.o
+.PHONY : engine/pet_impl/48_scorpion_impl.o
+
+# target to build an object file
+engine/pet_impl/48_scorpion_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/48_scorpion_impl.c.o
+.PHONY : engine/pet_impl/48_scorpion_impl.c.o
+
+engine/pet_impl/48_scorpion_impl.i: engine/pet_impl/48_scorpion_impl.c.i
+.PHONY : engine/pet_impl/48_scorpion_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/48_scorpion_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/48_scorpion_impl.c.i
+.PHONY : engine/pet_impl/48_scorpion_impl.c.i
+
+engine/pet_impl/48_scorpion_impl.s: engine/pet_impl/48_scorpion_impl.c.s
+.PHONY : engine/pet_impl/48_scorpion_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/48_scorpion_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/48_scorpion_impl.c.s
+.PHONY : engine/pet_impl/48_scorpion_impl.c.s
+
+engine/pet_impl/49_seal_impl.o: engine/pet_impl/49_seal_impl.c.o
+.PHONY : engine/pet_impl/49_seal_impl.o
+
+# target to build an object file
+engine/pet_impl/49_seal_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/49_seal_impl.c.o
+.PHONY : engine/pet_impl/49_seal_impl.c.o
+
+engine/pet_impl/49_seal_impl.i: engine/pet_impl/49_seal_impl.c.i
+.PHONY : engine/pet_impl/49_seal_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/49_seal_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/49_seal_impl.c.i
+.PHONY : engine/pet_impl/49_seal_impl.c.i
+
+engine/pet_impl/49_seal_impl.s: engine/pet_impl/49_seal_impl.c.s
+.PHONY : engine/pet_impl/49_seal_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/49_seal_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/49_seal_impl.c.s
+.PHONY : engine/pet_impl/49_seal_impl.c.s
+
+engine/pet_impl/50_shark_impl.o: engine/pet_impl/50_shark_impl.c.o
+.PHONY : engine/pet_impl/50_shark_impl.o
+
+# target to build an object file
+engine/pet_impl/50_shark_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/50_shark_impl.c.o
+.PHONY : engine/pet_impl/50_shark_impl.c.o
+
+engine/pet_impl/50_shark_impl.i: engine/pet_impl/50_shark_impl.c.i
+.PHONY : engine/pet_impl/50_shark_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/50_shark_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/50_shark_impl.c.i
+.PHONY : engine/pet_impl/50_shark_impl.c.i
+
+engine/pet_impl/50_shark_impl.s: engine/pet_impl/50_shark_impl.c.s
+.PHONY : engine/pet_impl/50_shark_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/50_shark_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/50_shark_impl.c.s
+.PHONY : engine/pet_impl/50_shark_impl.c.s
+
+engine/pet_impl/51_sheep_impl.o: engine/pet_impl/51_sheep_impl.c.o
+.PHONY : engine/pet_impl/51_sheep_impl.o
+
+# target to build an object file
+engine/pet_impl/51_sheep_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/51_sheep_impl.c.o
+.PHONY : engine/pet_impl/51_sheep_impl.c.o
+
+engine/pet_impl/51_sheep_impl.i: engine/pet_impl/51_sheep_impl.c.i
+.PHONY : engine/pet_impl/51_sheep_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/51_sheep_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/51_sheep_impl.c.i
+.PHONY : engine/pet_impl/51_sheep_impl.c.i
+
+engine/pet_impl/51_sheep_impl.s: engine/pet_impl/51_sheep_impl.c.s
+.PHONY : engine/pet_impl/51_sheep_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/51_sheep_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/51_sheep_impl.c.s
+.PHONY : engine/pet_impl/51_sheep_impl.c.s
+
+engine/pet_impl/52_shrimp_impl.o: engine/pet_impl/52_shrimp_impl.c.o
+.PHONY : engine/pet_impl/52_shrimp_impl.o
+
+# target to build an object file
+engine/pet_impl/52_shrimp_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/52_shrimp_impl.c.o
+.PHONY : engine/pet_impl/52_shrimp_impl.c.o
+
+engine/pet_impl/52_shrimp_impl.i: engine/pet_impl/52_shrimp_impl.c.i
+.PHONY : engine/pet_impl/52_shrimp_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/52_shrimp_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/52_shrimp_impl.c.i
+.PHONY : engine/pet_impl/52_shrimp_impl.c.i
+
+engine/pet_impl/52_shrimp_impl.s: engine/pet_impl/52_shrimp_impl.c.s
+.PHONY : engine/pet_impl/52_shrimp_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/52_shrimp_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/52_shrimp_impl.c.s
+.PHONY : engine/pet_impl/52_shrimp_impl.c.s
+
+engine/pet_impl/53_skunk_impl.o: engine/pet_impl/53_skunk_impl.c.o
+.PHONY : engine/pet_impl/53_skunk_impl.o
+
+# target to build an object file
+engine/pet_impl/53_skunk_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/53_skunk_impl.c.o
+.PHONY : engine/pet_impl/53_skunk_impl.c.o
+
+engine/pet_impl/53_skunk_impl.i: engine/pet_impl/53_skunk_impl.c.i
+.PHONY : engine/pet_impl/53_skunk_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/53_skunk_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/53_skunk_impl.c.i
+.PHONY : engine/pet_impl/53_skunk_impl.c.i
+
+engine/pet_impl/53_skunk_impl.s: engine/pet_impl/53_skunk_impl.c.s
+.PHONY : engine/pet_impl/53_skunk_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/53_skunk_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/53_skunk_impl.c.s
+.PHONY : engine/pet_impl/53_skunk_impl.c.s
+
+engine/pet_impl/54_sloth_impl.o: engine/pet_impl/54_sloth_impl.c.o
+.PHONY : engine/pet_impl/54_sloth_impl.o
+
+# target to build an object file
+engine/pet_impl/54_sloth_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/54_sloth_impl.c.o
+.PHONY : engine/pet_impl/54_sloth_impl.c.o
+
+engine/pet_impl/54_sloth_impl.i: engine/pet_impl/54_sloth_impl.c.i
+.PHONY : engine/pet_impl/54_sloth_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/54_sloth_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/54_sloth_impl.c.i
+.PHONY : engine/pet_impl/54_sloth_impl.c.i
+
+engine/pet_impl/54_sloth_impl.s: engine/pet_impl/54_sloth_impl.c.s
+.PHONY : engine/pet_impl/54_sloth_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/54_sloth_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/54_sloth_impl.c.s
+.PHONY : engine/pet_impl/54_sloth_impl.c.s
+
+engine/pet_impl/55_snail_impl.o: engine/pet_impl/55_snail_impl.c.o
+.PHONY : engine/pet_impl/55_snail_impl.o
+
+# target to build an object file
+engine/pet_impl/55_snail_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/55_snail_impl.c.o
+.PHONY : engine/pet_impl/55_snail_impl.c.o
+
+engine/pet_impl/55_snail_impl.i: engine/pet_impl/55_snail_impl.c.i
+.PHONY : engine/pet_impl/55_snail_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/55_snail_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/55_snail_impl.c.i
+.PHONY : engine/pet_impl/55_snail_impl.c.i
+
+engine/pet_impl/55_snail_impl.s: engine/pet_impl/55_snail_impl.c.s
+.PHONY : engine/pet_impl/55_snail_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/55_snail_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/55_snail_impl.c.s
+.PHONY : engine/pet_impl/55_snail_impl.c.s
+
+engine/pet_impl/56_snake_impl.o: engine/pet_impl/56_snake_impl.c.o
+.PHONY : engine/pet_impl/56_snake_impl.o
+
+# target to build an object file
+engine/pet_impl/56_snake_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/56_snake_impl.c.o
+.PHONY : engine/pet_impl/56_snake_impl.c.o
+
+engine/pet_impl/56_snake_impl.i: engine/pet_impl/56_snake_impl.c.i
+.PHONY : engine/pet_impl/56_snake_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/56_snake_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/56_snake_impl.c.i
+.PHONY : engine/pet_impl/56_snake_impl.c.i
+
+engine/pet_impl/56_snake_impl.s: engine/pet_impl/56_snake_impl.c.s
+.PHONY : engine/pet_impl/56_snake_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/56_snake_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/56_snake_impl.c.s
+.PHONY : engine/pet_impl/56_snake_impl.c.s
+
+engine/pet_impl/57_spider_impl.o: engine/pet_impl/57_spider_impl.c.o
+.PHONY : engine/pet_impl/57_spider_impl.o
+
+# target to build an object file
+engine/pet_impl/57_spider_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/57_spider_impl.c.o
+.PHONY : engine/pet_impl/57_spider_impl.c.o
+
+engine/pet_impl/57_spider_impl.i: engine/pet_impl/57_spider_impl.c.i
+.PHONY : engine/pet_impl/57_spider_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/57_spider_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/57_spider_impl.c.i
+.PHONY : engine/pet_impl/57_spider_impl.c.i
+
+engine/pet_impl/57_spider_impl.s: engine/pet_impl/57_spider_impl.c.s
+.PHONY : engine/pet_impl/57_spider_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/57_spider_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/57_spider_impl.c.s
+.PHONY : engine/pet_impl/57_spider_impl.c.s
+
+engine/pet_impl/58_squirrel_impl.o: engine/pet_impl/58_squirrel_impl.c.o
+.PHONY : engine/pet_impl/58_squirrel_impl.o
+
+# target to build an object file
+engine/pet_impl/58_squirrel_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/58_squirrel_impl.c.o
+.PHONY : engine/pet_impl/58_squirrel_impl.c.o
+
+engine/pet_impl/58_squirrel_impl.i: engine/pet_impl/58_squirrel_impl.c.i
+.PHONY : engine/pet_impl/58_squirrel_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/58_squirrel_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/58_squirrel_impl.c.i
+.PHONY : engine/pet_impl/58_squirrel_impl.c.i
+
+engine/pet_impl/58_squirrel_impl.s: engine/pet_impl/58_squirrel_impl.c.s
+.PHONY : engine/pet_impl/58_squirrel_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/58_squirrel_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/58_squirrel_impl.c.s
+.PHONY : engine/pet_impl/58_squirrel_impl.c.s
+
+engine/pet_impl/59_swan_impl.o: engine/pet_impl/59_swan_impl.c.o
+.PHONY : engine/pet_impl/59_swan_impl.o
+
+# target to build an object file
+engine/pet_impl/59_swan_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/59_swan_impl.c.o
+.PHONY : engine/pet_impl/59_swan_impl.c.o
+
+engine/pet_impl/59_swan_impl.i: engine/pet_impl/59_swan_impl.c.i
+.PHONY : engine/pet_impl/59_swan_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/59_swan_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/59_swan_impl.c.i
+.PHONY : engine/pet_impl/59_swan_impl.c.i
+
+engine/pet_impl/59_swan_impl.s: engine/pet_impl/59_swan_impl.c.s
+.PHONY : engine/pet_impl/59_swan_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/59_swan_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/59_swan_impl.c.s
+.PHONY : engine/pet_impl/59_swan_impl.c.s
+
+engine/pet_impl/5_bison_impl.o: engine/pet_impl/5_bison_impl.c.o
+.PHONY : engine/pet_impl/5_bison_impl.o
+
+# target to build an object file
+engine/pet_impl/5_bison_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/5_bison_impl.c.o
+.PHONY : engine/pet_impl/5_bison_impl.c.o
+
+engine/pet_impl/5_bison_impl.i: engine/pet_impl/5_bison_impl.c.i
+.PHONY : engine/pet_impl/5_bison_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/5_bison_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/5_bison_impl.c.i
+.PHONY : engine/pet_impl/5_bison_impl.c.i
+
+engine/pet_impl/5_bison_impl.s: engine/pet_impl/5_bison_impl.c.s
+.PHONY : engine/pet_impl/5_bison_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/5_bison_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/5_bison_impl.c.s
+.PHONY : engine/pet_impl/5_bison_impl.c.s
+
+engine/pet_impl/60_tiger_impl.o: engine/pet_impl/60_tiger_impl.c.o
+.PHONY : engine/pet_impl/60_tiger_impl.o
+
+# target to build an object file
+engine/pet_impl/60_tiger_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/60_tiger_impl.c.o
+.PHONY : engine/pet_impl/60_tiger_impl.c.o
+
+engine/pet_impl/60_tiger_impl.i: engine/pet_impl/60_tiger_impl.c.i
+.PHONY : engine/pet_impl/60_tiger_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/60_tiger_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/60_tiger_impl.c.i
+.PHONY : engine/pet_impl/60_tiger_impl.c.i
+
+engine/pet_impl/60_tiger_impl.s: engine/pet_impl/60_tiger_impl.c.s
+.PHONY : engine/pet_impl/60_tiger_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/60_tiger_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/60_tiger_impl.c.s
+.PHONY : engine/pet_impl/60_tiger_impl.c.s
+
+engine/pet_impl/61_turkey_impl.o: engine/pet_impl/61_turkey_impl.c.o
+.PHONY : engine/pet_impl/61_turkey_impl.o
+
+# target to build an object file
+engine/pet_impl/61_turkey_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/61_turkey_impl.c.o
+.PHONY : engine/pet_impl/61_turkey_impl.c.o
+
+engine/pet_impl/61_turkey_impl.i: engine/pet_impl/61_turkey_impl.c.i
+.PHONY : engine/pet_impl/61_turkey_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/61_turkey_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/61_turkey_impl.c.i
+.PHONY : engine/pet_impl/61_turkey_impl.c.i
+
+engine/pet_impl/61_turkey_impl.s: engine/pet_impl/61_turkey_impl.c.s
+.PHONY : engine/pet_impl/61_turkey_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/61_turkey_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/61_turkey_impl.c.s
+.PHONY : engine/pet_impl/61_turkey_impl.c.s
+
+engine/pet_impl/62_turtle_impl.o: engine/pet_impl/62_turtle_impl.c.o
+.PHONY : engine/pet_impl/62_turtle_impl.o
+
+# target to build an object file
+engine/pet_impl/62_turtle_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/62_turtle_impl.c.o
+.PHONY : engine/pet_impl/62_turtle_impl.c.o
+
+engine/pet_impl/62_turtle_impl.i: engine/pet_impl/62_turtle_impl.c.i
+.PHONY : engine/pet_impl/62_turtle_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/62_turtle_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/62_turtle_impl.c.i
+.PHONY : engine/pet_impl/62_turtle_impl.c.i
+
+engine/pet_impl/62_turtle_impl.s: engine/pet_impl/62_turtle_impl.c.s
+.PHONY : engine/pet_impl/62_turtle_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/62_turtle_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/62_turtle_impl.c.s
+.PHONY : engine/pet_impl/62_turtle_impl.c.s
+
+engine/pet_impl/63_whale_impl.o: engine/pet_impl/63_whale_impl.c.o
+.PHONY : engine/pet_impl/63_whale_impl.o
+
+# target to build an object file
+engine/pet_impl/63_whale_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/63_whale_impl.c.o
+.PHONY : engine/pet_impl/63_whale_impl.c.o
+
+engine/pet_impl/63_whale_impl.i: engine/pet_impl/63_whale_impl.c.i
+.PHONY : engine/pet_impl/63_whale_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/63_whale_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/63_whale_impl.c.i
+.PHONY : engine/pet_impl/63_whale_impl.c.i
+
+engine/pet_impl/63_whale_impl.s: engine/pet_impl/63_whale_impl.c.s
+.PHONY : engine/pet_impl/63_whale_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/63_whale_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/63_whale_impl.c.s
+.PHONY : engine/pet_impl/63_whale_impl.c.s
+
+engine/pet_impl/64_worm_impl.o: engine/pet_impl/64_worm_impl.c.o
+.PHONY : engine/pet_impl/64_worm_impl.o
+
+# target to build an object file
+engine/pet_impl/64_worm_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/64_worm_impl.c.o
+.PHONY : engine/pet_impl/64_worm_impl.c.o
+
+engine/pet_impl/64_worm_impl.i: engine/pet_impl/64_worm_impl.c.i
+.PHONY : engine/pet_impl/64_worm_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/64_worm_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/64_worm_impl.c.i
+.PHONY : engine/pet_impl/64_worm_impl.c.i
+
+engine/pet_impl/64_worm_impl.s: engine/pet_impl/64_worm_impl.c.s
+.PHONY : engine/pet_impl/64_worm_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/64_worm_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/64_worm_impl.c.s
+.PHONY : engine/pet_impl/64_worm_impl.c.s
+
+engine/pet_impl/65_zombieCricket_impl.o: engine/pet_impl/65_zombieCricket_impl.c.o
+.PHONY : engine/pet_impl/65_zombieCricket_impl.o
+
+# target to build an object file
+engine/pet_impl/65_zombieCricket_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/65_zombieCricket_impl.c.o
+.PHONY : engine/pet_impl/65_zombieCricket_impl.c.o
+
+engine/pet_impl/65_zombieCricket_impl.i: engine/pet_impl/65_zombieCricket_impl.c.i
+.PHONY : engine/pet_impl/65_zombieCricket_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/65_zombieCricket_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/65_zombieCricket_impl.c.i
+.PHONY : engine/pet_impl/65_zombieCricket_impl.c.i
+
+engine/pet_impl/65_zombieCricket_impl.s: engine/pet_impl/65_zombieCricket_impl.c.s
+.PHONY : engine/pet_impl/65_zombieCricket_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/65_zombieCricket_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/65_zombieCricket_impl.c.s
+.PHONY : engine/pet_impl/65_zombieCricket_impl.c.s
+
+engine/pet_impl/66_zombieFly_impl.o: engine/pet_impl/66_zombieFly_impl.c.o
+.PHONY : engine/pet_impl/66_zombieFly_impl.o
+
+# target to build an object file
+engine/pet_impl/66_zombieFly_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/66_zombieFly_impl.c.o
+.PHONY : engine/pet_impl/66_zombieFly_impl.c.o
+
+engine/pet_impl/66_zombieFly_impl.i: engine/pet_impl/66_zombieFly_impl.c.i
+.PHONY : engine/pet_impl/66_zombieFly_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/66_zombieFly_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/66_zombieFly_impl.c.i
+.PHONY : engine/pet_impl/66_zombieFly_impl.c.i
+
+engine/pet_impl/66_zombieFly_impl.s: engine/pet_impl/66_zombieFly_impl.c.s
+.PHONY : engine/pet_impl/66_zombieFly_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/66_zombieFly_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/66_zombieFly_impl.c.s
+.PHONY : engine/pet_impl/66_zombieFly_impl.c.s
+
+engine/pet_impl/6_blowfish_impl.o: engine/pet_impl/6_blowfish_impl.c.o
+.PHONY : engine/pet_impl/6_blowfish_impl.o
+
+# target to build an object file
+engine/pet_impl/6_blowfish_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/6_blowfish_impl.c.o
+.PHONY : engine/pet_impl/6_blowfish_impl.c.o
+
+engine/pet_impl/6_blowfish_impl.i: engine/pet_impl/6_blowfish_impl.c.i
+.PHONY : engine/pet_impl/6_blowfish_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/6_blowfish_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/6_blowfish_impl.c.i
+.PHONY : engine/pet_impl/6_blowfish_impl.c.i
+
+engine/pet_impl/6_blowfish_impl.s: engine/pet_impl/6_blowfish_impl.c.s
+.PHONY : engine/pet_impl/6_blowfish_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/6_blowfish_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/6_blowfish_impl.c.s
+.PHONY : engine/pet_impl/6_blowfish_impl.c.s
+
+engine/pet_impl/7_boar_impl.o: engine/pet_impl/7_boar_impl.c.o
+.PHONY : engine/pet_impl/7_boar_impl.o
+
+# target to build an object file
+engine/pet_impl/7_boar_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/7_boar_impl.c.o
+.PHONY : engine/pet_impl/7_boar_impl.c.o
+
+engine/pet_impl/7_boar_impl.i: engine/pet_impl/7_boar_impl.c.i
+.PHONY : engine/pet_impl/7_boar_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/7_boar_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/7_boar_impl.c.i
+.PHONY : engine/pet_impl/7_boar_impl.c.i
+
+engine/pet_impl/7_boar_impl.s: engine/pet_impl/7_boar_impl.c.s
+.PHONY : engine/pet_impl/7_boar_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/7_boar_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/7_boar_impl.c.s
+.PHONY : engine/pet_impl/7_boar_impl.c.s
+
+engine/pet_impl/8_bus_impl.o: engine/pet_impl/8_bus_impl.c.o
+.PHONY : engine/pet_impl/8_bus_impl.o
+
+# target to build an object file
+engine/pet_impl/8_bus_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.o
+.PHONY : engine/pet_impl/8_bus_impl.c.o
+
+engine/pet_impl/8_bus_impl.i: engine/pet_impl/8_bus_impl.c.i
+.PHONY : engine/pet_impl/8_bus_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/8_bus_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.i
+.PHONY : engine/pet_impl/8_bus_impl.c.i
+
+engine/pet_impl/8_bus_impl.s: engine/pet_impl/8_bus_impl.c.s
+.PHONY : engine/pet_impl/8_bus_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/8_bus_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/8_bus_impl.c.s
+.PHONY : engine/pet_impl/8_bus_impl.c.s
+
+engine/pet_impl/9_camel_impl.o: engine/pet_impl/9_camel_impl.c.o
+.PHONY : engine/pet_impl/9_camel_impl.o
+
+# target to build an object file
+engine/pet_impl/9_camel_impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/9_camel_impl.c.o
+.PHONY : engine/pet_impl/9_camel_impl.c.o
+
+engine/pet_impl/9_camel_impl.i: engine/pet_impl/9_camel_impl.c.i
+.PHONY : engine/pet_impl/9_camel_impl.i
+
+# target to preprocess a source file
+engine/pet_impl/9_camel_impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/9_camel_impl.c.i
+.PHONY : engine/pet_impl/9_camel_impl.c.i
+
+engine/pet_impl/9_camel_impl.s: engine/pet_impl/9_camel_impl.c.s
+.PHONY : engine/pet_impl/9_camel_impl.s
+
+# target to generate assembly for a file
+engine/pet_impl/9_camel_impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/pet_impl/9_camel_impl.c.s
+.PHONY : engine/pet_impl/9_camel_impl.c.s
 
 sprites/ant.o: sprites/ant.c.o
 .PHONY : sprites/ant.o
@@ -2569,37 +4456,12 @@ sprites/zombie_fly.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/zombie_fly.c.s
 .PHONY : sprites/zombie_fly.c.s
 
-src/mem_manager.o: src/mem_manager.c.o
-.PHONY : src/mem_manager.o
-
-# target to build an object file
-src/mem_manager.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.o
-.PHONY : src/mem_manager.c.o
-
-src/mem_manager.i: src/mem_manager.c.i
-.PHONY : src/mem_manager.i
-
-# target to preprocess a source file
-src/mem_manager.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.i
-.PHONY : src/mem_manager.c.i
-
-src/mem_manager.s: src/mem_manager.c.s
-.PHONY : src/mem_manager.s
-
-# target to generate assembly for a file
-src/mem_manager.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/mem_manager.c.s
-.PHONY : src/mem_manager.c.s
-
 src/sap.o: src/sap.c.o
 .PHONY : src/sap.o
 
 # target to build an object file
 src/sap.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.o
 .PHONY : src/sap.c.o
 
 src/sap.i: src/sap.c.i
@@ -2608,7 +4470,6 @@ src/sap.i: src/sap.c.i
 # target to preprocess a source file
 src/sap.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.i
 .PHONY : src/sap.c.i
 
 src/sap.s: src/sap.c.s
@@ -2617,7 +4478,6 @@ src/sap.s: src/sap.c.s
 # target to generate assembly for a file
 src/sap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/src/sap.c.s
 .PHONY : src/sap.c.s
 
 # Help Target
@@ -2633,24 +4493,261 @@ help:
 	@echo "... cli.o"
 	@echo "... cli.i"
 	@echo "... cli.s"
-	@echo "... engine/1_pet_ant.o"
-	@echo "... engine/1_pet_ant.i"
-	@echo "... engine/1_pet_ant.s"
-	@echo "... engine/2_pet_beaver.o"
-	@echo "... engine/2_pet_beaver.i"
-	@echo "... engine/2_pet_beaver.s"
-	@echo "... engine/3_pet_cricket.o"
-	@echo "... engine/3_pet_cricket.i"
-	@echo "... engine/3_pet_cricket.s"
 	@echo "... engine/battle.o"
 	@echo "... engine/battle.i"
 	@echo "... engine/battle.s"
+	@echo "... engine/food_impl/101_apple_impl.o"
+	@echo "... engine/food_impl/101_apple_impl.i"
+	@echo "... engine/food_impl/101_apple_impl.s"
+	@echo "... engine/food_impl/102_cannedFood_impl.o"
+	@echo "... engine/food_impl/102_cannedFood_impl.i"
+	@echo "... engine/food_impl/102_cannedFood_impl.s"
+	@echo "... engine/food_impl/103_chili_impl.o"
+	@echo "... engine/food_impl/103_chili_impl.i"
+	@echo "... engine/food_impl/103_chili_impl.s"
+	@echo "... engine/food_impl/104_chocolate_impl.o"
+	@echo "... engine/food_impl/104_chocolate_impl.i"
+	@echo "... engine/food_impl/104_chocolate_impl.s"
+	@echo "... engine/food_impl/105_cupcake_impl.o"
+	@echo "... engine/food_impl/105_cupcake_impl.i"
+	@echo "... engine/food_impl/105_cupcake_impl.s"
+	@echo "... engine/food_impl/106_garlic_impl.o"
+	@echo "... engine/food_impl/106_garlic_impl.i"
+	@echo "... engine/food_impl/106_garlic_impl.s"
+	@echo "... engine/food_impl/107_honey_impl.o"
+	@echo "... engine/food_impl/107_honey_impl.i"
+	@echo "... engine/food_impl/107_honey_impl.s"
+	@echo "... engine/food_impl/108_meatBone_impl.o"
+	@echo "... engine/food_impl/108_meatBone_impl.i"
+	@echo "... engine/food_impl/108_meatBone_impl.s"
+	@echo "... engine/food_impl/109_melon_impl.o"
+	@echo "... engine/food_impl/109_melon_impl.i"
+	@echo "... engine/food_impl/109_melon_impl.s"
+	@echo "... engine/food_impl/110_milk_impl.o"
+	@echo "... engine/food_impl/110_milk_impl.i"
+	@echo "... engine/food_impl/110_milk_impl.s"
+	@echo "... engine/food_impl/111_mushroom_impl.o"
+	@echo "... engine/food_impl/111_mushroom_impl.i"
+	@echo "... engine/food_impl/111_mushroom_impl.s"
+	@echo "... engine/food_impl/112_pear_impl.o"
+	@echo "... engine/food_impl/112_pear_impl.i"
+	@echo "... engine/food_impl/112_pear_impl.s"
+	@echo "... engine/food_impl/113_pizza_impl.o"
+	@echo "... engine/food_impl/113_pizza_impl.i"
+	@echo "... engine/food_impl/113_pizza_impl.s"
+	@echo "... engine/food_impl/114_saladBowl_impl.o"
+	@echo "... engine/food_impl/114_saladBowl_impl.i"
+	@echo "... engine/food_impl/114_saladBowl_impl.s"
+	@echo "... engine/food_impl/115_sleepingPill_impl.o"
+	@echo "... engine/food_impl/115_sleepingPill_impl.i"
+	@echo "... engine/food_impl/115_sleepingPill_impl.s"
+	@echo "... engine/food_impl/116_steak_impl.o"
+	@echo "... engine/food_impl/116_steak_impl.i"
+	@echo "... engine/food_impl/116_steak_impl.s"
+	@echo "... engine/food_impl/117_sushi_impl.o"
+	@echo "... engine/food_impl/117_sushi_impl.i"
+	@echo "... engine/food_impl/117_sushi_impl.s"
 	@echo "... engine/globals.o"
 	@echo "... engine/globals.i"
 	@echo "... engine/globals.s"
 	@echo "... engine/pet_data.o"
 	@echo "... engine/pet_data.i"
 	@echo "... engine/pet_data.s"
+	@echo "... engine/pet_impl/10_cat_impl.o"
+	@echo "... engine/pet_impl/10_cat_impl.i"
+	@echo "... engine/pet_impl/10_cat_impl.s"
+	@echo "... engine/pet_impl/11_chick_impl.o"
+	@echo "... engine/pet_impl/11_chick_impl.i"
+	@echo "... engine/pet_impl/11_chick_impl.s"
+	@echo "... engine/pet_impl/12_cow_impl.o"
+	@echo "... engine/pet_impl/12_cow_impl.i"
+	@echo "... engine/pet_impl/12_cow_impl.s"
+	@echo "... engine/pet_impl/13_crab_impl.o"
+	@echo "... engine/pet_impl/13_crab_impl.i"
+	@echo "... engine/pet_impl/13_crab_impl.s"
+	@echo "... engine/pet_impl/14_cricket_impl.o"
+	@echo "... engine/pet_impl/14_cricket_impl.i"
+	@echo "... engine/pet_impl/14_cricket_impl.s"
+	@echo "... engine/pet_impl/15_crocodile_impl.o"
+	@echo "... engine/pet_impl/15_crocodile_impl.i"
+	@echo "... engine/pet_impl/15_crocodile_impl.s"
+	@echo "... engine/pet_impl/16_deer_impl.o"
+	@echo "... engine/pet_impl/16_deer_impl.i"
+	@echo "... engine/pet_impl/16_deer_impl.s"
+	@echo "... engine/pet_impl/17_dirtyRat_impl.o"
+	@echo "... engine/pet_impl/17_dirtyRat_impl.i"
+	@echo "... engine/pet_impl/17_dirtyRat_impl.s"
+	@echo "... engine/pet_impl/18_dodo_impl.o"
+	@echo "... engine/pet_impl/18_dodo_impl.i"
+	@echo "... engine/pet_impl/18_dodo_impl.s"
+	@echo "... engine/pet_impl/19_dog_impl.o"
+	@echo "... engine/pet_impl/19_dog_impl.i"
+	@echo "... engine/pet_impl/19_dog_impl.s"
+	@echo "... engine/pet_impl/1_ant_impl.o"
+	@echo "... engine/pet_impl/1_ant_impl.i"
+	@echo "... engine/pet_impl/1_ant_impl.s"
+	@echo "... engine/pet_impl/20_dolphin_impl.o"
+	@echo "... engine/pet_impl/20_dolphin_impl.i"
+	@echo "... engine/pet_impl/20_dolphin_impl.s"
+	@echo "... engine/pet_impl/21_dragon_impl.o"
+	@echo "... engine/pet_impl/21_dragon_impl.i"
+	@echo "... engine/pet_impl/21_dragon_impl.s"
+	@echo "... engine/pet_impl/22_duck_impl.o"
+	@echo "... engine/pet_impl/22_duck_impl.i"
+	@echo "... engine/pet_impl/22_duck_impl.s"
+	@echo "... engine/pet_impl/23_elephant_impl.o"
+	@echo "... engine/pet_impl/23_elephant_impl.i"
+	@echo "... engine/pet_impl/23_elephant_impl.s"
+	@echo "... engine/pet_impl/24_fish_impl.o"
+	@echo "... engine/pet_impl/24_fish_impl.i"
+	@echo "... engine/pet_impl/24_fish_impl.s"
+	@echo "... engine/pet_impl/25_flamingo_impl.o"
+	@echo "... engine/pet_impl/25_flamingo_impl.i"
+	@echo "... engine/pet_impl/25_flamingo_impl.s"
+	@echo "... engine/pet_impl/26_fly_impl.o"
+	@echo "... engine/pet_impl/26_fly_impl.i"
+	@echo "... engine/pet_impl/26_fly_impl.s"
+	@echo "... engine/pet_impl/27_giraffe_impl.o"
+	@echo "... engine/pet_impl/27_giraffe_impl.i"
+	@echo "... engine/pet_impl/27_giraffe_impl.s"
+	@echo "... engine/pet_impl/28_gorilla_impl.o"
+	@echo "... engine/pet_impl/28_gorilla_impl.i"
+	@echo "... engine/pet_impl/28_gorilla_impl.s"
+	@echo "... engine/pet_impl/29_hedgehog_impl.o"
+	@echo "... engine/pet_impl/29_hedgehog_impl.i"
+	@echo "... engine/pet_impl/29_hedgehog_impl.s"
+	@echo "... engine/pet_impl/2_badger_impl.o"
+	@echo "... engine/pet_impl/2_badger_impl.i"
+	@echo "... engine/pet_impl/2_badger_impl.s"
+	@echo "... engine/pet_impl/30_hippo_impl.o"
+	@echo "... engine/pet_impl/30_hippo_impl.i"
+	@echo "... engine/pet_impl/30_hippo_impl.s"
+	@echo "... engine/pet_impl/31_horse_impl.o"
+	@echo "... engine/pet_impl/31_horse_impl.i"
+	@echo "... engine/pet_impl/31_horse_impl.s"
+	@echo "... engine/pet_impl/32_kangaroo_impl.o"
+	@echo "... engine/pet_impl/32_kangaroo_impl.i"
+	@echo "... engine/pet_impl/32_kangaroo_impl.s"
+	@echo "... engine/pet_impl/33_leopard_impl.o"
+	@echo "... engine/pet_impl/33_leopard_impl.i"
+	@echo "... engine/pet_impl/33_leopard_impl.s"
+	@echo "... engine/pet_impl/34_mammoth_impl.o"
+	@echo "... engine/pet_impl/34_mammoth_impl.i"
+	@echo "... engine/pet_impl/34_mammoth_impl.s"
+	@echo "... engine/pet_impl/35_monkey_impl.o"
+	@echo "... engine/pet_impl/35_monkey_impl.i"
+	@echo "... engine/pet_impl/35_monkey_impl.s"
+	@echo "... engine/pet_impl/36_mosquito_impl.o"
+	@echo "... engine/pet_impl/36_mosquito_impl.i"
+	@echo "... engine/pet_impl/36_mosquito_impl.s"
+	@echo "... engine/pet_impl/37_otter_impl.o"
+	@echo "... engine/pet_impl/37_otter_impl.i"
+	@echo "... engine/pet_impl/37_otter_impl.s"
+	@echo "... engine/pet_impl/38_ox_impl.o"
+	@echo "... engine/pet_impl/38_ox_impl.i"
+	@echo "... engine/pet_impl/38_ox_impl.s"
+	@echo "... engine/pet_impl/39_parrot_impl.o"
+	@echo "... engine/pet_impl/39_parrot_impl.i"
+	@echo "... engine/pet_impl/39_parrot_impl.s"
+	@echo "... engine/pet_impl/3_beaver_impl.o"
+	@echo "... engine/pet_impl/3_beaver_impl.i"
+	@echo "... engine/pet_impl/3_beaver_impl.s"
+	@echo "... engine/pet_impl/40_peacock_impl.o"
+	@echo "... engine/pet_impl/40_peacock_impl.i"
+	@echo "... engine/pet_impl/40_peacock_impl.s"
+	@echo "... engine/pet_impl/41_penguin_impl.o"
+	@echo "... engine/pet_impl/41_penguin_impl.i"
+	@echo "... engine/pet_impl/41_penguin_impl.s"
+	@echo "... engine/pet_impl/42_pig_impl.o"
+	@echo "... engine/pet_impl/42_pig_impl.i"
+	@echo "... engine/pet_impl/42_pig_impl.s"
+	@echo "... engine/pet_impl/43_rabbit_impl.o"
+	@echo "... engine/pet_impl/43_rabbit_impl.i"
+	@echo "... engine/pet_impl/43_rabbit_impl.s"
+	@echo "... engine/pet_impl/44_ram_impl.o"
+	@echo "... engine/pet_impl/44_ram_impl.i"
+	@echo "... engine/pet_impl/44_ram_impl.s"
+	@echo "... engine/pet_impl/45_rat_impl.o"
+	@echo "... engine/pet_impl/45_rat_impl.i"
+	@echo "... engine/pet_impl/45_rat_impl.s"
+	@echo "... engine/pet_impl/46_rhino_impl.o"
+	@echo "... engine/pet_impl/46_rhino_impl.i"
+	@echo "... engine/pet_impl/46_rhino_impl.s"
+	@echo "... engine/pet_impl/47_rooster_impl.o"
+	@echo "... engine/pet_impl/47_rooster_impl.i"
+	@echo "... engine/pet_impl/47_rooster_impl.s"
+	@echo "... engine/pet_impl/48_scorpion_impl.o"
+	@echo "... engine/pet_impl/48_scorpion_impl.i"
+	@echo "... engine/pet_impl/48_scorpion_impl.s"
+	@echo "... engine/pet_impl/49_seal_impl.o"
+	@echo "... engine/pet_impl/49_seal_impl.i"
+	@echo "... engine/pet_impl/49_seal_impl.s"
+	@echo "... engine/pet_impl/50_shark_impl.o"
+	@echo "... engine/pet_impl/50_shark_impl.i"
+	@echo "... engine/pet_impl/50_shark_impl.s"
+	@echo "... engine/pet_impl/51_sheep_impl.o"
+	@echo "... engine/pet_impl/51_sheep_impl.i"
+	@echo "... engine/pet_impl/51_sheep_impl.s"
+	@echo "... engine/pet_impl/52_shrimp_impl.o"
+	@echo "... engine/pet_impl/52_shrimp_impl.i"
+	@echo "... engine/pet_impl/52_shrimp_impl.s"
+	@echo "... engine/pet_impl/53_skunk_impl.o"
+	@echo "... engine/pet_impl/53_skunk_impl.i"
+	@echo "... engine/pet_impl/53_skunk_impl.s"
+	@echo "... engine/pet_impl/54_sloth_impl.o"
+	@echo "... engine/pet_impl/54_sloth_impl.i"
+	@echo "... engine/pet_impl/54_sloth_impl.s"
+	@echo "... engine/pet_impl/55_snail_impl.o"
+	@echo "... engine/pet_impl/55_snail_impl.i"
+	@echo "... engine/pet_impl/55_snail_impl.s"
+	@echo "... engine/pet_impl/56_snake_impl.o"
+	@echo "... engine/pet_impl/56_snake_impl.i"
+	@echo "... engine/pet_impl/56_snake_impl.s"
+	@echo "... engine/pet_impl/57_spider_impl.o"
+	@echo "... engine/pet_impl/57_spider_impl.i"
+	@echo "... engine/pet_impl/57_spider_impl.s"
+	@echo "... engine/pet_impl/58_squirrel_impl.o"
+	@echo "... engine/pet_impl/58_squirrel_impl.i"
+	@echo "... engine/pet_impl/58_squirrel_impl.s"
+	@echo "... engine/pet_impl/59_swan_impl.o"
+	@echo "... engine/pet_impl/59_swan_impl.i"
+	@echo "... engine/pet_impl/59_swan_impl.s"
+	@echo "... engine/pet_impl/5_bison_impl.o"
+	@echo "... engine/pet_impl/5_bison_impl.i"
+	@echo "... engine/pet_impl/5_bison_impl.s"
+	@echo "... engine/pet_impl/60_tiger_impl.o"
+	@echo "... engine/pet_impl/60_tiger_impl.i"
+	@echo "... engine/pet_impl/60_tiger_impl.s"
+	@echo "... engine/pet_impl/61_turkey_impl.o"
+	@echo "... engine/pet_impl/61_turkey_impl.i"
+	@echo "... engine/pet_impl/61_turkey_impl.s"
+	@echo "... engine/pet_impl/62_turtle_impl.o"
+	@echo "... engine/pet_impl/62_turtle_impl.i"
+	@echo "... engine/pet_impl/62_turtle_impl.s"
+	@echo "... engine/pet_impl/63_whale_impl.o"
+	@echo "... engine/pet_impl/63_whale_impl.i"
+	@echo "... engine/pet_impl/63_whale_impl.s"
+	@echo "... engine/pet_impl/64_worm_impl.o"
+	@echo "... engine/pet_impl/64_worm_impl.i"
+	@echo "... engine/pet_impl/64_worm_impl.s"
+	@echo "... engine/pet_impl/65_zombieCricket_impl.o"
+	@echo "... engine/pet_impl/65_zombieCricket_impl.i"
+	@echo "... engine/pet_impl/65_zombieCricket_impl.s"
+	@echo "... engine/pet_impl/66_zombieFly_impl.o"
+	@echo "... engine/pet_impl/66_zombieFly_impl.i"
+	@echo "... engine/pet_impl/66_zombieFly_impl.s"
+	@echo "... engine/pet_impl/6_blowfish_impl.o"
+	@echo "... engine/pet_impl/6_blowfish_impl.i"
+	@echo "... engine/pet_impl/6_blowfish_impl.s"
+	@echo "... engine/pet_impl/7_boar_impl.o"
+	@echo "... engine/pet_impl/7_boar_impl.i"
+	@echo "... engine/pet_impl/7_boar_impl.s"
+	@echo "... engine/pet_impl/8_bus_impl.o"
+	@echo "... engine/pet_impl/8_bus_impl.i"
+	@echo "... engine/pet_impl/8_bus_impl.s"
+	@echo "... engine/pet_impl/9_camel_impl.o"
+	@echo "... engine/pet_impl/9_camel_impl.i"
+	@echo "... engine/pet_impl/9_camel_impl.s"
 	@echo "... sprites/ant.o"
 	@echo "... sprites/ant.i"
 	@echo "... sprites/ant.s"
@@ -2900,9 +4997,6 @@ help:
 	@echo "... sprites/zombie_fly.o"
 	@echo "... sprites/zombie_fly.i"
 	@echo "... sprites/zombie_fly.s"
-	@echo "... src/mem_manager.o"
-	@echo "... src/mem_manager.i"
-	@echo "... src/mem_manager.s"
 	@echo "... src/sap.o"
 	@echo "... src/sap.i"
 	@echo "... src/sap.s"

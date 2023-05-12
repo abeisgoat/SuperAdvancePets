@@ -11,6 +11,8 @@
 #include "../soundbank.h"
 #include <maxmod.h>
 #include "../engine/globals.h"
+#include "../engine/impl.h"
+#include "../sprites/animals.h"
 
 #define CBB_4 0
 #define SBB_4 2
@@ -35,13 +37,20 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            1320950,
-            2310910,
+            1320950, // 1 Ant
+            24310910, // 24 Fish
+            34310910, // 34 Mammoth
+            32310910, // 32 Kangaroo
+            35310910, // 35 Monkey
 
     };
     int enemies[5] = {
-            1320910,
-            2320910,
+            1320910, // 1 Ant
+            2320910, // 2 badger
+            3320910, // 2 beaver
+            4320910, // 2 bee
+            5320910, // 2 bison
+
 
     };
 
@@ -63,7 +72,7 @@ void main() {
     //   using charblock 0 and screenblock 31
     REG_BG0CNT= BG_CBB(CBB_4) | BG_SBB(SBB_4) | BG_4BPP | BG_REG_32x32;
     REG_BG1CNT= BG_CBB(CBB_8) | BG_SBB(SBB_8) | BG_4BPP | BG_REG_32x32;
-    REG_DISPCNT= DCNT_OBJ | DCNT_OBJ_1D | DCNT_MODE0 | DCNT_BG0 | DCNT_BG1;
+    REG_DISPCNT= DCNT_OBJ | DCNT_MODE0 | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;
 
 
     irq_init(NULL);
@@ -105,6 +114,7 @@ void main() {
     if (result == -3) {
         tte_write(" #{cx:0x2000}You won!\n");
     }
+    tte_write("#{cx:0x0000}");
 //    tte_write(" #{cx:0x1000}Hello world! in red\n");
 //    tte_write(" #{cx:0x2000}Hello world! in green\n");
 ////    tte_set_pos(8, 64);
@@ -120,7 +130,7 @@ void main() {
     int frame=0;
 
     int petSpritesCount = 0;
-    int xOffset=50;
+    int xOffset=20;
     for (int i=0; i <=4; i++) {
         struct Pet *pet = getPlayerTeamPet(i);
         if (pet->id) {
@@ -143,9 +153,6 @@ void main() {
         }
     }
 
-//    sprintf(msg, "ID: %i", petSprites[1].pet->id);
-//    tte_write(msg);
-
     int spriteCount=0;
     for (int s=0; s<10; s++) {
         struct PetSprite * ps = &petSprites[s];
@@ -153,13 +160,16 @@ void main() {
         if (ps->pet != 0) {
             int gfxMem = usePetGfxMem(ps->pet->id);
 
+//            sprintf(msg, "%d gfxmem %d\n", ps->pet->id, gfxMem);
+//            tte_write(msg);
+
             u32 tid = gfxMem, pb = 0;
             OBJ_ATTR *sprite = &obj_buffer[spriteCount];
 
             obj_set_attr(sprite,
-                         ATTR0_SQUARE,              // Square, regular sprite
-                         ATTR1_SIZE_16,              // 64x64p,
-                         ATTR2_PALBANK(pb) | tid);   // palbank 0, tile 0
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | tid);
 
             obj_set_pos(sprite, ps->x, ps->y);
 

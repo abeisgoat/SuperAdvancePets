@@ -1,7 +1,7 @@
 #ifndef SUPERADVANCEPETS_ANIMALS_H
 #define SUPERADVANCEPETS_ANIMALS_H
 #include "ant.h"
-#include "apply.h"
+#include "apple.h"
 #include "badger.h"
 #include "bad_rat.h"
 #include "beaver.h"

@@ -3,13 +3,13 @@
 
 //======================================================================
 //
-//	pizza, 16x16@4, 
+//	pizza, 16x16@8, 
 //	Transparent color : FF,AA,FF
 //	+ 5 tiles (t|f|p reduced) not compressed
 //	+ regular map (flat), not compressed, 2x2 
-//	Total size: 160 + 8 = 168
+//	Total size: 320 + 8 = 328
 //
-//	Time-stamp: 2023-05-10, 12:05:26
+//	Time-stamp: 2023-05-11, 22:29:05
 //	Exported by Cearn's GBA Image Transmogrifier, v0.9.2
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,8 +18,8 @@
 #ifndef GRIT_PIZZA_H
 #define GRIT_PIZZA_H
 
-#define pizzaTilesLen 160
-extern const unsigned int pizzaTiles[40];
+#define pizzaTilesLen 320
+extern const unsigned int pizzaTiles[80];
 
 #define pizzaMapLen 8
 extern const unsigned short pizzaMap[4];

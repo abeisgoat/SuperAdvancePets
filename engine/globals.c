@@ -31,14 +31,23 @@ struct Pet * randomOtherTeamMember(PetTeam team, struct Pet * exclude) {
     return &NoOpPet;
 }
 
-struct Pet * pets[30] = {};
-struct PetText * petTexts[30] = {};
-void registerPet(int petId, struct Pet * pet, struct PetText * petText) {
+struct Pet * pets[100] = {};
+const struct PetText * petTexts[100] = {};
+struct Pet * foods[20] = {};
+const struct PetText * foodTexts[100] = {};
+
+
+void registerPet(int petId, const struct Pet * pet, const struct PetText * petText) {
     pets[petId] = pet;
     petTexts[petId] = petText;
 }
 
-struct PetText* getPetTextByID(int petId) {
+void registerFood(int petId, const struct Pet * pet, const struct PetText * petText) {
+    foods[petId] = pet;
+    foodTexts[petId] = petText;
+}
+
+const struct PetText* getPetTextByID(int petId) {
     return petTexts[petId];
 }
 
@@ -92,7 +101,7 @@ void spawnPet(int petId, struct Pet * dest) {
 }
 
 void printPet(struct Pet * pet) {
-    struct PetText * text = getPetTextByID(pet->id);
+    const struct PetText * text = getPetTextByID(pet->id);
     if ((text->name) == 0) {
         printf("Unknown Pet!! Something is wrong %d", pet->id);
         return;

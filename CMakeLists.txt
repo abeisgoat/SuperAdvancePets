@@ -7,8 +7,8 @@ set(GBA /opt/devkitpro/libgba/include)
 include_directories(SYSTEM ${TONC})
 include_directories(SYSTEM ${GBA})
 
-FILE(GLOB EngineC engine/*.c)
-FILE(GLOB EngineH engine/*.h)
+FILE(GLOB EngineC engine/**.c)
+FILE(GLOB EngineH engine/**.h)
 FILE(GLOB SpritesC sprites/*.c)
 FILE(GLOB SpritesH sprites/*.h)
 add_executable(SuperAdvancePets
@@ -21,14 +21,18 @@ project(SuperAdvancePetsCLI C)
 
 set(CMAKE_C_STANDARD 11)
 
-FILE(GLOB SrcC src/*.c)
-FILE(GLOB SrcH src/*.H)
-FILE(GLOB EngineC engine/*.c)
-FILE(GLOB EngineH engine/*.h)
+FILE(GLOB EngineC engine/**.c)
+FILE(GLOB EngineH engine/**.h)
+FILE(GLOB PetImplC engine/pet_impl/*.c)
+FILE(GLOB PetImplH engine/pet_impl/*.h)
+FILE(GLOB FoodImplC engine/food_impl/*.c)
+FILE(GLOB FoodImplH engine/food_impl/*.h)
 FILE(GLOB SpritesC sprites/*.c)
 FILE(GLOB SpritesH sprites/*.h)
 
 add_executable(SuperAdvancePetsCLI
+        ${PetImplC} ${PetImplH}
+        ${FoodImplC} ${FoodImplH}
         ${SpritesC} ${SpritesH}
         ${EngineC} ${EngineH}
         ${SrcC} ${SrcH}

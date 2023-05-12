@@ -19,10 +19,14 @@ make -f Makefile.gba && vba --video-4x sap.gba
 
 Convert regular bmps to pink background
 ```bash
-for i in sprites/bmps/animals/*.bmp; do
+mkdir sprites/bmps/animals
+cd sprites/bmps/animals
+for i in ../animals.transparent/*.bmp; do
     [ -f "$i" ] || break
     echo $i
-    convert $i -define bmp:format=bmp2 -compress none -background "#FFaaFF" -flatten $i
+    filename="${i%.*}"
+    echo $filename
+    convert $i -compress none -background "#FFaaFF" -flatten "${filename}.png"
 done
 ```
 
@@ -30,7 +34,7 @@ Generate sprite data
 
 ```bash
 cd sprites
-/opt/devkitpro/tools/bin/grit bmps/animals/*.bmp -pS -gB4 -gTFFAAFF -mRtpf -ftc -Osprites
+grit bmps/animals/*.png -pS -gB8 -gTFFAAFF -mRtpf -ftc -Osprites
 ```
 
 Generate animals.h

@@ -3,24 +3,28 @@
 
 //======================================================================
 //
-//	crocodile, 16x16@4, 
+//	crocodile, 16x16@8, 
 //	Transparent color : FF,AA,FF
 //	+ 4 tiles (t|f|p reduced) not compressed
 //	+ regular map (flat), not compressed, 2x2 
-//	Total size: 128 + 8 = 136
+//	Total size: 256 + 8 = 264
 //
-//	Time-stamp: 2023-05-10, 12:05:26
+//	Time-stamp: 2023-05-11, 22:29:05
 //	Exported by Cearn's GBA Image Transmogrifier, v0.9.2
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
 
-const unsigned int crocodileTiles[32] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
+const unsigned int crocodileTiles[64] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
 {
 	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
-	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00110000,
-	0x01EE1100,0x1EE1EE10,0xEEEEEEE1,0xEEE68610,0xEEEE1100,0x81EE1000,0x11881000,0x00110000,
-	0x01100000,0x1E811111,0x1EEE888E,0x1EEEEEEE,0x18EEEEEE,0x011EE188,0x00188111,0x00011000,
+	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
+	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
+	0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000101,
+	0x01010000,0x00011E1E,0x1E1E0100,0x011E1E01,0x1E1E1E01,0x1E1E1E1E,0x18160100,0x1E1E1E16,
+	0x01010000,0x1E1E1E1E,0x01000000,0x18011E1E,0x01000000,0x01011818,0x00000000,0x00000101,
+	0x00000000,0x00010100,0x01010101,0x011E1801,0x1818181E,0x011E1E1E,0x1E1E1E1E,0x011E1E1E,
+	0x1E1E1E1E,0x01181E1E,0x1E011818,0x0001011E,0x18010101,0x00000118,0x01000000,0x00000001,
 };
 
 const unsigned short crocodileMap[4] __attribute__((aligned(4))) __attribute__((visibility("hidden")))=
