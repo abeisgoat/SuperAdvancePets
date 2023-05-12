@@ -5,8 +5,8 @@ typedef const char PetAbilities[3][70];
 struct Pet {
     int id;
     int attack;
-    int defence;
-    int battleModifierDefense;
+    int health;
+    int battleModifierHealth;
     int battleModifierAttack;
     int experience;
     int heldItem;

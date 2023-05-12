@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText CrocodileText = {
 EWRAM_DATA const static struct Pet Crocodile = {
         .id =  15,
         .attack =  8,
-        .defence =  4,
+        .health =  4,
         .tier = 5
 };
 void crocodileTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

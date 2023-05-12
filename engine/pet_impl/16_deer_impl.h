@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText DeerText = {
 EWRAM_DATA const static struct Pet Deer = {
         .id =  16,
         .attack =  1,
-        .defence =  1,
+        .health =  1,
         .tier = 4
 };
 void deerTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

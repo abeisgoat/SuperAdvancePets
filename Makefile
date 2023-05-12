@@ -2242,32 +2242,32 @@ sprites/ant.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/ant.c.s
 .PHONY : sprites/ant.c.s
 
-sprites/apply.o: sprites/apply.c.o
-.PHONY : sprites/apply.o
+sprites/apple.o: sprites/apple.c.o
+.PHONY : sprites/apple.o
 
 # target to build an object file
-sprites/apply.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apply.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apply.c.o
-.PHONY : sprites/apply.c.o
+sprites/apple.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apple.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apple.c.o
+.PHONY : sprites/apple.c.o
 
-sprites/apply.i: sprites/apply.c.i
-.PHONY : sprites/apply.i
+sprites/apple.i: sprites/apple.c.i
+.PHONY : sprites/apple.i
 
 # target to preprocess a source file
-sprites/apply.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apply.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apply.c.i
-.PHONY : sprites/apply.c.i
+sprites/apple.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apple.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apple.c.i
+.PHONY : sprites/apple.c.i
 
-sprites/apply.s: sprites/apply.c.s
-.PHONY : sprites/apply.s
+sprites/apple.s: sprites/apple.c.s
+.PHONY : sprites/apple.s
 
 # target to generate assembly for a file
-sprites/apply.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apply.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apply.c.s
-.PHONY : sprites/apply.c.s
+sprites/apple.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/sprites/apple.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/sprites/apple.c.s
+.PHONY : sprites/apple.c.s
 
 sprites/bad_rat.o: sprites/bad_rat.c.o
 .PHONY : sprites/bad_rat.o
@@ -4480,6 +4480,30 @@ src/sap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.s
 .PHONY : src/sap.c.s
 
+stubs/animations.o: stubs/animations.c.o
+.PHONY : stubs/animations.o
+
+# target to build an object file
+stubs/animations.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/stubs/animations.c.o
+.PHONY : stubs/animations.c.o
+
+stubs/animations.i: stubs/animations.c.i
+.PHONY : stubs/animations.i
+
+# target to preprocess a source file
+stubs/animations.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/stubs/animations.c.i
+.PHONY : stubs/animations.c.i
+
+stubs/animations.s: stubs/animations.c.s
+.PHONY : stubs/animations.s
+
+# target to generate assembly for a file
+stubs/animations.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/stubs/animations.c.s
+.PHONY : stubs/animations.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -4751,9 +4775,9 @@ help:
 	@echo "... sprites/ant.o"
 	@echo "... sprites/ant.i"
 	@echo "... sprites/ant.s"
-	@echo "... sprites/apply.o"
-	@echo "... sprites/apply.i"
-	@echo "... sprites/apply.s"
+	@echo "... sprites/apple.o"
+	@echo "... sprites/apple.i"
+	@echo "... sprites/apple.s"
 	@echo "... sprites/bad_rat.o"
 	@echo "... sprites/bad_rat.i"
 	@echo "... sprites/bad_rat.s"
@@ -5000,6 +5024,9 @@ help:
 	@echo "... src/sap.o"
 	@echo "... src/sap.i"
 	@echo "... src/sap.s"
+	@echo "... stubs/animations.o"
+	@echo "... stubs/animations.i"
+	@echo "... stubs/animations.s"
 .PHONY : help
 
 

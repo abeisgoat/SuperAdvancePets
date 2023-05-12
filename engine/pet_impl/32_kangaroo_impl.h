@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText KangarooText = {
 EWRAM_DATA const static struct Pet Kangaroo = {
         .id =  32,
         .attack =  1,
-        .defence =  2,
+        .health =  2,
         .tier = 3
 };
 void kangarooTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

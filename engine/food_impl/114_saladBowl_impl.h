@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SaladBowlText = {
 EWRAM_DATA const static struct Pet SaladBowl = {
         .id =  114,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 3
 };
 void saladBowlTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

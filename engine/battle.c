@@ -180,8 +180,8 @@ int battle() {
                getPetAttack(EnemyFighter),
                getPetDefence(EnemyFighter));
 
-        PlayerFighter->battleModifierDefense -= getPetAttack(EnemyFighter);
-        EnemyFighter->battleModifierDefense -= getPetAttack(PlayerFighter);
+        PlayerFighter->battleModifierHealth -= getPetAttack(EnemyFighter);
+        EnemyFighter->battleModifierHealth -= getPetAttack(PlayerFighter);
 
         printf("%i :: [>> Animate head-on attack <<]\n", step);
 

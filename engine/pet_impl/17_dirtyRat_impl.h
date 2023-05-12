@@ -12,6 +12,6 @@ EWRAM_DATA const static struct PetText DirtyRatText = {
 EWRAM_DATA const static struct Pet DirtyRat = {
         .id =  17,
         .attack =  1,
-        .defence =  1,
+        .health =  1,
 };
 void dirtyRatTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

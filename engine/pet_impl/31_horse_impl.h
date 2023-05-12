@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText HorseText = {
 EWRAM_DATA const static struct Pet Horse = {
         .id =  31,
         .attack =  2,
-        .defence =  1,
+        .health =  1,
         .tier = 1
 };
 void horseTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

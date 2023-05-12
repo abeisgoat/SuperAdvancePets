@@ -7,7 +7,7 @@ struct Pet NoOpPet = {
 };
 
 int isDead(struct Pet *pet) {
-    return pet->defence + pet->battleModifierDefense <= 0 ? 1 : 0;
+    return pet->health + pet->battleModifierHealth <= 0 ? 1 : 0;
 }
 
 int expToLevel(int exp) {
@@ -55,6 +55,20 @@ struct Pet * getPetByID(int petId) {
     return pets[petId];
 }
 
+void shuffleForward() {
+
+}
+
+int itemPosition(PetTeam store, struct Pet * pet) {
+    for (int i=0; i<=4; i++) {
+        if (&store[i] == pet) {
+            return 100+i;
+        }
+    }
+    return -1;
+}
+
+
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet) {
     for (int i=0; i<=4; i++) {
         if (usOrThem == 0) {
@@ -86,7 +100,7 @@ int getPetAttack(struct Pet *pet) {
     return pet->attack + pet->battleModifierAttack;
 }
 int getPetDefence(struct Pet *pet) {
-    return pet->defence + pet->battleModifierDefense;
+    return pet->health + pet->battleModifierHealth;
 }
 
 void spawnPet(int petId, struct Pet * dest) {
@@ -94,8 +108,8 @@ void spawnPet(int petId, struct Pet * dest) {
 
     dest->id = pet->id;
     dest->attack = pet->attack;
-    dest->defence = pet->defence;
-    dest->battleModifierDefense = pet->battleModifierDefense;
+    dest->health = pet->health;
+    dest->battleModifierHealth = pet->battleModifierHealth;
     dest->battleModifierAttack = pet->battleModifierAttack;
     dest->experience = pet->experience;
 }
@@ -106,7 +120,7 @@ void printPet(struct Pet * pet) {
         printf("Unknown Pet!! Something is wrong %d", pet->id);
         return;
     }
-    printf("Pet :: %s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->defence, expToLevel(pet->experience), pet->experience);
+    printf("Pet :: %s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->health, expToLevel(pet->experience), pet->experience);
 }
 
 void deserializePet(int num, struct Pet * dest) {
@@ -120,7 +134,7 @@ void deserializePet(int num, struct Pet * dest) {
 
     dest->id = id;
     dest->attack = attack;
-    dest->defence = defence;
+    dest->health = defence;
     dest->heldItem = heldItem;
     dest->experience = experience;
     printPet(dest);

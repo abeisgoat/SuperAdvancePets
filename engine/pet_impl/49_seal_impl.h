@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SealText = {
 EWRAM_DATA const static struct Pet Seal = {
         .id =  49,
         .attack =  3,
-        .defence =  8,
+        .health =  8,
         .tier = 5
 };
 void sealTriggerEatsShopFood(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

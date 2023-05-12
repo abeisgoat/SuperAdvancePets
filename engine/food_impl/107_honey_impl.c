@@ -1,8 +1,15 @@
-
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Honey Buy
-void honeyTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void honeyTriggerBuy(int _, PetTeam store, PetTeam them, struct Pet * itemPet, struct Pet * targetPet) {
     printf("Activated Honey trigger Buy");
+
+    int givePos = itemPosition(store, itemPet);
+    int takePos = petPosition(1, store, them, targetPet);
+
+    animateToTeamPosition(givePos, takePos);
+    resolveAnimation();
+
+    targetPet->heldItem = itemPet->id;
 }

@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SwanText = {
 EWRAM_DATA const static struct Pet Swan = {
         .id =  59,
         .attack =  1,
-        .defence =  3,
+        .health =  3,
         .tier = 2
 };
 void swanTriggerStartOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

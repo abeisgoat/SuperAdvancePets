@@ -12,5 +12,5 @@ EWRAM_DATA const static struct PetText BeeText = {
 EWRAM_DATA const static struct Pet Bee = {
         .id =  4,
         .attack =  1,
-        .defence =  1,
+        .health =  1,
 };

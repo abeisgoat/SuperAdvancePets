@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText FishText = {
 EWRAM_DATA const static struct Pet Fish = {
         .id =  24,
         .attack =  2,
-        .defence =  3,
+        .health =  3,
         .tier = 1
 };
 void fishTriggerLevelUp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

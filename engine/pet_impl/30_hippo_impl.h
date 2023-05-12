@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText HippoText = {
 EWRAM_DATA const static struct Pet Hippo = {
         .id =  30,
         .attack =  4,
-        .defence =  7,
+        .health =  7,
         .tier = 4
 };
 void hippoTriggerKnockOut(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

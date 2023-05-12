@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText ParrotText = {
 EWRAM_DATA const static struct Pet Parrot = {
         .id =  39,
         .attack =  5,
-        .defence =  3,
+        .health =  3,
         .tier = 4
 };
 void parrotTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

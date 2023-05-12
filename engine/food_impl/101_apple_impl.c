@@ -1,8 +1,17 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Apple Buy
-void appleTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void appleTriggerBuy(int _, PetTeam store, PetTeam them, struct Pet * itemPet, struct Pet * targetPet) {
     printf("Activated Apple trigger Buy");
+
+    int givePos = itemPosition(store, itemPet);
+    int takePos = petPosition(1, store, them, targetPet);
+
+    animateToTeamPosition(givePos, takePos);
+    resolveAnimation();
+
+    targetPet->attack++;
+    targetPet->health++;
 }

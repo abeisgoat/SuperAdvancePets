@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText MosquitoText = {
 EWRAM_DATA const static struct Pet Mosquito = {
         .id =  36,
         .attack =  2,
-        .defence =  2,
+        .health =  2,
         .tier = 1
 };
 void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

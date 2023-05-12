@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText FlyText = {
 EWRAM_DATA const static struct Pet Fly = {
         .id =  26,
         .attack =  5,
-        .defence =  5,
+        .health =  5,
         .tier = 6
 };
 void flyTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

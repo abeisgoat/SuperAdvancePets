@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText HoneyText = {
 EWRAM_DATA const static struct Pet Honey = {
         .id =  107,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 1
 };
 void honeyTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

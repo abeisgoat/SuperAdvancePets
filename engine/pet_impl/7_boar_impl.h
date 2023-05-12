@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText BoarText = {
 EWRAM_DATA const static struct Pet Boar = {
         .id =  7,
         .attack =  8,
-        .defence =  6,
+        .health =  6,
         .tier = 6
 };
 void boarTriggerBeforeAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

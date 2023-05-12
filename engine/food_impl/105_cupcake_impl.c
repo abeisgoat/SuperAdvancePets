@@ -1,8 +1,16 @@
-
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Cupcake Buy
-void cupcakeTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet) {
+void cupcakeTriggerBuy(int _, PetTeam store, PetTeam them, struct Pet * itemPet, struct Pet * targetPet) {
     printf("Activated Cupcake trigger Buy");
+
+    int givePos = itemPosition(store, itemPet);
+    int takePos = petPosition(1, store, them, targetPet);
+
+    animateToTeamPosition(givePos, takePos);
+    resolveAnimation();
+
+    targetPet->battleModifierAttack += 3;
+    targetPet->battleModifierHealth += 3;
 }

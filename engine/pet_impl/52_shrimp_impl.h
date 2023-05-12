@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText ShrimpText = {
 EWRAM_DATA const static struct Pet Shrimp = {
         .id =  52,
         .attack =  2,
-        .defence =  3,
+        .health =  3,
         .tier = 2
 };
 void shrimpTriggerSell(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

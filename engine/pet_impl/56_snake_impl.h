@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SnakeText = {
 EWRAM_DATA const static struct Pet Snake = {
         .id =  56,
         .attack =  6,
-        .defence =  6,
+        .health =  6,
         .tier = 6
 };
 void snakeTriggerAfterAttack(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

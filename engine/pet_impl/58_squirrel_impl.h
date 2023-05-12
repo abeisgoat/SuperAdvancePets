@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SquirrelText = {
 EWRAM_DATA const static struct Pet Squirrel = {
         .id =  58,
         .attack =  2,
-        .defence =  2,
+        .health =  2,
         .tier = 4
 };
 void squirrelTriggerStartOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText MonkeyText = {
 EWRAM_DATA const static struct Pet Monkey = {
         .id =  35,
         .attack =  1,
-        .defence =  2,
+        .health =  2,
         .tier = 5
 };
 void monkeyTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

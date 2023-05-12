@@ -1,6 +1,5 @@
 #include <tonc_types.h>
 #include "../pets.h"
-#include <tonc_types.h>
 
 EWRAM_DATA const static struct PetText AppleText = {
         .name = "Apple",
@@ -13,7 +12,7 @@ EWRAM_DATA const static struct PetText AppleText = {
 EWRAM_DATA const static struct Pet Apple = {
         .id =  101,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 1
 };
 void appleTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

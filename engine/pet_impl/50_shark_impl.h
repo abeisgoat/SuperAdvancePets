@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SharkText = {
 EWRAM_DATA const static struct Pet Shark = {
         .id =  50,
         .attack =  4,
-        .defence =  4,
+        .health =  4,
         .tier = 5
 };
 void sharkTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

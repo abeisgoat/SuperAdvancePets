@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText RhinoText = {
 EWRAM_DATA const static struct Pet Rhino = {
         .id =  46,
         .attack =  5,
-        .defence =  8,
+        .health =  8,
         .tier = 5
 };
 void rhinoTriggerKnockOut(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

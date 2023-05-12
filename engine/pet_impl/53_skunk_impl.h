@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SkunkText = {
 EWRAM_DATA const static struct Pet Skunk = {
         .id =  53,
         .attack =  3,
-        .defence =  6,
+        .health =  6,
         .tier = 4
 };
 void skunkTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

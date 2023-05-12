@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText FlamingoText = {
 EWRAM_DATA const static struct Pet Flamingo = {
         .id =  25,
         .attack =  3,
-        .defence =  1,
+        .health =  1,
         .tier = 2
 };
 void flamingoTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

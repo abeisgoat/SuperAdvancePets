@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText TigerText = {
 EWRAM_DATA const static struct Pet Tiger = {
         .id =  60,
         .attack =  4,
-        .defence =  3,
+        .health =  3,
         .tier = 6
 };
 void tigerTriggerCastsAbility(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

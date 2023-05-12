@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText MeatBoneText = {
 EWRAM_DATA const static struct Pet MeatBone = {
         .id =  108,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 2
 };
 void meatBoneTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText BisonText = {
 EWRAM_DATA const static struct Pet Bison = {
         .id =  5,
         .attack =  6,
-        .defence =  6,
+        .health =  6,
         .tier = 4
 };
 void bisonTriggerEndOfTurnWithLvl3Friend(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

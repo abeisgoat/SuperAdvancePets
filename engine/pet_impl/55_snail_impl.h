@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText SnailText = {
 EWRAM_DATA const static struct Pet Snail = {
         .id =  55,
         .attack =  2,
-        .defence =  2,
+        .health =  2,
         .tier = 3
 };
 void snailTriggerBuyAfterLoss(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

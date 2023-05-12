@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText ChocolateText = {
 EWRAM_DATA const static struct Pet Chocolate = {
         .id =  104,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 5
 };
 void chocolateTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

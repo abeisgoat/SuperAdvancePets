@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText CupcakeText = {
 EWRAM_DATA const static struct Pet Cupcake = {
         .id =  105,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 2
 };
 void cupcakeTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

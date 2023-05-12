@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText HedgehogText = {
 EWRAM_DATA const static struct Pet Hedgehog = {
         .id =  29,
         .attack =  3,
-        .defence =  2,
+        .health =  2,
         .tier = 2
 };
 void hedgehogTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

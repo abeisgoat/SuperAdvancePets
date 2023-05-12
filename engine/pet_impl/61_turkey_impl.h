@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText TurkeyText = {
 EWRAM_DATA const static struct Pet Turkey = {
         .id =  61,
         .attack =  3,
-        .defence =  4,
+        .health =  4,
         .tier = 5
 };
 void turkeyTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

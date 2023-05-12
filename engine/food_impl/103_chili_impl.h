@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText ChiliText = {
 EWRAM_DATA const static struct Pet Chili = {
         .id =  103,
         .attack =  0,
-        .defence =  0,
+        .health =  0,
         .tier = 5
 };
 void chiliTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText PeacockText = {
 EWRAM_DATA const static struct Pet Peacock = {
         .id =  40,
         .attack =  1,
-        .defence =  5,
+        .health =  5,
         .tier = 2
 };
 void peacockTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

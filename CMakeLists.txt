@@ -31,6 +31,8 @@ FILE(GLOB SpritesC sprites/*.c)
 FILE(GLOB SpritesH sprites/*.h)
 
 add_executable(SuperAdvancePetsCLI
+        src/animations.h
+        stubs/animations.c
         ${PetImplC} ${PetImplH}
         ${FoodImplC} ${FoodImplH}
         ${SpritesC} ${SpritesH}

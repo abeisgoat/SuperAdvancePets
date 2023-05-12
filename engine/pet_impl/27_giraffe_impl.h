@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText GiraffeText = {
 EWRAM_DATA const static struct Pet Giraffe = {
         .id =  27,
         .attack =  2,
-        .defence =  5,
+        .health =  5,
         .tier = 3
 };
 void giraffeTriggerEndOfTurn(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

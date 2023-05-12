@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText BlowfishText = {
 EWRAM_DATA const static struct Pet Blowfish = {
         .id =  6,
         .attack =  3,
-        .defence =  5,
+        .health =  5,
         .tier = 3
 };
 void blowfishTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);

@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText OxText = {
 EWRAM_DATA const static struct Pet Ox = {
         .id =  38,
         .attack =  1,
-        .defence =  4,
+        .health =  4,
         .tier = 3
 };
 void oxTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet);
