@@ -8,9 +8,9 @@ void monkeyTriggerEndOfTurn(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 
     struct Pet * frontMostPet;
     if (usOrThem == 0) {
-        frontMostPet = getPlayerFighter(us);
+        frontMostPet = getRightMostPet(us);
     } else {
-        frontMostPet = getEnemyFighter(us);
+        frontMostPet = getLeftMostPet(us);
     }
 
     int health = 0;

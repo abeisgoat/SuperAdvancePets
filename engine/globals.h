@@ -7,7 +7,7 @@ void registerPet(int petId, const struct Pet * pet, const struct PetText * petTe
 void registerFood(int petId, const struct Pet * pet, const struct PetText * petText);
 struct Pet * getPetByID(int petId);
 const struct PetText * getPetTextByID(int petId);
-struct Pet * spawnPet(int petId, struct Pet * dest);
+struct Pet * summonPet(int petId, struct Pet * dest);
 struct Pet * emptyPet(struct Pet * dest);
 struct Pet * clonePet(struct Pet * src, struct Pet * dest);
 int getPetAttack(struct Pet *pet);
@@ -20,7 +20,18 @@ struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos);
 int storePosition(PetTeam store, struct Pet *pet);
 int expToLevel(int exp);
 void deserializePet(int petId, struct Pet * dest);
-struct Pet * getPlayerFighter(PetTeam playerTeam);
-struct Pet * getEnemyFighter(PetTeam enemyTeam);
-
+struct Pet * getRightMostPet(PetTeam team);
+struct Pet * getLeftMostPet(PetTeam team);
+int shuffleRightOnce(PetTeam team);
+int shuffleLeftOnce(PetTeam team);
+int shuffleRight(PetTeam team);
+int shuffleLeft(PetTeam team);
+int shuffleRightUntilPet(PetTeam team);
+int shuffleLeftUntilPet(PetTeam team);
+int shuffleRightUntilEmpty(PetTeam team);
+int shuffleLeftUntilEmpty(PetTeam team);
+struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos);
+void resetBankForTurn();
+void addBankMoney(int i);
+int spendBankMoney(int i);
 #endif

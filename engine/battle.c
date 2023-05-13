@@ -65,35 +65,6 @@ void printTeam() {
     printf("\n");
 }
 
-int shuffleForwardOnce() {
-    int shuffled = 0;
-    for (int i=3; i>=0; i--) {
-        if (playerTeam[i+1].id == 0 && playerTeam[i].id != 0) {
-            clonePet(&playerTeam[i], &playerTeam[i+1]);
-            emptyPet(&playerTeam[i]);
-            shuffled = 1;
-            printf(">>> shuffling %d to %d\n", i, i+1);
-        }
-    }
-
-    for (int i=1; i<=4; i++) {
-        if (enemyTeam[i-1].id == 0  && enemyTeam[i].id != 0) {
-            clonePet(&enemyTeam[i], &enemyTeam[i-1]);
-            emptyPet(&enemyTeam[i]);
-            shuffled = 1;
-        }
-    }
-    return shuffled;
-}
-
-int shuffleForward() {
-//    printTeam();
-    while (shuffleForwardOnce() == 1) {
-//        printTeam();
-    }
-}
-
-
 void resetTeams() {
     for (int i=0; i<=4; i++) {
         emptyPet(&playerTeam[i]);
@@ -174,14 +145,25 @@ int battle() {
     struct Pet *PlayerFighter;
     struct Pet *EnemyFighter;
 
-
-    shuffleForward();
     printf("[Battle begin %i vs %i]\n", playerTeamSize(), enemyTeamSize());
 
     while (isBattleOver() == 0) {
+        int playerHasPet = shuffleRightUntilPet(playerTeam);
+        int enemyHasPet = shuffleLeftUntilPet(enemyTeam);
 
-        PlayerFighter = getPlayerFighter(playerTeam);
-        EnemyFighter = getEnemyFighter(enemyTeam);
+
+        if (playerHasPet != 2) {
+            printf("Player has no pet. Battle over.");
+            break;
+        }
+        if (enemyHasPet != 2) {
+            printf("Enemy has no pet. Battle over.");
+            break;
+        }
+
+
+        PlayerFighter = getRightMostPet(playerTeam);
+        EnemyFighter = getLeftMostPet(enemyTeam);
 
         applyBeforeAttackTrigger(
                 0,

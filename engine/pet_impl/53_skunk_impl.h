@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SkunkText = {
         .abilities = {
                 "Start of battle: Reduce the highest Health enemy by 33%.",
                 "Start of battle: Reduce the highest Health enemy by 66%.",
-                "Start of battle: Reduce the highest Health enemy by 66%."},
+                "Start of battle: Reduce the highest Health enemy by 99%."},
 };
 
 EWRAM_DATA const static struct Pet Skunk = {

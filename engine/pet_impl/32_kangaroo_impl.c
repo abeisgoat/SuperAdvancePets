@@ -1,5 +1,6 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
 void kangarooTriggerFriendAttacks(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
@@ -15,7 +16,10 @@ void kangarooTriggerFriendAttacks(int usOrThem, PetTeam us, PetTeam them, struct
 
     if (selfPos+ahead != activatingPos) return;
 
-    int stats = expToLevel(expToLevel(selfPos)) * 2;
+    animateStatsToTeamPosition(selfPos, selfPos);
+    resolveAnimation();
+
+    int stats = expToLevel(selfPet->experience) * 2;
     selfPet->battleModifierAttack += stats;
     selfPet->battleModifierHealth += stats;
 }

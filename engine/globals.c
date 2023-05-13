@@ -44,15 +44,92 @@ const struct PetText * petTexts[100] = {};
 struct Pet * foods[20] = {};
 const struct PetText * foodTexts[100] = {};
 
+struct Pet * tier1Pets[10] = {};
+int tier1PetsLen = 2;
+int tier1PetsFullness = 0;
+
+struct Pet * tier1Foods[2] = {};
+int tier1FoodsLen = 2;
+int tier1FoodFullness = 0;
+
+struct Pet * tier2Pets[10] = {};
+int tier2PetsLen = 0;
+int tier2PetsFullness = 0;
+
+struct Pet * tier2Foods[3] = {};
+int tier2FoodsLen = 3;
+int tier2FoodFullness = 0;
+
+struct Pet * tier3Pets[10] = {};
+int tier3PetsLen = 11;
+int tier3PetsFullness = 0;
+
+struct Pet * tier3Foods[2] = {};
+int tier3FoodsLen = 2;
+int tier3FoodFullness = 0;
+
+struct Pet * tier4Pets[12] = {};
+int tier4PetsLen = 11;
+int tier4PetsFullness = 0;
+
+struct Pet * tier4Foods[2] = {};
+int tier4FoodsLen = 2;
+int tier4FoodFullness = 0;
+
+struct Pet * tier5Pets[8] = {};
+int tier5PetsLen = 8;
+int tier5PetsFullness = 0;
+
+struct Pet * tier5Foods[3] = {};
+int tier5FoodsLen = 3;
+int tier5FoodFullness = 0;
+
+struct Pet * tier6Pets[9] = {};
+int tier6PetsLen = 9;
+int tier6PetsFullness = 0;
+
+struct Pet * tier6Foods[4] = {};
+int tier6FoodsLen = 4;
+int tier6FoodFullness = 0;
 
 void registerPet(int petId, const struct Pet * pet, const struct PetText * petText) {
     pets[petId] = pet;
     petTexts[petId] = petText;
+
+    switch (pet->tier) {
+        case 1:
+            tier1Pets[tier1PetsFullness++] = pet;
+        case 2:
+            tier2Pets[tier2PetsFullness++] = pet;
+        case 3:
+            tier3Pets[tier3PetsFullness++] = pet;
+        case 4:
+            tier4Pets[tier4PetsFullness++] = pet;
+        case 5:
+            tier5Pets[tier5PetsFullness++] = pet;
+        case 6:
+            tier6Pets[tier6PetsFullness++] = pet;
+    }
 }
 
 void registerFood(int petId, const struct Pet * pet, const struct PetText * petText) {
     foods[petId] = pet;
     foodTexts[petId] = petText;
+
+    switch (pet->tier) {
+        case 1:
+            tier1Foods[tier1FoodFullness++] = pet;
+        case 2:
+            tier2Foods[tier2FoodFullness++] = pet;
+        case 3:
+            tier3Foods[tier3FoodFullness++] = pet;
+        case 4:
+            tier4Foods[tier4FoodFullness++] = pet;
+        case 5:
+            tier5Foods[tier5FoodFullness++] = pet;
+        case 6:
+            tier6Foods[tier6FoodFullness++] = pet;
+    }
 }
 
 const struct PetText* getPetTextByID(int petId) {
@@ -91,6 +168,27 @@ struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos) {
         }
     }
 }
+
+struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos) {
+    if (pos > 9 || pos < 0) {
+        return &EmptyPet;
+    }
+
+    if (usOrThem == 0) {
+        if (pos < 5) {
+            return &us[pos];
+        } else {
+            return &EmptyPet;
+        }
+    } else {
+        if (pos < 5) {
+            return &EmptyPet;
+        } else {
+            return &us[pos-5];
+        }
+    }
+}
+
 
 void damagePet(struct Pet *pet, int damage) {
     //TODO: Check for shields
@@ -161,9 +259,10 @@ void clonePet(struct Pet * src, struct Pet * dest) {
     dest->tier = src->tier;
 }
 
-void spawnPet(int petId, struct Pet * dest) {
+void summonPet(int petId, struct Pet * dest) {
     struct Pet *src = getPetByID(petId);
     clonePet(src, dest);
+    // Summon trigger should go here
 }
 
 
@@ -171,22 +270,122 @@ void emptyPet(struct Pet * dest) {
     clonePet(&EmptyPet, dest);
 }
 
-struct Pet * getPlayerFighter(PetTeam playerTeam) {
+struct Pet * getRightMostPet(PetTeam team) {
     for (int i=4; i>=0; i--) {
-        if (playerTeam[i].id > 0 && !isDead(&playerTeam[i])) {
-            return &playerTeam[i];
+        if (team[i].id > 0 && !isDead(&team[i])) {
+            return &team[i];
         }
     }
+    return &EmptyPet;
 }
 
-struct Pet * getEnemyFighter(PetTeam enemyTeam) {
+struct Pet * getLeftMostPet(PetTeam team) {
     for (int i=0; i<=4; i++) {
-        if (enemyTeam[i].id > 0 && !isDead(&enemyTeam[i])) {
-            return &enemyTeam[i];
+        if (team[i].id > 0 && !isDead(&team[i])) {
+            return &team[i];
         }
     }
+    return &EmptyPet;
 }
 
+int shuffleRightOnce(PetTeam team) {
+    int shuffled = 0;
+    for (int i=3; i>=0; i--) {
+        if (team[i+1].id == 0 && team[i].id != 0) {
+            clonePet(&team[i], &team[i+1]);
+            emptyPet(&team[i]);
+            shuffled = 1;
+            printf(">>> shuffling %d to %d\n", i, i+1);
+        }
+    }
+
+    return shuffled;
+}
+
+int shuffleLeftOnce(PetTeam team) {
+    int shuffled = 0;
+    for (int i=1; i<=4; i++) {
+        if (team[i-1].id == 0  && team[i].id != 0) {
+            clonePet(&team[i], &team[i-1]);
+            emptyPet(&team[i]);
+            shuffled = 1;
+        }
+    }
+
+    return shuffled;
+}
+
+int shuffleRight(PetTeam team) {
+    int shuffled = 0;
+    while (shuffleRightOnce(team) == 1) {
+        shuffled = 1;
+    }
+    return shuffled;
+}
+
+int shuffleRightUntilPet(PetTeam team) {
+    int shuffled = 0;
+
+    if (team[4].id > 0) {
+        return 2;
+    }
+
+    while (shuffleRightOnce(team) == 1) {
+        shuffled = 1;
+        if (team[4].id > 0) {
+            return 2;
+        }
+    }
+    return shuffled;
+}
+
+int shuffleLeftUntilPet(PetTeam team) {
+    int shuffled = 0;
+
+    if (team[0].id > 0) {
+        return 2;
+    }
+
+    while (shuffleLeftOnce(team) == 1) {
+        shuffled = 1;
+        if (team[0].id > 0) {
+            return 2;
+        }
+    }
+    return shuffled;
+}
+
+int shuffleRightUntilEmpty(PetTeam team) {
+    int shuffled = 0;
+
+    if (team[4].id == 0) {
+        return 2;
+    }
+
+    while (shuffleRightOnce(team) == 1) {
+        shuffled = 1;
+        if (team[4].id == 0) {
+            return 2;
+        }
+    }
+    return shuffled;
+}
+
+int shuffleLeftUntilEmpty(PetTeam team) {
+    int shuffled = 0;
+
+    if (team[0].id == 0) {
+        return 2;
+    }
+
+    while (shuffleLeftOnce(team) == 1) {
+        shuffled = 1;
+        if (team[0].id == 0) {
+            return 2;
+        }
+    }
+    return shuffled;
+}
 
 
 
@@ -214,4 +413,23 @@ void deserializePet(int num, struct Pet * dest) {
     dest->heldItem = heldItem;
     dest->experience = experience;
     printPet(dest);
+}
+
+int bank=10;
+
+void resetBankForTurn() {
+    bank = 10;
+}
+
+void addBankMoney(int i) {
+    bank += i;
+}
+
+int spendBankMoney(int i) {
+    if (bank < i) {
+        return -1;
+    } else {
+        bank -= 1;
+        return 0;
+    }
 }

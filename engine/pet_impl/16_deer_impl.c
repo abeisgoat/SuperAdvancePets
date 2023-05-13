@@ -24,8 +24,7 @@ void deerTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfP
             break;
     }
 
-    selfPet->id = 8;
-    selfPet->heldItem = 103;
+    summonPet(8, selfPet);
     selfPet->attack = stats;
     selfPet->health = stats;
 }

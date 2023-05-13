@@ -6,13 +6,13 @@ EWRAM_DATA const static struct PetText TurtleText = {
         .abilities = {
                 "Faint: Give friend behind Melon Armor",
                 "Faint: Give 2 friends behind Melon Armor",
-                "Faint: Give 2 friends behind Melon Armor"},
+                "Faint: Give 3 friends behind Melon Armor"},
 };
 
 EWRAM_DATA const static struct Pet Turtle = {
         .id =  62,
-        .attack =  1,
-        .health =  2,
-        .tier = 3
+        .attack =  2,
+        .health =  5,
+        .tier = 4
 };
 void turtleTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

@@ -5,8 +5,8 @@ EWRAM_DATA const static struct PetText SpiderText = {
         .name = "Spider",
         .abilities = {
                 "Faint: Summon a level 1 tier 3 animal as a 2/2",
-                "Faint: Summon a level 2 tier 3 animal as a 2/2",
-                "Faint: Summon a level 2 tier 3 animal as a 2/2"},
+                "Faint: Summon a level 2 tier 3 animal as a 4/4",
+                "Faint: Summon a level 3 tier 3 animal as a 6/6"},
 };
 
 EWRAM_DATA const static struct Pet Spider = {

@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText SlothText = {
         .name = "Sloth",
         .abilities = {
-                "",
-                "",
-                ""},
+                "He truly believes in you!",
+                "He truly believes in you!",
+                "He truly believes in you!"},
 };
 
 EWRAM_DATA const static struct Pet Sloth = {
@@ -15,4 +15,3 @@ EWRAM_DATA const static struct Pet Sloth = {
         .health =  1,
         .tier = 1
 };
-void slothTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

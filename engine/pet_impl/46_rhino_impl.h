@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText RhinoText = {
         .abilities = {
                 "Knock out: Deal 4 damage to the first enemy.",
                 "Knock out: Deal 8 damage to the first enemy.",
-                "Knock out: Deal 8 damage to the first enemy."},
+                "Knock out: Deal 12 damage to the first enemy."},
 };
 
 EWRAM_DATA const static struct Pet Rhino = {

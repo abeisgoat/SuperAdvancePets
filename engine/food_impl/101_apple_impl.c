@@ -3,11 +3,11 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void appleTriggerBuy(int _, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
+void appleTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Apple trigger Buy");
 
     int givePos = storePosition(store, itemPet);
-    int takePos = petPosition(1, store, them, targetPet);
+    int takePos = petPosition(usOrThem, us, them, targetPet);
 
     animateToTeamPosition(givePos, takePos);
     resolveAnimation();

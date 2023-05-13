@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText TurkeyText = {
         .abilities = {
                 "Friend summoned: Give it +3/+3.",
                 "Friend summoned: Give it +6/+6.",
-                "Friend summoned: Give it +6/+6."},
+                "Friend summoned: Give it +9/+9."},
 };
 
 EWRAM_DATA const static struct Pet Turkey = {
@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Turkey = {
         .health =  4,
         .tier = 5
 };
-void turkeyTriggerSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void turkeyTriggerFriendSummoned(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

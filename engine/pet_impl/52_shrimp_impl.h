@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText ShrimpText = {
         .abilities = {
                 "Friend sold: Give a random friend +1 Health.",
                 "Friend sold: Give a random friend +2 Health.",
-                "Friend sold: Give a random friend +2 Health."},
+                "Friend sold: Give a random friend +3 Health."},
 };
 
 EWRAM_DATA const static struct Pet Shrimp = {

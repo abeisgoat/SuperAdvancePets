@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText RoosterText = {
         .abilities = {
                 "Faint: Summon a Chick with 1 health and half the Attack of this.",
                 "Faint: Summon 2 Chicks with 1 health and half the Attack of this.",
-                "Faint: Summon 2 Chicks with 1 health and half the Attack of this."},
+                "Faint: Summon 3 Chicks with 1 health and half the Attack of this."},
 };
 
 EWRAM_DATA const static struct Pet Rooster = {

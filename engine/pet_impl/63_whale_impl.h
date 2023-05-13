@@ -16,3 +16,4 @@ EWRAM_DATA const static struct Pet Whale = {
         .tier = 4
 };
 void whaleTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void whaleTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

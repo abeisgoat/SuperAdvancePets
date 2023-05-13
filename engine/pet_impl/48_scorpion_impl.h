@@ -4,15 +4,15 @@
 EWRAM_DATA const static struct PetText ScorpionText = {
         .name = "Scorpion",
         .abilities = {
-                "",
-                "",
-                ""},
+                "Summoned: Gain Peanut.",
+                "Summoned: Gain Peanut.",
+                "Summoned: Gain Peanut."},
 };
 
 EWRAM_DATA const static struct Pet Scorpion = {
         .id =  48,
         .attack =  1,
         .health =  1,
-        .tier = 5
+        .tier = 5,
+        .heldItem = 118,
 };
-void scorpionTriggerNoOp(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

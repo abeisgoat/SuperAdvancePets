@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SnailText = {
         .abilities = {
                 "Buy: If you lost last battle, give all friends +1/+1",
                 "Buy: If you lost last battle, give all friends +2/+2",
-                "Buy: If you lost last battle, give all friends +2/+2"},
+                "Buy: If you lost last battle, give all friends +3/+3"},
 };
 
 EWRAM_DATA const static struct Pet Snail = {

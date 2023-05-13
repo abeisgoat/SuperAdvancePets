@@ -2,11 +2,11 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void steakTriggerBuy(int _, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
+void steakTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Steak trigger Buy");
 
     int givePos = storePosition(store, itemPet);
-    int takePos = petPosition(1, store, them, targetPet);
+    int takePos = petPosition(usOrThem, us, them, targetPet);
 
     animateToTeamPosition(givePos, takePos);
     resolveAnimation();

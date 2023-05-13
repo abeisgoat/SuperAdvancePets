@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SwanText = {
         .abilities = {
                 "Start of turn: Gain 1 gold.",
                 "Start of turn: Gain 2 gold.",
-                "Start of turn: Gain 2 gold."},
+                "Start of turn: Gain 3 gold."},
 };
 
 EWRAM_DATA const static struct Pet Swan = {

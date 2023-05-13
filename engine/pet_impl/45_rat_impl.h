@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText RatText = {
         .name = "Rat",
         .abilities = {
-                "Faint: summon one 1/1 Dirty Rat for the opponent that betrays him.",
-                "Faint: summon one 1/1 Dirty Rat for the opponent that betrays him.",
-                "Faint: summon one 1/1 Dirty Rat for the opponent that betrays him."},
+                "Faint: summon one 1/1 Dirty Rat for the opponent.",
+                "Faint: summon two 1/1 Dirty Rat for the opponent.",
+                "Faint: summon three 1/1 Dirty Rat for the opponent."},
 };
 
 EWRAM_DATA const static struct Pet Rat = {

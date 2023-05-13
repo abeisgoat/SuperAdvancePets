@@ -1,8 +1,28 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Snake AfterAttack
 void snakeTriggerAfterAttack(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Snake trigger AfterAttack");
+
+    int activatingPos = petPosition(usOrThem, us, them, activatingPet);
+    int selfPos = petPosition(usOrThem, us, them, selfPet);
+
+    int ahead = 1;
+    if (usOrThem == 1) {
+        ahead *= -1;
+    }
+
+    if (selfPos+ahead != activatingPos) return;
+
+    struct Pet * target = randomOtherTeamMember(them, selfPet);
+
+    if (target->id) {
+        animateStatsToTeamPosition(selfPos, selfPos);
+        resolveAnimation();
+        int damage = expToLevel(selfPet->experience) * 5;
+        damagePet(target, damage)
+
+    }
 }

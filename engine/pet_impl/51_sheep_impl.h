@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SheepText = {
         .abilities = {
                 "Faint: Summon two 2/2 Rams",
                 "Faint: Summon two 4/4 Rams",
-                "Faint: Summon two 4/4 Rams"},
+                "Faint: Summon two 6/6 Rams"},
 };
 
 EWRAM_DATA const static struct Pet Sheep = {

@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SnakeText = {
         .abilities = {
                 "Friend ahead attacks: Deal 5 damage to a random enemy.",
                 "Friend ahead attacks: Deal 10 damage to a random enemy.",
-                "Friend ahead attacks: Deal 10 damage to a random enemy."},
+                "Friend ahead attacks: Deal 15 damage to a random enemy."},
 };
 
 EWRAM_DATA const static struct Pet Snake = {

@@ -6,7 +6,7 @@ EWRAM_DATA const static struct PetText SealText = {
         .abilities = {
                 "Eats shop food: Give 2 random friends +1/+1.",
                 "Eats shop food: Give 2 random friends +2/+2.",
-                "Eats shop food: Give 2 random friends +2/+2."},
+                "Eats shop food: Give 2 random friends +3/+3."},
 };
 
 EWRAM_DATA const static struct Pet Seal = {
