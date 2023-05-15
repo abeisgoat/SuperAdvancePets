@@ -106,6 +106,8 @@ struct Pet * tier6Foods[4] = {};
 int tier6FoodsLen = 4;
 int tier6FoodFullness = 0;
 
+struct Pet swapperPet = {};
+
 void registerPet(int petId, const struct Pet * pet, const struct PetText * petText) {
     pets[petId] = pet;
     petTexts[petId] = petText;
@@ -283,6 +285,14 @@ void summonPet(int petId, struct Pet * dest) {
 void emptyPet(struct Pet * dest) {
     clonePet(&EmptyPet, dest);
 }
+
+void swapPets(struct Pet * src, struct Pet * dest) {
+    clonePet(src, &swapperPet);
+    clonePet(dest, src);
+    clonePet(&swapperPet, dest);
+    emptyPet(&swapperPet);
+}
+
 
 struct Pet * getRightMostPet(PetTeam team) {
     for (int i=4; i>=0; i--) {

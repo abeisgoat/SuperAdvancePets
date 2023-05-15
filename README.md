@@ -28,6 +28,7 @@ for i in ../pngs/*.png; do
     echo $filename
     convert $i -compress none -background "#FFaaFF" -flatten "../bmps/${filename}.png"
 done
+cd ../../..
 ```
 
 Generate sprite data
@@ -37,6 +38,7 @@ rm -rf sprites/generated
 mkdir sprites/generated
 cd sprites/generated
 grit ../animals/pngs/*.png ../ui/pngs/*.png -pS -gB8 -gTFFAAFF -ftc -Osprites
+cd ../..
 ```
 
 Generate background data
@@ -44,6 +46,7 @@ Generate background data
 ```bash
 cd sprites/generated
 grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -ftc
+cd ../..
 ```
 
 Generate animals.h
@@ -129,6 +132,9 @@ mv ui_16x16_27.png pngs/uiDice4.png
 mv ui_16x16_28.png pngs/uiDice5.png
 mv ui_16x16_29.png pngs/uiDice6.png
 
+mv ui_16x16_30.png pngs/uiCursorOpen.png
+mv ui_16x16_31.png pngs/uiCursorClose.png
+
 rm ui_16x16_*.png
 convert ui.png -crop 4x8@ +repage +adjoin ui_32x16_%d.png
 mv ui_32x16_2.png pngs/uiLeftBumperRoll.png
@@ -139,4 +145,5 @@ convert ui.png -crop 2x4@ +repage +adjoin ui_64x32_%d.png
 
 mv ui_64x32_4.png pngs/uiModal.png
 rm ui_64x32_*.png
+cd ../..
 ```

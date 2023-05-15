@@ -31,11 +31,138 @@ struct PetSprite {
     int y;
     int flip;
     struct Pet * pet;
+    int hidden;
 };
 
 struct PetSprite petSprites[10] = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
 
+void resetAnimalSprites() {
+    int petSpritesCount = 0;
+    int xOffset=49;
+    for (int i=0; i <=4; i++) {
+        struct Pet *pet = getPlayerTeamPet(i);
+        if (pet->id) {
+            petSprites[petSpritesCount].pet = pet;
+        } else {
+            petSprites[petSpritesCount].pet = 0;
+        }
+        petSprites[petSpritesCount].x = xOffset  + (18 * i);
+        petSprites[petSpritesCount].y = 49;
+        petSprites[petSpritesCount].flip = 1;
+        petSpritesCount++;
+    }
+}
 
+void updateAnimalSprites(int startOfLvls, int startOfExp, int startOfNumbers) {
+    for (int s=0; s<10; s++) {
+        struct PetSprite *ps = &petSprites[s];
+
+        if (ps->pet != 0) {
+            unusePetGfxMem(ps->pet->id);
+        }
+    }
+    OBJ_ATTR *sprite;
+    int spriteCount=0;
+    for (int s=0; s<10; s++) {
+        struct PetSprite * ps = &petSprites[s];
+
+        if (ps->pet != 0 && ps->hidden == 0) {
+            int gfxMem = usePetGfxMem(ps->pet->id);
+
+
+            u32 tid = gfxMem, pb = 0;
+            sprite = &obj_buffer[++spriteCount];
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | tid);
+
+            obj_set_pos(sprite, ps->x, ps->y);
+
+            if (ps->flip) {
+                sprite->attr1 ^= ATTR1_HFLIP;
+            }
+
+            sprite = &obj_buffer[++spriteCount];
+
+            int lvl = expToLevel(ps->pet->experience);
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | (startOfLvls + 8 * lvl));
+            obj_set_pos(sprite, ps->x, ps->y - 30);
+
+            sprite = &obj_buffer[++spriteCount];
+
+            int expRemaining = expToRemainingToLevelUp(ps->pet->experience);
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | (startOfExp + 8 * expRemaining));
+            obj_set_pos(sprite, ps->x, ps->y - 14);
+
+            int health = getPetHealth(ps->pet);
+
+            spriteCount++;
+            if (health >= 10) {
+                sprite = &obj_buffer[spriteCount];
+
+                int healthTens = health / 10;
+
+                obj_set_attr(sprite,
+                             ATTR0_TALL | ATTR0_8BPP,
+                             ATTR1_SIZE_8,
+                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthTens)));
+                obj_set_pos(sprite, ps->x + 5, ps->y - 14);
+            }
+
+            sprite = &obj_buffer[++spriteCount];
+
+            int healthOnes = health % 10;
+//            sprintf(msg, "%d", healthOnes);
+//            tte_write(msg);
+
+            obj_set_attr(sprite,
+                         ATTR0_TALL | ATTR0_8BPP,
+                         ATTR1_SIZE_8,
+                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthOnes)));
+            obj_set_pos(sprite, ps->x + 9, ps->y - 14);
+
+            int damage = getPetAttack(ps->pet);
+
+            spriteCount++;
+            if (damage >= 10) {
+                sprite = &obj_buffer[spriteCount];
+
+                int damageTens = damage / 10;
+
+                obj_set_attr(sprite,
+                             ATTR0_TALL | ATTR0_8BPP,
+                             ATTR1_SIZE_8,
+                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageTens)));
+                obj_set_pos(sprite, ps->x + 5, ps->y - 22);
+            }
+
+            sprite = &obj_buffer[++spriteCount];
+
+            int damageOnes = damage % 10;
+
+            obj_set_attr(sprite,
+                         ATTR0_TALL | ATTR0_8BPP,
+                         ATTR1_SIZE_8,
+                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageOnes)));
+            obj_set_pos(sprite, ps->x + 9, ps->y - 22);
+        } else {
+            for (int s=0; s<7; s++) {
+                sprite = &obj_buffer[++spriteCount];
+                obj_set_pos(sprite, -16, -16);
+            }
+        }
+    }
+}
 void main() {
     prepareEngine();
 
@@ -136,18 +263,7 @@ void main() {
     REG_BG2VOFS= bg_y;
     int frame=0;
 
-    int petSpritesCount = 0;
-    int xOffset=49;
-    for (int i=0; i <=4; i++) {
-        struct Pet *pet = getPlayerTeamPet(i);
-        if (pet->id) {
-            petSprites[petSpritesCount].pet = pet;
-            petSprites[petSpritesCount].x = xOffset  + (18 * i);
-            petSprites[petSpritesCount].y = 49;
-            petSprites[petSpritesCount].flip = 1;
-            petSpritesCount++;
-        }
-    }
+
 
 //    for (int i=0; i <=4; i++) {
 //        struct Pet *pet = getEnemyTeamPet(i);
@@ -198,6 +314,10 @@ void main() {
     memcpy(&tile_mem[4][startOfIcons + 4 * 1], uiHeart8x8Tiles, uiHeart8x8TilesLen);
     memcpy(&tile_mem[4][startOfIcons + 4 * 2], uiTurns8x8Tiles, uiTurns8x8TilesLen);
 
+    u32 cursor = startOfIcons + 16;
+
+    memcpy(&tile_mem[4][cursor], uiCursorOpenTiles, uiCursorOpenTilesLen);
+    memcpy(&tile_mem[4][cursor + 8], uiCursorCloseTiles, uiCursorCloseTilesLen);
 //    memcpy(&tile_mem[4][endOfNums + 32], uiModalTiles, uiModalTilesLen);
 
     // UI Left Bumper
@@ -220,7 +340,14 @@ void main() {
     obj_set_pos(sprite, 208, 0);
 
 
-    int counters_x = 152;
+    int turn = 4;
+
+    int counters_x = 144;
+
+    if (turn < 10) {
+        counters_x += 8;
+    }
+
     int counters_y = 144;
 
 
@@ -252,7 +379,7 @@ void main() {
     obj_set_pos(sprite, counters_x + 32, counters_y+2);
 
     tte_set_pos(counters_x + 72, counters_y);
-    sprintf(msg, "%d", 3);
+    sprintf(msg, "%d", turn);
     tte_write(msg);
 
     sprite = &obj_buffer[104];
@@ -261,7 +388,20 @@ void main() {
                  ATTR1_SIZE_8x8,
                  ATTR2_PALBANK(pb) | (startOfIcons + 8));
 
-    obj_set_pos(sprite, counters_x + 64, counters_y+2);
+    obj_set_pos(sprite, counters_x + 62, counters_y+2);
+
+
+    int cursorOpen=1;
+    int cursorX = 0;
+    int cursorY = 0;
+
+    sprite = &obj_buffer[105];
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16 | ATTR1_HFLIP,
+                 ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | cursor);
+
+    obj_set_pos(sprite, 0, 0);
 
 
 //    tte_set_pos(8, 132);
@@ -278,107 +418,101 @@ void main() {
 //
 //    obj_set_pos(sprite, 88, 64);
 
-    int spriteCount=0;
-    for (int s=0; s<10; s++) {
-        struct PetSprite * ps = &petSprites[s];
+    resetAnimalSprites();
+    updateAnimalSprites(startOfLvls, startOfExp, startOfNumbers);
 
-        if (ps->pet != 0) {
-            int gfxMem = usePetGfxMem(ps->pet->id);
-
-
-            u32 tid = gfxMem, pb = 0;
-            OBJ_ATTR *sprite = &obj_buffer[spriteCount++];
-
-            obj_set_attr(sprite,
-                         ATTR0_SQUARE | ATTR0_8BPP,
-                         ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | tid);
-
-            obj_set_pos(sprite, ps->x, ps->y);
-
-            if (ps->flip) {
-                sprite->attr1 ^= ATTR1_HFLIP;
-            }
-
-            sprite = &obj_buffer[spriteCount++];
-
-            int lvl = expToLevel(ps->pet->experience);
-
-            obj_set_attr(sprite,
-                         ATTR0_SQUARE | ATTR0_8BPP,
-                         ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | (startOfLvls + 8 * lvl));
-            obj_set_pos(sprite, ps->x, ps->y - 30);
-
-            sprite = &obj_buffer[spriteCount++];
-
-            int expRemaining = expToRemainingToLevelUp(ps->pet->experience);
-
-            obj_set_attr(sprite,
-                         ATTR0_SQUARE | ATTR0_8BPP,
-                         ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | (startOfExp + 8 * expRemaining));
-            obj_set_pos(sprite, ps->x, ps->y - 14);
-
-            int health = getPetHealth(ps->pet);
-
-            if (health >= 10) {
-                sprite = &obj_buffer[spriteCount++];
-
-                int healthTens = health / 10;
-
-                obj_set_attr(sprite,
-                             ATTR0_TALL | ATTR0_8BPP,
-                             ATTR1_SIZE_8,
-                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthTens)));
-                obj_set_pos(sprite, ps->x + 5, ps->y - 14);
-            }
-
-            sprite = &obj_buffer[spriteCount++];
-
-            int healthOnes = health % 10;
-//            sprintf(msg, "%d", healthOnes);
-//            tte_write(msg);
-
-            obj_set_attr(sprite,
-                         ATTR0_TALL | ATTR0_8BPP,
-                         ATTR1_SIZE_8,
-                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthOnes)));
-            obj_set_pos(sprite, ps->x + 9, ps->y - 14);
-
-            int damage = getPetAttack(ps->pet);
-
-            if (damage >= 10) {
-                sprite = &obj_buffer[spriteCount++];
-
-                int damageTens = damage / 10;
-
-                obj_set_attr(sprite,
-                             ATTR0_TALL | ATTR0_8BPP,
-                             ATTR1_SIZE_8,
-                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageTens)));
-                obj_set_pos(sprite, ps->x + 5, ps->y - 22);
-            }
-
-            sprite = &obj_buffer[spriteCount++];
-
-            int damageOnes = damage % 10;
-
-            obj_set_attr(sprite,
-                         ATTR0_TALL | ATTR0_8BPP,
-                         ATTR1_SIZE_8,
-                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageOnes)));
-            obj_set_pos(sprite, ps->x + 9, ps->y - 22);
-        }
-    }
-
+    int cursorHeldX = 0;
+    int cursorHeldPetID = 0;
     while(1)
     {
         frame++;
-
         vid_vsync();
         key_poll();
         mmFrame();
+
+
+        if (frame % 30 == 0 && cursorHeldPetID == 0) {
+            sprite = &obj_buffer[105];
+            if (cursorOpen) {
+                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | cursor+0;
+                cursorOpen = 0;
+            } else {
+                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | cursor+8;
+                cursorOpen = 1;
+            }
+        }
+
+        if(key_hit(KEY_A) && cursorY == 0)
+        {
+            if (cursorHeldPetID == 0) {
+                cursorHeldX = cursorX;
+                cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
+
+                if (cursorHeldPetID > 0) {
+                    int heldMem = usePetGfxMem(cursorHeldPetID);
+                    sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | heldMem;
+                    petSprites[cursorX].hidden = 1;
+                }
+            } else {
+                unusePetGfxMem(cursorHeldPetID);
+                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | cursor+0;
+                petSprites[cursorHeldX].hidden = 0;
+                swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
+                cursorHeldX = 0;
+                cursorHeldPetID = 0;
+            }
+            resetAnimalSprites();
+            updateAnimalSprites(startOfLvls, startOfExp, startOfNumbers);
+        }
+
+        if(key_hit(KEY_RIGHT))
+        {
+            cursorX += 1;
+        }
+
+        if(key_hit(KEY_LEFT))
+        {
+            cursorX -= 1;
+        }
+
+        if(key_hit(KEY_DOWN))
+        {
+            cursorY += 1;
+        }
+
+        if(key_hit(KEY_UP))
+        {
+            cursorY -= 1;
+        }
+
+        if (cursorY < 0) {
+            cursorY = 0;
+        }
+        if (cursorY > 1) {
+            cursorY = 1;
+        }
+
+        if (cursorX < 0) {
+            cursorX = 0;
+        }
+
+        if (cursorX > 4 && cursorY == 0) {
+            cursorX = 4;
+        }
+
+        if (cursorX > 6 && cursorY == 1) {
+            cursorX = 6;
+        }
+
+
+        int cursorScreenPosX = 49 + (cursorX * 18);
+        int cursorScreenPosY = 49 + (cursorY * 50);
+        if (cursorHeldPetID > 0) {
+            cursorScreenPosY -= 4;
+        }
+        sprite = &obj_buffer[105];
+        obj_set_pos(sprite, cursorScreenPosX, cursorScreenPosY);
+
 
 //        OBJ_ATTR *sprite = &obj_buffer[10];
 //        obj_set_pos(sprite, 10, 10);

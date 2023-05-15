@@ -16,7 +16,7 @@ int usePetGfxMem(int id) {
         struct GfxCacheEntry * cacheEntry = &gfxCache[i];
         if (cacheEntry->id == id) {
             cacheEntry->uses += 1;
-            return 2+(i * 10);
+            return (i * 10);
         }
         if (cacheEntry->id <= 0) {
             pos = i;

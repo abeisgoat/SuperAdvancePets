@@ -9,6 +9,7 @@ struct Pet * getPetByID(int petId);
 const struct PetText * getPetTextByID(int petId);
 struct Pet * summonPet(int petId, struct Pet * dest);
 struct Pet * emptyPet(struct Pet * dest);
+void swapPets(struct Pet * src, struct Pet * dest);
 struct Pet * clonePet(struct Pet * src, struct Pet * dest);
 int getPetAttack(struct Pet *pet);
 int getPetHealth(struct Pet *pet);
