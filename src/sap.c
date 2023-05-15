@@ -1,7 +1,6 @@
 #include <tonc.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../sprites/bg.h"
 #include "../engine/battle.h"
 #include <stdio.h>
 #include <time.h>
@@ -11,21 +10,18 @@
 #include "../soundbank.h"
 #include <maxmod.h>
 #include "../engine/globals.h"
-#include "../engine/impl.h"
-#include "../sprites/animals.h"
-#include "../sprites/generated/uiBannerTopLvl1.h"
-#include "../sprites/generated/uiBannerTopLvl2.h"
-#include "../sprites/generated/uiBannerBottomEmpty.h"
-#include "../sprites/generated/num0.h"
-#include "../sprites/generated/num1.h"
-#include "../sprites/generated/num2.h"
-#include "../sprites/generated/num3.h"
+#include "../sprites/generated/ui.h"
+#include "../sprites/generated/bg.h"
 
 #define CBB_4 0
 #define SBB_4 2
 
 #define CBB_8 2
 #define SBB_8 4
+
+#define CBB_12 4
+#define SBB_12 6
+
 
 OBJ_ATTR obj_buffer[128];
 OBJ_AFFINE *obj_aff_buffer= (OBJ_AFFINE*)obj_buffer;
@@ -44,10 +40,10 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            1360953, // 1 Ant
-            24310910, // 24 Fish
-            34310910, // 34 Mammoth
-            32310910, // 32 Kangaroo
+            1352953, // 1 Ant
+            24310313, // 24 Fish
+            34321114, // 34 Mammoth
+            0, // 32 Kangaroo
             35310910, // 35 Monkey
 
     };
@@ -62,7 +58,7 @@ void main() {
     };
 
     prepareTeams(friendly, enemies);
-    int result = battle();
+//    int result = battle();
 
 
     // Background
@@ -77,9 +73,10 @@ void main() {
 
     // set up BG0 for a 4bpp 64x32t map, using
     //   using charblock 0 and screenblock 31
-    REG_BG0CNT= BG_CBB(CBB_4) | BG_SBB(SBB_4) | BG_4BPP | BG_REG_32x32;
-    REG_BG1CNT= BG_CBB(CBB_8) | BG_SBB(SBB_8) | BG_4BPP | BG_REG_32x32;
-    REG_DISPCNT= DCNT_OBJ | DCNT_MODE0 | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;
+    REG_BG0CNT= BG_CBB(CBB_4) | BG_SBB(SBB_4) | BG_4BPP | BG_REG_32x32 |  BG_PRIO(2);
+    REG_BG1CNT= BG_CBB(CBB_8) | BG_SBB(SBB_8) | BG_4BPP | BG_REG_32x32 |  BG_PRIO(3);
+    REG_BG2CNT= BG_CBB(CBB_12) | BG_SBB(SBB_12) | BG_4BPP | BG_REG_32x32 | BG_PRIO(1);
+    REG_DISPCNT= DCNT_OBJ | DCNT_MODE0 | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2;
 
 
     irq_init(NULL);
@@ -90,17 +87,16 @@ void main() {
 
     // --- (1) Base TTE init for tilemaps ---
     tte_init_se(
-            0,                      // Background number (BG 0)
-            BG_CBB(CBB_4)|BG_SBB(SBB_4),   // BG control (for REG_BGxCNT)
+            2,                      // Background number (BG 0)
+            BG_CBB(CBB_12)|BG_SBB(31),   // BG control (for REG_BGxCNT)
             0,                      // Tile offset (special cattr)
             CLR_BLACK,             // Ink color
-            14,                     // BitUnpack offset (on-pixel = 15)
+            15,                     // BitUnpack offset (on-pixel = 15)
             &sys8Font,                   // Default font (sys8)
             NULL);                  // Default renderer (se_drawg_s)
-
     // --- (2) Init some colors ---
     pal_bg_bank[1][15]= CLR_RED;
-    pal_bg_bank[2][15]= CLR_GREEN;
+    pal_bg_bank[2][15]= CLR_WHITE;
     pal_bg_bank[3][15]= CLR_BLUE;
     pal_bg_bank[4][15]= CLR_WHITE;
     pal_bg_bank[5][15]= CLR_MAG;
@@ -111,20 +107,20 @@ void main() {
 
     char msg[50];
 
+//
+//    if (result == -1) {
+//        tte_write(" #{cx:0x1000}You tied.\n");
+//    }
+//    if (result == -2) {
+//        tte_write(" #{cx:0x3000}You lost.\n");
+//    }
+//    if (result == -3) {
+//        tte_write(" #{cx:0x3000}You won!\n");
+//    }
 
-    if (result == -1) {
-        tte_write(" #{cx:0x1000}You tied.\n");
-    }
-    if (result == -2) {
-        tte_write(" #{cx:0x3000}You lost.\n");
-    }
-    if (result == -3) {
-        tte_write(" #{cx:0x2000}You won!\n");
-    }
 
-
-    tte_write("#{cx:0x0000}");
-    tte_set_pos(88, 78);
+//    tte_write("#{cx:0x0000}");
+//    tte_set_pos(88, 78);
 
 //    tte_write(" #{cx:0x1000}Hello world! in red\n");
 //    tte_write(" #{cx:0x2000}Hello world! in green\n");
@@ -134,165 +130,153 @@ void main() {
 //    tte_write("#{cx:0} provided by \\#{cx:#}.");
 
     // Scroll around some
-    int bg_x= 0, bg_y= -4;
+    int bg_x= 0, bg_y= -2;
 
-    REG_BG0HOFS= bg_x;
-    REG_BG0VOFS= bg_y;
+    REG_BG2HOFS= bg_x;
+    REG_BG2VOFS= bg_y;
     int frame=0;
 
     int petSpritesCount = 0;
-    int xOffset=20;
+    int xOffset=49;
     for (int i=0; i <=4; i++) {
         struct Pet *pet = getPlayerTeamPet(i);
         if (pet->id) {
             petSprites[petSpritesCount].pet = pet;
-            petSprites[petSpritesCount].x = xOffset  + (20 * i);
-            petSprites[petSpritesCount].y = 50;
+            petSprites[petSpritesCount].x = xOffset  + (18 * i);
+            petSprites[petSpritesCount].y = 49;
             petSprites[petSpritesCount].flip = 1;
             petSpritesCount++;
-
-//            int x = 24 + (24*i);
-//            sprintf(msg, "#{P:%d,20}%d   \n", x, expToLevel(pet->experience));
-//            tte_write(msg);
-//            sprintf(msg, "#{P:%d,28}%d   \n", x, pet->health);
-//            tte_write(msg);
-//            sprintf(msg, "#{P:%d,36}%d   \n", x, pet->attack);
-//            tte_write(msg);
-
         }
     }
 
-    for (int i=0; i <=4; i++) {
-        struct Pet *pet = getEnemyTeamPet(i);
-        if (pet->id) {
-            petSprites[petSpritesCount].pet = pet;
-            petSprites[petSpritesCount].x = xOffset + 100 + (20 * i);
-            petSprites[petSpritesCount].y = 50;
-            petSprites[petSpritesCount].flip = 0;
-            petSpritesCount++;
-        }
-    }
+//    for (int i=0; i <=4; i++) {
+//        struct Pet *pet = getEnemyTeamPet(i);
+//        if (pet->id) {
+//            petSprites[petSpritesCount].pet = pet;
+//            petSprites[petSpritesCount].x = xOffset + 100 + (18 * i);
+//            petSprites[petSpritesCount].y = 50;
+//            petSprites[petSpritesCount].flip = 0;
+//            petSpritesCount++;
+//        }
+//    }
 
-    u32 tid = 100, pb = 0;
-    memcpy(&tile_mem[4][tid], uiBannerTopLvl2Tiles, uiBannerTopLvl2TilesLen);
-    memcpy(&tile_mem[4][tid+10], uiBannerBottomEmptyTiles, uiBannerBottomEmptyTilesLen);
-    memcpy(&tile_mem[4][tid+20], num0Tiles, num0TilesLen);
-    memcpy(&tile_mem[4][tid+30], num1Tiles, num1TilesLen);
-    memcpy(&tile_mem[4][tid+40], num2Tiles, num2TilesLen);
-    memcpy(&tile_mem[4][tid+50], num3Tiles, num3TilesLen);
-    memcpy(&tile_mem[4][tid+60], uiBannerTopLvl1Tiles, uiBannerTopLvl1TilesLen);
+    // We use first addresses 12*8 address for 12 possible animals on screen. (full team + 7 store spots)
+    u32 startOfNumbers = (12 * 8) + 4, pb = 0;
 
-    OBJ_ATTR *sprite = &obj_buffer[10];
-    int ui_x = 20;
-    int ui_y = 20;
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 0], num0Tiles, num0TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 1], num1Tiles, num1TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 2], num2Tiles, num2TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 3], num3Tiles, num3TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 4], num4Tiles, num4TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 5], num5Tiles, num5TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 6], num6Tiles, num6TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 7], num7Tiles, num7TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 8], num8Tiles, num8TilesLen);
+    memcpy(&tile_mem[4][startOfNumbers + 4 * 9], num9Tiles, num9TilesLen);
+
+    u32 endOfNums = startOfNumbers + 4 * 10;
+
+    memcpy(&tile_mem[4][endOfNums], uiLeftBumperRollTiles, uiLeftBumperRollTilesLen);
+    memcpy(&tile_mem[4][endOfNums + 16], uiRightBumperFightTiles, uiRightBumperFightTilesLen);
+
+    u32 startOfLvls = endOfNums + 24;
+
+    memcpy(&tile_mem[4][startOfLvls + 8 * 1], uiBannerLvl1Tiles, uiBannerLvl1TilesLen);
+    memcpy(&tile_mem[4][startOfLvls + 8 * 2], uiBannerLvl2Tiles, uiBannerLvl2TilesLen);
+    memcpy(&tile_mem[4][startOfLvls + 8 * 3], uiBannerLvl3Tiles, uiBannerLvl3TilesLen);
+
+    u32 startOfExp = startOfLvls + 8 * 4;
+
+    memcpy(&tile_mem[4][startOfExp + 8 * 0], uiBannerExpZeroTiles, uiBannerExpZeroTilesLen);
+    memcpy(&tile_mem[4][startOfExp + 8 * 1], uiBannerExpOneTiles, uiBannerExpOneTilesLen);
+    memcpy(&tile_mem[4][startOfExp + 8 * 2], uiBannerExpTwoTiles, uiBannerExpTwoTilesLen);
+    memcpy(&tile_mem[4][startOfExp + 8 * 3], uiBannerExpThreeTiles, uiBannerExpThreeTilesLen);
+
+    u32 startOfIcons = startOfLvls + 8 * 8;
+
+    memcpy(&tile_mem[4][startOfIcons + 4 * 0], uiCoin8x8Tiles, uiCoin8x8TilesLen);
+    memcpy(&tile_mem[4][startOfIcons + 4 * 1], uiHeart8x8Tiles, uiHeart8x8TilesLen);
+    memcpy(&tile_mem[4][startOfIcons + 4 * 2], uiTurns8x8Tiles, uiTurns8x8TilesLen);
+
+//    memcpy(&tile_mem[4][endOfNums + 32], uiModalTiles, uiModalTilesLen);
+
+    // UI Left Bumper
+    OBJ_ATTR *sprite = &obj_buffer[100];
+
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | (endOfNums));
+
+    obj_set_pos(sprite, 0, 0);
+
+    // UI Right Bumper
+    sprite = &obj_buffer[101];
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | (endOfNums + 16));
+
+    obj_set_pos(sprite, 208, 0);
+
+
+    int counters_x = 152;
+    int counters_y = 144;
+
+
+    sprite = &obj_buffer[102];
+
+    tte_set_pos(counters_x + 8, counters_y);
+    sprintf(msg, "%d", 10);
+    tte_write(msg);
 
     obj_set_attr(sprite,
                  ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_16,
-                 ATTR2_PALBANK(pb) | (tid + 2));
+                 ATTR1_SIZE_8x8,
+                 ATTR2_PALBANK(pb) | (startOfIcons));
 
-    obj_set_pos(sprite, ui_x, ui_y);
+    obj_set_pos(sprite, counters_x, counters_y+2);
 
-   sprite = &obj_buffer[11];
-
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_16,
-                 ATTR2_PALBANK(pb) | (tid+12));
-
-    obj_set_pos(sprite, ui_x, ui_y+16);
-
-    sprite = &obj_buffer[12];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+32));
-
-    obj_set_pos(sprite, ui_x+6, ui_y+8);
-
-    sprite = &obj_buffer[13];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+32));
-
-    obj_set_pos(sprite, ui_x+6, ui_y+16);
-
-    sprite = &obj_buffer[14];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+42));
-
-    obj_set_pos(sprite, ui_x+10, ui_y+8);
+    sprite = &obj_buffer[103];
 
 
-    sprite = &obj_buffer[15];
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+52));
-
-    obj_set_pos(sprite, ui_x+10, ui_y+16);
-
-    ui_x = 20+20;
-    ui_y = 20;
+    tte_set_pos(counters_x + 46, counters_y);
+    sprintf(msg, "%d", 10);
+    tte_write(msg);
 
     obj_set_attr(sprite,
                  ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_16,
-                 ATTR2_PALBANK(pb) | (tid + 62));
+                 ATTR1_SIZE_8x8,
+                 ATTR2_PALBANK(pb) | (startOfIcons + 4));
 
-    obj_set_pos(sprite, ui_x, ui_y);
+    obj_set_pos(sprite, counters_x + 32, counters_y+2);
 
-    sprite = &obj_buffer[16];
+    tte_set_pos(counters_x + 72, counters_y);
+    sprintf(msg, "%d", 3);
+    tte_write(msg);
 
+    sprite = &obj_buffer[104];
     obj_set_attr(sprite,
                  ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_16,
-                 ATTR2_PALBANK(pb) | (tid+12));
+                 ATTR1_SIZE_8x8,
+                 ATTR2_PALBANK(pb) | (startOfIcons + 8));
 
-    obj_set_pos(sprite, ui_x, ui_y+16);
-
-    sprite = &obj_buffer[17];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+52));
-
-    obj_set_pos(sprite, ui_x+6, ui_y+8);
-
-    sprite = &obj_buffer[18];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+32));
-
-    obj_set_pos(sprite, ui_x+6, ui_y+16);
-
-    sprite = &obj_buffer[19];
-
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+42));
-
-    obj_set_pos(sprite, ui_x+10, ui_y+8);
+    obj_set_pos(sprite, counters_x + 64, counters_y+2);
 
 
-    sprite = &obj_buffer[20];
-    obj_set_attr(sprite,
-                 ATTR0_TALL | ATTR0_8BPP,
-                 ATTR1_SIZE_8,
-                 ATTR2_PALBANK(pb) | (tid+52));
+//    tte_set_pos(8, 132);
+//    sprintf(msg, "#{cx:0x2000}Start of battle:\n Swallow friend ahead and \n release as Level 1.");
+//    tte_write(msg);
 
-    obj_set_pos(sprite, ui_x+10, ui_y+16);
-
+    // Modal
+//    sprite = &obj_buffer[12];
+//
+//    obj_set_attr(sprite,
+//                 ATTR0_WIDE | ATTR0_8BPP,
+//                 ATTR1_SIZE_32x64,
+//                 ATTR2_PALBANK(pb) | ATTR2_PRIO(5) | (endOfNums + 32));
+//
+//    obj_set_pos(sprite, 88, 64);
 
     int spriteCount=0;
     for (int s=0; s<10; s++) {
@@ -301,44 +285,95 @@ void main() {
         if (ps->pet != 0) {
             int gfxMem = usePetGfxMem(ps->pet->id);
 
-//            sprintf(msg, "%d gfxmem %d\n", ps->pet->id, gfxMem);
-//            tte_write(msg);
 
             u32 tid = gfxMem, pb = 0;
-            OBJ_ATTR *sprite = &obj_buffer[spriteCount];
+            OBJ_ATTR *sprite = &obj_buffer[spriteCount++];
 
             obj_set_attr(sprite,
                          ATTR0_SQUARE | ATTR0_8BPP,
                          ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | tid);
+                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | tid);
 
             obj_set_pos(sprite, ps->x, ps->y);
 
             if (ps->flip) {
                 sprite->attr1 ^= ATTR1_HFLIP;
             }
-            spriteCount++;
+
+            sprite = &obj_buffer[spriteCount++];
+
+            int lvl = expToLevel(ps->pet->experience);
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | (startOfLvls + 8 * lvl));
+            obj_set_pos(sprite, ps->x, ps->y - 30);
+
+            sprite = &obj_buffer[spriteCount++];
+
+            int expRemaining = expToRemainingToLevelUp(ps->pet->experience);
+
+            obj_set_attr(sprite,
+                         ATTR0_SQUARE | ATTR0_8BPP,
+                         ATTR1_SIZE_16,
+                         ATTR2_PALBANK(pb) | (startOfExp + 8 * expRemaining));
+            obj_set_pos(sprite, ps->x, ps->y - 14);
+
+            int health = getPetHealth(ps->pet);
+
+            if (health >= 10) {
+                sprite = &obj_buffer[spriteCount++];
+
+                int healthTens = health / 10;
+
+                obj_set_attr(sprite,
+                             ATTR0_TALL | ATTR0_8BPP,
+                             ATTR1_SIZE_8,
+                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthTens)));
+                obj_set_pos(sprite, ps->x + 5, ps->y - 14);
+            }
+
+            sprite = &obj_buffer[spriteCount++];
+
+            int healthOnes = health % 10;
+//            sprintf(msg, "%d", healthOnes);
+//            tte_write(msg);
+
+            obj_set_attr(sprite,
+                         ATTR0_TALL | ATTR0_8BPP,
+                         ATTR1_SIZE_8,
+                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * healthOnes)));
+            obj_set_pos(sprite, ps->x + 9, ps->y - 14);
+
+            int damage = getPetAttack(ps->pet);
+
+            if (damage >= 10) {
+                sprite = &obj_buffer[spriteCount++];
+
+                int damageTens = damage / 10;
+
+                obj_set_attr(sprite,
+                             ATTR0_TALL | ATTR0_8BPP,
+                             ATTR1_SIZE_8,
+                             ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageTens)));
+                obj_set_pos(sprite, ps->x + 5, ps->y - 22);
+            }
+
+            sprite = &obj_buffer[spriteCount++];
+
+            int damageOnes = damage % 10;
+
+            obj_set_attr(sprite,
+                         ATTR0_TALL | ATTR0_8BPP,
+                         ATTR1_SIZE_8,
+                         ATTR2_PALBANK(pb) | (startOfNumbers + (4 * damageOnes)));
+            obj_set_pos(sprite, ps->x + 9, ps->y - 22);
         }
     }
 
     while(1)
     {
-//        vid_vsync();
-//        if((frame & 7) == 0)
-//            key_poll();
-        // check state of each button
-//        for(int ii=0; ii<KI_MAX; ii++) {
-//            int btn = 1 << ii;
-//            if (key_hit(btn) && ii==0) { // "A" button hit
-//                tte_erase_screen();
-//                tte_set_pos(8, 59);
-//                srand(frame);
-//                sprintf(msg, "Random: %i", rand());
-//                tte_write(msg);
-//            }
-//        }
-//        REG_BG0HOFS= 6;
-//        REG_BG0VOFS= 0;
         frame++;
 
         vid_vsync();
@@ -376,16 +411,16 @@ void main() {
         if(key_hit(KEY_START))
             REG_DISPCNT ^= DCNT_OBJ_1D;
 
-        spriteCount=0;
-        for (int s=0; s<10; s++) {
-            struct PetSprite * ps = &petSprites[s];
-            if (ps->pet != 0) {
-                OBJ_ATTR *sprite = &obj_buffer[spriteCount];
-//                sprite->attr2= ATTR2_BUILD(tid0, pb0, 0);
-                 obj_set_pos(sprite, ps->x, ps->y);
-                spriteCount++;
-            }
-        }
+//        spriteCount=0;
+//        for (int s=0; s<10; s++) {
+//            struct PetSprite * ps = &petSprites[s];
+//            if (ps->pet != 0) {
+//                OBJ_ATTR *sprite = &obj_buffer[spriteCount];
+////                sprite->attr2= ATTR2_BUILD(tid0, pb0, 0);
+//                 obj_set_pos(sprite, ps->x, ps->y);
+//                spriteCount++;
+//            }
+//        }
 
         // Hey look, it's one of them build macros!
 //        PetSprite0->attr2= ATTR2_BUILD(tid0, pb0, 0);
@@ -394,7 +429,7 @@ void main() {
 //        PetSprite1->attr2= ATTR2_BUILD(tid1, pb1, 0);
 //        obj_set_pos(PetSprite1, sp1_x, sp1_y);
 
-        oam_copy(oam_mem, obj_buffer, 23);   // (6) Update OAM (only one now)
+        oam_copy(oam_mem, obj_buffer, 127);   // (6) Update OAM (only one now)
     }
 }
 

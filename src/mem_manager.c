@@ -232,7 +232,7 @@ int usePetGfxMem(int id) {
     gfxCache[pos].id = id;
     gfxCache[pos].uses += 1;
 
-    return 2+memPos;
+    return memPos;
 }
 
 void unusePetGfxMem(int id) {

@@ -19,6 +19,7 @@ int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
 struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos);
 int storePosition(PetTeam store, struct Pet *pet);
 int expToLevel(int exp);
+int expToRemainingToLevelUp(int exp);
 void deserializePet(int petId, struct Pet * dest);
 struct Pet * getRightMostPet(PetTeam team);
 struct Pet * getLeftMostPet(PetTeam team);

@@ -22,7 +22,7 @@ void snakeTriggerAfterAttack(int usOrThem, PetTeam us, PetTeam them, struct Pet 
         animateStatsToTeamPosition(selfPos, selfPos);
         resolveAnimation();
         int damage = expToLevel(selfPet->experience) * 5;
-        damagePet(target, damage)
+        damagePet(target, damage);
 
     }
 }

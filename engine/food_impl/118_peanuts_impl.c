@@ -2,7 +2,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void chiliTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
+void peanutsTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Peanuts trigger Buy");
 
     int givePos = storePosition(store, itemPet);

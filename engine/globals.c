@@ -16,6 +16,20 @@ int expToLevel(int exp) {
     return 1;
 }
 
+int expToRemainingToLevelUp(int exp) {
+    if (exp >=5) {
+        exp = 5;
+    }
+
+    if (exp >= 2) {
+        return exp - 2;
+    }else if (exp > 0) {
+        return exp + 1;
+    }
+
+    return 0;
+}
+
 struct Pet EmptyPet = {
         .id = 0,
         .health = 0,
@@ -407,6 +421,7 @@ void deserializePet(int num, struct Pet * dest) {
     heldItem = ((num % 1000000) - attack - defence - experience) / 100000;
     id = ((num % 100000000) - attack - defence - experience - heldItem) / 1000000;
 
+    emptyPet(dest);
     dest->id = id;
     dest->attack = attack;
     dest->health = defence;
