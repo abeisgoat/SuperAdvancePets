@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "globals.h"
 #include "impl.h"
+#include "../src/animations.h"
+#include "triggers.h"
 #include <time.h>
 #include <stdlib.h>
 
@@ -24,34 +26,6 @@ PetTeam enemyTeam = {
 PetTeam storeTeam = {
         {},{},{},{},{}, {}, {}
 };
-
-void applyFaintTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet) {
-    switch (pet->id) {
-        case 1: // Ant
-            antTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
-            break;
-        case 2: // Badger
-            badgerTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
-            break;
-        case 3: // Cricket
-            cricketTriggerFaint(usOrThem, us, them, pet, pet, storeTeam);
-            break;
-    }
-}
-
-void applyBattleStartTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
-        default:
-            break;
-    }
-}
-
-void applyBeforeAttackTrigger(int usOrThem, int step, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
-        default:
-            break;
-    }
-}
 
 void printTeam() {
     printf("Player Team: ");
@@ -119,7 +93,6 @@ int battle() {
         if (playerTeam[i].id > 0) {
             applyBattleStartTrigger(
                     0,
-                    step,
                     playerTeam,
                     enemyTeam,
                     &playerTeam[i],
@@ -130,7 +103,6 @@ int battle() {
         if (enemyTeam[i].id > 0) {
             applyBattleStartTrigger(
                     0,
-                    step,
                     playerTeam,
                     enemyTeam,
                     &playerTeam[i],
@@ -150,7 +122,9 @@ int battle() {
     while (isBattleOver() == 0) {
         int playerHasPet = shuffleRightUntilPet(playerTeam);
         int enemyHasPet = shuffleLeftUntilPet(enemyTeam);
-
+        animateShuffleAtPosition(0, 0);
+        resolveAnimation();
+        sleep(30);
 
         if (playerHasPet != 2) {
             printf("Player has no pet. Battle over.");
@@ -167,14 +141,12 @@ int battle() {
 
         applyBeforeAttackTrigger(
                 0,
-                step,
             playerTeam,
             enemyTeam,
             PlayerFighter, storeTeam);
 
         applyBeforeAttackTrigger(
                 1,
-                step,
                 enemyTeam,
                 playerTeam,
                 EnemyFighter, storeTeam);
@@ -193,30 +165,16 @@ int battle() {
                getPetAttack(EnemyFighter),
                getPetHealth(EnemyFighter));
 
-        PlayerFighter->battleModifierHealth -= getPetAttack(EnemyFighter);
-        EnemyFighter->battleModifierHealth -= getPetAttack(PlayerFighter);
-
         printf("%i :: [>> Animate head-on attack <<]\n", step);
+        animateFighterAttack(PlayerFighter, EnemyFighter);
+        resolveAnimation();
 
-        if (isDead(PlayerFighter)) {
-            printf("%i :: Player fighter %s died\n", step, *getPetTextByID(PlayerFighter->id)->name);
-            applyFaintTrigger(
-                    0,
-                    step,
-                    playerTeam,
-                    enemyTeam,
-                    PlayerFighter);
-        }
-
-        if (isDead(EnemyFighter)) {
-            printf("%i :: Enemy fighter %s died\n", step, *getPetTextByID(EnemyFighter->id)->name);
-            applyFaintTrigger(
-                    1,
-                    step,
-                    enemyTeam,
-                    playerTeam,
-                    EnemyFighter);
-        }
+        int playerAttack = getPetAttack(PlayerFighter);
+        int enemyAttack = getPetAttack(EnemyFighter);
+        damagePet(1, playerTeam, enemyTeam, storeTeam, PlayerFighter, enemyAttack);
+        damagePet(0, playerTeam, enemyTeam, storeTeam, EnemyFighter, playerAttack);
+        resolveAnimation();
+        sleep(30);
 
         step = stepForward(step);
         if (step < 0) {
@@ -354,6 +312,17 @@ const struct PetText * getPlayerTeamPetText(int index) {
 }
 const struct PetText * getEnemyTeamPetText(int index) {
     return getPetTextByID(enemyTeam[index].id);
+}
+
+struct Pet * getPetByPin(int pin) {
+    for (int i=0; i<5; i++) {
+        if (playerTeam[i].pin == pin) {
+            return &playerTeam[i];
+        }
+        if (enemyTeam[i].pin == pin) {
+            return &enemyTeam[i];
+        }
+    }
 }
 
 /* Battle:

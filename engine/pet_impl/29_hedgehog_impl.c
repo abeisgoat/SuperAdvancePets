@@ -30,7 +30,7 @@ void hedgehogTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
         struct Pet * pet = &us[i];
 
         if (pet->id) {
-            damagePet(pet, damage);
+            damagePet(usOrThem, us, them, store, pet, damage);
         }
     }
 
@@ -38,7 +38,7 @@ void hedgehogTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
         struct Pet * pet = &them[i];
 
         if (pet->id) {
-            damagePet(pet, damage);
+            damagePet(usOrThem, us, them, store, pet, damage);
         }
     }
 }

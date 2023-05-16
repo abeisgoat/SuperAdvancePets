@@ -45,7 +45,7 @@ Generate background data
 
 ```bash
 cd sprites/generated
-grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -ftc
+grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -mLs -ftc
 cd ../..
 ```
 
@@ -80,7 +80,7 @@ echo "#endif //SUPERADVANCEPETS_UI_H" >> sprites/generated/ui.h
 ```
 
 
-Cut Up UI Sheet
+Make Graphics
 ```bash
 cd sprites/ui
 rm pngs/*
@@ -135,15 +135,48 @@ mv ui_16x16_29.png pngs/uiDice6.png
 mv ui_16x16_30.png pngs/uiCursorOpen.png
 mv ui_16x16_31.png pngs/uiCursorClose.png
 
+mv ui_16x16_46.png pngs/uiButtonAOutline.png
+mv ui_16x16_47.png pngs/uiButtonBOutline.png
+
 rm ui_16x16_*.png
 convert ui.png -crop 4x8@ +repage +adjoin ui_32x16_%d.png
 mv ui_32x16_2.png pngs/uiLeftBumperRoll.png
 mv ui_32x16_3.png pngs/uiRightBumperFight.png
 
+mv ui_32x16_22.png pngs/uiLabelFreeze.png
+mv ui_32x16_24.png pngs/uiLabelCancel.png
+mv ui_32x16_25.png pngs/uiLabelSell.png
+mv ui_32x16_26.png pngs/uiLabelBuy.png
+mv ui_32x16_27.png pngs/uiLabelMove.png
+mv ui_32x16_28.png pngs/uiLabelStack.png
+mv ui_32x16_29.png pngs/uiLabelPlace.png
+mv ui_32x16_30.png pngs/uiLabelSwap.png
 rm ui_32x16_*.png
 convert ui.png -crop 2x4@ +repage +adjoin ui_64x32_%d.png
 
 mv ui_64x32_4.png pngs/uiModal.png
 rm ui_64x32_*.png
 cd ../..
+
+rm -rf sprites/generated
+mkdir sprites/generated
+cd sprites/generated
+grit ../animals/pngs/*.png ../ui/pngs/*.png -pS -gB8 -gTFFAAFF -ftc -Osprites
+cd ../..
+
+cd sprites/generated
+grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -mLs  -ftc
+cd ../..
+
+rm sprites/generated/ui.h
+echo "#ifndef SUPERADVANCEPETS_UI_H" > sprites/generated/ui.h
+echo "#define SUPERADVANCEPETS_UI_H" >> sprites/generated/ui.h
+for i in sprites/ui/pngs/*.png; do
+    [ -f "$i" ] || break
+    filename=$(basename -- $i)
+    filename="${filename%.*}"
+    echo $filename
+    echo "#include \"${filename}.h\"" >> sprites/generated/ui.h
+done
+echo "#endif //SUPERADVANCEPETS_UI_H" >> sprites/generated/ui.h
 ```

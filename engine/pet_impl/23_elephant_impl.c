@@ -25,7 +25,7 @@ void elephantTriggerBeforeAttack(int usOrThem, PetTeam us, PetTeam them, struct 
         int damage = 1;
 
         if (adjacentPetBehind->id > 0) {
-            damagePet(adjacentPetBehind, damage);
+            damagePet(usOrThem, us, them, store, adjacentPetBehind, damage);
         }
     }
 }

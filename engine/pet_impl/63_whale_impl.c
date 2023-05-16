@@ -20,7 +20,7 @@ void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pe
         int friendPos = petPosition(usOrThem, us, them, friend);
         animateDamageToTeamPosition(selfPos, friendPos);
         resolveAnimation();
-        damagePet(friend, damage);
+        damagePet(usOrThem, us, them, store, friend, damage);
         selfPet->id = (friend->id) + 300;
     }
 }

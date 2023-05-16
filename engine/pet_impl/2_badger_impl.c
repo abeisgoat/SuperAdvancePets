@@ -33,10 +33,10 @@ void badgerTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * sel
     }
 
     if (adjacentPetLeft->id > 0) {
-        damagePet(adjacentPetLeft, damage);
+        damagePet(usOrThem, us, them, store, adjacentPetLeft, damage);
     }
 
     if (adjacentPetRight->id > 0) {
-        damagePet(adjacentPetRight, damage);
+        damagePet(usOrThem, us, them, store, adjacentPetRight, damage);
     }
 }

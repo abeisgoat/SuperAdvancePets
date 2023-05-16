@@ -1,9 +1,11 @@
 #include "pets.h"
+#include "../src/animations.h"
+#include "triggers.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int isDead(struct Pet *pet) {
-    return pet->health + pet->battleModifierHealth <= 0 ? 1 : 0;
+    return (pet->health + pet->battleModifierHealth) <= 0;
 }
 
 int expToLevel(int exp) {
@@ -39,6 +41,7 @@ struct Pet EmptyPet = {
         .battleModifierAttack = 0,
         .heldItem = 0,
         .activations=0,
+        .pin=0
 //        .hurt=0
 };
 
@@ -206,12 +209,6 @@ struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos) {
 }
 
 
-void damagePet(struct Pet *pet, int damage) {
-    //TODO: Check for shields
-    pet->hurt = 1;
-    pet->battleModifierHealth -= damage;
-}
-
 int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them) {
     if (usOrThem == 0) {
         for (int i=4; i>=0; i--) {
@@ -258,10 +255,16 @@ int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet) {
 }
 
 int getPetAttack(struct Pet *pet) {
-    return pet->attack + pet->battleModifierAttack;
+    int attack =pet->attack + pet->battleModifierAttack;
+    if (attack < 0) return 0;
+    if (attack > 50) return 50;
+    return attack;
 }
 int getPetHealth(struct Pet *pet) {
-    return pet->health + pet->battleModifierHealth;
+    int health = pet->health + pet->battleModifierHealth;
+    if (health < 0) return 0;
+    if (health > 50) return 50;
+    return health;
 }
 
 void clonePet(struct Pet * src, struct Pet * dest) {
@@ -273,6 +276,7 @@ void clonePet(struct Pet * src, struct Pet * dest) {
     dest->experience = src->experience;
     dest->heldItem = src->heldItem;
     dest->tier = src->tier;
+    dest->pin = src->pin;
 }
 
 void summonPet(int petId, struct Pet * dest) {
@@ -411,7 +415,31 @@ int shuffleLeftUntilEmpty(PetTeam team) {
     return shuffled;
 }
 
+void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage) {
+    //TODO: Check for shields
+    pet->battleModifierHealth -= damage;
 
+    if (isDead(pet)) {
+
+//        for (int i=0; i<5; i++) {
+//            if (&us[i] == pet) {
+//                usOrThem = 0;
+//            }
+//            if (&them[i] == pet) {
+//                usOrThem = 1;
+//            }
+//        }
+
+        animateDeath(pet);
+        applyFaintTrigger(
+                usOrThem,
+                us,
+                them,
+                pet, store);
+        emptyPet(pet);
+    }
+
+}
 
 void printPet(struct Pet * pet) {
     const struct PetText * text = getPetTextByID(pet->id);

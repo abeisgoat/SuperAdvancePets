@@ -13,6 +13,6 @@ void leopardTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct 
         int damage = selfPet->attack * .5;
         animateDamageToTeamPosition(selfPos, enemyPos);
         resolveAnimation();
-        damagePet(enemy, damage);
+        damagePet(usOrThem, us, them, store, enemy, damage);
     }
 }

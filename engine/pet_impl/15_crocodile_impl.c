@@ -14,6 +14,6 @@ void crocodileTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struc
         struct Pet * enemy = getPetByPosition(usOrThem, us, them, lastEnemyPosition);
         animateDamageToTeamPosition(selfPos, lastEnemyPosition);
         resolveAnimation();
-        damagePet(enemy, 8);
+        damagePet(usOrThem, us, them, store, enemy, 8);
     }
 }

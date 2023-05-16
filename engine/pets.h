@@ -14,6 +14,7 @@ struct Pet {
     int hurt;
     int cost;
     int activations;
+    int pin;
 };
 
 const struct PetText {

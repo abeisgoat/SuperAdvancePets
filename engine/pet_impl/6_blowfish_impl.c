@@ -30,6 +30,6 @@ void blowfishTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
     }
 
     if (enemy->id > 0) {
-        damagePet(enemy, damage);
+        damagePet(usOrThem, us, them, store, enemy, damage);
     }
 }

@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "../sprites/animals.h"
+#include "../sprites/generated/ui.h"
+#include "mem_manager_enums.h"
 
 struct GfxCacheEntry {
     int id;
@@ -246,4 +248,111 @@ void unusePetGfxMem(int id) {
             }
         }
     }
+}
+
+const int memStartOfNumbers = (12 * 8) + 4;
+const int memStartOfWideUI =  memStartOfNumbers + 80;
+const int memStartOfLabels = memStartOfWideUI + 80;
+const int memStartOfLvls = memStartOfLabels + 44;
+const int memStartOfExp = memStartOfLvls + 8 * 4;
+const int memStartOfIcons = memStartOfExp + 32;
+const int memCursor = memStartOfIcons + 16;
+const int memStartOfSquareUI =  memCursor + 16;
+
+int getMemForNumber(int num) {
+    return memStartOfNumbers + (num * 4);
+}
+
+int getMemFor32x16UI(enum UIElements32x16 element) {
+    return memStartOfWideUI + element * 16;
+}
+
+int getMemFor16x16UI(enum UIElements16x16 element) {
+    return memStartOfSquareUI + element * 8;
+}
+
+int getBannerTopForLvl(int lvl) {
+    return memStartOfLvls + lvl * 8;
+}
+
+int getBannerBottomForExp(int exp) {
+    return memStartOfExp + exp * 8;
+}
+
+int getMemForUIIcon(enum UIIcon icon) {
+    return memStartOfIcons + icon * 4;
+}
+
+int getMemForCursor(int frame) {
+    return memCursor + (frame * 8);
+}
+
+int loadLabel(int upperOrLower, enum UILabels label) {
+    int memPos = memStartOfLabels + upperOrLower * 16;
+    switch (label) {
+        case UILabel_Buy:
+            memcpy(&tile_mem[4][memPos], uiLabelBuyTiles, uiLabelBuyTilesLen);
+            break;
+        case UILabel_Sell:
+            memcpy(&tile_mem[4][memPos], uiLabelSellTiles, uiLabelSellTilesLen);
+            break;
+        case UILabel_Cancel:
+            memcpy(&tile_mem[4][memPos], uiLabelCancelTiles, uiLabelCancelTilesLen);
+            break;
+        case UILabel_Freeze:
+            memcpy(&tile_mem[4][memPos], uiLabelFreezeTiles, uiLabelFreezeTilesLen);
+            break;
+        case UILabel_Move:
+            memcpy(&tile_mem[4][memPos], uiLabelMoveTiles, uiLabelMoveTilesLen);
+            break;
+        case UILabel_Stack:
+            memcpy(&tile_mem[4][memPos], uiLabelStackTiles, uiLabelStackTilesLen);
+            break;
+        case UILabel_Place:
+            memcpy(&tile_mem[4][memPos], uiLabelPlaceTiles, uiLabelPlaceTilesLen);
+            break;
+        case UILabel_Swap:
+            memcpy(&tile_mem[4][memPos], uiLabelSwapTiles, uiLabelSwapTilesLen);
+            break;
+    }
+
+    return memPos;
+}
+
+void initSpriteMem() {
+    // We use first addresses 12*8 address for 12 possible animals on screen. (full team + 7 store spots)
+    memcpy(&tile_mem[4][getMemForNumber(0)], num0Tiles, num0TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(1)], num1Tiles, num1TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(2)], num2Tiles, num2TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(3)], num3Tiles, num3TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(4)], num4Tiles, num4TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(5)], num5Tiles, num5TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(6)], num6Tiles, num6TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(7)], num7Tiles, num7TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(8)], num8Tiles, num8TilesLen);
+    memcpy(&tile_mem[4][getMemForNumber(9)], num9Tiles, num9TilesLen);
+
+    // Two empty spaces for labels
+    memcpy(&tile_mem[4][getMemFor32x16UI(UIElement_LeftBumperRoll)], uiLeftBumperRollTiles, uiLeftBumperRollTilesLen);
+    memcpy(&tile_mem[4][getMemFor32x16UI(UIElement_RightBumperFight)], uiRightBumperFightTiles, uiRightBumperFightTilesLen);
+
+    memcpy(&tile_mem[4][getBannerTopForLvl(1)], uiBannerLvl1Tiles, uiBannerLvl1TilesLen);
+    memcpy(&tile_mem[4][getBannerTopForLvl(2)], uiBannerLvl2Tiles, uiBannerLvl2TilesLen);
+    memcpy(&tile_mem[4][getBannerTopForLvl(3)], uiBannerLvl3Tiles, uiBannerLvl3TilesLen);
+
+    memcpy(&tile_mem[4][getBannerBottomForExp(0)], uiBannerExpZeroTiles, uiBannerExpZeroTilesLen);
+    memcpy(&tile_mem[4][getBannerBottomForExp(1)], uiBannerExpOneTiles, uiBannerExpOneTilesLen);
+    memcpy(&tile_mem[4][getBannerBottomForExp(2)], uiBannerExpTwoTiles, uiBannerExpTwoTilesLen);
+    memcpy(&tile_mem[4][getBannerBottomForExp(3)], uiBannerExpThreeTiles, uiBannerExpThreeTilesLen);
+
+    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Coin)], uiCoin8x8Tiles, uiCoin8x8TilesLen);
+    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Hearts)], uiHeart8x8Tiles, uiHeart8x8TilesLen);
+    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Turns)], uiTurns8x8Tiles, uiTurns8x8TilesLen);
+
+    memcpy(&tile_mem[4][getMemForCursor(0)], uiCursorOpenTiles, uiCursorOpenTilesLen);
+    memcpy(&tile_mem[4][getMemForCursor(1)], uiCursorCloseTiles, uiCursorCloseTilesLen);
+
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Btn_A_Outline)], uiButtonAOutlineTiles, uiButtonAOutlineTilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Btn_B_Outline)], uiButtonBOutlineTiles, uiButtonBOutlineTilesLen);
+//    memcpy(&tile_mem[4][endOfNums + 32], uiModalTiles, uiModalTilesLen);
 }
