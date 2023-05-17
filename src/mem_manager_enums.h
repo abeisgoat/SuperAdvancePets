@@ -30,4 +30,11 @@ enum UIElements16x16 {
     UIElement_Btn_A_Outline,
     UIElement_Btn_B_Outline
 };
+
+enum UIThrowable {
+    UIThrowable_Stats,
+    UIThrowable_StatAttack,
+    UIThrowable_StatHealth,
+    UIThrowable_Damage
+};
 #endif //SUPERADVANCEPETSCLI_MEM_MANAGER_ENUMS_H

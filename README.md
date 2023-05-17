@@ -95,7 +95,9 @@ mv ui_8x8_17.png pngs/num6.png
 mv ui_8x8_18.png pngs/num7.png
 mv ui_8x8_19.png pngs/num8.png
 mv ui_8x8_20.png pngs/num9.png
-mv ui_8x8_21.png pngs/num10.png
+
+mv ui_8x8_5.png pngs/uiThrowableStatAttack.png
+mv ui_8x8_21.png pngs/uiThrowableDamage.png
 
 mv ui_8x8_6.png pngs/uiTrophy8x8.png
 mv ui_8x8_7.png pngs/uiCoin8x8.png

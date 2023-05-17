@@ -73,6 +73,7 @@ int isBattleOver() {
 }
 
 int stepForward(int step) {
+    resolveAnimation();
     if (playerTeamSize() == 0 && enemyTeamSize() == 0) {
         printf("[Tie]\n");
         return -1;
@@ -124,6 +125,7 @@ int battle() {
         int enemyHasPet = shuffleLeftUntilPet(enemyTeam);
         animateShuffleAtPosition(0, 0);
         resolveAnimation();
+
         sleep(30);
 
         if (playerHasPet != 2) {
@@ -171,10 +173,62 @@ int battle() {
 
         int playerAttack = getPetAttack(PlayerFighter);
         int enemyAttack = getPetAttack(EnemyFighter);
-        damagePet(1, playerTeam, enemyTeam, storeTeam, PlayerFighter, enemyAttack);
+        damagePet(1, enemyTeam, playerTeam, storeTeam, PlayerFighter, enemyAttack);
         damagePet(0, playerTeam, enemyTeam, storeTeam, EnemyFighter, playerAttack);
         resolveAnimation();
         sleep(30);
+
+        int hasTrigger = 1;
+        while (hasTrigger) {
+            hasTrigger = 0;
+            for (int i = 0; i < 10; i++) {
+                struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
+
+                if (isHurt(pet) && !isDead(pet)) {
+                    if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
+                        hasTrigger += applyHurtTrigger(
+                                0,
+                                playerTeam,
+                                enemyTeam,
+                                pet, storeTeam);
+                    } else {
+                        hasTrigger += applyHurtTrigger(
+                                1,
+                                enemyTeam,
+                                playerTeam,
+                                pet, storeTeam);
+                    }
+                    pet->hurt = 0;
+                }
+
+                if (isDead(pet)) {
+                    if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
+                        hasTrigger += applyFaintTrigger(
+                                0,
+                                playerTeam,
+                                enemyTeam,
+                                pet, storeTeam);
+                    } else {
+                        hasTrigger += applyFaintTrigger(
+                                1,
+                                enemyTeam,
+                                playerTeam,
+                                pet, storeTeam);
+                    }
+
+                    resolveAnimation();
+                }
+            }
+        }
+
+        for (int i=0; i<10; i++) {
+            struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
+            if (isDead(pet)) {
+                cleanUp(pet);
+                emptyPet(pet);
+
+            }
+        }
 
         step = stepForward(step);
         if (step < 0) {

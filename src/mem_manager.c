@@ -256,7 +256,8 @@ const int memStartOfLabels = memStartOfWideUI + 80;
 const int memStartOfLvls = memStartOfLabels + 44;
 const int memStartOfExp = memStartOfLvls + 8 * 4;
 const int memStartOfIcons = memStartOfExp + 32;
-const int memCursor = memStartOfIcons + 16;
+const int memThrowable = memStartOfIcons + 16;
+const int memCursor = memThrowable + 4;
 const int memStartOfSquareUI =  memCursor + 16;
 
 int getMemForNumber(int num) {
@@ -317,6 +318,25 @@ int loadLabel(int upperOrLower, enum UILabels label) {
     }
 
     return memPos;
+}
+
+int loadThrowable(enum UIThrowable label) {
+    switch (label) {
+        case UIThrowable_Damage:
+            memcpy(&tile_mem[4][memThrowable], uiThrowableDamageTiles, uiThrowableDamageTilesLen);
+            break;
+        case UIThrowable_StatHealth:
+            memcpy(&tile_mem[4][memThrowable], uiHeart8x8Tiles, uiHeart8x8TilesLen);
+            break;
+        case UIThrowable_StatAttack:
+            memcpy(&tile_mem[4][memThrowable], uiThrowableStatAttackTiles, uiThrowableStatAttackTilesLen);
+            break;
+        case UIThrowable_Stats:
+            memcpy(&tile_mem[4][ memThrowable], uiCoin8x8Tiles, uiCoin8x8TilesLen);
+            break;
+    }
+
+    return  memThrowable;
 }
 
 void initSpriteMem() {

@@ -6,7 +6,7 @@
 void blowfishTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Blowfish trigger Hurt");
 
-    struct Pet * enemy = randomOtherTeamMember(us, selfPet);
+    struct Pet * enemy = randomOtherTeamMember(them, selfPet);
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
 

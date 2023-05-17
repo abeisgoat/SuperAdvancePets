@@ -14,6 +14,7 @@ void clonePet(struct Pet * src, struct Pet * dest);
 int getPetAttack(struct Pet *pet);
 int getPetHealth(struct Pet *pet);
 int isDead(struct Pet *pet);
+int isHurt(struct Pet *pet);
 void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage);
 int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them);
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
@@ -36,4 +37,5 @@ struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos);
 void resetBankForTurn();
 void addBankMoney(int i);
 int spendBankMoney(int i);
+int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet);
 #endif

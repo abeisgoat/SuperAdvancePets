@@ -20,5 +20,6 @@ int getMemForUIIcon(enum UIIcon icon);
 int getMemForCursor(int frame);
 void initSpriteMem();
 int loadLabel(int upperOrLower, enum UILabels label);
+int loadThrowable(enum UIThrowable label);
 
 #endif //SUPERADVANCEPETS_PET_DATA_H

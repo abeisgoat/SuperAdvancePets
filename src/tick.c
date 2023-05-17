@@ -59,6 +59,10 @@ void updateAnimalSprites() {
 
             obj_set_pos(sprite, ps->screenX, ps->screenY);
 
+            if (getPetHealth(pet) == 0) {
+                sprite->attr1 ^= ATTR1_VFLIP;
+            }
+
             if (ps->flip) {
                 sprite->attr1 ^= ATTR1_HFLIP;
             }
@@ -167,6 +171,10 @@ void setScene(int scene) {
     activeScene = scene;
 }
 
+int getScreenX() {
+    return screenX;
+}
+
 int getScene() {
     return activeScene;
 }
@@ -221,6 +229,9 @@ void screenAnimalSprites() {
     }
 }
 
+void refreshOAM() {
+    oam_copy(oam_mem, obj_buffer, 127);
+}
 // Progress main game loop
 void tickMainLoop() {
     vid_vsync();
@@ -234,6 +245,5 @@ void tickMainLoop() {
 
     REG_BG1HOFS = screenX;
     REG_BG1VOFS = screenY;
-
-    oam_copy(oam_mem, obj_buffer, 127);
+    refreshOAM();
 }

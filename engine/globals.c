@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int isHurt(struct Pet *pet) {
+    return pet->hurt > 0;
+}
+
 int isDead(struct Pet *pet) {
-    return (pet->health + pet->battleModifierHealth) <= 0;
+    return pet->id > 0 && (pet->health + pet->battleModifierHealth) <= 0;
 }
 
 int expToLevel(int exp) {
@@ -415,30 +419,21 @@ int shuffleLeftUntilEmpty(PetTeam team) {
     return shuffled;
 }
 
+int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet) {
+    for (int i=0; i<=4;i++) {
+        if (&us[i] == pet) {
+            return 0;
+        }
+        if (&them[i] == pet) {
+            return 1;
+        }
+    }
+}
+
 void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage) {
     //TODO: Check for shields
     pet->battleModifierHealth -= damage;
-
-    if (isDead(pet)) {
-
-//        for (int i=0; i<5; i++) {
-//            if (&us[i] == pet) {
-//                usOrThem = 0;
-//            }
-//            if (&them[i] == pet) {
-//                usOrThem = 1;
-//            }
-//        }
-
-        animateDeath(pet);
-        applyFaintTrigger(
-                usOrThem,
-                us,
-                them,
-                pet, store);
-        emptyPet(pet);
-    }
-
+    pet->hurt++;
 }
 
 void printPet(struct Pet * pet) {
