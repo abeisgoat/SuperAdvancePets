@@ -70,6 +70,50 @@ int isBattleOver() {
     return playerTeamSize() == 0 || enemyTeamSize() == 0 ? 1 : 0;
 }
 
+int buyItemAtPosition(int index) {
+    struct Pet *item = &enemyTeam[index];
+    int cost = 3;
+    if (item->cost) {
+        cost = item->cost;
+    }
+
+    if (getBankMoney() < cost) {
+        return 0;
+    }
+
+    int trigger = applyBuyTrigger(0, playerTeam, enemyTeam, item, enemyTeam);
+
+    if (!trigger) return 0;
+    spendBankMoney(cost);
+    resolveDeaths();
+    resolveAnimation();
+    emptyPet(item);
+    return 1;
+}
+
+int buyAssignItemAtPosition(int index, int target) {
+    struct Pet *item = &enemyTeam[index];
+    struct Pet *activatingPet = &playerTeam[target];
+
+    int cost = 3;
+    if (item->cost) {
+        cost = item->cost;
+    }
+
+    if (getBankMoney() < cost) {
+        return 0;
+    }
+
+    int trigger = applyBuyAssignTrigger(0, playerTeam, enemyTeam, item, activatingPet, enemyTeam);
+
+    if (!trigger) return 0;
+    spendBankMoney(cost);
+    resolveDeaths();
+    resolveAnimation();
+    emptyPet(item);
+    return 1;
+}
+
 int stepForward(int step) {
     resolveAnimation();
     if (playerTeamSize() == 0 && enemyTeamSize() == 0) {

@@ -1,18 +1,18 @@
 #include "../pets.h"
 #include <tonc_types.h>
 
-EWRAM_DATA const static struct PetText ChiliText = {
-        .name = "Chili",
+EWRAM_DATA const static struct PetText PeanutsText = {
+        .name = "Peanuts",
         .abilities = {
-                "Give an animal Splash Attack.",
+                "Give an insta-kill once.",
                 "",
                 ""},
 };
 
-EWRAM_DATA const static struct Pet Chili = {
+EWRAM_DATA const static struct Pet Peanuts = {
         .id =  103,
         .attack =  0,
         .health =  0,
         .tier = 5
 };
-void peanutsTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void peanutsTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

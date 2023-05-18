@@ -2,7 +2,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void sushiTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
+void sushiTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Sushi trigger Buy");
 
     struct Pet * friend1 = randomOtherTeamMember(us, itemPet);

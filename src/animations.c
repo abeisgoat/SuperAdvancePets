@@ -208,14 +208,15 @@ void resolveDeaths() {
         sleep(30);
     }
 
-
     for (int i=0; i<12; i++) {
         struct PetSprite *ps = getPetSprite(i);
         struct Pet *pet = getPetByPin(ps->petPin);
 
-        if (isDead(pet)) {
+        if (pet->id < 100 && isDead(pet)) {
             ps->petPin = 0;
-
+        }
+        if (pet->id > 100 && pet->activations > 0) {
+            ps->petPin = 0;
         }
     }
     deaths = 0;

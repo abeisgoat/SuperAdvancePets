@@ -468,7 +468,28 @@ void deserializePet(int num, struct Pet * dest) {
     printPet(dest);
 }
 
-int bank=10;
+/*
+ * Game state
+ */
+int bank=0;
+int canBoost=0;
+
+void resetGame() {
+    resetCanBoost();
+    resetBankForTurn();
+}
+
+void addCanBoost(int i) {
+    canBoost += i;
+}
+
+int getCanBoost() {
+    return canBoost;
+}
+
+void resetCanBoost() {
+    canBoost = 10;
+}
 
 void resetBankForTurn() {
     bank = 10;
@@ -478,11 +499,15 @@ void addBankMoney(int i) {
     bank += i;
 }
 
+int getBankMoney() {
+    return bank;
+}
+
 int spendBankMoney(int i) {
     if (bank < i) {
-        return -1;
+        return -i;
     } else {
-        bank -= 1;
+        bank -= i;
         return 0;
     }
 }

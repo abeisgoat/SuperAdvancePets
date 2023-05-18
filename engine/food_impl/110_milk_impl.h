@@ -12,4 +12,4 @@ EWRAM_DATA const static struct PetText MilkText = {
 EWRAM_DATA const static struct Pet Milk = {
         .id =  110,
 };
-void milkTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void milkTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

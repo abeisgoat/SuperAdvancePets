@@ -31,7 +31,8 @@ enum UILabels {
     UILabel_Move,
     UILabel_Stack,
     UILabel_Place,
-    UILabel_Swap
+    UILabel_Swap,
+    UILabel_None,
 };
 
 enum UIElements16x16 {

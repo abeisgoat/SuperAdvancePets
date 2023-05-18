@@ -9,3 +9,5 @@ const struct PetText * getEnemyTeamPetText(int index);
 int shuffleForward();
 void shuffleTeamsForward();
 struct Pet * getPetByPin(int pin);
+int buyItemAtPosition(int index);
+int buyAssignItemAtPosition(int index, int target);

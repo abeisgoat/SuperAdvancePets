@@ -39,7 +39,7 @@ void main() {
 
     };
     int enemies[5] = {
-            7320920,
+            29420920,
             1320910, // 1 Antbadger
             3320910, // 2 beaver
             4320910, // 2 bee
@@ -47,7 +47,7 @@ void main() {
     };
 
     int store[7] = {
-            1, 1, 2, 6, 0,  101, 102
+            29, 1, 2, 6, 0,  101, 102
     };
 
 
@@ -75,6 +75,8 @@ void main() {
     irq_add(II_VBLANK, mmVBlank);
     mmInitDefault((mm_addr)soundbank_bin, 20);
     initSpriteMem();
+
+    resetGame();
 
     // --- (1) Base TTE init for tilemaps ---
     tte_init_se(
@@ -128,54 +130,6 @@ void main() {
 
 
     int turn = 4;
-
-    int counters_x = 144;
-
-    if (turn < 10) {
-        counters_x += 8;
-    }
-
-    int counters_y = 144;
-
-
-    sprite = getOAMSprite(102);
-
-    tte_set_pos(counters_x + 8, counters_y);
-    sprintf(msg, "%d", 10);
-    tte_write(msg);
-
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Coin));
-
-    obj_set_pos(sprite, counters_x, counters_y+2);
-
-    sprite = getOAMSprite(103);
-
-
-    tte_set_pos(counters_x + 46, counters_y);
-    sprintf(msg, "%d", 10);
-    tte_write(msg);
-
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Turns));
-
-    obj_set_pos(sprite, counters_x + 32, counters_y+2);
-
-    tte_set_pos(counters_x + 72, counters_y);
-    sprintf(msg, "%d", turn);
-    tte_write(msg);
-
-    sprite = getOAMSprite(104);
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Hearts));
-
-    obj_set_pos(sprite, counters_x + 62, counters_y+2);
 
     sprite = getOAMSprite(105);
     obj_set_attr(sprite,

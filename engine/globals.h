@@ -37,6 +37,11 @@ struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos);
 void resetBankForTurn();
 void addBankMoney(int i);
 int spendBankMoney(int i);
+int getBankMoney();
 int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet);
 void printPet(struct Pet * pet);
+void addCanBoost(int i);
+int getCanBoost();
+void resetCanBoost();
+void resetGame();
 #endif

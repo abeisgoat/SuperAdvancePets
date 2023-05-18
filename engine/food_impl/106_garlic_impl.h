@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Garlic = {
         .health =  0,
         .tier = 3
 };
-void garlicTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void garlicTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

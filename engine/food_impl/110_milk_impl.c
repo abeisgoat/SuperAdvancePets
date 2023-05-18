@@ -3,7 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void milkTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
+void milkTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Milk trigger Buy");
 
     int givePos = storePosition(store, itemPet);

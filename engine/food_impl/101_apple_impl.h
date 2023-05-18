@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Apple = {
         .health =  0,
         .tier = 1
 };
-void appleTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void appleTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

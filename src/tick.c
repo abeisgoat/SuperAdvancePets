@@ -55,12 +55,13 @@ void updateAnimalSprites() {
             }
 
             int pb = 0;
+
             sprite = getOAMSprite(spriteCount++);
 
             obj_set_attr(sprite,
                          ATTR0_SQUARE | ATTR0_8BPP,
                          ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | gfxMem);
+                         ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | gfxMem);
 
             obj_set_pos(sprite, ps->screenX, ps->screenY);
 
@@ -70,6 +71,16 @@ void updateAnimalSprites() {
 
             if (ps->flip) {
                 sprite->attr1 ^= ATTR1_HFLIP;
+            }
+
+            sprite = getOAMSprite(spriteCount++);
+
+            if (pet->heldItem) {
+                obj_set_attr(sprite,
+                             ATTR0_SQUARE | ATTR0_8BPP,
+                             ATTR1_SIZE_8,
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(1)  | (getMemForUIIcon(pet->heldItem)));
+                obj_set_pos(sprite, ps->screenX + 10, ps->screenY + 11);
             }
 
             if (ps->visibleStats) {
@@ -85,7 +96,7 @@ void updateAnimalSprites() {
                     obj_set_attr(sprite,
                                  ATTR0_SQUARE | ATTR0_8BPP,
                                  ATTR1_SIZE_16,
-                                 ATTR2_PALBANK(pb) | topMem);
+                                 ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | topMem);
                     obj_set_pos(sprite, ps->screenX, ps->screenY - 30);
                 }
 
@@ -100,7 +111,7 @@ void updateAnimalSprites() {
                 obj_set_attr(sprite,
                              ATTR0_SQUARE | ATTR0_8BPP,
                              ATTR1_SIZE_16,
-                             ATTR2_PALBANK(pb) | bottomMem);
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | bottomMem);
                 obj_set_pos(sprite, ps->screenX, ps->screenY - 14 + bannerYOffset);
 
 
@@ -119,7 +130,7 @@ void updateAnimalSprites() {
                     obj_set_attr(sprite,
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
-                                 ATTR2_PALBANK(pb) | (getMemForNumber(healthTens)));
+                                 ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | (getMemForNumber(healthTens)));
                     obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 14 + numYOffset);
                 } else {
                     obj_set_pos(sprite, -16,-16);
@@ -134,7 +145,7 @@ void updateAnimalSprites() {
                 obj_set_attr(sprite,
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
-                             ATTR2_PALBANK(pb) | (getMemForNumber(healthOnes)));
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(healthOnes)));
                 obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 14 + numYOffset);
 
                 int damage = getPetAttack(pet);
@@ -151,7 +162,7 @@ void updateAnimalSprites() {
                     obj_set_attr(sprite,
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
-                                 ATTR2_PALBANK(pb) | (getMemForNumber(damageTens)));
+                                 ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(damageTens)));
                     obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 22 + numYOffset);
                 } else {
                     obj_set_pos(sprite, -16,-16);
@@ -164,18 +175,8 @@ void updateAnimalSprites() {
                 obj_set_attr(sprite,
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
-                             ATTR2_PALBANK(pb) | (getMemForNumber(damageOnes)));
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(damageOnes)));
                 obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 22 + numYOffset);
-
-                sprite = getOAMSprite(spriteCount++);
-
-                if (pet->heldItem) {
-                    obj_set_attr(sprite,
-                                 ATTR0_SQUARE | ATTR0_8BPP,
-                                 ATTR1_SIZE_8,
-                                 ATTR2_PALBANK(pb) | (getMemForUIIcon(pet->heldItem)));
-                    obj_set_pos(sprite, ps->screenX + 10, ps->screenY + 11);
-                }
             }
         }
 
