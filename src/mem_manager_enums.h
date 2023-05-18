@@ -5,9 +5,17 @@
 #ifndef SUPERADVANCEPETSCLI_MEM_MANAGER_ENUMS_H
 #define SUPERADVANCEPETSCLI_MEM_MANAGER_ENUMS_H
 enum UIIcon {
-    UIIcon_Coin=0,
-    UIIcon_Hearts=1,
-    UIIcon_Turns=2
+    UIIcon_Coin,
+    UIIcon_Hearts,
+    UIIcon_Turns,
+    UIIcon_Chili,
+    UIIcon_Melon,
+    UIIcon_Meatbone,
+    UIIcon_Honey,
+    UIIcon_Steak,
+    UIIcon_Mushroom,
+    UIIcon_Garlic,
+    UIIcon_Peanuts
 };
 
 enum UIElements32x16 {

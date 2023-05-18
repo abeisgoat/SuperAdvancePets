@@ -10,7 +10,6 @@ int frame;
 int cursorHeldX = 0;
 int cursorHeldPetID = 0;
 
-int cursorOpen=1;
 int cursorX = 0;
 int cursorY = 0;
 
@@ -19,8 +18,8 @@ int pb = 0;
 void resetAnimalSpritesForStore() {
     int xOffset=49;
     int petPins=0;
-    tte_set_pos(0,20);
-    for (int i=0; i <=4; i++) {
+
+    for (int i=0; i < 5; i++) {
         struct Pet *pet = getPlayerTeamPet(i);
         struct PetSprite * ps = getPetSprite(i);
 
@@ -32,7 +31,25 @@ void resetAnimalSpritesForStore() {
         }
 
         ps->worldX = xOffset + (18 * i);
-        ps->worldY = 49;
+        ps->worldY = 50;
+        ps->flip = 1;
+        ps->shortStat = 0;
+    }
+        tte_set_pos(32, 0);
+    for (int i=5; i <12; i++) {
+        struct Pet *pet = getEnemyTeamPet(i-5);
+        struct PetSprite * ps = getPetSprite(i);
+
+        if (pet->id) {
+            ps->shortStat = 1;
+            pet->pin = ++petPins;
+            ps->petPin = pet->pin;
+        } else {
+            ps->petPin = 0;
+        }
+
+        ps->worldX = xOffset + (18 * (i-5));
+        ps->worldY = 99;
         ps->flip = 1;
     }
 }
@@ -41,7 +58,7 @@ void resetAnimalSpritesForStore() {
 void prepareSceneStore() {
     resetAnimalSpritesForStore();
     updateAnimalSprites();
-    for (int i=0; i <=4; i++) {
+    for (int i=0; i <12; i++) {
         struct PetSprite * ps = getPetSprite(i);
         ps->visiblePet = true;
         ps->visibleStats = true;
@@ -55,13 +72,13 @@ void tickSceneStore() {
 
     if (frame % 30 == 0 && cursorHeldPetID == 0) {
         sprite = getOAMSprite(105);
-        if (cursorOpen) {
-            sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0);
-            cursorOpen = 0;
-        } else {
-            sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(1);
-            cursorOpen = 1;
-        }
+//        if (cursorOpen) {
+//            sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0);
+//            cursorOpen = 0;
+//        } else {
+//            sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(1);
+//            cursorOpen = 1;
+//        }
     }
 
 
@@ -72,18 +89,18 @@ void tickSceneStore() {
             cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
 
             if (cursorHeldPetID > 0) {
-                int heldMem = usePetGfxMem(cursorHeldPetID);
-                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | heldMem;
+                usePetGfxMem(cursorHeldPetID, -1);
+                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0);
                 getPetSprite(cursorX)->visiblePet = 0;
                 loadLabel(0, UILabel_Place);
             }
         } else {
-            unusePetGfxMem(cursorHeldPetID);
-            sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0);
+            resetCursorMem();
             getPetSprite(cursorHeldX)->visiblePet = 1;
             swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
             cursorHeldX = 0;
             cursorHeldPetID = 0;
+            frame = 0;
         }
         resetAnimalSpritesForStore();
         updateAnimalSprites();

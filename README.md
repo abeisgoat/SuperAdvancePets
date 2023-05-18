@@ -51,17 +51,17 @@ cd ../..
 
 Generate animals.h
 ```bash
-rm sprites/extras.h
-echo "#ifndef SUPERADVANCEPETS_ANIMALS_H" > sprites/extras.h
-echo "#define SUPERADVANCEPETS_ANIMALS_H" >> sprites/extras.h
-for i in sprites/extras/extras/*.bmp; do
+rm sprites/animals.h
+echo "#ifndef SUPERADVANCEPETS_ANIMALS_H" > sprites/generated/animals.h
+echo "#define SUPERADVANCEPETS_ANIMALS_H" >> sprites/generated/animals.h
+for i in sprites/animals/pngs/*.png; do
     [ -f "$i" ] || break
     filename=$(basename -- $i)
     filename="${filename%.*}"
     echo $filename
-    echo "#include \"${filename}.h\"" >> sprites/extras.h
+    echo "#include \"${filename}.h\"" >> sprites/generated/animals.h
 done
-echo "#endif //SUPERADVANCEPETS_ANIMALS_H" >> sprites/extras.h
+echo "#endif //SUPERADVANCEPETS_ANIMALS_H" >> sprites/generated/animals.h
 ```
 
 Generate ui.h
@@ -102,6 +102,15 @@ mv ui_8x8_21.png pngs/uiThrowableDamage.png
 mv ui_8x8_6.png pngs/uiTrophy8x8.png
 mv ui_8x8_7.png pngs/uiCoin8x8.png
 mv ui_8x8_22.png pngs/uiHeart8x8.png
+mv ui_8x8_138.png pngs/uiChili8x8.png
+mv ui_8x8_139.png pngs/uiMelon8x8.png
+mv ui_8x8_140.png pngs/uiMeatBone8x8.png
+mv ui_8x8_141.png pngs/uiHoney8x8.png
+mv ui_8x8_154.png pngs/uiSteak8x8.png
+mv ui_8x8_155.png pngs/uiMushroom8x8.png
+mv ui_8x8_156.png pngs/uiGarlic8x8.png
+mv ui_8x8_157.png pngs/uiPeanut8x8.png
+
 mv ui_8x8_23.png pngs/uiTurns8x8.png
 
 rm ui_8x8_*.png
@@ -139,6 +148,8 @@ mv ui_16x16_31.png pngs/uiCursorClose.png
 
 mv ui_16x16_46.png pngs/uiButtonAOutline.png
 mv ui_16x16_47.png pngs/uiButtonBOutline.png
+
+mv ui_16x16_62.png pngs/uiBannerShort.png
 
 rm ui_16x16_*.png
 convert ui.png -crop 4x8@ +repage +adjoin ui_32x16_%d.png

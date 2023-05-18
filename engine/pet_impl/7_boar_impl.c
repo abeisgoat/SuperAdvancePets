@@ -1,5 +1,6 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
 void boarTriggerBeforeAttack(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
@@ -17,6 +18,9 @@ void boarTriggerBeforeAttack(int usOrThem, PetTeam us, PetTeam them, struct Pet 
             stats *= 3;
             break;
     }
+
+    int selfPos = petPosition(usOrThem, us, them, selfPet);
+    animateStatsToTeamPosition(selfPos, selfPos);
 
     selfPet->battleModifierAttack += stats;
     selfPet->battleModifierHealth += stats;

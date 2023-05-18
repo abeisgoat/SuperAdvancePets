@@ -30,6 +30,7 @@ struct PetSprite * getPetSprite(int index) {
     return &petSprites[index];
 }
 
+int spritePerAnimals=8;
 void updateAnimalSprites() {
 //    for (int s=0; s<10; s++) {
 //        struct PetSprite *ps = &petSprites[s];
@@ -46,20 +47,24 @@ void updateAnimalSprites() {
 
         if (ps->petPin != 0 && ps->visiblePet) {
             struct Pet *pet = getPetByPin(ps->petPin);
+            int gfxMem = usePetGfxMem(pet->id, s);
 
-            int gfxMem = usePetGfxMem(pet->id);
 
-            u32 tid = gfxMem, pb = 0;
-            sprite = getOAMSprite(++spriteCount);
+            if (pet->id > 100) {
+                ps->visibleStats = 0;
+            }
+
+            int pb = 0;
+            sprite = getOAMSprite(spriteCount++);
 
             obj_set_attr(sprite,
                          ATTR0_SQUARE | ATTR0_8BPP,
                          ATTR1_SIZE_16,
-                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | tid);
+                         ATTR2_PALBANK(pb) | ATTR2_PRIO(3)  | gfxMem);
 
             obj_set_pos(sprite, ps->screenX, ps->screenY);
 
-            if (getPetHealth(pet) == 0) {
+            if (getPetHealth(pet) == 0 && pet->id < 100) {
                 sprite->attr1 ^= ATTR1_VFLIP;
             }
 
@@ -68,29 +73,46 @@ void updateAnimalSprites() {
             }
 
             if (ps->visibleStats) {
-                sprite = getOAMSprite(++spriteCount);
-
                 int lvl = expToLevel(pet->experience);
-
-                obj_set_attr(sprite,
-                             ATTR0_SQUARE | ATTR0_8BPP,
-                             ATTR1_SIZE_16,
-                             ATTR2_PALBANK(pb) | (getBannerTopForLvl(lvl)));
-                obj_set_pos(sprite, ps->screenX, ps->screenY - 30);
-
-                sprite = getOAMSprite(++spriteCount);;
-
                 int expRemaining = expToRemainingToLevelUp(pet->experience);
+                int bottomMem = getBannerBottomForExp(expRemaining);
+                int topMem = getBannerTopForLvl(lvl);
+
+                if (ps->shortStat) {
+                    bottomMem = getBannerBottomForExp(4);
+                } else {
+                    sprite = getOAMSprite(spriteCount++);
+                    obj_set_attr(sprite,
+                                 ATTR0_SQUARE | ATTR0_8BPP,
+                                 ATTR1_SIZE_16,
+                                 ATTR2_PALBANK(pb) | topMem);
+                    obj_set_pos(sprite, ps->screenX, ps->screenY - 30);
+                }
+
+                sprite = getOAMSprite(spriteCount++);
+
+                int bannerYOffset = 0;
+
+                if (ps->shortStat) {
+                    bannerYOffset = -2;
+                }
 
                 obj_set_attr(sprite,
                              ATTR0_SQUARE | ATTR0_8BPP,
                              ATTR1_SIZE_16,
-                             ATTR2_PALBANK(pb) | (getBannerBottomForExp(expRemaining)));
-                obj_set_pos(sprite, ps->screenX, ps->screenY - 14);
+                             ATTR2_PALBANK(pb) | bottomMem);
+                obj_set_pos(sprite, ps->screenX, ps->screenY - 14 + bannerYOffset);
 
+
+                int numYOffset = 0;
+                int numXOffset = 0;
+                if (ps->shortStat) {
+                    numYOffset += 6;
+                    numXOffset = -1;
+                }
                 int health = getPetHealth(pet);
 
-                sprite = getOAMSprite(++spriteCount);
+                sprite = getOAMSprite(spriteCount++);
                 if (health >= 10) {
                     int healthTens = health / 10;
 
@@ -98,12 +120,12 @@ void updateAnimalSprites() {
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
                                  ATTR2_PALBANK(pb) | (getMemForNumber(healthTens)));
-                    obj_set_pos(sprite, ps->screenX + 6, ps->screenY - 14);
+                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 14 + numYOffset);
                 } else {
                     obj_set_pos(sprite, -16,-16);
                 }
 
-                sprite = getOAMSprite(++spriteCount);
+                sprite = getOAMSprite(spriteCount++);
 
                 int healthOnes = health % 10;
 //            sprintf(msg, "%d", healthOnes);
@@ -113,11 +135,15 @@ void updateAnimalSprites() {
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | (getMemForNumber(healthOnes)));
-                obj_set_pos(sprite, ps->screenX + 10, ps->screenY - 14);
+                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 14 + numYOffset);
 
                 int damage = getPetAttack(pet);
 
-                sprite = getOAMSprite(++spriteCount);
+                if (ps->shortStat) {
+                    numYOffset += 1;
+                }
+
+                sprite = getOAMSprite(spriteCount++);
                 if (damage >= 10) {
 
                     int damageTens = damage / 10;
@@ -126,12 +152,12 @@ void updateAnimalSprites() {
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
                                  ATTR2_PALBANK(pb) | (getMemForNumber(damageTens)));
-                    obj_set_pos(sprite, ps->screenX + 6, ps->screenY - 22);
+                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 22 + numYOffset);
                 } else {
                     obj_set_pos(sprite, -16,-16);
                 }
 
-                sprite = getOAMSprite(++spriteCount);
+                sprite = getOAMSprite(spriteCount++);
 
                 int damageOnes = damage % 10;
 
@@ -139,13 +165,23 @@ void updateAnimalSprites() {
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | (getMemForNumber(damageOnes)));
-                obj_set_pos(sprite, ps->screenX + 10, ps->screenY - 22);
+                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 22 + numYOffset);
+
+                sprite = getOAMSprite(spriteCount++);
+
+                if (pet->heldItem) {
+                    obj_set_attr(sprite,
+                                 ATTR0_SQUARE | ATTR0_8BPP,
+                                 ATTR1_SIZE_8,
+                                 ATTR2_PALBANK(pb) | (getMemForUIIcon(pet->heldItem)));
+                    obj_set_pos(sprite, ps->screenX + 10, ps->screenY + 11);
+                }
             }
         }
 
-        for (int s=spriteCount; s<startSpriteCount+7; s++) {
-            sprite = getOAMSprite(++spriteCount);
-            obj_set_pos(sprite, -16, -16);
+        for (int s=spriteCount; s<startSpriteCount+spritePerAnimals; s++) {
+            sprite = getOAMSprite(spriteCount++);
+            obj_hide(sprite);
         }
     }
 }
@@ -224,7 +260,7 @@ void screenAnimalSprites() {
         ps->screenX = ps->worldX - screenX;
         ps->screenY = ps->worldY - screenY;
 
-        sprite = getOAMSprite(1 + (s * 7));
+        sprite = getOAMSprite((s * spritePerAnimals));
         obj_set_pos(sprite, ps->screenX, ps->screenY);
     }
 }

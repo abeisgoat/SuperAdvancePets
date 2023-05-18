@@ -45,8 +45,8 @@ struct Pet EmptyPet = {
         .battleModifierAttack = 0,
         .heldItem = 0,
         .activations=0,
-        .pin=0
-//        .hurt=0
+        .pin=0,
+        .hurt=0
 };
 
 struct Pet * randomOtherTeamMember(PetTeam team, struct Pet * exclude) {
@@ -136,8 +136,8 @@ void registerPet(int petId, const struct Pet * pet, const struct PetText * petTe
 }
 
 void registerFood(int petId, const struct Pet * pet, const struct PetText * petText) {
-    foods[petId] = pet;
-    foodTexts[petId] = petText;
+    foods[petId - 101] = pet;
+    foodTexts[petId - 101] = petText;
 
     switch (pet->tier) {
         case 1:
@@ -160,7 +160,11 @@ const struct PetText* getPetTextByID(int petId) {
 }
 
 struct Pet * getPetByID(int petId) {
-    return pets[petId];
+    if (petId < 100) {
+        return pets[petId];
+    } else {
+        return foods[petId-101];
+    }
 }
 
 int storePosition(PetTeam store, struct Pet *pet) {
@@ -281,6 +285,7 @@ void clonePet(struct Pet * src, struct Pet * dest) {
     dest->heldItem = src->heldItem;
     dest->tier = src->tier;
     dest->pin = src->pin;
+    dest->activations = src->activations;
 }
 
 void summonPet(int petId, struct Pet * dest) {
@@ -442,7 +447,7 @@ void printPet(struct Pet * pet) {
         printf("Unknown Pet!! Something is wrong %d", pet->id);
         return;
     }
-    printf("Pet :: %s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->health, expToLevel(pet->experience), pet->experience);
+    printf("%s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->health, expToLevel(pet->experience), pet->experience);
 }
 
 void deserializePet(int num, struct Pet * dest) {

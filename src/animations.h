@@ -14,5 +14,6 @@ void animateFighterAttack(struct Pet * fighterLeft, struct Pet * fighterRight);
 void animateShuffleAtPosition(int from, int to);
 void sleep(int frames);
 void animateDeath(struct Pet * structPet);
+void resolveDeaths();
 void cleanUp(struct Pet * pet);
 #endif //SUPERADVANCEPETSCLI_ANIMATIONS_H

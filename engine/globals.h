@@ -38,4 +38,5 @@ void resetBankForTurn();
 void addBankMoney(int i);
 int spendBankMoney(int i);
 int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet);
+void printPet(struct Pet * pet);
 #endif

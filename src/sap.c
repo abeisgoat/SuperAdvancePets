@@ -16,6 +16,7 @@
 #include "structs.h"
 #include "scene_store.h"
 #include "scene_battle.h"
+#include "../engine/impl.h"
 
 #define CBB_4 0
 #define SBB_4 2
@@ -30,25 +31,30 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            24310313, // 24 Fish
+            24510313, // 24 Fish
             34321114, // 34 Mammoth
-            35310910, // 35 Monkey,
-            6350444,
+            35610910, // 35 Monkey,
+            9350444,
             0,
 
     };
     int enemies[5] = {
-            2320940,
+            7320920,
             1320910, // 1 Antbadger
             3320910, // 2 beaver
             4320910, // 2 bee
             5320910, // 2 bison
-
-
     };
 
-    prepareTeams(friendly, enemies);
+    int store[7] = {
+            1, 1, 2, 6, 0,  101, 102
+    };
 
+
+    prepareTeams(friendly, enemies);
+    prepareStore(store);
+
+    tte_set_pos(32, 0);
 
     tickInit();
     // Background
@@ -88,9 +94,12 @@ void main() {
 
     pal_bg_bank[4][14]= CLR_GRAY;
 
-    tte_set_pos(80, 80);
+//    tte_set_pos(32, 0);
 
     char msg[50];
+
+//    sprintf(msg, "ID: %d", getEnemyTeamPet(5)->id);
+//    tte_write(msg);
 
     // Scroll around some
     int bg_x= 0, bg_y= -2;

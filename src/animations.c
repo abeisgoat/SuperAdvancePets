@@ -81,7 +81,12 @@ void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) 
     anim->x=getWorldXForPetPosition(from) - getScreenX() + 4;
     anim->dx= getWorldXForPetPosition(to) - getScreenX() + 4;
     anim->y=50;
-    anim->dy = anim->y;
+
+    if (from == to) {
+        anim->dy = anim->y-5;
+    } else {
+        anim->dy = anim->y;
+    }
     animations[animationLen].sprite = 100 + animationLen;
     animationLen++;
 }
@@ -155,7 +160,7 @@ void animateShuffleAtPosition(int from, int to) {
 }
 
 void animateDeath(struct Pet * pet) {
-    updateAnimalSprites();
+//    updateAnimalSprites();
     deaths++;
 }
 
@@ -198,6 +203,23 @@ void animateFighterAttack(struct Pet * fighterLeft, struct Pet * fighterRight) {
     rightSprite->worldX += 5;
 }
 
+void resolveDeaths() {
+    if (deaths) {
+        sleep(30);
+    }
+
+
+    for (int i=0; i<12; i++) {
+        struct PetSprite *ps = getPetSprite(i);
+        struct Pet *pet = getPetByPin(ps->petPin);
+
+        if (isDead(pet)) {
+            ps->petPin = 0;
+
+        }
+    }
+    deaths = 0;
+}
 void resolveAnimation() {
     while (1) {
         int in_progress=0;
@@ -211,14 +233,15 @@ void resolveAnimation() {
 
         if (!in_progress) break;
     }
-    if (deaths) {
-        updateAnimalSprites();
-        sleep(45);
-    }
-    deaths = 0;
+
     for (int a=0; a<animationLen; a++) {
         obj_set_pos(getOAMSprite(animations[a].sprite), -16, -16);
     }
+
+    if (animationLen) {
+        sleep(30);
+    }
+
     animationLen = 0;
     screenAnimalSprites();
     updateAnimalSprites();

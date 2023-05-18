@@ -9,5 +9,6 @@ struct PetSprite {
     int petPin;
     int visiblePet;
     int visibleStats;
+    int shortStat;
 };
 #endif

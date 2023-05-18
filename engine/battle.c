@@ -21,11 +21,9 @@ PetTeam playerTeam = {
         {},{},{},{},{}
 };
 PetTeam enemyTeam = {
-        {},{},{},{},{}
-};
-PetTeam storeTeam = {
         {},{},{},{},{}, {}, {}
 };
+PetTeam storeTeam = {};
 
 void printTeam() {
     printf("Player Team: ");
@@ -202,6 +200,7 @@ int battle() {
                 }
 
                 if (isDead(pet)) {
+                    animateDeath(pet);
                     if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
                         hasTrigger += applyFaintTrigger(
                                 0,
@@ -221,6 +220,7 @@ int battle() {
             }
         }
 
+        resolveDeaths();
         for (int i=0; i<10; i++) {
             struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
             if (isDead(pet)) {
@@ -330,6 +330,15 @@ void prepareEngine() {
     resetTeams();
 }
 
+void prepareStore(int store[7]) {
+    for (int i = 0; i < 7; i++) {
+        emptyPet(&enemyTeam[i]);
+        if (store[i] > 0) {
+            clonePet(getPetByID(store[i]), &enemyTeam[i]);
+        }
+    }
+}
+
 void prepareTeams(int friendly[5], int enemies[5]) {
     printf("Friendly Team:\n");
     for (int i=0; i <= 4; i++) {
@@ -354,6 +363,10 @@ void prepareTeams(int friendly[5], int enemies[5]) {
     }
 }
 
+struct Pet * getStoreTeamPet(int index) {
+    return &storeTeam[index];
+}
+
 struct Pet * getPlayerTeamPet(int index) {
     return &playerTeam[index];
 }
@@ -369,7 +382,7 @@ const struct PetText * getEnemyTeamPetText(int index) {
 }
 
 struct Pet * getPetByPin(int pin) {
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<7; i++) {
         if (playerTeam[i].pin == pin) {
             return &playerTeam[i];
         }

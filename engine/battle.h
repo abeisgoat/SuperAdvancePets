@@ -1,6 +1,7 @@
 int battle();
 void prepareEngine();
 void prepareTeams(int friendly[5], int enemies[5]);
+void prepareStore(int store[7]);
 struct Pet * getPlayerTeamPet(int index);
 struct Pet * getEnemyTeamPet(int index);
 const struct PetText * getPlayerTeamPetText(int index);
