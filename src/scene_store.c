@@ -360,7 +360,4 @@ void tickSceneStore() {
         }
 
     }
-
-    if (key_hit(KEY_START))
-        REG_DISPCNT ^= DCNT_OBJ_1D;
 }

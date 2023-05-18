@@ -81,6 +81,8 @@ void updateAnimalSprites() {
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | ATTR2_PRIO(1)  | (getMemForHeldItem(pet->heldItem)));
                 obj_set_pos(sprite, ps->screenX + 10, ps->screenY + 11);
+            } else {
+                obj_set_pos(sprite, -16, -16);
             }
 
             if (ps->visibleStats) {

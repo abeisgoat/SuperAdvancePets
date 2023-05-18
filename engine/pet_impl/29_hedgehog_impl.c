@@ -9,7 +9,7 @@ void hedgehogTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
     for (int i=0; i <= 4; i++) {
         struct Pet * pet = &us[i];
 
-        if (pet->id) {
+        if (pet->id && pet != selfPet) {
             animateDamageToTeamPosition(petPosition(usOrThem, us, them, selfPet), petPosition(usOrThem, us, them, pet));
         }
     }
@@ -17,7 +17,7 @@ void hedgehogTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
     for (int i=0; i <= 4; i++) {
         struct Pet * pet = &them[i];
 
-        if (pet->id) {
+        if (pet->id && pet != selfPet) {
             animateDamageToTeamPosition(petPosition(usOrThem, us, them, selfPet), petPosition(usOrThem, us, them, pet));
         }
     }

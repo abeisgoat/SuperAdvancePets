@@ -116,19 +116,19 @@ void animateShuffleAtPosition(int from, int to) {
     updateAnimalSprites();
     while (1) {
         int hasMovement = 0;
+        for (int i = 0; i < 10; i++) {
+            struct Pet *pet;
+            struct PetSprite *ps;
 
-        for (int i=0; i<10; i++) {
-            struct Pet * pet;
-            struct PetSprite * ps;
-
+            int thisHasMovement = 0;
             if (i < 5) {
                 pet = getPlayerTeamPet(i);
             } else {
-                pet = getEnemyTeamPet(i-5);
+                pet = getEnemyTeamPet(i - 5);
             }
 
 
-            for (int s = 0; s<12; s++) {
+            for (int s = 0; s < 12; s++) {
                 ps = getPetSprite(s);
                 if (ps->petPin == pet->pin) {
                     break;
@@ -140,16 +140,18 @@ void animateShuffleAtPosition(int from, int to) {
                 if (abs(ps->worldX - idealX) > 3) {
                     if (idealX > ps->worldX) {
                         ps->worldX += 1;
-                        hasMovement = 1;
+                        thisHasMovement = 1;
                     }
                     if (idealX < ps->worldX) {
                         ps->worldX -= 1;
-                        hasMovement = 1;
+                        thisHasMovement = 1;
                     }
                 } else {
                     ps->worldX = idealX;
                 }
             }
+
+            hasMovement += thisHasMovement;
         }
 
         if (hasMovement == 0) break;
@@ -224,8 +226,10 @@ void resolveDeaths() {
 void resolveAnimation() {
     while (1) {
         int in_progress=0;
+
         for (int a=0; a<animationLen; a++) {
-            if (animateThrowableToTeamPosition(&animations[a])) {
+            struct ThrowableQueue * anim = &animations[a];
+            if (animateThrowableToTeamPosition(anim)) {
                 in_progress = 1;
             }
         }

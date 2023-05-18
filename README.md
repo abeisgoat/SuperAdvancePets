@@ -45,7 +45,8 @@ Generate background data
 
 ```bash
 cd sprites/generated
-grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -mLs -ftc
+grit ../extras/bg.png -gTFFAAFF -gB8 -mRtpf -mLs -ftc
+grit ../extras/logo.png -gTFFAAFF -gB8 -mLs -ftc
 cd ../..
 ```
 

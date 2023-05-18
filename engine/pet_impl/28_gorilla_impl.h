@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Gorilla = {
         .health =  9,
         .tier = 6
 };
-void gorillaTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+int gorillaTriggerHurt(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

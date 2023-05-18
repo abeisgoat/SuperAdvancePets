@@ -2050,6 +2050,30 @@ engine/triggers.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/triggers.c.s
 .PHONY : engine/triggers.c.s
 
+src/music.o: src/music.c.o
+.PHONY : src/music.o
+
+# target to build an object file
+src/music.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/music.c.o
+.PHONY : src/music.c.o
+
+src/music.i: src/music.c.i
+.PHONY : src/music.i
+
+# target to preprocess a source file
+src/music.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/music.c.i
+.PHONY : src/music.c.i
+
+src/music.s: src/music.c.s
+.PHONY : src/music.s
+
+# target to generate assembly for a file
+src/music.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/music.c.s
+.PHONY : src/music.c.s
+
 src/sap.o: src/sap.c.o
 .PHONY : src/sap.o
 
@@ -2393,6 +2417,9 @@ help:
 	@echo "... engine/triggers.o"
 	@echo "... engine/triggers.i"
 	@echo "... engine/triggers.s"
+	@echo "... src/music.o"
+	@echo "... src/music.i"
+	@echo "... src/music.s"
 	@echo "... src/sap.o"
 	@echo "... src/sap.i"
 	@echo "... src/sap.s"

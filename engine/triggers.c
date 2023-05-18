@@ -35,9 +35,11 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
         case 6: // Blowfish
             blowfishTriggerHurt(usOrThem, us, them, pet, pet, store);
             return 1;
-        case 9:
+        case 9: // Camel
             camelTriggerHurt(usOrThem, us, them, pet, pet, store);
             return 1;
+        case 28: // Gorilla
+            return gorillaTriggerHurt(usOrThem, us, them, pet, pet, store);
     }
     return 0;
 }

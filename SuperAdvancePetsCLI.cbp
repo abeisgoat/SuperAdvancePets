@@ -619,14 +619,16 @@
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/sprites/animals.h">
-			<Option target="SuperAdvancePets"/>
-			<Option target="SuperAdvancePetsCLI"/>
-		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/animations.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager_enums.h">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/music.c">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/music.h">
 			<Option target="SuperAdvancePets"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/sap.c">
