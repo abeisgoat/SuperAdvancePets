@@ -87,7 +87,7 @@ void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) 
     } else {
         anim->dy = anim->y;
     }
-    animations[animationLen].sprite = 100 + animationLen;
+    animations[animationLen].sprite = 110 + animationLen;
     animationLen++;
 }
 

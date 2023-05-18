@@ -240,7 +240,7 @@ int battle() {
                                 playerTeam,
                                 pet, storeTeam);
                     }
-                    pet->hurt = 0;
+                    pet->hurt--;
                 }
 
                 if (isDead(pet)) {

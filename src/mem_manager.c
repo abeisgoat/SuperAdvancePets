@@ -15,6 +15,10 @@ const int memThrowable = memStartOfIcons + 48;
 const int memCursor = memThrowable + 4;
 const int memStartOfSquareUI =  memCursor + 16;
 
+int getMemForPet(int s) {
+    return s * 10;
+}
+
 int getMemForNumber(int num) {
     return memStartOfNumbers + (num * 4);
 }
@@ -41,6 +45,27 @@ int getBannerShort() {
 
 int getMemForUIIcon(enum UIIcon icon) {
     return memStartOfIcons + icon * 4;
+}
+
+int getMemForHeldItem(int id) {
+    switch (id) {
+        case 103:
+            return getMemForUIIcon(UIIcon_Chili);
+        case 106:
+            return getMemForUIIcon(UIIcon_Garlic);
+        case 107:
+            return getMemForUIIcon(UIIcon_Honey);
+        case 108:
+            return getMemForUIIcon(UIIcon_Meatbone);
+        case 109:
+            return getMemForUIIcon(UIIcon_Melon);
+        case 111:
+            return getMemForUIIcon(UIIcon_Mushroom);
+        case 116:
+            return getMemForUIIcon(UIIcon_Steak);
+        case 118:
+            return getMemForUIIcon(UIIcon_Peanuts);
+    }
 }
 
 int getMemForCursor(int frame) {
@@ -139,7 +164,7 @@ void initSpriteMem() {
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Melon)], uiMelon8x8Tiles, uiMelon8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Meatbone)], uiMeatBone8x8Tiles, uiMeatBone8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Honey)], uiHoney8x8Tiles, uiHoney8x8TilesLen);
-    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Honey)], uiSteak8x8Tiles, uiSteak8x8TilesLen);
+    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Steak)], uiSteak8x8Tiles, uiSteak8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Mushroom)],uiMushroom8x8Tiles, uiMeatBone8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Garlic)], uiGarlic8x8Tiles, uiGarlic8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Peanuts)], uiPeanut8x8Tiles, uiPeanut8x8TilesLen);

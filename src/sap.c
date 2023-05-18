@@ -31,9 +31,9 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            24510313, // 24 Fish
+            24010313, // 24 Fish
             34321114, // 34 Mammoth
-            35610910, // 35 Monkey,
+            35010910, // 35 Monkey,
             9350444,
             0,
 
@@ -47,7 +47,7 @@ void main() {
     };
 
     int store[7] = {
-            29, 1, 2, 6, 0,  101, 102
+            29, 1, 2, 6, 0,  101, 107
     };
 
 

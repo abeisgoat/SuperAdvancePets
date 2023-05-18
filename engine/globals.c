@@ -437,7 +437,7 @@ int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet) {
 
 void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage) {
     //TODO: Check for shields
-    pet->battleModifierHealth -= damage;
+    pet->health -= damage;
     pet->hurt++;
 }
 

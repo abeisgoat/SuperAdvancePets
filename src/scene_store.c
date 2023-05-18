@@ -15,6 +15,7 @@ int cursorHeldPetID = 0;
 int cursorX = 0;
 int cursorY = 0;
 int cursorOpen = 0;
+int cursorMem = 0;
 
 int pb = 0;
 
@@ -95,6 +96,19 @@ void updateLabels() {
             loadLabel(0, UILabel_Buy);
         }
     }
+}
+
+void cancelAction() {
+    cursorMem = getMemForCursor(0);
+    int spriteOffset = cursorHeldY * 5;
+    getPetSprite(cursorHeldX + spriteOffset)->visiblePet = 1;
+    getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
+    cursorY = cursorHeldY;
+    cursorX = cursorHeldX;
+    cursorHeldX = 0;
+    cursorHeldY = 0;
+    cursorHeldPetID = 0;
+    frame = 0;
 }
 
 void updateGameplayInfo() {
@@ -179,11 +193,23 @@ void tickSceneStore() {
     OBJ_ATTR *sprite = getOAMSprite(105);
     frame++;
 
-    if (frame % 30 == 0 && cursorHeldPetID == 0) {
-        cursorOpen = cursorOpen ? 0 : 1;
+    if (cursorMem == 0) {
+        cursorMem = getMemForCursor(0);
     }
 
-    sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | getMemForCursor(cursorOpen);
+    if (frame % 30 == 0 && cursorHeldPetID == 0) {
+        cursorOpen = cursorOpen ? 0 : 1;
+        cursorMem = getMemForCursor(cursorOpen);
+    }
+
+    sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
+
+    if (key_hit(KEY_B)) {
+        cancelAction();
+        resetAnimalSpritesForStore();
+        updateAnimalSprites();
+        updateLabels();
+    }
 
     if (key_hit(KEY_A) && cursorY == 0) {
         sprite = getOAMSprite(105);
@@ -194,19 +220,31 @@ void tickSceneStore() {
 
             if (cursorHeldPetID > 0) {
                 usePetGfxMem(cursorHeldPetID, -1);
-//                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | getMemForCursor(0);
                 getPetSprite(cursorX)->visiblePet = 0;
                 cursorOpen = 0;
                 loadLabel(0, UILabel_Place);
             }
         } else {
-            resetCursorMem();
-            getPetSprite(cursorHeldX)->visiblePet = 1;
-            swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
-            cursorHeldX = 0;
-            cursorHeldY = 0;
-            cursorHeldPetID = 0;
-            frame = 0;
+            if (cursorHeldPetID > 100) {
+                if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0){
+                    buyAssignItemAtPosition(cursorHeldX, cursorX);
+                }
+                int oldX = cursorX;
+                int oldY = cursorY;
+                cancelAction();
+                cursorY = oldY;
+                cursorX = oldX;
+            } else {
+                if (cursorHeldX == 0) {
+                    swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
+                }
+
+                cursorHeldX = 0;
+                cursorHeldY = 0;
+                cursorHeldPetID = 0;
+                frame = 0;
+                getPetSprite(cursorHeldX)->visiblePet = 1;
+            }
         }
         resetAnimalSpritesForStore();
         updateAnimalSprites();
@@ -216,21 +254,26 @@ void tickSceneStore() {
     if (key_hit(KEY_A) && cursorY == 1) {
         struct Pet * item = getEnemyTeamPet(cursorX);
 
-        if (item->id > 100) {
+        if (cursorHeldPetID > 0) {
+            cancelAction();
+        } else if (item->id > 100) {
             int triggered = buyItemAtPosition(cursorX);
             if (!triggered) {
                 cursorHeldX = cursorX;
                 cursorHeldY = cursorY;
                 cursorOpen = 0;
                 cursorHeldPetID = getEnemyTeamPet(cursorHeldX)->id;
-                usePetGfxMem(cursorHeldPetID, -1);
+                cursorMem = getMemForPet(5+cursorX);
+                getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
                 getPetSprite(5+cursorX)->visiblePet = 0;
-                sleep(2);
             }
             updateGameplayInfo();
             updateAnimalSprites();
         }
+        resetAnimalSpritesForStore();
+        updateAnimalSprites();
         updateLabels();
+        sleep(10);
     }
 
     if ((key_hit(KEY_RIGHT) || key_hit(KEY_LEFT)) && (!cursorHeldPetID || (cursorHeldY == 1 && cursorY == 0) || (cursorHeldY == 0 && cursorY == 0))) {

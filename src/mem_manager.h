@@ -21,5 +21,7 @@ int getMemForCursor(int frame);
 void initSpriteMem();
 int loadLabel(int upperOrLower, enum UILabels label);
 int loadThrowable(enum UIThrowable label);
+int getMemForPet(int s);
+int getMemForHeldItem(int id);
 
 #endif //SUPERADVANCEPETS_PET_DATA_H

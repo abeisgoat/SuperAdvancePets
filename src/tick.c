@@ -79,7 +79,7 @@ void updateAnimalSprites() {
                 obj_set_attr(sprite,
                              ATTR0_SQUARE | ATTR0_8BPP,
                              ATTR1_SIZE_8,
-                             ATTR2_PALBANK(pb) | ATTR2_PRIO(1)  | (getMemForUIIcon(pet->heldItem)));
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(1)  | (getMemForHeldItem(pet->heldItem)));
                 obj_set_pos(sprite, ps->screenX + 10, ps->screenY + 11);
             }
 
