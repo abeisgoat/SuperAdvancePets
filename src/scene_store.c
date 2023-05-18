@@ -193,7 +193,7 @@ void tickSceneStore() {
     OBJ_ATTR *sprite = getOAMSprite(105);
     frame++;
 
-    if (cursorMem == 0) {
+    if (cursorMem == 0 && cursorHeldPetID == 0) {
         cursorMem = getMemForCursor(0);
     }
 
@@ -216,14 +216,12 @@ void tickSceneStore() {
         if (cursorHeldPetID == 0) {
             cursorHeldX = cursorX;
             cursorHeldY = cursorY;
+            cursorOpen = 0;
             cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
+            cursorMem = getMemForPet(cursorX);
+            getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
+            getPetSprite(cursorX)->visiblePet = 0;
 
-            if (cursorHeldPetID > 0) {
-                usePetGfxMem(cursorHeldPetID, -1);
-                getPetSprite(cursorX)->visiblePet = 0;
-                cursorOpen = 0;
-                loadLabel(0, UILabel_Place);
-            }
         } else {
             if (cursorHeldPetID > 100) {
                 if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0){
@@ -235,15 +233,13 @@ void tickSceneStore() {
                 cursorY = oldY;
                 cursorX = oldX;
             } else {
-                if (cursorHeldX == 0) {
-                    swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
-                }
+                swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
+                int oldX = cursorX;
+                int oldY = cursorY;
+                cancelAction();
+                cursorY = oldY;
+                cursorX = oldX;
 
-                cursorHeldX = 0;
-                cursorHeldY = 0;
-                cursorHeldPetID = 0;
-                frame = 0;
-                getPetSprite(cursorHeldX)->visiblePet = 1;
             }
         }
         resetAnimalSpritesForStore();
