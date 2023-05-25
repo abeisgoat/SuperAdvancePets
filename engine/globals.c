@@ -118,31 +118,29 @@ struct Pet swapperPet = {};
 void registerPet(int petId, const struct Pet * pet, const struct PetText * petText) {
     pets[petId] = pet;
     petTexts[petId] = petText;
-    int fullness = 0;
     switch (pet->tier) {
         case 1:
             tier1Pets[tier1PetsFullness++] = pet;
-            fullness = tier1PetsFullness;
             break;
         case 2:
             tier2Pets[tier2PetsFullness++] = pet;
-            fullness = tier2PetsFullness;
+
             break;
         case 3:
             tier3Pets[tier3PetsFullness++] = pet;
-            fullness = tier3PetsFullness;
+
             break;
         case 4:
             tier4Pets[tier4PetsFullness++] = pet;
-            fullness = tier4PetsFullness;
+
             break;
         case 5:
             tier5Pets[tier5PetsFullness++] = pet;
-            fullness = tier5PetsFullness;
+
             break;
         case 6:
             tier6Pets[tier6PetsFullness++] = pet;
-            fullness = tier6PetsFullness;
+
             break;
     }
 
@@ -498,16 +496,127 @@ void deserializePet(int num, struct Pet * dest) {
     printPet(dest);
 }
 
+struct Pet * getIndexedPetFromTier(int index) {
+    if (index < tier1PetsFullness) {
+        return tier1Pets[index];
+    }
+    index -= tier1PetsFullness;
+    if (index < tier2PetsFullness) {
+        return tier2Pets[index];
+    }
+    index -= tier2PetsFullness;
+    if (index < tier3PetsFullness) {
+        return tier3Pets[index];
+    }
+    index -= tier3PetsFullness;
+    if (index < tier4PetsFullness) {
+        return tier4Pets[index];
+    }
+    index -= tier4PetsFullness;
+    if (index < tier5PetsFullness) {
+        return tier5Pets[index];
+    }
+    index -= tier5PetsFullness;
+    return tier6Pets[index];
+}
+
+struct Pet * getIndexedFoodFromTier(int index) {
+    if (index < tier1FoodFullness) {
+        return tier1Foods[index];
+    }
+    index -= tier1FoodFullness;
+    if (index < tier2FoodFullness) {
+        return tier2Foods[index];
+    }
+    index -= tier2FoodFullness;
+    if (index < tier3FoodFullness) {
+        return tier3Foods[index];
+    }
+    index -= tier3FoodFullness;
+    if (index < tier4FoodFullness) {
+        return tier4Foods[index];
+    }
+    index -= tier4FoodFullness;
+    if (index < tier5FoodFullness) {
+        return tier5Foods[index];
+    }
+    index -= tier5FoodFullness;
+    return tier6Foods[index];
+}
+
+void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest) {
+    int petsInPlay = 0;
+    int foodInPlay = 0;
+    int petToPlace = 0;
+    int foodToPlace = 0;
+
+    if (turn > 0) {
+        petsInPlay += tier1PetsFullness;
+        foodInPlay += tier1FoodFullness;
+        // 3 pets, 1 food
+        petToPlace = 3;
+        foodToPlace = 1;
+    }
+    if (turn > 2) {
+        petsInPlay += tier2PetsFullness;
+        foodInPlay += tier2FoodFullness;
+        petToPlace = 3;
+        foodToPlace = 2;
+        // 3 pets, 2 food
+    }
+    if (turn > 4) {
+        petsInPlay += tier3PetsFullness;
+        foodInPlay += tier3FoodFullness;
+        petToPlace = 4;
+        foodToPlace = 2;
+        // 4 pets, 2 food
+    }
+    if (turn > 6) {
+        petsInPlay += tier4PetsFullness;
+        foodInPlay += tier4FoodFullness;
+        petToPlace = 4;
+        foodToPlace = 2;
+        // 4 pets, 2 food
+    }
+    if (turn > 8) {
+        petsInPlay += tier5PetsFullness;
+        foodInPlay += tier5FoodFullness;
+        petToPlace = 5;
+        foodToPlace = 2;
+        // 5 pets, 2 food
+    }
+    if (turn > 10) {
+        petsInPlay += tier6PetsFullness;
+        foodInPlay += tier6FoodFullness;
+        petToPlace = 5;
+        foodToPlace = 2;
+        // 5 pets, 2 food
+    }
+
+    for (int i=0; i< 7;i++) {
+        struct Pet * randomPet;
+        if (i < petToPlace) {
+             randomPet = getIndexedPetFromTier(rand() % petsInPlay);
+            clonePet(randomPet, &dest[i]);
+        }else if (i >= (7-foodToPlace)) {
+            randomPet = getIndexedFoodFromTier(rand() % foodInPlay);
+            clonePet(randomPet, &dest[i]);
+        } else {
+            emptyPet(&dest[i]);
+        }
+    }
+
+    if (rand() % 1000 == 1) {
+        clonePet(&Sloth, &dest[rand() % 2]);
+    }
+}
+
 /*
  * Game state
  */
 int bank=0;
 int canBoost=0;
-
-void resetGame() {
-    resetCanBoost();
-    resetBankForTurn();
-}
+int turn=0;
 
 void addCanBoost(int i) {
     canBoost += i;
@@ -525,6 +634,19 @@ void resetBankForTurn() {
     bank = 10;
 }
 
+void resetTurn() {
+    turn = 0;
+}
+
+int getTurn() {
+    return turn;
+}
+
+int nextTurn() {
+    turn += 1;
+    return turn;
+}
+
 void addBankMoney(int i) {
     bank += i;
 }
@@ -540,4 +662,10 @@ int spendBankMoney(int i) {
         bank -= i;
         return 0;
     }
+}
+
+void resetGame() {
+    resetCanBoost();
+    resetBankForTurn();
+    resetTurn();
 }

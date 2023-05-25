@@ -179,7 +179,8 @@ grit ../animals/pngs/*.png ../ui/pngs/*.png -pS -gB8 -gTFFAAFF -ftc -Osprites
 cd ../..
 
 cd sprites/generated
-grit ../extras/bg.png -gTFFAAFF -gB4 -mRtpf -mLs  -ftc
+grit ../extras/bg.png -gTFFAAFF -gB8 -mRtpf -mLs -ftc
+grit ../extras/logo.png -gTFFAAFF -gB8 -mLs -ftc
 cd ../..
 
 rm sprites/generated/ui.h
@@ -193,4 +194,18 @@ for i in sprites/ui/pngs/*.png; do
     echo "#include \"${filename}.h\"" >> sprites/generated/ui.h
 done
 echo "#endif //SUPERADVANCEPETS_UI_H" >> sprites/generated/ui.h
+
+rm sprites/animals.h
+
+echo "#ifndef SUPERADVANCEPETS_ANIMALS_H" > sprites/generated/animals.h
+echo "#define SUPERADVANCEPETS_ANIMALS_H" >> sprites/generated/animals.h
+for i in sprites/animals/pngs/*.png; do
+    [ -f "$i" ] || break
+    filename=$(basename -- $i)
+    filename="${filename%.*}"
+    echo $filename
+    echo "#include \"${filename}.h\"" >> sprites/generated/animals.h
+done
+echo "#endif //SUPERADVANCEPETS_ANIMALS_H" >> sprites/generated/animals.h
+
 ```

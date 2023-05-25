@@ -7,9 +7,10 @@ void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct
     printf("Activated Mosquito trigger StartOfBattle");
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
+
     for (int l=1; l<= expToLevel(selfPet->experience); l++) {
         struct Pet * enemy = randomOtherTeamMember(them, selfPet);
-        int enemyPos = petPosition(usOrThem, us, them, selfPet);
+        int enemyPos = petPosition(usOrThem, us, them, enemy);
         int damage = 1;
         animateDamageToTeamPosition(selfPos, enemyPos);
         resolveAnimation();

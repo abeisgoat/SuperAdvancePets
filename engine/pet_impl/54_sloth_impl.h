@@ -13,5 +13,4 @@ EWRAM_DATA const static struct Pet Sloth = {
         .id =  54,
         .attack =  1,
         .health =  1,
-        .tier = 1
 };

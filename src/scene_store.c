@@ -5,6 +5,7 @@
 #include "../engine/globals.h"
 #include "structs.h"
 #include "animations.h"
+#include "ui.h"
 
 int frame;
 
@@ -20,7 +21,7 @@ int cursorMem = 0;
 int pb = 0;
 
 void resetAnimalSpritesForStore() {
-    int xOffset=49;
+    int xOffset=65;
     int petPins=0;
 
     for (int i=0; i < 5; i++) {
@@ -48,12 +49,13 @@ void resetAnimalSpritesForStore() {
             ps->shortStat = 1;
             pet->pin = ++petPins;
             ps->petPin = pet->pin;
+
         } else {
             ps->petPin = 0;
         }
 
         ps->worldX = xOffset + (18 * (i-5));
-        ps->worldY = 99;
+        ps->worldY = 83;
         ps->flip = 1;
     }
 }
@@ -111,85 +113,71 @@ void cancelAction() {
     frame = 0;
 }
 
-void updateGameplayInfo() {
-    int lives = 5;
-    int turn = 1;
-    int money = getBankMoney();
-
-    OBJ_ATTR *sprite;
-    char msg[50];
-    int counters_x = 144;
-    int turn_offset=0;
-
-    if (lives < 10) {
-        counters_x += 8;
+void hideLabels() {
+    OBJ_ATTR * sprite;
+    for (int s=106; s<=109;s++) {
+        sprite = getOAMSprite(s);
+        sprite->attr0 ^= ATTR0_HIDE;
     }
-
-    if (turn < 10) {
-        turn_offset += 8;
-    }
-
-    int counters_y = 144;
-
-
-    sprite = getOAMSprite(102);
-
-    int money_offset=0;
-    if (money < 10) {
-        money_offset = 8;
-    }
-    tte_set_pos(counters_x + 8 + turn_offset + money_offset, counters_y);
-
-    sprintf(msg, "%d ", money);
-    tte_write(msg);
-
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Coin));
-
-    obj_set_pos(sprite, counters_x + money_offset + + turn_offset, counters_y + 2);
-
-    sprite = getOAMSprite(103);
-
-
-    tte_set_pos(counters_x + 46+ turn_offset, counters_y);
-    sprintf(msg, "%d ", turn);
-    tte_write(msg);
-
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Turns));
-
-    obj_set_pos(sprite, counters_x + 32 + turn_offset, counters_y+2);
-
-    tte_set_pos(counters_x + 72 , counters_y);
-    sprintf(msg, "%d ", lives);
-    tte_write(msg);
-
-    sprite = getOAMSprite(104);
-    obj_set_attr(sprite,
-                 ATTR0_SQUARE | ATTR0_8BPP,
-                 ATTR1_SIZE_8x8,
-                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Hearts));
-
-    obj_set_pos(sprite, counters_x + 62, counters_y+2);
 }
 
+void showLabels() {
+    OBJ_ATTR  * sprite;
+    for (int s=106; s<=109;s++) {
+        sprite = getOAMSprite(s);
+        sprite->attr0  &= ~ATTR0_HIDE;
+    }
+}
 
 void prepareSceneStore() {
+    nextTurn();
+    randomizeStore();
+
     resetAnimalSpritesForStore();
     updateAnimalSprites();
+
+    cursorHeldX = 0;
+    cursorHeldY = 0;
+    cursorHeldPetID = 0;
+
+    cursorX = 0;
+    cursorY = 0;
+    cursorOpen = 0;
+    cursorMem = 0;
+
     for (int i=0; i <12; i++) {
         struct PetSprite * ps = getPetSprite(i);
         ps->visiblePet = true;
         ps->visibleStats = true;
     }
-    updateGameplayInfo();
+
+    tte_erase_screen();
+    updateGameplayInfo(1);
+
+    // UI Left Bumper
+    OBJ_ATTR *sprite = getOAMSprite(100);
+    int pb=0;
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | getMemFor32x16UI(UIElement_LeftBumperRoll));
+
+    obj_set_pos(sprite, 0, 0);
+
+    // UI Right Bumper
+    sprite = getOAMSprite(101);
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | getMemFor32x16UI(UIElement_RightBumperFight));
+
+    obj_set_pos(sprite, 208, 0);
+    updateLabels();
+    showLabels();
 }
 
 void tickSceneStore() {
+
     OBJ_ATTR *sprite = getOAMSprite(105);
     frame++;
 
@@ -245,6 +233,7 @@ void tickSceneStore() {
         resetAnimalSpritesForStore();
         updateAnimalSprites();
         updateLabels();
+        updateGameplayInfo(1);
     }
 
     if (key_hit(KEY_A) && cursorY == 1) {
@@ -263,7 +252,7 @@ void tickSceneStore() {
                 getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
                 getPetSprite(5+cursorX)->visiblePet = 0;
             }
-            updateGameplayInfo();
+            updateGameplayInfo(1);
             updateAnimalSprites();
         }
         resetAnimalSpritesForStore();
@@ -314,7 +303,7 @@ void tickSceneStore() {
 
 
     int cursorScreenPosX = 49 + (cursorX * 18);
-    int cursorScreenPosY = 49 + (cursorY * 50);
+    int cursorScreenPosY = 49 + (cursorY * 34);
     if (cursorHeldPetID > 0) {
         if (cursorY == 1 && cursorHeldY == 1) {
             cursorScreenPosY -= 4;
@@ -327,7 +316,33 @@ void tickSceneStore() {
     sprite = getOAMSprite(105);
     obj_set_pos(sprite, cursorScreenPosX, cursorScreenPosY);
 
+    if (key_hit(KEY_L)) {
+        if (getBankMoney() >= 1) {
+            spendBankMoney(1);
+            sprite = getOAMSprite(100);
+            obj_set_pos(sprite, 0, -2);
+
+            sleep(10);
+
+            sprite = getOAMSprite(100);
+            obj_set_pos(sprite, 0, 0);
+
+            sleep(5);
+            randomizeStore();
+            resetAnimalSpritesForStore();
+            updateAnimalSprites();
+            updateLabels();
+            updateGameplayInfo(1);
+        }
+    }
+
     if (key_hit(KEY_R)) {
+        cancelAction();
+        resetAnimalSpritesForStore();
+        updateAnimalSprites();
+        updateLabels();
+        updateGameplayInfo(0);
+
         sprite = getOAMSprite(101);
         obj_set_pos(sprite, 208, -2);
 
@@ -336,10 +351,7 @@ void tickSceneStore() {
 
         setScene(1);
 
-        for (int s=106; s<=109;s++) {
-            sprite = getOAMSprite(s);
-            sprite->attr0 ^= ATTR0_HIDE;
-        }
+        hideLabels();
 
         for (int t = 0; t < 10; t++) {
             tickMainLoop();

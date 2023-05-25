@@ -54,7 +54,7 @@ void main() {
 
 
     prepareTeams(friendly, enemies);
-    prepareStore(store);
+    forceStore(store);
 
     tte_set_pos(32, 0);
 
@@ -75,6 +75,8 @@ void main() {
     REG_BG2CNT= BG_CBB(CBB_12) | BG_SBB(SBB_12) | BG_4BPP | BG_REG_32x32 | BG_PRIO(1);
     REG_DISPCNT= DCNT_OBJ | DCNT_MODE0 | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2;
 
+    REG_BG1HOFS = 16;
+
     irq_init(NULL);
     irq_add(II_VBLANK, NULL);
     irq_add(II_VBLANK, mmVBlank);
@@ -93,7 +95,7 @@ void main() {
     REG_SND1CNT= SSQR_ENV_BUILD(12, 0, 7) | SSQR_DUTY1_2;
     REG_SND1FREQ= 0;
 
-    sap_song(0);
+//    sap_song(0);
 
     memcpy(pal_bg_mem, bgPal, bgPalLen);
     memcpy(&tile_mem[CBB_8][0], bgTiles, bgTilesLen);
@@ -107,7 +109,7 @@ void main() {
             2,                      // Background number (BG 0)
             BG_CBB(CBB_12)|BG_SBB(SBB_12),   // BG control (for REG_BGxCNT)
             0,                      // Tile offset (special cattr)
-            CLR_BLACK,             // Ink color
+            RGB8(28, 48, 24),             // Ink color
             15,                     // BitUnpack offset (on-pixel = 15)
             &sys8Font,                   // Default font (sys8)
             NULL);                  // Default renderer (se_drawg_s)
@@ -117,10 +119,7 @@ void main() {
     pal_bg_bank[3][15]= CLR_BLUE;
     pal_bg_bank[4][15]= CLR_WHITE;
     pal_bg_bank[5][15]= CLR_MAG;
-
     pal_bg_bank[4][14]= CLR_GRAY;
-
-//    tte_set_pos(32, 0);
 
     char msg[50];
 
@@ -133,29 +132,8 @@ void main() {
     REG_BG2HOFS= bg_x;
     REG_BG2VOFS= bg_y;
 
-    // UI Left Bumper
-    OBJ_ATTR *sprite = getOAMSprite(100);
-    int pb=0;
-    obj_set_attr(sprite,
-                 ATTR0_WIDE | ATTR0_8BPP,
-                 ATTR1_SIZE_16x32,
-                 ATTR2_PALBANK(pb) | getMemFor32x16UI(UIElement_LeftBumperRoll));
-
-    obj_set_pos(sprite, 0, 0);
-
-    // UI Right Bumper
-    sprite = getOAMSprite(101);
-    obj_set_attr(sprite,
-                 ATTR0_WIDE | ATTR0_8BPP,
-                 ATTR1_SIZE_16x32,
-                 ATTR2_PALBANK(pb) | getMemFor32x16UI(UIElement_RightBumperFight));
-
-    obj_set_pos(sprite, 208, 0);
-
-
-    int turn = 4;
-
-    sprite = getOAMSprite(105);
+    int pb = 0;
+    OBJ_ATTR  * sprite = getOAMSprite(105);
     obj_set_attr(sprite,
                  ATTR0_SQUARE | ATTR0_8BPP,
                  ATTR1_SIZE_16x16 | ATTR1_HFLIP,
@@ -198,6 +176,7 @@ void main() {
 
         switch (getScene()) {
             case 0:
+            case 3:
                 if (lastScene != 0) {
                     prepareSceneStore();
                     lastScene = 0;

@@ -15,5 +15,5 @@ void updateAnimalSprites();
 void screenAnimalSprites();
 int getScene();
 int getScreenX();
-
+int getScreenY();
 #endif //SUPERADVANCEPETSCLI_TICK_H

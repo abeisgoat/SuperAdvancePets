@@ -1,9 +1,11 @@
 #include <tonc.h>
 #include <maxmod.h>
+#include <stdlib.h>
 #include "../engine/globals.h"
 #include "mem_manager.h"
 #include "../engine/battle.h"
 #include "structs.h"
+#include "ui.h"
 
 OBJ_ATTR obj_buffer[128];
 OBJ_AFFINE *obj_aff_buffer= (OBJ_AFFINE*)obj_buffer;
@@ -16,10 +18,10 @@ void tickInit() {
     oam_init(obj_buffer, 128);
 }
 
-int screenX = -1;
+int screenX = 16;
 int screenY = 0;
 
-int screenXTarget = 0;
+int screenXTarget = 16;
 int screenYTarget = 0;
 int activeScene = 0;
 float screenMomentum = 0;
@@ -90,16 +92,18 @@ void updateAnimalSprites() {
                 int expRemaining = expToRemainingToLevelUp(pet->experience);
                 int bottomMem = getBannerBottomForExp(expRemaining);
                 int topMem = getBannerTopForLvl(lvl);
+                int statOffsetY = 0;
 
                 if (ps->shortStat) {
                     bottomMem = getBannerBottomForExp(4);
+                    statOffsetY = 34;
                 } else {
                     sprite = getOAMSprite(spriteCount++);
                     obj_set_attr(sprite,
                                  ATTR0_SQUARE | ATTR0_8BPP,
                                  ATTR1_SIZE_16,
                                  ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | topMem);
-                    obj_set_pos(sprite, ps->screenX, ps->screenY - 30);
+                    obj_set_pos(sprite, ps->screenX, ps->screenY - 30 + statOffsetY);
                 }
 
                 sprite = getOAMSprite(spriteCount++);
@@ -114,7 +118,7 @@ void updateAnimalSprites() {
                              ATTR0_SQUARE | ATTR0_8BPP,
                              ATTR1_SIZE_16,
                              ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | bottomMem);
-                obj_set_pos(sprite, ps->screenX, ps->screenY - 14 + bannerYOffset);
+                obj_set_pos(sprite, ps->screenX, ps->screenY - 14 + bannerYOffset + statOffsetY);
 
 
                 int numYOffset = 0;
@@ -133,7 +137,7 @@ void updateAnimalSprites() {
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
                                  ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | (getMemForNumber(healthTens)));
-                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 14 + numYOffset);
+                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 14 + numYOffset + statOffsetY);
                 } else {
                     obj_set_pos(sprite, -16,-16);
                 }
@@ -148,7 +152,7 @@ void updateAnimalSprites() {
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(healthOnes)));
-                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 14 + numYOffset);
+                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 14 + numYOffset  + statOffsetY);
 
                 int damage = getPetAttack(pet);
 
@@ -165,7 +169,7 @@ void updateAnimalSprites() {
                                  ATTR0_TALL | ATTR0_8BPP,
                                  ATTR1_SIZE_8,
                                  ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(damageTens)));
-                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 22 + numYOffset);
+                    obj_set_pos(sprite, ps->screenX + 6 + numXOffset, ps->screenY - 22 + numYOffset + statOffsetY);
                 } else {
                     obj_set_pos(sprite, -16,-16);
                 }
@@ -178,7 +182,7 @@ void updateAnimalSprites() {
                              ATTR0_TALL | ATTR0_8BPP,
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(damageOnes)));
-                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 22 + numYOffset);
+                obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 22 + numYOffset + statOffsetY);
             }
         }
 
@@ -192,26 +196,33 @@ void updateAnimalSprites() {
 void setScene(int scene) {
     switch (scene) {
         case 0:
-            screenXTarget = 0;
+            screenXTarget = 16;
             screenYTarget = 0;
             break;
         case 1:
-            screenXTarget = 230;
+            screenXTarget = 240;
             screenYTarget = 0;
             break;
         case 2:
-            screenXTarget = 230;
-            screenYTarget = 90;
+            screenXTarget = 240;
+            screenYTarget = 96;
             break;
         case 3:
-            screenXTarget = 0;
-            screenYTarget = 90;
+            screenXTarget = 16;
+            screenYTarget = 0;
+            screenX = 16;
+            screenY = 96;
     }
     activeScene = scene;
 }
 
+
 int getScreenX() {
     return screenX;
+}
+
+int getScreenY() {
+    return screenY;
 }
 
 int getScene() {
@@ -222,38 +233,82 @@ int moveScreenTowardsTarget() {
     int maxSpeed = 4;
     int x_diff = screenXTarget - screenX;
     int y_diff = screenYTarget - screenY;
-    int x_slow = x_diff && (x_diff > 0 && x_diff < maxSpeed || x_diff < 0 && x_diff > -maxSpeed);
-    int y_slow = y_diff && (y_diff > 0 && y_diff < maxSpeed || y_diff < 0 && y_diff > -maxSpeed);
-
-    if (x_slow || y_slow) {
-        screenMomentum *= 0.5;
+    if (abs(x_diff) < maxSpeed) {
+        screenX = screenXTarget;
     }
 
-    if (screenMomentum > maxSpeed) {
-        screenMomentum = maxSpeed;
-    }
-    if (screenMomentum < -maxSpeed) {
-        screenMomentum = -maxSpeed;
+    if (abs(y_diff) < maxSpeed) {
+        screenY = screenYTarget;
     }
 
-    if (screenXTarget > screenX) {
-        screenMomentum += 0.1;
-        screenX += screenMomentum;
+    if (screenY < screenYTarget) {
+        screenY +=  maxSpeed;
         return 1;
-    }else if (screenXTarget < screenX) {
-        screenMomentum -= 0.1;
-        screenX += screenMomentum;
+    }
+    if (screenY > screenYTarget) {
+        screenY -=  maxSpeed;
         return 1;
-    }else if (screenYTarget > screenY) {
-        screenMomentum += 0.1;
-        screenY += screenMomentum;
+    }
+    if (screenX < screenXTarget) {
+        screenX +=  maxSpeed;
         return 1;
-    }else if (screenYTarget < screenY) {
-        screenMomentum -= 0.1;
-        screenY += screenMomentum;
+    }
+    if (screenX < screenXTarget) {
+        screenX -=  maxSpeed;
         return 1;
     }
     return 0;
+
+
+//    int x_diff = screenXTarget - screenX;
+//    int y_diff = screenYTarget - screenY;
+//    int x_slow = x_diff && (x_diff > 0 && x_diff < maxSpeed || x_diff < 0 && x_diff > -maxSpeed);
+//    int y_slow = y_diff && (y_diff > 0 && y_diff < maxSpeed || y_diff < 0 && y_diff > -maxSpeed);
+//
+//    if (x_slow || y_slow) {
+//        screenMomentum *= 0.5;
+//    }
+//
+//    if (abs(x_diff) < maxSpeed) {
+//        screenX = screenXTarget;
+//    }
+//
+//    if (abs(y_diff) < maxSpeed) {
+//        screenY = screenYTarget;
+//    }
+//
+//    x_diff = screenXTarget - screenX;
+//    y_diff = screenYTarget - screenY;
+//
+//    if (x_diff == 0 && y_diff == 0) {
+//        return 0;
+//    }
+//
+//    if (screenMomentum > maxSpeed) {
+//        screenMomentum = maxSpeed;
+//    }
+//    if (screenMomentum < -maxSpeed) {
+//        screenMomentum = -maxSpeed;
+//    }
+//
+//    if (screenXTarget > screenX) {
+//        screenMomentum += 0.1;
+//        screenX += screenMomentum;
+//        return 1;
+//    }else if (screenXTarget < screenX) {
+//        screenMomentum -= 0.1;
+//        screenX += screenMomentum;
+//        return 1;
+//    }else if (screenYTarget > screenY) {
+//        screenMomentum += 0.1;
+//        screenY += screenMomentum;
+//        return 1;
+//    }else if (screenYTarget < screenY) {
+//        screenMomentum -= 0.1;
+//        screenY += screenMomentum;
+//        return 1;
+//    }
+//    return 0;
 }
 
 void screenAnimalSprites() {
@@ -280,6 +335,10 @@ void tickMainLoop() {
     if (moveScreenTowardsTarget()) {
         screenAnimalSprites();
         updateAnimalSprites();
+    } else {
+        if (getScene() == 3) {
+            setScene(0);
+        }
     }
 
     REG_BG1HOFS = screenX;

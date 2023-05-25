@@ -46,8 +46,8 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
-        default:
-            break;
+        case 36: // Mosquito
+            mosquitoTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
     }
 }
 

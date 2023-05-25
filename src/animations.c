@@ -80,7 +80,7 @@ void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) 
     anim->throwable = throwable;
     anim->x=getWorldXForPetPosition(from) - getScreenX() + 4;
     anim->dx= getWorldXForPetPosition(to) - getScreenX() + 4;
-    anim->y=50;
+    anim->y=67;
 
     if (from == to) {
         anim->dy = anim->y-5;

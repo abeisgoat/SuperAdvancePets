@@ -646,6 +646,9 @@
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/tick.h">
 			<Option target="SuperAdvancePets"/>
 		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/ui.c">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/stubs/animations.c">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>

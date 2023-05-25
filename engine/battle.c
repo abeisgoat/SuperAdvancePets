@@ -130,9 +130,66 @@ int stepForward(int step) {
     return step + 1;
 }
 
+void resolveTriggers() {
+    int hasTrigger = 1;
+    while (hasTrigger) {
+        hasTrigger = 0;
+        for (int i = 0; i < 10; i++) {
+            struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
+
+            if (isHurt(pet) && !isDead(pet)) {
+                if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
+                    hasTrigger += applyHurtTrigger(
+                            0,
+                            playerTeam,
+                            enemyTeam,
+                            pet, storeTeam);
+                } else {
+                    hasTrigger += applyHurtTrigger(
+                            1,
+                            enemyTeam,
+                            playerTeam,
+                            pet, storeTeam);
+                }
+                pet->hurt--;
+            }
+
+            if (isDead(pet)) {
+                animateDeath(pet);
+                if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
+                    hasTrigger += applyFaintTrigger(
+                            0,
+                            playerTeam,
+                            enemyTeam,
+                            pet, storeTeam);
+                } else {
+                    hasTrigger += applyFaintTrigger(
+                            1,
+                            enemyTeam,
+                            playerTeam,
+                            pet, storeTeam);
+                }
+
+                resolveAnimation();
+            }
+        }
+    }
+
+    resolveDeaths();
+    for (int i=0; i<10; i++) {
+        struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
+        if (isDead(pet)) {
+            cleanUp(pet);
+            emptyPet(pet);
+
+        }
+    }
+}
+
 int battle() {
     int step = 0;
-    for (int i=4; i>=0; i--) {
+
+    for (int i=0; i<=4;i++) {
         if (playerTeam[i].id > 0) {
             applyBattleStartTrigger(
                     0,
@@ -142,16 +199,20 @@ int battle() {
                     storeTeam);
         }
     }
-    for (int i=4; i>=0; i--) {
+
+    for (int i=0; i<=4;i++) {
         if (enemyTeam[i].id > 0) {
             applyBattleStartTrigger(
-                    0,
-                    playerTeam,
+                    1,
                     enemyTeam,
-                    &playerTeam[i],
+                    playerTeam,
+                    &enemyTeam[i],
                     storeTeam);
         }
     }
+
+    resolveTriggers();
+
     step = stepForward(step);
     if (step < 0) {
         return step;
@@ -220,59 +281,7 @@ int battle() {
         resolveAnimation();
         sleep(30);
 
-        int hasTrigger = 1;
-        while (hasTrigger) {
-            hasTrigger = 0;
-            for (int i = 0; i < 10; i++) {
-                struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
-
-                if (isHurt(pet) && !isDead(pet)) {
-                    if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
-                        hasTrigger += applyHurtTrigger(
-                                0,
-                                playerTeam,
-                                enemyTeam,
-                                pet, storeTeam);
-                    } else {
-                        hasTrigger += applyHurtTrigger(
-                                1,
-                                enemyTeam,
-                                playerTeam,
-                                pet, storeTeam);
-                    }
-                    pet->hurt--;
-                }
-
-                if (isDead(pet)) {
-                    animateDeath(pet);
-                    if (getPetUsOrThem(playerTeam, enemyTeam, pet) == 0) {
-                        hasTrigger += applyFaintTrigger(
-                                0,
-                                playerTeam,
-                                enemyTeam,
-                                pet, storeTeam);
-                    } else {
-                        hasTrigger += applyFaintTrigger(
-                                1,
-                                enemyTeam,
-                                playerTeam,
-                                pet, storeTeam);
-                    }
-
-                    resolveAnimation();
-                }
-            }
-        }
-
-        resolveDeaths();
-        for (int i=0; i<10; i++) {
-            struct Pet *pet = getPetByPosition(0, playerTeam, enemyTeam, i);
-            if (isDead(pet)) {
-                cleanUp(pet);
-                emptyPet(pet);
-
-            }
-        }
+        resolveTriggers();
 
         step = stepForward(step);
         if (step < 0) {
@@ -374,13 +383,17 @@ void prepareEngine() {
     resetTeams();
 }
 
-void prepareStore(int store[7]) {
+void forceStore(int store[7]) {
     for (int i = 0; i < 7; i++) {
         emptyPet(&enemyTeam[i]);
         if (store[i] > 0) {
             clonePet(getPetByID(store[i]), &enemyTeam[i]);
         }
     }
+}
+
+void randomizeStore() {
+    randomizeStoreViaTurn(getTurn(), 1, enemyTeam);
 }
 
 void prepareTeams(int friendly[5], int enemies[5]) {

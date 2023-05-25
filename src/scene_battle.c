@@ -5,8 +5,10 @@
 #include "../engine/globals.h"
 #include "structs.h"
 #include "animations.h"
+#include "ui.h"
 
-int xOffset=256;
+int xOffset=276;
+int result = 0;
 
 int getWorldXForPetPosition(int petPosition) {
     if (petPosition <= 4) {
@@ -27,7 +29,7 @@ void resetAnimalSpritesForBattle() {
             pet->pin = ++petPins;
             ps->petPin = pet->pin;
             ps->worldX = xOffset + (18 * i);
-            ps->worldY = 49;
+            ps->worldY = 67;
             ps->flip = 1;
         } else {
             ps->petPin = 0;
@@ -41,7 +43,7 @@ void resetAnimalSpritesForBattle() {
             pet->pin = ++petPins;
             ps->petPin = petPins;
             ps->worldX = xOffset + 100 + (18 * i);
-            ps->worldY = 50;
+            ps->worldY = 67;
             ps->flip = 0;
             ps->shortStat = 0;
         } else {
@@ -61,18 +63,19 @@ void prepareSceneBattle() {
     }
     resetAnimalSpritesForBattle();
     updateAnimalSprites();
+    updateGameplayInfo(0);
+    result = 0;
 }
 
-int result = 0;
 void tickSceneBattle() {
     updateAnimalSprites();
     tickMainLoop();
     sleep(30);
     if (!result) {
         result = battle();
-        tte_set_pos(0,0);
+        tte_set_pos(80,114);
         if (result == -1) {
-            tte_write(" #{cx:0x1000}You tied.\n");
+            tte_write(" #{cx:0x3000}You tied.\n");
         }
         if (result == -2) {
             tte_write(" #{cx:0x3000}You lost.\n");
@@ -82,8 +85,24 @@ void tickSceneBattle() {
         }
     }
 
-    updateAnimalSprites();
-    tickMainLoop();
+    while (1) {
+        if (key_hit(KEY_A)) {
+            clearGameplayInfo();
+            setScene(2);
+            break;
+        }
+        tickMainLoop();
+    }
+
+    sleep(40);
+
+    while (1) {
+        if (key_hit(KEY_A)) {
+            setScene(3);
+            break;
+        }
+        tickMainLoop();
+    }
 //    OBJ_ATTR *sprite;
 //    struct PetSprite * ps = getPetSprite(0);
 //    ps->screenX = 200;

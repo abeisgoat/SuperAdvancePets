@@ -2146,6 +2146,30 @@ src/tick.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/tick.c.s
 .PHONY : src/tick.c.s
 
+src/ui.o: src/ui.c.o
+.PHONY : src/ui.o
+
+# target to build an object file
+src/ui.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/ui.c.o
+.PHONY : src/ui.c.o
+
+src/ui.i: src/ui.c.i
+.PHONY : src/ui.i
+
+# target to preprocess a source file
+src/ui.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/ui.c.i
+.PHONY : src/ui.c.i
+
+src/ui.s: src/ui.c.s
+.PHONY : src/ui.s
+
+# target to generate assembly for a file
+src/ui.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/ui.c.s
+.PHONY : src/ui.c.s
+
 stubs/animations.o: stubs/animations.c.o
 .PHONY : stubs/animations.o
 
@@ -2429,6 +2453,9 @@ help:
 	@echo "... src/tick.o"
 	@echo "... src/tick.i"
 	@echo "... src/tick.s"
+	@echo "... src/ui.o"
+	@echo "... src/ui.i"
+	@echo "... src/ui.s"
 	@echo "... stubs/animations.o"
 	@echo "... stubs/animations.i"
 	@echo "... stubs/animations.s"

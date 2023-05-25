@@ -407,7 +407,7 @@ int usePetGfxMem(int id, int pos) {
             memcpy(&tile_mem[4][memPos], honeyTiles, honeyTilesLen);
             break;
         case 108:
-//            memcpy(&tile_mem[4][memPos], melonTiles, melonTilesLen);
+            memcpy(&tile_mem[4][memPos], meatboneTiles, meatboneTilesLen);
             break;
         case 109:
             memcpy(&tile_mem[4][memPos], melonTiles, melonTilesLen);
