@@ -27,15 +27,11 @@ FILE(GLOB PetImplC engine/pet_impl/*.c)
 FILE(GLOB PetImplH engine/pet_impl/*.h)
 FILE(GLOB FoodImplC engine/food_impl/*.c)
 FILE(GLOB FoodImplH engine/food_impl/*.h)
-FILE(GLOB SpritesC sprites/*.c)
-FILE(GLOB SpritesH sprites/*.h)
 
 add_executable(SuperAdvancePetsCLI
         src/animations.h
         stubs/animations.c
         ${PetImplC} ${PetImplH}
         ${FoodImplC} ${FoodImplH}
-        ${SpritesC} ${SpritesH}
         ${EngineC} ${EngineH}
-        ${SrcC} ${SrcH}
         cli.c)

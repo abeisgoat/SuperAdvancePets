@@ -50,3 +50,25 @@ void animateAbilityFromTeamPosition(int from, int to) {
 void resolveAnimation() {
 
 }
+
+void animateShuffleAtPosition() {
+
+}
+
+void animateDeath() {
+
+}
+
+void resolveDeaths() {
+
+}
+
+void animateFighterAttack() {
+
+}
+
+void cleanUp() {
+
+}
+
+void sleep(int frames) {}

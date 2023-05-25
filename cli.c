@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "./engine/battle.h"
-#include "engine/globals.h"
 
 void main() {
     prepareEngine();

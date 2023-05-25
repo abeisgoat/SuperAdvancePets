@@ -118,21 +118,35 @@ struct Pet swapperPet = {};
 void registerPet(int petId, const struct Pet * pet, const struct PetText * petText) {
     pets[petId] = pet;
     petTexts[petId] = petText;
-
+    int fullness = 0;
     switch (pet->tier) {
         case 1:
             tier1Pets[tier1PetsFullness++] = pet;
+            fullness = tier1PetsFullness;
+            break;
         case 2:
             tier2Pets[tier2PetsFullness++] = pet;
+            fullness = tier2PetsFullness;
+            break;
         case 3:
             tier3Pets[tier3PetsFullness++] = pet;
+            fullness = tier3PetsFullness;
+            break;
         case 4:
             tier4Pets[tier4PetsFullness++] = pet;
+            fullness = tier4PetsFullness;
+            break;
         case 5:
             tier5Pets[tier5PetsFullness++] = pet;
+            fullness = tier5PetsFullness;
+            break;
         case 6:
             tier6Pets[tier6PetsFullness++] = pet;
+            fullness = tier6PetsFullness;
+            break;
     }
+
+//    printf("ID %d, TIER %d, F %d\n", petId, pet->tier, fullness);
 }
 
 void registerFood(int petId, const struct Pet * pet, const struct PetText * petText) {
@@ -142,16 +156,22 @@ void registerFood(int petId, const struct Pet * pet, const struct PetText * petT
     switch (pet->tier) {
         case 1:
             tier1Foods[tier1FoodFullness++] = pet;
+            break;
         case 2:
             tier2Foods[tier2FoodFullness++] = pet;
+            break;
         case 3:
             tier3Foods[tier3FoodFullness++] = pet;
+            break;
         case 4:
             tier4Foods[tier4FoodFullness++] = pet;
+            break;
         case 5:
             tier5Foods[tier5FoodFullness++] = pet;
+            break;
         case 6:
             tier6Foods[tier6FoodFullness++] = pet;
+            break;
     }
 }
 
