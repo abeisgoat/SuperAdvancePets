@@ -484,8 +484,8 @@ void deserializePet(int num, struct Pet * dest) {
     defence = num % 100;
     attack = ((num % 10000) - defence) / 100;
     experience = ((num % 100000) - attack - defence) / 10000;
-    heldItem = ((num % 1000000) - attack - defence - experience) / 100000;
-    id = ((num % 100000000) - attack - defence - experience - heldItem) / 1000000;
+    heldItem = ((num % 10000000) - attack - defence - experience) / 100000;
+    id = ((num % 100000000) - attack - defence - experience - heldItem) / 100000000;
 
     emptyPet(dest);
     dest->id = id;

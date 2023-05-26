@@ -8,3 +8,4 @@ CMakeFiles
 generated
 soundbank*
 Testing
+tests/node_modules
