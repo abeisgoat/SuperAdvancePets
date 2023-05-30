@@ -1,4 +1,3 @@
-
 #include "../globals.h"
 #include "../../src/animations.h"
 #include <stdio.h>

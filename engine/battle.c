@@ -108,6 +108,9 @@ int buyAssignItemAtPosition(int index, int target) {
 
     if (!trigger) return 0;
     spendBankMoney(cost);
+
+    trigger += applyEatsShopFoodTrigger(0, playerTeam, enemyTeam, activatingPet, enemyTeam);
+
     resolveDeaths();
     resolveAnimation();
     emptyPet(item);

@@ -71,10 +71,6 @@ describe("SuperAdvancePets Engine", () => {
             ]
         );
 
-        deserialize(Pet("Cricket")
-            .withHealth(2)
-            .withDamage(2).build())
-        console.log(log);
         chai.equal(log[log.length - 1], "[Win]");
     });
 
@@ -97,6 +93,28 @@ describe("SuperAdvancePets Engine", () => {
                     .withDamage(1)
             ]
         );
+
+        chai.equal(log.filter((line) => line.indexOf("Round over")+1).length, 2);
+        chai.equal(log[log.length - 1], "[Loss]");
+    });
+
+    it("Doplhin beats 2 ants in 1 rounds.", async () => {
+        const log = await battle(
+            [
+                Pet("Ant")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Ant")
+                    .withHealth(2)
+                    .withDamage(2),
+            ],
+            [
+                Pet("Dolphin")
+                    .withHealth(10)
+                    .withDamage(1)
+            ]
+        );
+        console.log(log);
 
         chai.equal(log.filter((line) => line.indexOf("Round over")+1).length, 2);
         chai.equal(log[log.length - 1], "[Loss]");

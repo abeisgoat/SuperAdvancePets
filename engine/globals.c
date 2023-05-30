@@ -480,12 +480,24 @@ void printPet(struct Pet * pet) {
 
 void deserializePet(int num, struct Pet * dest) {
     int attack,defence,id,heldItem,experience;
+    int defenseOffset,attackOffset,experienceOffset,heldItemOffset;
 
     defence = num % 100;
-    attack = ((num % 10000) - defence) / 100;
-    experience = ((num % 100000) - attack - defence) / 10000;
-    heldItem = ((num % 10000000) - attack - defence - experience) / 100000;
-    id = ((num % 100000000) - attack - defence - experience - heldItem) / 100000000;
+    defenseOffset = (defence * 1);
+    attack = ((num % 10000) - defenseOffset) / 100;
+    attackOffset = (attack * 100);
+    experience = ((num % 100000) - attackOffset - defenseOffset) / 10000;
+    experienceOffset = experience * 10000;
+    heldItem = ((num % 10000000) - attackOffset - defenseOffset - experienceOffset) / 100000;
+    heldItemOffset = heldItem * 100000;
+    id = (num - attackOffset -defenseOffset - experienceOffset - heldItemOffset) / 10000000;
+
+
+//    defence = num % 100;
+//    attack = ((num % 10000) - defence) / 100;
+//    experience = ((num % 100000) - attack - defence) / 10000;
+//    heldItem = ((num % 10000000) - attack - defence - experience) / 100000;
+//    id = ((num % 100000000) - attack - defence - experience - heldItem) / 100000000;
 
     emptyPet(dest);
     dest->id = id;

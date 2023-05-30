@@ -83,7 +83,7 @@ void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) 
     anim->y=67;
 
     if (from == to) {
-        anim->dy = anim->y-5;
+        anim->dy = anim->y-20;
     } else {
         anim->dy = anim->y;
     }

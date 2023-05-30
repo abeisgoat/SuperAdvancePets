@@ -9,6 +9,7 @@ void wormTriggerEatsShopFood(int usOrThem, PetTeam us, PetTeam them, struct Pet 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
     animateStatsToTeamPosition(selfPos, selfPos);
     resolveAnimation();
+
     selfPet->attack += expToLevel(selfPet->experience);
     selfPet->health += expToLevel(selfPet->experience);
 }

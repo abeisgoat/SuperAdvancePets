@@ -33,11 +33,12 @@ void main() {
     prepareEngine();
 
     int friendly[5] = {
-            24010313, // 24 Fish
-            34321114, // 34 Mammoth
-            35010910, // 35 Monkey,
-            28350444,
-            0,
+
+            640000202, // 35 Monkey,
+            208350444,
+            208350444,
+            0, // 24 Fish
+            0, // 34 Mammoth
 
     };
     int enemies[5] = {

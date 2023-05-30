@@ -4,23 +4,28 @@
 #include <stdio.h>
 
 void dolphinTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Dolphin trigger StartOfBattle");
+    printf("Activated Dolphin trigger StartOfBattle\n");
     int lowestHealth = 50;
     int lowestHealthPos;
+    struct Pet * enemy;
     for (int i=0; i<=4; i++) {
-        if (getPetHealth(&them[i]) < lowestHealth) {
+        enemy = &them[i];
+        if (getPetHealth(&them[i]) < lowestHealth && enemy->id > 0) {
             lowestHealth = getPetHealth(&them[i]);
             lowestHealthPos = i;
         }
     }
 
-    struct Pet * enemy = &them[lowestHealthPos];
+
+    enemy = &them[lowestHealthPos];
     int selfPos = petPosition(usOrThem, us, them, selfPet);
 
     if (enemy->id) {
         int enemyPos = petPosition(usOrThem, us, them, enemy);
         animateDamageToTeamPosition(selfPos, enemyPos);
     }
+    printf("target %d", lowestHealthPos);
+    printf("target id %d", enemy->id);
     resolveAnimation();
 
     int damage = 5;

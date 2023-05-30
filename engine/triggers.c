@@ -46,9 +46,14 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
+        case 20: // Dolphin
+            dolphinTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 36: // Mosquito
             mosquitoTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
     }
+    return 0;
 }
 
 int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
@@ -131,6 +136,15 @@ int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * p
             return 1;
         default:
             break;
+    }
+    return 0;
+}
+
+int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    switch (pet->id) {
+        case 64:
+            wormTriggerEatsShopFood(usOrThem, us, them, pet, pet, store);
+            return 1;
     }
     return 0;
 }
