@@ -133,7 +133,7 @@ void tickSceneResults() {
     }
 
     int hasMsg = 0;
-    tte_set_pos(20, 90);
+    tte_set_pos(23, 90);
     tte_write("#{cx:0x0000}");
 
     if (getWins() == 10) {
