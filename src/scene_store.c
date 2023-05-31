@@ -20,6 +20,45 @@ int cursorMem = 0;
 
 int pb = 0;
 
+void setupStoreUI() {
+    OBJ_ATTR  * sprite = getOAMSprite(105);
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16 | ATTR1_HFLIP,
+                 ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0));
+
+    obj_set_pos(sprite, 0, 0);
+
+    sprite =getOAMSprite(106);
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16,
+                 ATTR2_PALBANK(pb) | getMemFor16x16UI(UIElement_Btn_A_Outline));
+
+    obj_set_pos(sprite, 8, 134);
+
+    sprite = getOAMSprite(107);
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16,
+                 ATTR2_PALBANK(pb) | getMemFor16x16UI(UIElement_Btn_B_Outline));
+    obj_set_pos(sprite, 8, 144);
+
+    sprite = getOAMSprite(108);
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | loadLabel(0, UILabel_Move));
+    obj_set_pos(sprite, 20, 136);
+
+    sprite = getOAMSprite(109);
+    obj_set_attr(sprite,
+                 ATTR0_WIDE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x32,
+                 ATTR2_PALBANK(pb) | loadLabel(1, UILabel_Sell));
+    obj_set_pos(sprite, 20, 146);
+}
+
 void resetAnimalSpritesForStore() {
     int xOffset=65;
     int petPins=0;
@@ -60,19 +99,64 @@ void resetAnimalSpritesForStore() {
     }
 }
 
+void hideLabels() {
+    OBJ_ATTR * sprite;
+    for (int s=106; s<=109;s++) {
+        sprite = getOAMSprite(s);
+        sprite->attr0 |= ATTR0_HIDE;
+    }
+}
+
+void hideTopLabel() {
+    OBJ_ATTR * sprite;
+    for (int s=106; s<=108;s+=2) {
+        sprite = getOAMSprite(s);
+        sprite->attr0 |= ATTR0_HIDE;
+    }
+}
+
+void showLabels() {
+    OBJ_ATTR  * sprite;
+    for (int s=106; s<=109;s++) {
+        sprite = getOAMSprite(s);
+        sprite->attr0  &= ~ATTR0_HIDE;
+    }
+}
+
+
 void updateLabels() {
+    showLabels();
+    int hoveredId;
+
+    if (cursorY == 0) {
+        hoveredId = getPlayerTeamPet(cursorX)->id;
+    }
+    if (cursorY == 1) {
+        hoveredId = getEnemyTeamPet(cursorX)->id;
+    }
+
     if (cursorHeldPetID && cursorY == 1) {
-        loadLabel(0, UILabel_Cancel);
+        hideTopLabel();
         loadLabel(1, UILabel_Cancel);
     }else if (cursorHeldPetID) {
-        int hoveredId = getPlayerTeamPet(cursorX)->id;
-
         if (cursorHeldY == 1) {
-            loadLabel(1, UILabel_Cancel);
-            if ((hoveredId == cursorHeldPetID || cursorHeldPetID > 100) && hoveredId) {
-                loadLabel(0, UILabel_Stack);
-            } else if (hoveredId == 0 && cursorHeldPetID < 100) {
-                loadLabel(0, UILabel_Place);
+           hideTopLabel();
+            if (cursorHeldPetID < 100) {
+                if (hoveredId == cursorHeldPetID) {
+                    showLabels();
+                    loadLabel(0, UILabel_Stack);
+                } else if (hoveredId == 0) {
+                    showLabels();
+                    loadLabel(0, UILabel_Place);
+                }
+
+            } else if (cursorHeldPetID > 100) {
+                if (hoveredId > 0) {
+                    showLabels();
+                    loadLabel(0, UILabel_Buy);
+                } else {
+                    loadLabel(1, UILabel_Cancel);
+                }
             } else {
                 loadLabel(0, UILabel_Cancel);
             }
@@ -80,22 +164,33 @@ void updateLabels() {
 
         if (cursorHeldY == 0) {
             loadLabel(1, UILabel_Cancel);
-            if (hoveredId == cursorHeldPetID) {
+            if (hoveredId == cursorHeldPetID && cursorX != cursorHeldX) {
                 loadLabel(0, UILabel_Stack);
-            } else if (hoveredId == 0) {
+            } else if (hoveredId == 0 || (hoveredId == cursorHeldPetID && cursorX == cursorHeldX)) {
                 loadLabel(0, UILabel_Place);
+            } else if (hoveredId > 0) {
+                loadLabel(0, UILabel_Swap);
             } else {
+                hideTopLabel();
                 loadLabel(0, UILabel_Cancel);
             }
         }
     } else {
-
         if (cursorY == 0) {
-            loadLabel(1, UILabel_Sell);
-            loadLabel(0, UILabel_Move);
+            if (hoveredId > 0) {
+                loadLabel(1, UILabel_Sell);
+                loadLabel(0, UILabel_Move);
+            } else {
+                hideLabels();
+            }
         } else {
-            loadLabel(1, UILabel_Freeze);
-            loadLabel(0, UILabel_Buy);
+            if (hoveredId > 0) {
+                loadLabel(1, UILabel_Freeze);
+                loadLabel(0, UILabel_Buy);
+            } else {
+                hideLabels();
+            }
+
         }
     }
 }
@@ -113,25 +208,12 @@ void cancelAction() {
     frame = 0;
 }
 
-void hideLabels() {
-    OBJ_ATTR * sprite;
-    for (int s=106; s<=109;s++) {
-        sprite = getOAMSprite(s);
-        sprite->attr0 ^= ATTR0_HIDE;
-    }
-}
-
-void showLabels() {
-    OBJ_ATTR  * sprite;
-    for (int s=106; s<=109;s++) {
-        sprite = getOAMSprite(s);
-        sprite->attr0  &= ~ATTR0_HIDE;
-    }
-}
-
 void prepareSceneStore() {
+    setupStoreUI();
     nextTurn();
     randomizeStore();
+    resetBankForTurn();
+    hideLabels();
 
     resetAnimalSpritesForStore();
     updateAnimalSprites();
@@ -141,10 +223,14 @@ void prepareSceneStore() {
     cursorHeldPetID = 0;
 
     cursorX = 0;
-    cursorY = 0;
+    if (getTurn() == 1) {
+        cursorY = 1;
+    } else {
+        cursorY = 0;
+    }
     cursorOpen = 0;
     cursorMem = 0;
-
+    OBJ_ATTR *sprite;
     for (int i=0; i <12; i++) {
         struct PetSprite * ps = getPetSprite(i);
         ps->visiblePet = true;
@@ -155,7 +241,7 @@ void prepareSceneStore() {
     updateGameplayInfo(1);
 
     // UI Left Bumper
-    OBJ_ATTR *sprite = getOAMSprite(100);
+    sprite = getOAMSprite(100);
     int pb=0;
     obj_set_attr(sprite,
                  ATTR0_WIDE | ATTR0_8BPP,
@@ -173,7 +259,15 @@ void prepareSceneStore() {
 
     obj_set_pos(sprite, 208, 0);
     updateLabels();
-    showLabels();
+
+    // Cursor
+    sprite = getOAMSprite(105);
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16 | ATTR1_HFLIP,
+                 ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0));
+
+    obj_set_pos(sprite, 0, 0);
 }
 
 void tickSceneStore() {
@@ -193,7 +287,30 @@ void tickSceneStore() {
     sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
 
     if (key_hit(KEY_B)) {
-        cancelAction();
+        if (cursorHeldPetID > 0) {
+            cancelAction();
+        } else {
+            if (cursorY == 0) {
+                struct Pet * hoveredPet = getPlayerTeamPet(cursorX);
+                if (hoveredPet->id == 0) {
+                    // Nada
+                } else if (hoveredPet->id > 0) {
+                    // Sell
+                    sellPet(cursorX);
+                    updateGameplayInfo(1);
+                }
+            }
+            if (cursorY == 1) {
+                int hoveredId = getEnemyTeamPet(cursorX)->id;
+                if (hoveredId == 0) {
+                    // Nada
+                } else if (hoveredId > 0) {
+                    // Freeze
+                    struct PetSprite * ps = getPetSprite(cursorX + (cursorY * 5));
+                    ps->frozen = ps->frozen ? 0 : 1;
+                }
+            }
+        }
         resetAnimalSpritesForStore();
         updateAnimalSprites();
         updateLabels();
@@ -205,14 +322,18 @@ void tickSceneStore() {
             cursorHeldX = cursorX;
             cursorHeldY = cursorY;
             cursorOpen = 0;
-            cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
+            if (cursorY == 0) {
+                cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
+            } else if (cursorY == 1) {
+                cursorHeldPetID = getEnemyTeamPet(cursorHeldX)->id;
+            }
             cursorMem = getMemForPet(cursorX);
             getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
             getPetSprite(cursorX)->visiblePet = 0;
 
         } else {
             if (cursorHeldPetID > 100) {
-                if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0){
+                if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0) {
                     buyAssignItemAtPosition(cursorHeldX, cursorX);
                 }
                 int oldX = cursorX;
@@ -220,13 +341,62 @@ void tickSceneStore() {
                 cancelAction();
                 cursorY = oldY;
                 cursorX = oldX;
-            } else {
-                swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
-                int oldX = cursorX;
-                int oldY = cursorY;
-                cancelAction();
-                cursorY = oldY;
-                cursorX = oldX;
+            } else if (getPlayerTeamPet(cursorX)->id == cursorHeldPetID) {
+                if (cursorX == cursorHeldX) {
+                    cancelAction();
+                } else {
+                    struct Pet * other = getPlayerTeamPet(cursorX);
+                    struct Pet * heldPet = getPlayerTeamPet(cursorHeldX);
+
+                    int cost = -1;
+                    if (cursorHeldY == 1) {
+                        heldPet = getEnemyTeamPet(cursorHeldX);
+                        cost = getPetCost(heldPet);
+                    }
+
+                    if (cost >= 0 && spendBankMoney(cost) == 0) {
+                        cancelAction();
+                    }  else {
+                        other->experience = max(other->experience, heldPet->experience) + 1;
+                        other->health++;
+                        other->attack++;
+                        emptyPet(heldPet);
+                        int oldX = cursorX;
+                        int oldY = cursorY;
+                        cancelAction();
+                        cursorY = oldY;
+                        cursorX = oldX;
+                    }
+
+                }
+            } else  {
+                if (cursorHeldY == 0) {
+                    swapPets(getPlayerTeamPet(cursorX), getPlayerTeamPet(cursorHeldX));
+                    int oldX = cursorX;
+                    int oldY = cursorY;
+                    cancelAction();
+                    cursorY = oldY;
+                    cursorX = oldX;
+                } else if (cursorHeldY == 1 && getPlayerTeamPet(cursorX)->id == 0) {
+                    struct Pet * heldPet = getPlayerTeamPet(cursorHeldX);
+                    int cost = -1;
+                    if (cursorHeldY == 1) {
+                        heldPet = getEnemyTeamPet(cursorHeldX);
+                        cost = getPetCost(heldPet);
+                    }
+
+                    if (cost >= 0 && spendBankMoney(cost) == 0) {
+                        cancelAction();
+                    }  else {
+                        clonePet(heldPet, getPlayerTeamPet(cursorX));
+                        emptyPet(heldPet);
+                        int oldX = cursorX;
+                        int oldY = cursorY;
+                        cancelAction();
+                        cursorY = oldY;
+                        cursorX = oldX;
+                    }
+                }
 
             }
         }
@@ -254,6 +424,14 @@ void tickSceneStore() {
             }
             updateGameplayInfo(1);
             updateAnimalSprites();
+        } else if (item->id > 0) {
+            cursorHeldX = cursorX;
+            cursorHeldY = cursorY;
+            cursorOpen = 0;
+            cursorHeldPetID = getEnemyTeamPet(cursorHeldX)->id;
+            cursorMem = getMemForPet(5+cursorX);
+            getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
+            getPetSprite(5+cursorX)->visiblePet = 0;
         }
         resetAnimalSpritesForStore();
         updateAnimalSprites();
@@ -340,7 +518,7 @@ void tickSceneStore() {
         cancelAction();
         resetAnimalSpritesForStore();
         updateAnimalSprites();
-        updateLabels();
+        hideLabels();
         updateGameplayInfo(0);
 
         sprite = getOAMSprite(101);
@@ -351,11 +529,11 @@ void tickSceneStore() {
 
         setScene(1);
 
-        hideLabels();
-
         for (int t = 0; t < 10; t++) {
             tickMainLoop();
         }
+
+        endTurn();
         sprite = getOAMSprite(101);
         obj_set_pos(sprite, 208, 0);
 

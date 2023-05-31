@@ -10,16 +10,20 @@ void clearGameplayInfo() {
         OBJ_ATTR * sprite = sprite = getOAMSprite(i);
         obj_set_pos(sprite, -16, -16);
     }
+
+    OBJ_ATTR * sprite = sprite = getOAMSprite(110);
+    obj_set_pos(sprite, -16, -16);
 }
 void updateGameplayInfo(int includeCoins) {
     int pb=0;
-    int lives = 5;
+    int lives = getHearts();
     int turn = getTurn();
     int money = getBankMoney();
+    int wins = getWins();
 
     OBJ_ATTR *sprite;
     char msg[50];
-    int counters_x = 144;
+    int counters_x = 120;
     int turn_offset=0;
 
     if (lives < 10) {
@@ -56,10 +60,20 @@ void updateGameplayInfo(int includeCoins) {
         obj_set_pos(sprite, -16,-16);
     }
 
-    sprite = getOAMSprite(103);
-
-
+    sprite = getOAMSprite(110);
     tte_set_pos(counters_x + 46+ turn_offset, counters_y);
+    sprintf(msg, "%d ", wins);
+    tte_write(msg);
+
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_8x8,
+                 ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Trophy));
+
+    obj_set_pos(sprite, counters_x + 32 + turn_offset, counters_y+2);
+
+    sprite = getOAMSprite(103);
+    tte_set_pos(counters_x + 46+ + 24 + turn_offset, counters_y);
     sprintf(msg, "%d ", turn);
     tte_write(msg);
 
@@ -68,9 +82,9 @@ void updateGameplayInfo(int includeCoins) {
                  ATTR1_SIZE_8x8,
                  ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Turns));
 
-    obj_set_pos(sprite, counters_x + 32 + turn_offset, counters_y+2);
+    obj_set_pos(sprite, counters_x + 32 + 24 + turn_offset, counters_y+2);
 
-    tte_set_pos(counters_x + 72 , counters_y);
+    tte_set_pos(counters_x + 72 + 24 , counters_y);
     sprintf(msg, "%d ", lives);
     tte_write(msg);
 
@@ -80,5 +94,5 @@ void updateGameplayInfo(int includeCoins) {
                  ATTR1_SIZE_8x8,
                  ATTR2_PALBANK(pb) | getMemForUIIcon(UIIcon_Hearts));
 
-    obj_set_pos(sprite, counters_x + 62, counters_y+2);
+    obj_set_pos(sprite, counters_x + 62 + 24, counters_y+2);
 }

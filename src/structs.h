@@ -9,6 +9,7 @@ struct PetSprite {
     int petPin;
     int visiblePet;
     int visibleStats;
+    int frozen;
     int shortStat;
 };
 #endif

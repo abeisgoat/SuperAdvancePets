@@ -47,4 +47,8 @@ void resetCanBoost();
 void resetGame();
 int getTurn();
 int nextTurn();
+void addLoss();
+void addWin();
+int getWins();
+int getHearts();
 #endif

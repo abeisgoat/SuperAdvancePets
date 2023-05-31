@@ -2050,6 +2050,30 @@ engine/triggers.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/triggers.c.s
 .PHONY : engine/triggers.c.s
 
+src/mem_manager.o: src/mem_manager.c.o
+.PHONY : src/mem_manager.o
+
+# target to build an object file
+src/mem_manager.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/mem_manager.c.o
+.PHONY : src/mem_manager.c.o
+
+src/mem_manager.i: src/mem_manager.c.i
+.PHONY : src/mem_manager.i
+
+# target to preprocess a source file
+src/mem_manager.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/mem_manager.c.i
+.PHONY : src/mem_manager.c.i
+
+src/mem_manager.s: src/mem_manager.c.s
+.PHONY : src/mem_manager.s
+
+# target to generate assembly for a file
+src/mem_manager.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/mem_manager.c.s
+.PHONY : src/mem_manager.c.s
+
 src/music.o: src/music.c.o
 .PHONY : src/music.o
 
@@ -2097,6 +2121,54 @@ src/sap.s: src/sap.c.s
 src/sap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/sap.c.s
 .PHONY : src/sap.c.s
+
+src/scene_battle.o: src/scene_battle.c.o
+.PHONY : src/scene_battle.o
+
+# target to build an object file
+src/scene_battle.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_battle.c.o
+.PHONY : src/scene_battle.c.o
+
+src/scene_battle.i: src/scene_battle.c.i
+.PHONY : src/scene_battle.i
+
+# target to preprocess a source file
+src/scene_battle.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_battle.c.i
+.PHONY : src/scene_battle.c.i
+
+src/scene_battle.s: src/scene_battle.c.s
+.PHONY : src/scene_battle.s
+
+# target to generate assembly for a file
+src/scene_battle.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_battle.c.s
+.PHONY : src/scene_battle.c.s
+
+src/scene_results.o: src/scene_results.c.o
+.PHONY : src/scene_results.o
+
+# target to build an object file
+src/scene_results.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_results.c.o
+.PHONY : src/scene_results.c.o
+
+src/scene_results.i: src/scene_results.c.i
+.PHONY : src/scene_results.i
+
+# target to preprocess a source file
+src/scene_results.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_results.c.i
+.PHONY : src/scene_results.c.i
+
+src/scene_results.s: src/scene_results.c.s
+.PHONY : src/scene_results.s
+
+# target to generate assembly for a file
+src/scene_results.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/scene_results.c.s
+.PHONY : src/scene_results.c.s
 
 src/scene_store.o: src/scene_store.c.o
 .PHONY : src/scene_store.o
@@ -2441,12 +2513,21 @@ help:
 	@echo "... engine/triggers.o"
 	@echo "... engine/triggers.i"
 	@echo "... engine/triggers.s"
+	@echo "... src/mem_manager.o"
+	@echo "... src/mem_manager.i"
+	@echo "... src/mem_manager.s"
 	@echo "... src/music.o"
 	@echo "... src/music.i"
 	@echo "... src/music.s"
 	@echo "... src/sap.o"
 	@echo "... src/sap.i"
 	@echo "... src/sap.s"
+	@echo "... src/scene_battle.o"
+	@echo "... src/scene_battle.i"
+	@echo "... src/scene_battle.s"
+	@echo "... src/scene_results.o"
+	@echo "... src/scene_results.i"
+	@echo "... src/scene_results.s"
 	@echo "... src/scene_store.o"
 	@echo "... src/scene_store.i"
 	@echo "... src/scene_store.s"

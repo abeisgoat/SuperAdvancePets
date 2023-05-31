@@ -114,10 +114,40 @@ describe("SuperAdvancePets Engine", () => {
                     .withDamage(1)
             ]
         );
-        console.log(log);
 
         chai.equal(log.filter((line) => line.indexOf("Round over")+1).length, 2);
         chai.equal(log[log.length - 1], "[Loss]");
+    });
+
+    it("Specific: Animals cleared after Peacock", async () => {
+        const log = await battle(
+            [
+                Pet("Duck")
+                    .withHealth(1)
+                    .withDamage(3),
+                Pet("Peacock")
+                    .withHealth(2)
+                    .withDamage(5),
+                Pet("Flamingo")
+                    .withHealth(3)
+                    .withDamage(1),
+                Pet("Otter")
+                    .withHealth(2)
+                    .withDamage(3),
+            ],
+            [
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Ant")
+                    .withHealth(2)
+                    .withDamage(2)
+            ]
+        );
+
+        console.log(log);
+
+        chai.equal(log[log.length - 1], "[Win]");
     });
 });
 

@@ -14,6 +14,7 @@ const int memStartOfIcons = memStartOfExp + 40;
 const int memThrowable = memStartOfIcons + 48;
 const int memCursor = memThrowable + 4;
 const int memStartOfSquareUI =  memCursor + 16;
+const int memStartOf32x32UI = memStartOfSquareUI + 8*8;
 
 int getMemForPet(int s) {
     return s * 10;
@@ -47,6 +48,10 @@ int getMemForUIIcon(enum UIIcon icon) {
     return memStartOfIcons + icon * 4;
 }
 
+int getMemFor32x32UI() {
+    return memStartOf32x32UI;
+}
+
 int getMemForHeldItem(int id) {
     switch (id) {
         case 103:
@@ -70,6 +75,25 @@ int getMemForHeldItem(int id) {
 
 int getMemForCursor(int frame) {
     return memCursor + (frame * 8);
+}
+
+int load32x32UI(enum UIElements32x32 elem) {
+    int memPos = getMemFor32x32UI();
+    switch (elem) {
+        case UIElement32x32_Smile:
+            memcpy(&tile_mem[4][memPos], uiSmile32x32Tiles, uiSmile32x32TilesLen);
+            break;
+        case UIElement32x32_Frown:
+            memcpy(&tile_mem[4][memPos], uiFrown32x32Tiles, uiFrown32x32TilesLen);
+            break;
+        case UIElement32x32_Meh:
+            memcpy(&tile_mem[4][memPos], uiMeh32x32Tiles, uiMeh32x32TilesLen);
+            break;
+        case UIElement32x32_Trophy:
+            memcpy(&tile_mem[4][memPos], uiTrophy32x32Tiles, uiTrophy32x32TilesLen);
+            break;
+    }
+    return memPos;
 }
 
 int loadLabel(int upperOrLower, enum UILabels label) {
@@ -160,6 +184,7 @@ void initSpriteMem() {
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Coin)], uiCoin8x8Tiles, uiCoin8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Hearts)], uiHeart8x8Tiles, uiHeart8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Turns)], uiTurns8x8Tiles, uiTurns8x8TilesLen);
+    memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Trophy)], uiTrophy8x8Tiles, uiTrophy8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Chili)], uiChili8x8Tiles, uiChili8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Melon)], uiMelon8x8Tiles, uiMelon8x8TilesLen);
     memcpy(&tile_mem[4][getMemForUIIcon(UIIcon_Meatbone)], uiMeatBone8x8Tiles, uiMeatBone8x8TilesLen);
@@ -173,7 +198,14 @@ void initSpriteMem() {
 
     memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Btn_A_Outline)], uiButtonAOutlineTiles, uiButtonAOutlineTilesLen);
     memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Btn_B_Outline)], uiButtonBOutlineTiles, uiButtonBOutlineTilesLen);
-//    memcpy(&tile_mem[4][endOfNums + 32], uiModalTiles, uiModalTilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_IceBlock)], uiIceBlock16x16Tiles, uiIceBlock16x16TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Bandaid)], uiBandaidTiles, uiBandaidTilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Trophy)], uiTrophy16x16Tiles, uiTrophy16x16TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_TrophyEmpty)], uiTrophyEmpty16x16Tiles, uiTrophyEmpty16x16TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Heart)], uiHeart16x16Tiles, uiHeart16x16TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_HeartEmpty)], uiHeartEmpty16x16Tiles, uiHeartEmpty16x16TilesLen);
+
+    //    memcpy(&tile_mem[4][endOfNums + 32], uiModalTiles, uiModalTilesLen);
 }
 
 int usePetGfxMem(int id, int pos) {

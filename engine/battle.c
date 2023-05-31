@@ -6,15 +6,8 @@
 #include <time.h>
 #include <stdlib.h>
 
-enum TriggerTransitionType {
-    Junk=0,
-    Health=1
-};
-
-struct TriggerTransition {
-    int startPosition;
-    int endPosition;
-    enum TriggerTransitionType type;
+PetTeam backedUpTeam = {
+        {}, {}, {}, {}, {}
 };
 
 PetTeam playerTeam = {
@@ -70,16 +63,17 @@ int isBattleOver() {
     return playerTeamSize() == 0 || enemyTeamSize() == 0 ? 1 : 0;
 }
 
+int getPetCost(struct Pet * pet) {
+    if (pet->cost >= 0) {
+        return pet->cost;
+    }
+    return 3;
+}
+
 int buyItemAtPosition(int index) {
     struct Pet *item = &enemyTeam[index];
-    int cost = 3;
-    if (item->cost) {
-        cost = item->cost;
-    }
+    int cost = getPetCost(item);
 
-    if (getBankMoney() < cost) {
-        return 0;
-    }
 
     int trigger = applyBuyTrigger(0, playerTeam, enemyTeam, item, enemyTeam);
 
@@ -95,10 +89,7 @@ int buyAssignItemAtPosition(int index, int target) {
     struct Pet *item = &enemyTeam[index];
     struct Pet *activatingPet = &playerTeam[target];
 
-    int cost = 3;
-    if (item->cost) {
-        cost = item->cost;
-    }
+    int cost = getPetCost(item);
 
     if (getBankMoney() < cost) {
         return 0;
@@ -189,9 +180,41 @@ void resolveTriggers() {
     }
 }
 
+void backupTeam() {
+    for (int i=0; i<7; i++) {
+        clonePet(&playerTeam[i], &backedUpTeam[i]);
+    }
+}
+
+void restoreTeam() {
+    for (int i=0; i<7; i++) {
+        clonePet(&backedUpTeam[i], &playerTeam[i]);
+    }
+}
+
+void endTurn() {
+    for (int i=0; i<=4; i++) {
+        applyEndTurnTrigger(0, playerTeam, enemyTeam, &playerTeam[i], enemyTeam);
+    }
+    resolveTriggers();
+}
+
+void sellPet(int index) {
+    struct Pet * pet = getPlayerTeamPet(index);
+    addBankMoney(expToLevel(pet->experience));
+    applySellTrigger(0, playerTeam, enemyTeam, pet, enemyTeam);
+    emptyPet(pet);
+    resolveTriggers();
+}
+
+int lastResult;
+
+int getLastResult() {
+    return lastResult;
+}
+
 int battle() {
     int step = 0;
-
     for (int i=0; i<=4;i++) {
         if (playerTeam[i].id > 0) {
             applyBattleStartTrigger(
@@ -218,6 +241,7 @@ int battle() {
 
     step = stepForward(step);
     if (step < 0) {
+        lastResult = step;
         return step;
     }
 
@@ -261,6 +285,7 @@ int battle() {
 
         step = stepForward(step);
         if (step < 0) {
+            lastResult = step;
             return step;
         }
 
@@ -288,6 +313,7 @@ int battle() {
 
         step = stepForward(step);
         if (step < 0) {
+            lastResult = step;
             return step;
         }
 

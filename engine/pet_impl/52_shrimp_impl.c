@@ -9,11 +9,13 @@ void shrimpTriggerSell(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
 
     struct Pet * friend = randomOtherTeamMember(us, selfPet);
 
-    int givePos = petPosition(usOrThem, us, them, selfPet);
-    int friendPos = petPosition(usOrThem, us, them, friend);
+    if (friend->id) {
+        int givePos = petPosition(usOrThem, us, them, selfPet);
+        int friendPos = petPosition(usOrThem, us, them, friend);
 
-    animateStatsToTeamPosition(givePos, friendPos);
-    resolveAnimation();
+        animateStatsToTeamPosition(givePos, friendPos);
+        resolveAnimation();
 
-    friend->attack+= expToLevel(selfPet->experience);
+        friend->attack += expToLevel(selfPet->experience);
+    }
 }

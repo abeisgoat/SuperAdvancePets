@@ -46,7 +46,8 @@ struct Pet EmptyPet = {
         .heldItem = 0,
         .activations=0,
         .pin=0,
-        .hurt=0
+        .hurt=0,
+        .cost=-1
 };
 
 struct Pet * randomOtherTeamMember(PetTeam team, struct Pet * exclude) {
@@ -304,6 +305,7 @@ void clonePet(struct Pet * src, struct Pet * dest) {
     dest->tier = src->tier;
     dest->pin = src->pin;
     dest->activations = src->activations;
+    dest->hurt = src->hurt;
 }
 
 void summonPet(int petId, struct Pet * dest) {
@@ -616,6 +618,9 @@ void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest) {
         } else {
             emptyPet(&dest[i]);
         }
+        if (dest[i].cost == 0) {
+            dest[i].cost = -1;
+        }
     }
 
     if (rand() % 1000 == 1) {
@@ -629,6 +634,8 @@ void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest) {
 int bank=0;
 int canBoost=0;
 int turn=0;
+int wins=0;
+int hearts=0;
 
 void addCanBoost(int i) {
     canBoost += i;
@@ -667,12 +674,25 @@ int getBankMoney() {
     return bank;
 }
 
+void addLoss() {
+    hearts -= 1;
+}
+void addWin() {
+    wins += 1;
+}
+int getWins() {
+    return wins;
+}
+int getHearts() {
+    return hearts;
+}
+
 int spendBankMoney(int i) {
     if (bank < i) {
-        return -i;
+        return 0;
     } else {
         bank -= i;
-        return 0;
+        return 1;
     }
 }
 
@@ -680,4 +700,6 @@ void resetGame() {
     resetCanBoost();
     resetBankForTurn();
     resetTurn();
+    hearts=5;
+    wins=0;
 }

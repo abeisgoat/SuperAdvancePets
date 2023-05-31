@@ -19,20 +19,23 @@ void duckTriggerSell(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPe
             break;
     }
 
-    int selfPos = petPosition(usOrThem, us, them, selfPet);
+    // TODO Animationed stats for store animals don't work
+//    int selfPos = petPosition(usOrThem, us, them, selfPet);
 
-    for (int i=0; i<=4; i++) {
+//    for (int i=0; i<7; i++) {
+//        struct Pet * storePet = &store[i];
+//        if (storePet->id > 0 && storePet->id < 100) {
+//            int storePos = storePosition(store, storePet);
+//            animateStatsToTeamPosition(selfPos, storePos);
+//        }
+//    }
+//
+//    resolveAnimation();
+//
+    for (int i=0; i<7; i++) {
         struct Pet * storePet = &store[i];
-        int storePos = storePosition(store, storePet);
-        animateStatsToTeamPosition(selfPos, storePos);
-    }
 
-    resolveAnimation();
-
-    for (int i=0; i<=4; i++) {
-        struct Pet * storePet = &store[i];
-
-        if (storePet->id > 0) {
+        if (storePet->id > 0 && storePet->id < 100) {
             storePet->health += health;
         }
     }

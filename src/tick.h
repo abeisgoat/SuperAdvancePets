@@ -7,7 +7,9 @@
 #include <tonc.h>
 OBJ_ATTR * getOAMSprite(int index);
 void refreshOAM();
-void tickMainLoop();
+int tickMainLoop();
+void reset();
+void readyTick();
 void tickInit();
 void setScene(int scene);
 struct PetSprite * getPetSprite(int index);

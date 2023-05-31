@@ -23,5 +23,7 @@ int loadLabel(int upperOrLower, enum UILabels label);
 int loadThrowable(enum UIThrowable label);
 int getMemForPet(int s);
 int getMemForHeldItem(int id);
+int getMemFor32x32UI(enum UIElements32x32 element);
+int load32x32UI(enum UIElements32x32 element);
 
 #endif //SUPERADVANCEPETS_PET_DATA_H

@@ -10,17 +10,17 @@ void beaverTriggerSell(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
     struct Pet * friend1 = randomOtherTeamMember(us, selfPet);
     struct Pet * friend2 = randomOtherTeamMember(us, friend1);
 
-    int selfPos = petPosition(usOrThem, us, them, selfPet);
-
-    if (friend1->id) {
-        int friend1Pos = petPosition(0, us, them, friend1);
-        animateStatsToTeamPosition(selfPos, friend1Pos);
-    }
-    if (friend2->id) {
-        int friend2Pos = petPosition(0, us, them, friend2);
-        animateStatsToTeamPosition(selfPos, friend2Pos);
-    }
-    resolveAnimation();
+//    int selfPos = petPosition(usOrThem, us, them, selfPet);
+//
+////    if (friend1->id) {
+////        int friend1Pos = petPosition(0, us, them, friend1);
+////        animateStatsToTeamPosition(selfPos, friend1Pos);
+////    }
+////    if (friend2->id) {
+////        int friend2Pos = petPosition(0, us, them, friend2);
+////        animateStatsToTeamPosition(selfPos, friend2Pos);
+////    }
+////    resolveAnimation();
 
     int health = 1;
     switch (expToLevel(selfPet->experience)) {

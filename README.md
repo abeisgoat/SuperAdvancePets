@@ -85,7 +85,7 @@ Make Graphics
 ```bash
 cd sprites/ui
 rm pngs/*
-convert ui.png -crop 16x16@ +repage +adjoin ui_8x8_%d.png
+convert ui.png -crop 16x20@ +repage +adjoin ui_8x8_%d.png
 mv ui_8x8_0.png pngs/num0.png
 mv ui_8x8_1.png pngs/num1.png
 mv ui_8x8_2.png pngs/num2.png
@@ -115,7 +115,7 @@ mv ui_8x8_157.png pngs/uiPeanut8x8.png
 mv ui_8x8_23.png pngs/uiTurns8x8.png
 
 rm ui_8x8_*.png
-convert ui.png -crop 8x8@ +repage +adjoin ui_16x16_%d.png
+convert ui.png -crop 8x10@ +repage +adjoin ui_16x16_%d.png
 
 mv ui_16x16_8.png pngs/uiTrophy16x16.png
 mv ui_16x16_9.png pngs/uiTrophyEmpty16x16.png
@@ -146,6 +146,7 @@ mv ui_16x16_29.png pngs/uiDice6.png
 
 mv ui_16x16_30.png pngs/uiCursorOpen.png
 mv ui_16x16_31.png pngs/uiCursorClose.png
+mv ui_16x16_36.png pngs/uiBandaid.png
 
 mv ui_16x16_46.png pngs/uiButtonAOutline.png
 mv ui_16x16_47.png pngs/uiButtonBOutline.png
@@ -153,7 +154,7 @@ mv ui_16x16_47.png pngs/uiButtonBOutline.png
 mv ui_16x16_62.png pngs/uiBannerShort.png
 
 rm ui_16x16_*.png
-convert ui.png -crop 4x8@ +repage +adjoin ui_32x16_%d.png
+convert ui.png -crop 4x10@ +repage +adjoin ui_32x16_%d.png
 mv ui_32x16_2.png pngs/uiLeftBumperRoll.png
 mv ui_32x16_3.png pngs/uiRightBumperFight.png
 
@@ -166,10 +167,14 @@ mv ui_32x16_28.png pngs/uiLabelStack.png
 mv ui_32x16_29.png pngs/uiLabelPlace.png
 mv ui_32x16_30.png pngs/uiLabelSwap.png
 rm ui_32x16_*.png
-convert ui.png -crop 2x4@ +repage +adjoin ui_64x32_%d.png
 
-mv ui_64x32_4.png pngs/uiModal.png
-rm ui_64x32_*.png
+convert ui.png -crop 4x5@ +repage +adjoin ui_32x32_%d.png
+
+mv ui_32x32_8.png pngs/uiFrown32x32.png
+mv ui_32x32_9.png pngs/uiSmile32x32.png
+mv ui_32x32_16.png pngs/uiMeh32x32.png
+mv ui_32x32_17.png pngs/uiTrophy32x32.png
+rm ui_32x32_*.png
 cd ../..
 
 rm -rf sprites/generated

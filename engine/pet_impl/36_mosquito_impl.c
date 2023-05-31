@@ -10,10 +10,13 @@ void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct
 
     for (int l=1; l<= expToLevel(selfPet->experience); l++) {
         struct Pet * enemy = randomOtherTeamMember(them, selfPet);
-        int enemyPos = petPosition(usOrThem, us, them, enemy);
-        int damage = 1;
-        animateDamageToTeamPosition(selfPos, enemyPos);
-        resolveAnimation();
-        damagePet(usOrThem, us, them, store, enemy, damage);
+
+        if (enemy->id) {
+            int enemyPos = petPosition(usOrThem, us, them, enemy);
+            int damage = 1;
+            animateDamageToTeamPosition(selfPos, enemyPos);
+            resolveAnimation();
+            damagePet(usOrThem, us, them, store, enemy, damage);
+        }
     }
 }

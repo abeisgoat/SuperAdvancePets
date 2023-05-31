@@ -8,6 +8,7 @@ enum UIIcon {
     UIIcon_Coin,
     UIIcon_Hearts,
     UIIcon_Turns,
+    UIIcon_Trophy,
     UIIcon_Chili,
     UIIcon_Melon,
     UIIcon_Meatbone,
@@ -35,9 +36,22 @@ enum UILabels {
     UILabel_None,
 };
 
+enum UIElements32x32 {
+    UIElement32x32_Smile,
+    UIElement32x32_Frown,
+    UIElement32x32_Meh,
+    UIElement32x32_Trophy
+};
+
 enum UIElements16x16 {
     UIElement_Btn_A_Outline,
-    UIElement_Btn_B_Outline
+    UIElement_Btn_B_Outline,
+    UIElement_IceBlock,
+    UIElement_Bandaid,
+    UIElement_Heart,
+    UIElement_HeartEmpty,
+    UIElement_Trophy,
+    UIElement_TrophyEmpty
 };
 
 enum UIThrowable {

@@ -14,16 +14,48 @@ int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, 
             badgerTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
-        case 3: // Cricket
+        case 14: // Cricket
             cricketTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
-        case 16:
+        case 16: // Deer
             deerTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
-        case 29:
+        case 25: // Flamingo
+            flamingoTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 29: // Hedgehog
             hedgehogTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 34: // Mammoth
+            mammothTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 45: // Rat
+            ratTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 47: // Rooster
+            roosterTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 51: // Sheep
+            sheepTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 57: // Spider
+            spiderTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 62: // Turtle
+            turtleTriggerFaint(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 63: // Whale
+            whaleTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
     }
@@ -40,17 +72,32 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
             return 1;
         case 28: // Gorilla
             return gorillaTriggerHurt(usOrThem, us, them, pet, pet, store);
+        case 40: // Peacock
+            peacockTriggerHurt(usOrThem, us, them, pet, pet, store);
+            return 1;
     }
     return 0;
 }
 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
+        case 15: // Crocodile
+            crocodileTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 18: // Dodo
+            dodoTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 20: // Dolphin
             dolphinTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
         case 36: // Mosquito
             mosquitoTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 53: // Skunk
+            skunkTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 63: // Whale
+            whaleTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
     }
     return 0;
@@ -58,9 +105,57 @@ int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 
 int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
+        case 37:
+            otterTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
         case 102:
             cannedFoodTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
+            return 1;
+        default:
+            break;
+    }
+    return 0;
+}
+
+int applySellTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    switch (pet->id) {
+        case 3:
+            beaverTriggerSell(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 22:
+            duckTriggerSell(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 52:
+            shrimpTriggerSell(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        default:
+            break;
+    }
+    return 0;
+}
+
+
+int applyEndTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    switch (pet->id) {
+        case 5: // Bison
+            bisonTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 27: // Giraffe
+            giraffeTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 35: // Monkey
+            monkeyTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 41: // Penguin
+            penguinTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 39: // Parrot
+            parrotTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
             return 1;
         default:
             break;

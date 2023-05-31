@@ -622,6 +622,12 @@
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/animations.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager.c">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager.h">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/mem_manager_enums.h">
 			<Option target="SuperAdvancePets"/>
 		</Unit>
@@ -633,6 +639,20 @@
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/sap.c">
 			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/scene_battle.c">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/scene_battle.h">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/scene_results.c">
+			<Option target="SuperAdvancePets"/>
+			<Option target="SuperAdvancePetsCLI"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/scene_results.h">
+			<Option target="SuperAdvancePets"/>
+			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/scene_store.c">
 			<Option target="SuperAdvancePets"/>

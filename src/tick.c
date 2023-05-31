@@ -18,13 +18,12 @@ void tickInit() {
     oam_init(obj_buffer, 128);
 }
 
-int screenX = 16;
-int screenY = 0;
+int screenX;
+int screenY;
 
-int screenXTarget = 16;
-int screenYTarget = 0;
-int activeScene = 0;
-float screenMomentum = 0;
+int screenXTarget;
+int screenYTarget;
+int activeScene;
 
 struct PetSprite petSprites[12] = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
 
@@ -34,13 +33,6 @@ struct PetSprite * getPetSprite(int index) {
 
 int spritePerAnimals=8;
 void updateAnimalSprites() {
-//    for (int s=0; s<10; s++) {
-//        struct PetSprite *ps = &petSprites[s];
-//
-//        if (ps->pet != 0) {
-//            unusePetGfxMem(ps->pet->id);
-//        }
-//    }
     OBJ_ATTR *sprite;
     int spriteCount=0;
     for (int s=0; s<12; s++) {
@@ -68,7 +60,8 @@ void updateAnimalSprites() {
             obj_set_pos(sprite, ps->screenX, ps->screenY);
 
             if (getPetHealth(pet) == 0 && pet->id < 100) {
-                sprite->attr1 ^= ATTR1_VFLIP;
+//                sprite->attr1 ^= ATTR1_VFLIP;
+                sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | getMemFor16x16UI(UIElement_Bandaid);
             }
 
             if (ps->flip) {
@@ -94,16 +87,23 @@ void updateAnimalSprites() {
                 int topMem = getBannerTopForLvl(lvl);
                 int statOffsetY = 0;
 
+                sprite = getOAMSprite(spriteCount++);
+                obj_set_attr(sprite,
+                             ATTR0_SQUARE | ATTR0_8BPP,
+                             ATTR1_SIZE_16,
+                             ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | topMem);
+
                 if (ps->shortStat) {
                     bottomMem = getBannerBottomForExp(4);
                     statOffsetY = 34;
+                    obj_set_pos(sprite, -16, -16);
                 } else {
-                    sprite = getOAMSprite(spriteCount++);
-                    obj_set_attr(sprite,
-                                 ATTR0_SQUARE | ATTR0_8BPP,
-                                 ATTR1_SIZE_16,
-                                 ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | topMem);
                     obj_set_pos(sprite, ps->screenX, ps->screenY - 30 + statOffsetY);
+                }
+
+                if (ps->frozen) {
+                    sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | getMemFor16x16UI(UIElement_IceBlock);
+                    obj_set_pos(sprite, ps->screenX, ps->screenY - 34 + statOffsetY);
                 }
 
                 sprite = getOAMSprite(spriteCount++);
@@ -258,57 +258,6 @@ int moveScreenTowardsTarget() {
         return 1;
     }
     return 0;
-
-
-//    int x_diff = screenXTarget - screenX;
-//    int y_diff = screenYTarget - screenY;
-//    int x_slow = x_diff && (x_diff > 0 && x_diff < maxSpeed || x_diff < 0 && x_diff > -maxSpeed);
-//    int y_slow = y_diff && (y_diff > 0 && y_diff < maxSpeed || y_diff < 0 && y_diff > -maxSpeed);
-//
-//    if (x_slow || y_slow) {
-//        screenMomentum *= 0.5;
-//    }
-//
-//    if (abs(x_diff) < maxSpeed) {
-//        screenX = screenXTarget;
-//    }
-//
-//    if (abs(y_diff) < maxSpeed) {
-//        screenY = screenYTarget;
-//    }
-//
-//    x_diff = screenXTarget - screenX;
-//    y_diff = screenYTarget - screenY;
-//
-//    if (x_diff == 0 && y_diff == 0) {
-//        return 0;
-//    }
-//
-//    if (screenMomentum > maxSpeed) {
-//        screenMomentum = maxSpeed;
-//    }
-//    if (screenMomentum < -maxSpeed) {
-//        screenMomentum = -maxSpeed;
-//    }
-//
-//    if (screenXTarget > screenX) {
-//        screenMomentum += 0.1;
-//        screenX += screenMomentum;
-//        return 1;
-//    }else if (screenXTarget < screenX) {
-//        screenMomentum -= 0.1;
-//        screenX += screenMomentum;
-//        return 1;
-//    }else if (screenYTarget > screenY) {
-//        screenMomentum += 0.1;
-//        screenY += screenMomentum;
-//        return 1;
-//    }else if (screenYTarget < screenY) {
-//        screenMomentum -= 0.1;
-//        screenY += screenMomentum;
-//        return 1;
-//    }
-//    return 0;
 }
 
 void screenAnimalSprites() {
@@ -326,8 +275,22 @@ void screenAnimalSprites() {
 void refreshOAM() {
     oam_copy(oam_mem, obj_buffer, 127);
 }
+
+int r=0;
+void readyTick() {
+    r = 0;
+    screenX = 16;
+    screenY = 0;
+
+    screenXTarget = 16;
+    screenYTarget = 0;
+    activeScene = 0;
+}
+void reset() {
+    r = -1;
+}
 // Progress main game loop
-void tickMainLoop() {
+int tickMainLoop() {
     vid_vsync();
     key_poll();
     mmFrame();
@@ -344,4 +307,5 @@ void tickMainLoop() {
     REG_BG1HOFS = screenX;
     REG_BG1VOFS = screenY;
     refreshOAM();
+    return r;
 }
