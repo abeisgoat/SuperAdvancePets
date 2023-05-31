@@ -134,12 +134,15 @@ void tickSceneResults() {
 
     int hasMsg = 0;
     tte_set_pos(23, 90);
+    REG_BG2HOFS = -3;
     tte_write("#{cx:0x0000}");
 
     if (getWins() == 10) {
+        REG_BG2HOFS = -5;
         tte_write("You win! Congratulations!");
         hasMsg = 1;
     } else if (getHearts() == 0) {
+        REG_BG2HOFS = -1;
         tte_set_pos(60, 90);
         tte_write("Gameover! Sorry!");
         hasMsg = 1;
@@ -184,7 +187,7 @@ void tickSceneResults() {
     } else {
         setScene(3);
     }
-
+    REG_BG2HOFS = 0;
 
 
     for (int i=0; i<20;i++) {

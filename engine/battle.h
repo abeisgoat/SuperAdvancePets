@@ -18,3 +18,7 @@ void endTurn();
 int getPetCost(struct Pet * pet);
 void sellPet(int playerIndex);
 int getLastResult();
+void freeze(int i);
+void unfreeze(int i);
+int isFrozen(int i);
+void resolveTriggers();

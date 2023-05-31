@@ -16,6 +16,11 @@ PetTeam playerTeam = {
 PetTeam enemyTeam = {
         {},{},{},{},{}, {}, {}
 };
+
+PetTeam frozenTeam = {
+        {},{},{},{},{}, {}, {}
+};
+
 PetTeam storeTeam = {};
 
 void printTeam() {
@@ -28,6 +33,18 @@ void printTeam() {
         }
     }
     printf("\n");
+}
+
+void freeze(int i) {
+    clonePet(&enemyTeam[i], &frozenTeam[i]);
+}
+
+void unfreeze(int i) {
+    emptyPet(&frozenTeam[i]);
+}
+
+int isFrozen(int i) {
+    return frozenTeam[i].id > 0 ? 1 : 0;
 }
 
 void resetTeams() {
@@ -105,7 +122,7 @@ int buyAssignItemAtPosition(int index, int target) {
     resolveDeaths();
     resolveAnimation();
     emptyPet(item);
-    return 1;
+    return trigger;
 }
 
 int stepForward(int step) {
@@ -183,12 +200,20 @@ void resolveTriggers() {
 void backupTeam() {
     for (int i=0; i<7; i++) {
         clonePet(&playerTeam[i], &backedUpTeam[i]);
+
+        if (frozenTeam[i].id) {
+            clonePet(&enemyTeam[i], &frozenTeam[i]);
+        }
     }
 }
 
 void restoreTeam() {
     for (int i=0; i<7; i++) {
         clonePet(&backedUpTeam[i], &playerTeam[i]);
+
+        if (frozenTeam[i].id) {
+            clonePet(&frozenTeam[i], &enemyTeam[i]);
+        }
     }
 }
 
@@ -422,7 +447,7 @@ void forceStore(int store[7]) {
 }
 
 void randomizeStore() {
-    randomizeStoreViaTurn(getTurn(), 1, enemyTeam);
+    randomizeStoreViaTurn(getTurn(), 1, enemyTeam, frozenTeam);
 }
 
 void prepareTeams(int friendly[5], int enemies[5]) {

@@ -76,6 +76,8 @@ void gameloop() {
 
     REG_BG1HOFS = 0;
     REG_BG1VOFS = 0;
+    REG_BG2HOFS = 0;
+    REG_BG2VOFS = 0;
 
     irq_init(NULL);
     irq_add(II_VBLANK, NULL);

@@ -37,7 +37,7 @@ struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos);
 void resetBankForTurn();
 void addBankMoney(int i);
 int spendBankMoney(int i);
-void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest);
+void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest, PetTeam frozenTeam);
 int getBankMoney();
 int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet);
 void printPet(struct Pet * pet);

@@ -558,7 +558,7 @@ struct Pet * getIndexedFoodFromTier(int index) {
     return tier6Foods[index];
 }
 
-void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest) {
+void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest, PetTeam frozenTeam) {
     int petsInPlay = 0;
     int foodInPlay = 0;
     int petToPlace = 0;
@@ -608,23 +608,25 @@ void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest) {
     }
 
     for (int i=0; i< 7;i++) {
-        struct Pet * randomPet;
-        if (i < petToPlace) {
-             randomPet = getIndexedPetFromTier(rand() % petsInPlay);
-            clonePet(randomPet, &dest[i]);
-        }else if (i >= (7-foodToPlace)) {
-            randomPet = getIndexedFoodFromTier(rand() % foodInPlay);
-            clonePet(randomPet, &dest[i]);
-        } else {
-            emptyPet(&dest[i]);
-        }
-        if (dest[i].cost == 0) {
-            dest[i].cost = -1;
-        }
-    }
+        if (frozenTeam[i].id == 0) {
+            struct Pet *randomPet;
+            if (i < petToPlace) {
+                randomPet = getIndexedPetFromTier(rand() % petsInPlay);
+                clonePet(randomPet, &dest[i]);
+            } else if (i >= (7 - foodToPlace)) {
+                randomPet = getIndexedFoodFromTier(rand() % foodInPlay);
+                clonePet(randomPet, &dest[i]);
+            } else {
+                emptyPet(&dest[i]);
+            }
+            if (dest[i].cost == 0) {
+                dest[i].cost = -1;
+            }
 
-    if (rand() % 1000 == 1) {
-        clonePet(&Sloth, &dest[rand() % 2]);
+            if (rand() % 10000 == 1) {
+                clonePet(&Sloth, &dest[i]);
+            }
+        }
     }
 }
 

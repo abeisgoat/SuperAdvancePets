@@ -78,6 +78,7 @@ void resetAnimalSpritesForStore() {
         ps->worldY = 50;
         ps->flip = 1;
         ps->shortStat = 0;
+        ps->frozen = 0;
     }
         tte_set_pos(32, 0);
     for (int i=5; i <12; i++) {
@@ -92,7 +93,7 @@ void resetAnimalSpritesForStore() {
         } else {
             ps->petPin = 0;
         }
-
+        ps->frozen = isFrozen(i-5);
         ps->worldX = xOffset + (18 * (i-5));
         ps->worldY = 83;
         ps->flip = 1;
@@ -308,6 +309,12 @@ void tickSceneStore() {
                     // Freeze
                     struct PetSprite * ps = getPetSprite(cursorX + (cursorY * 5));
                     ps->frozen = ps->frozen ? 0 : 1;
+
+                    if (ps->frozen) {
+                        freeze(cursorX);
+                    } else {
+                        unfreeze(cursorX);
+                    }
                 }
             }
         }
@@ -334,7 +341,10 @@ void tickSceneStore() {
         } else {
             if (cursorHeldPetID > 100) {
                 if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0) {
-                    buyAssignItemAtPosition(cursorHeldX, cursorX);
+                    if (buyAssignItemAtPosition(cursorHeldX, cursorX)) {
+                        resolveTriggers();
+                    };
+                    unfreeze(cursorHeldX);
                 }
                 int oldX = cursorX;
                 int oldY = cursorY;
@@ -342,7 +352,7 @@ void tickSceneStore() {
                 cursorY = oldY;
                 cursorX = oldX;
             } else if (getPlayerTeamPet(cursorX)->id == cursorHeldPetID) {
-                if (cursorX == cursorHeldX) {
+                if (cursorX == cursorHeldX && cursorY == cursorHeldY) {
                     cancelAction();
                 } else {
                     struct Pet * other = getPlayerTeamPet(cursorX);
@@ -357,6 +367,7 @@ void tickSceneStore() {
                     if (cost >= 0 && spendBankMoney(cost) == 0) {
                         cancelAction();
                     }  else {
+                        unfreeze(cursorX);
                         other->experience = max(other->experience, heldPet->experience) + 1;
                         other->health++;
                         other->attack++;
@@ -388,6 +399,7 @@ void tickSceneStore() {
                     if (cost >= 0 && spendBankMoney(cost) == 0) {
                         cancelAction();
                     }  else {
+                        unfreeze(cursorX);
                         clonePet(heldPet, getPlayerTeamPet(cursorX));
                         emptyPet(heldPet);
                         int oldX = cursorX;
@@ -414,6 +426,7 @@ void tickSceneStore() {
         } else if (item->id > 100) {
             int triggered = buyItemAtPosition(cursorX);
             if (!triggered) {
+                unfreeze(cursorX);
                 cursorHeldX = cursorX;
                 cursorHeldY = cursorY;
                 cursorOpen = 0;
