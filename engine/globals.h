@@ -14,7 +14,7 @@ int getPetAttack(struct Pet *pet);
 int getPetHealth(struct Pet *pet);
 int isDead(struct Pet *pet);
 int isHurt(struct Pet *pet);
-void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage);
+void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *attacker, struct Pet *pet, int damage);
 int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them);
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
 struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos);

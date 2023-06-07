@@ -226,6 +226,12 @@ void prepareSceneStore() {
     resetBankForTurn();
     hideLabels();
 
+    for (int i=0; i<=4; i++) {
+        struct Pet * pet = getPlayerTeamPet(i);
+        pet->battleModifierHealth = 0;
+        pet->battleModifierAttack = 0;
+    }
+
     resetAnimalSpritesForStore();
     updateAnimalSprites();
 
@@ -279,6 +285,43 @@ void prepareSceneStore() {
                  ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0));
 
     obj_set_pos(sprite, 0, 0);
+}
+
+void updateCursor() {
+    OBJ_ATTR * sprite;
+    if (cursorY < 0) {
+        cursorY = 0;
+    }
+    if (cursorY > 1) {
+        cursorY = 1;
+    }
+
+    if (cursorX < 0) {
+        cursorX = 0;
+    }
+
+    if (cursorX > 4 && cursorY == 0) {
+        cursorX = 4;
+    }
+
+    if (cursorX > 6 && cursorY == 1) {
+        cursorX = 6;
+    }
+
+
+    int cursorScreenPosX = 49 + (cursorX * 18);
+    int cursorScreenPosY = 49 + (cursorY * 34);
+    if (cursorHeldPetID > 0) {
+        if (cursorY == 1 && cursorHeldY == 1) {
+            cursorScreenPosY -= 4;
+        }else if (cursorY == 0 && cursorHeldY == 1) {
+            cursorScreenPosY += 6;
+        }else if (cursorY == 0) {
+            cursorScreenPosY -= 4;
+        }
+    }
+    sprite = getOAMSprite(105);
+    obj_set_pos(sprite, cursorScreenPosX, cursorScreenPosY);
 }
 
 void tickSceneStore() {
@@ -414,7 +457,15 @@ void tickSceneStore() {
                     }  else {
                         unfreeze(cursorHeldX);
                         clonePet(heldPet, getPlayerTeamPet(cursorX));
-                        buyPet(getPlayerTeamPet(cursorX));
+
+                        getPetSprite(cursorX)->visiblePet = 1;
+                        obj_set_pos(getOAMSprite(105), -16, -16);
+                        resetAnimalSpritesForStore();
+                        updateAnimalSprites();
+
+                        buyPet(heldPet);
+
+                        summonPet(heldPet, getPlayerTeamPet(cursorX));
                         emptyPet(heldPet);
                         int oldX = cursorX;
                         int oldY = cursorY;
@@ -487,39 +538,7 @@ void tickSceneStore() {
         updateLabels();
     }
 
-    if (cursorY < 0) {
-        cursorY = 0;
-    }
-    if (cursorY > 1) {
-        cursorY = 1;
-    }
-
-    if (cursorX < 0) {
-        cursorX = 0;
-    }
-
-    if (cursorX > 4 && cursorY == 0) {
-        cursorX = 4;
-    }
-
-    if (cursorX > 6 && cursorY == 1) {
-        cursorX = 6;
-    }
-
-
-    int cursorScreenPosX = 49 + (cursorX * 18);
-    int cursorScreenPosY = 49 + (cursorY * 34);
-    if (cursorHeldPetID > 0) {
-        if (cursorY == 1 && cursorHeldY == 1) {
-            cursorScreenPosY -= 4;
-        }else if (cursorY == 0 && cursorHeldY == 1) {
-            cursorScreenPosY += 6;
-        }else if (cursorY == 0) {
-            cursorScreenPosY -= 4;
-        }
-    }
-    sprite = getOAMSprite(105);
-    obj_set_pos(sprite, cursorScreenPosX, cursorScreenPosY);
+    updateCursor();
 
     if (key_hit(KEY_L)) {
         if (getBankMoney() >= 1) {

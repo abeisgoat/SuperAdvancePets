@@ -1,8 +1,10 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
 
+// Todo: make spwaning multiple boys work
 void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Rooster trigger Faint");
 
@@ -31,7 +33,7 @@ void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
             animatePoofAtPosition(spawnPos);
             resolveAnimation();
 
-            summonPet(44, space);
+            summonPet(getPetByID(44), space);
             space->attack = (selfPet->attack / 2);
             space->health = 1;
         } else {

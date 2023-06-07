@@ -16,7 +16,7 @@ void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct
             int damage = 1;
             animateDamageToTeamPosition(selfPos, enemyPos);
             resolveAnimation();
-            damagePet(usOrThem, us, them, store, enemy, damage);
+            damagePet(usOrThem, us, them, store, selfPet, enemy, damage);
         }
     }
 }

@@ -3,6 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
+// TODO: Implement sleeping pill
 void sleepingPillTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Sleeping Pill trigger Buy");
 

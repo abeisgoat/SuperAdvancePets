@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Pizza = {
         .health =  0,
         .tier = 6
 };
-void pizzaTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void pizzaTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

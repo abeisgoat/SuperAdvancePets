@@ -1,6 +1,7 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
 
 // TODO: Implement Whale StartOfBattle
@@ -20,7 +21,7 @@ void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pe
         int friendPos = petPosition(usOrThem, us, them, friend);
         animateDamageToTeamPosition(selfPos, friendPos);
         resolveAnimation();
-        damagePet(usOrThem, us, them, store, friend, damage);
+        damagePet(usOrThem, us, them, store, selfPet, friend, damage);
         selfPet->id = (friend->id) + 300;
     }
 }
@@ -36,7 +37,7 @@ void whaleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
     animatePoofAtPosition(selfPos);
     resolveAnimation();
 
-    summonPet(id, selfPet);
+    summonPet(getPetByID(id), selfPet);
     int lvl = expToLevel(selfPet->experience);
     selfPet->experience = exp;
     selfPet->health *= lvl;

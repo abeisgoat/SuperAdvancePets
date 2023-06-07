@@ -1,6 +1,7 @@
 #include "pets.h"
 #include "../src/animations.h"
 #include "triggers.h"
+#include "food_impl/118_peanuts_impl.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -448,19 +449,24 @@ int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet) {
     }
 }
 
-void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage) {
-    if (pet->heldItem == 109) {
+void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *attacker, struct Pet *pet, int damage) {
+    if (pet->heldItem == Melon.id) {
         printf("Melon used.\n");
         pet->heldItem = 0;
         damage -= 20;
     }
 
-    if (pet->heldItem == 106) {
+    if (pet->heldItem == Garlic.id) {
         printf("Garlic used.\n");
         damage -= 2;
     }
 
     if (damage > 0) {
+        // Dunno why I can't do Peanuts.id here, maybe cause it's only a header file?
+        if (attacker->heldItem == 118) {
+            damage = pet->health;
+            attacker->heldItem = 0;
+        }
         pet->health -= damage;
         pet->hurt++;
     }

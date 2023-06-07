@@ -11,7 +11,7 @@ EWRAM_DATA const static struct PetText LeopardText = {
 
 EWRAM_DATA const static struct Pet Leopard = {
         .id =  33,
-        .attack =  10,
+        .attack =  9,
         .health =  4,
         .tier = 6
 };

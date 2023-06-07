@@ -2,6 +2,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
+// TODO: Implement honey
 void honeyTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pet * itemPet, struct Pet * targetPet, PetTeam store) {
     printf("Activated Honey trigger Buy");
 

@@ -20,6 +20,6 @@ void rhinoTriggerKnockOut(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
         int targetPos = petPosition(usOrThem, us, them, target);
         animateDamageToTeamPosition(selfPos, targetPos);
         resolveAnimation();
-        damagePet(usOrThem, us, them, store, target, damage);
+        damagePet(usOrThem, us, them, store, selfPet, target, damage);
     }
 }

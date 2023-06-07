@@ -15,4 +15,3 @@ EWRAM_DATA const static struct Pet Peanuts = {
         .health =  0,
         .tier = 5
 };
-void peanutsTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

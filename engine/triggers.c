@@ -93,6 +93,9 @@ int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
         case 20: // Dolphin
             dolphinTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
+        case 33: // Leopard
+            leopardTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 36: // Mosquito
             mosquitoTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -122,6 +125,10 @@ int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, Pe
             return 1;
         case 102: // Can
             cannedFoodTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 113:
+            pizzaTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
         default:
@@ -220,10 +227,6 @@ int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * p
             pearTriggerBuyAssign(usOrThem, us, them, pet, target, store);
             pet->activations++;
             return 1;
-        case 113:
-            pizzaTriggerBuyAssign(usOrThem, us, them, pet, target, store);
-            pet->activations++;
-            return 1;
         case 114:
             saladBowlTriggerBuyAssign(usOrThem, us, them, pet, target, store);
             pet->activations++;
@@ -282,6 +285,9 @@ int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
         case 19: // Dog
             dogTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
             return 1;
+        case 31: // Horse
+            horseTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
     }
     return 0;
 }
@@ -292,5 +298,10 @@ int applyBeforeAttackTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
             boarTriggerBeforeAttack(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
+        case 23:
+            elephantTriggerBeforeAttack(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
     }
+    return 0;
 }

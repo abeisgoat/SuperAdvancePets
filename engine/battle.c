@@ -374,15 +374,15 @@ int battle() {
 
         int playerAttack = getPetAttack(PlayerFighter);
         int enemyAttack = getPetAttack(EnemyFighter);
-        damagePet(1, enemyTeam, playerTeam, storeTeam, PlayerFighter, enemyAttack);
-        damagePet(0, playerTeam, enemyTeam, storeTeam, EnemyFighter, playerAttack);
+        damagePet(1, enemyTeam, playerTeam, storeTeam, EnemyFighter, PlayerFighter, enemyAttack);
+        damagePet(0, playerTeam, enemyTeam, storeTeam, PlayerFighter, EnemyFighter, playerAttack);
 
         if (PlayerFighter->heldItem == Chili.id) {
-            damagePet(0, playerTeam, enemyTeam, storeTeam, &enemyTeam[1], playerAttack);
+            damagePet(0, playerTeam, enemyTeam, storeTeam, PlayerFighter, &enemyTeam[1], playerAttack);
         }
 
         if (EnemyFighter->heldItem == Chili.id) {
-            damagePet(1, enemyTeam, playerTeam, storeTeam, &playerTeam[3], enemyAttack);
+            damagePet(1, enemyTeam, playerTeam, storeTeam, EnemyFighter, &playerTeam[3], enemyAttack);
         }
 
         resolveAnimation();

@@ -1,8 +1,10 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
 
+// Todo: make spwaning multiple boys work
 void sheepTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Sheep trigger Faint");
 
@@ -32,7 +34,7 @@ void sheepTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
             animatePoofAtPosition(spawnPos);
             resolveAnimation();
 
-            summonPet(44, space);
+            summonPet(getPetByID(44), space);
             int stats = expToLevel(selfPet->experience) * 2;
             space->attack = stats;
             space->health = stats;

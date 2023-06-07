@@ -8,13 +8,13 @@ void saladBowlTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pe
     struct Pet * friend1 = randomOtherTeamMember(us, itemPet);
     struct Pet * friend2 = randomOtherTeamMember(us, friend1);
 
-    int givePos = storePosition(store, itemPet);
-    int friend1Pos = petPosition(usOrThem, us, them, friend1);
-    int friend2Pos = petPosition(usOrThem, us, them, friend2);
-
-    animateStatsToTeamPosition(givePos, friend1Pos);
-    animateStatsToTeamPosition(givePos, friend2Pos);
-    resolveAnimation();
+//    int givePos = storePosition(store, itemPet);
+//    int friend1Pos = petPosition(usOrThem, us, them, friend1);
+//    int friend2Pos = petPosition(usOrThem, us, them, friend2);
+//
+//    animateStatsToTeamPosition(givePos, friend1Pos);
+//    animateStatsToTeamPosition(givePos, friend2Pos);
+//    resolveAnimation();
 
     friend1->attack+=1;
     friend1->health+=1;
