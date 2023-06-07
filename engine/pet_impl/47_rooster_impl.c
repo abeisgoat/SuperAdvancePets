@@ -36,6 +36,7 @@ void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
             summonPet(getPetByID(44), space);
             space->attack = (selfPet->attack / 2);
             space->health = 1;
+            postSummonPet(space);
         } else {
             return;
         }

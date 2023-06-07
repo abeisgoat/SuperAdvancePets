@@ -273,6 +273,9 @@ int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet
 
 int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
     switch (pet->id) {
+        case 38: // Ox
+            oxTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
         case 50: // Shark
             sharkTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
             return 1;
@@ -287,6 +290,9 @@ int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
             return 1;
         case 31: // Horse
             horseTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
+        case 61: // Turkey
+            turkeyTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
             return 1;
     }
     return 0;

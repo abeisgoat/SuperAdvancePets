@@ -42,4 +42,5 @@ void whaleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
     selfPet->experience = exp;
     selfPet->health *= lvl;
     selfPet->attack *= lvl;
+    postSummonPet(selfPet);
 }

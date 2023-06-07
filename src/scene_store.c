@@ -379,18 +379,15 @@ void tickSceneStore() {
     if (key_hit(KEY_A) && cursorY == 0) {
         sprite = getOAMSprite(105);
         if (cursorHeldPetID == 0) {
-            cursorHeldX = cursorX;
-            cursorHeldY = cursorY;
-            cursorOpen = 0;
-            if (cursorY == 0) {
+            if (getPlayerTeamPet(cursorX)->id > 0) {
+                cursorHeldX = cursorX;
+                cursorHeldY = cursorY;
+                cursorOpen = 0;
                 cursorHeldPetID = getPlayerTeamPet(cursorHeldX)->id;
-            } else if (cursorY == 1) {
-                cursorHeldPetID = getEnemyTeamPet(cursorHeldX)->id;
+                cursorMem = getMemForPet(cursorX);
+                getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
+                getPetSprite(cursorX)->visiblePet = 0;
             }
-            cursorMem = getMemForPet(cursorX);
-            getOAMSprite(105)->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(0) | cursorMem;
-            getPetSprite(cursorX)->visiblePet = 0;
-
         } else {
             if (cursorHeldPetID > 100) {
                 if (cursorY == 0 && getPlayerTeamPet(cursorX)->id > 0) {
@@ -456,22 +453,23 @@ void tickSceneStore() {
                         cancelAction();
                     }  else {
                         unfreeze(cursorHeldX);
-                        clonePet(heldPet, getPlayerTeamPet(cursorX));
+                        struct Pet * dest = getPlayerTeamPet(cursorX);
+                        clonePet(heldPet, dest);
 
                         getPetSprite(cursorX)->visiblePet = 1;
                         obj_set_pos(getOAMSprite(105), -16, -16);
-                        resetAnimalSpritesForStore();
-                        updateAnimalSprites();
 
                         buyPet(heldPet);
-
-                        summonPet(heldPet, getPlayerTeamPet(cursorX));
+                        summonPet(heldPet, dest);
                         emptyPet(heldPet);
+                        resetAnimalSpritesForStore();
+                        updateAnimalSprites();
                         int oldX = cursorX;
                         int oldY = cursorY;
                         cancelAction();
                         cursorY = oldY;
                         cursorX = oldX;
+                        postSummonPet(dest);
                     }
                 }
 

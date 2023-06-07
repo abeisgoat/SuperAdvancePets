@@ -11,9 +11,9 @@ void elephantTriggerBeforeAttack(int usOrThem, PetTeam us, PetTeam them, struct 
     if (expToLevel(selfPet->experience) > selfPet->activations) {
         int posModifier = -1;
 
-//        if (usOrThem == 1) {
-//            posModifier *= -1;
-//        }
+        if (usOrThem == 1) {
+            posModifier *= -1;
+        }
 
         struct Pet * adjacentPetBehind = getPetByPosition(usOrThem, us, them, selfPos + posModifier);
 

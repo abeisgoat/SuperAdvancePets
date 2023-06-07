@@ -28,4 +28,5 @@ void cricketTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
     summonPet(getPetByID(65), selfPet);
     selfPet->attack = stats;
     selfPet->health = stats;
+    postSummonPet(selfPet);
 }

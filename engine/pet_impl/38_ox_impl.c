@@ -2,8 +2,8 @@
 #include "../globals.h"
 #include <stdio.h>
 
-void oxTriggerFriendAttacks(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Ox trigger friend attacks");
+void oxTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
+    printf("Activated Ox trigger friend faints");
 
     int activatingPos = petPosition(usOrThem, us, them, activatingPet);
     int selfPos = petPosition(usOrThem, us, them, selfPet);

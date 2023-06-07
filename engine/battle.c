@@ -491,27 +491,28 @@ void prepareEngine() {
     resetTeams();
 }
 
-void summonPet(struct Pet * src, struct Pet * dest) {
-    int pin = dest->pin;
-    clonePet(src, dest);
-    dest->pin = pin;
-
-    int usOrThem = getPetUsOrThem(playerTeam, enemyTeam, dest);
+void postSummonPet(struct Pet * pet) {
+    int usOrThem = getPetUsOrThem(playerTeam, enemyTeam, pet);
 
     if (usOrThem == 0) {
         for (int i = 0; i <= 4; i++) {
             if (playerTeam[i].id > 0) {
-                applyFriendSummonTrigger(0, playerTeam, enemyTeam, &playerTeam[i], dest, playerTeam);
-
+                applyFriendSummonTrigger(0, playerTeam, enemyTeam, &playerTeam[i], pet, playerTeam);
             }
         }
     } else {
         for (int i = 0; i <= 4; i++) {
             if (enemyTeam[i].id > 0) {
-                applyFriendSummonTrigger(1, enemyTeam, playerTeam, &enemyTeam[i], dest, playerTeam);
+                applyFriendSummonTrigger(1, enemyTeam, playerTeam, &enemyTeam[i], pet, playerTeam);
             }
         }
     }
+}
+
+void summonPet(struct Pet * src, struct Pet * dest) {
+    int pin = dest->pin;
+    clonePet(src, dest);
+    dest->pin = pin;
 }
 
 

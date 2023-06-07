@@ -38,6 +38,7 @@ void sheepTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
             int stats = expToLevel(selfPet->experience) * 2;
             space->attack = stats;
             space->health = stats;
+            postSummonPet(space);
         } else {
             return;
         }
