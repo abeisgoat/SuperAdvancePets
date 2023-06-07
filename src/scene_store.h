@@ -6,4 +6,5 @@
 #define SUPERADVANCEPETSCLI_SCENE_STORE_H
 void prepareSceneStore();
 void tickSceneStore();
+int getWorldXForPetPositionInStore(int petPosition);
 #endif //SUPERADVANCEPETSCLI_SCENE_STORE_H

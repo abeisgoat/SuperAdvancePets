@@ -3,8 +3,8 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void crabTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Crab trigger Buy");
+void crabTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
+    printf("Activated Crab trigger start of battle");
     int maxHealth = 0;
     int healerPos = 0;
 
@@ -20,10 +20,10 @@ void crabTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet
         }
     }
 
+    animateStatHealthToTeamPosition(healerPos, petPosition(usOrThem, us, them, selfPet));
+    resolveAnimation();
+
     maxHealth *= .5;
     maxHealth *= expToLevel(selfPet->health);
-
-    animateStatHealthToTeamPosition(petPosition(1, store, them, selfPet), healerPos);
-    resolveAnimation();
     selfPet->health = maxHealth;
 }

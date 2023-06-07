@@ -128,19 +128,22 @@ int loadLabel(int upperOrLower, enum UILabels label) {
     return memPos;
 }
 
-int loadThrowable(enum UIThrowable label) {
-    switch (label) {
-        case UIThrowable_Damage:
+int loadIconAsThrowable(enum UIIcon icon) {
+    switch (icon) {
+        case UIIcon_Damage:
             memcpy(&tile_mem[4][memThrowable], uiThrowableDamageTiles, uiThrowableDamageTilesLen);
             break;
-        case UIThrowable_StatHealth:
+        case UIIcon_StatHealth:
             memcpy(&tile_mem[4][memThrowable], uiHeart8x8Tiles, uiHeart8x8TilesLen);
             break;
-        case UIThrowable_StatAttack:
+        case UIIcon_StatAttack:
             memcpy(&tile_mem[4][memThrowable], uiThrowableStatAttackTiles, uiThrowableStatAttackTilesLen);
             break;
-        case UIThrowable_Stats:
+        case UIIcon_Stats:
             memcpy(&tile_mem[4][ memThrowable], uiCoin8x8Tiles, uiCoin8x8TilesLen);
+            break;
+        case UIIcon_Melon:
+            memcpy(&tile_mem[4][ memThrowable], uiMelon8x8Tiles, uiMelon8x8TilesLen);
             break;
     }
 
@@ -296,8 +299,7 @@ int usePetGfxMem(int id, int pos) {
             memcpy(&tile_mem[4][memPos], flyTiles, size);
             break;
         case 27:
-            //TODO: Draw giraffe
-            memcpy(&tile_mem[4][memPos], antTiles, size);
+            memcpy(&tile_mem[4][memPos], giraffeTiles, size);
             break;
         case 28:
             memcpy(&tile_mem[4][memPos], gorillaTiles, size);
@@ -306,8 +308,7 @@ int usePetGfxMem(int id, int pos) {
             memcpy(&tile_mem[4][memPos], hedgehogTiles, size);
             break;
         case 30:
-            //TODO: Draw hippo
-            memcpy(&tile_mem[4][memPos], antTiles, size);
+            memcpy(&tile_mem[4][memPos], hippoTiles, size);
             break;
         case 31:
             memcpy(&tile_mem[4][memPos], horseTiles, size);

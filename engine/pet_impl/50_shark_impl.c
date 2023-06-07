@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void sharkTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Shark trigger Faint");
+    printf("Activated Shark trigger friend faint");
 
     int health = 2 * expToLevel(selfPet->experience);
     int attack = expToLevel(selfPet->experience);

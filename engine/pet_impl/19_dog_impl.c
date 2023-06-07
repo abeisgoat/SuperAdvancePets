@@ -26,10 +26,10 @@ void dogTriggerFriendSummoned(int usOrThem, PetTeam us, PetTeam them, struct Pet
     if (attackOrHealth == 0) {
         animateStatAttackToTeamPosition(selfPos, selfPos);
         resolveAnimation();
-        selfPet->attack += stat;
+        selfPet->battleModifierAttack += stat;
     } else {
         animateStatHealthToTeamPosition(selfPos, selfPos);
         resolveAnimation();
-        selfPet->health += stat;
+        selfPet->battleModifierHealth += stat;
     }
 }

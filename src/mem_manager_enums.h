@@ -16,7 +16,11 @@ enum UIIcon {
     UIIcon_Steak,
     UIIcon_Mushroom,
     UIIcon_Garlic,
-    UIIcon_Peanuts
+    UIIcon_Peanuts,
+    UIIcon_Stats,
+    UIIcon_StatAttack,
+    UIIcon_StatHealth,
+    UIIcon_Damage
 };
 
 enum UIElements32x16 {
@@ -52,12 +56,5 @@ enum UIElements16x16 {
     UIElement_HeartEmpty,
     UIElement_Trophy,
     UIElement_TrophyEmpty
-};
-
-enum UIThrowable {
-    UIThrowable_Stats,
-    UIThrowable_StatAttack,
-    UIThrowable_StatHealth,
-    UIThrowable_Damage
 };
 #endif //SUPERADVANCEPETSCLI_MEM_MANAGER_ENUMS_H

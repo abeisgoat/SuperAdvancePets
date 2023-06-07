@@ -619,6 +619,9 @@
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/src/animations.c">
+			<Option target="SuperAdvancePets"/>
+		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/src/animations.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>

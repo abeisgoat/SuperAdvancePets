@@ -7,6 +7,7 @@
 #include "stdlib.h"
 #include "mem_manager.h"
 #include "mem_manager_enums.h"
+#include "scene_store.h"
 
 void sleep(int frames) {
     for (int i=0; i<frames;i++) {
@@ -18,7 +19,7 @@ void sleep(int frames) {
 struct ThrowableQueue {
     int from;
     int to;
-    enum UIThrowable throwable;
+    enum UIIcon icon;
     int x;
     int y;
     int dx;
@@ -35,7 +36,7 @@ int deaths=0;
 int animateThrowableToTeamPosition(struct ThrowableQueue* anim) {
     OBJ_ATTR *sprite = getOAMSprite(anim->sprite);
 
-    int throwableMem = loadThrowable(anim->throwable);
+    int throwableMem = loadIconAsThrowable(anim->icon);
     obj_set_attr(sprite,
                  ATTR0_SQUARE | ATTR0_8BPP,
                  ATTR1_SIZE_8x8,
@@ -73,14 +74,20 @@ void animateToTeamPosition(int from, int to) {
 void animatePoofAtPosition(int pos) {
 }
 
-void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) {
+void queueThrowableToTeamPosition(int from, int to, enum UIIcon icon) {
     struct ThrowableQueue * anim = &animations[animationLen];
     anim->to = to;
     anim->from = from;
-    anim->throwable = throwable;
-    anim->x=getWorldXForPetPosition(from) - getScreenX() + 4;
-    anim->dx= getWorldXForPetPosition(to) - getScreenX() + 4;
-    anim->y=67;
+    anim->icon = icon;
+    if (getScene() == 1) {
+        anim->x = getWorldXForPetPositionInBattle(from) - getScreenX() + 4;
+        anim->dx= getWorldXForPetPositionInBattle(to) - getScreenX() + 4;
+        anim->y=67;
+    } else {
+        anim->x = getWorldXForPetPositionInStore(from);
+        anim->dx = getWorldXForPetPositionInStore(to);
+        anim->y=57;
+    }
 
     if (from == to) {
         anim->dy = anim->y-20;
@@ -92,19 +99,24 @@ void queueThrowableToTeamPosition(int from, int to, enum UIThrowable throwable) 
 }
 
 void animateStatsToTeamPosition(int from, int to) {
-    queueThrowableToTeamPosition(from, to, UIThrowable_Stats);
+    queueThrowableToTeamPosition(from, to, UIIcon_Stats);
+
 }
 
 void animateStatHealthToTeamPosition(int from, int to) {
-    queueThrowableToTeamPosition(from, to, UIThrowable_StatHealth);
+    queueThrowableToTeamPosition(from, to, UIIcon_StatHealth);
 }
 
 void animateStatAttackToTeamPosition(int from, int to) {
-    queueThrowableToTeamPosition(from, to, UIThrowable_StatAttack);
+    queueThrowableToTeamPosition(from, to, UIIcon_StatAttack);
 }
 
 void animateDamageToTeamPosition(int from, int to) {
-    queueThrowableToTeamPosition(from, to, UIThrowable_Damage);
+    queueThrowableToTeamPosition(from, to, UIIcon_Damage);
+}
+
+void animateIconToTeamPosition(int from, int to, enum UIIcon icon) {
+    queueThrowableToTeamPosition(from, to, icon);
 }
 
 void animateAbilityFromTeamPosition(int from, int to) {
@@ -136,7 +148,7 @@ void animateShuffleAtPosition(int from, int to) {
             }
 
             if (pet->pin > 0 && pet->pin == ps->petPin) {
-                int idealX = getWorldXForPetPosition(i);
+                int idealX = getWorldXForPetPositionInBattle(i);
                 if (abs(ps->worldX - idealX) > 3) {
                     if (idealX > ps->worldX) {
                         ps->worldX += 1;
@@ -223,9 +235,17 @@ void resolveDeaths() {
     }
     deaths = 0;
 }
+
+int in_progress=0;
+
+int isAnimating() {
+    return in_progress;
+}
+
 void resolveAnimation() {
-    while (1) {
-        int in_progress=0;
+    in_progress = 1;
+    while (in_progress) {
+        in_progress=0;
 
         for (int a=0; a<animationLen; a++) {
             struct ThrowableQueue * anim = &animations[a];

@@ -21,7 +21,7 @@ void camelTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfP
     }
     resolveAnimation();
 
-    int stats = 1;
+    int stats = 2;
     switch (expToLevel(selfPet->experience)) {
         case 1:
             stats *= 1;

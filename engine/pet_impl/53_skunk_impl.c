@@ -1,8 +1,8 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Skunk StartOfBattle
 void skunkTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Skunk trigger StartOfBattle");
     struct Pet * target;
@@ -14,8 +14,17 @@ void skunkTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pe
         }
     }
 
+
     if (target->id) {
+        int selfPos = petPosition(usOrThem, us, them, selfPet);
+        int enemyPos = petPosition(usOrThem, us, them, target);
+        animateDamageToTeamPosition(selfPos, enemyPos);
+        resolveAnimation();
         float multiple = .33f * expToLevel(selfPet->experience);
         target->health -= (target->health * multiple);
+
+        if (target->health <= 0) {
+            target->health = 1;
+        }
     }
 }

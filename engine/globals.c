@@ -239,14 +239,14 @@ struct Pet * getFriendByPosition(int usOrThem, PetTeam us, int pos) {
 int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them) {
     if (usOrThem == 0) {
         for (int i=4; i>=0; i--) {
-            if (them[i].id > 0) {
+            if (them[i].id > 0 && !isDead(&them[i])) {
                 return 5+i;
             }
         }
     }
     if (usOrThem == 1) {
         for (int i=0; i<=4; i++) {
-            if (them[i].id > 0) {
+            if (them[i].id > 0 && !isDead(&them[i])) {
                 return i;
             }
         }
@@ -307,13 +307,6 @@ void clonePet(struct Pet * src, struct Pet * dest) {
     dest->activations = src->activations;
     dest->hurt = src->hurt;
 }
-
-void summonPet(int petId, struct Pet * dest) {
-    struct Pet *src = getPetByID(petId);
-    clonePet(src, dest);
-    // Summon trigger should go here
-}
-
 
 void emptyPet(struct Pet * dest) {
     clonePet(&EmptyPet, dest);
@@ -457,11 +450,13 @@ int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet) {
 
 void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *pet, int damage) {
     if (pet->heldItem == 109) {
+        printf("Melon used.\n");
         pet->heldItem = 0;
         damage -= 20;
     }
 
     if (pet->heldItem == 106) {
+        printf("Garlic used.\n");
         damage -= 2;
     }
 

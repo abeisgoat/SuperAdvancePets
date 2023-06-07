@@ -1,6 +1,29 @@
 const chai = require("chai").assert;
 const {Pet, battle} = require("./helpers");
 
+console.log([
+    Pet("Monkey")
+        .withHealth(5)
+        .withDamage(6)
+        .withExperience(5),
+    Pet("Bison")
+        .withHealth(2)
+        .withDamage(2)
+        .withExperience(3),
+    Pet("Giraffe")
+        .withHealth(3)
+        .withDamage(3)
+        .withExperience(2),
+    Pet("Peacock")
+        .withHealth(8)
+        .withDamage(10)
+        .withExperience(5),
+    Pet("Crocodile")
+        .withHealth(6)
+        .withDamage(5)
+        .withExperience(5),
+
+].map((a) => a.build()).map((v) => parseInt(v)))
 describe("SuperAdvancePets Engine", () => {
     it("Equal ants tie", async () => {
         const log = await battle(
@@ -70,9 +93,135 @@ describe("SuperAdvancePets Engine", () => {
                     .withDamage(2),
             ]
         );
-
         chai.equal(log[log.length - 1], "[Win]");
     });
+
+    it("Dog gains stats when friendly spawned", async () => {
+        const log = await battle(
+            [
+                Pet("Dog")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Cricket")
+                    .withHealth(2)
+                    .withDamage(2),
+            ],
+            [
+                Pet("Cricket")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Cricket")
+                    .withHealth(2)
+                    .withDamage(2),
+            ]
+        );
+        const stats = log.filter((line) => line.indexOf('FIGHT! Dog [')+1)[0].match(/\[.+?\]/)[0];
+
+        chai.equal(stats, "[+2/+3]");
+        chai.equal(log[log.length - 1], "[Tie]");
+    });
+
+    it("Shark gains stats on friendly faints", async () => {
+        const log = await battle(
+            [
+                Pet("Shark")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+            ],
+            [
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Beaver")
+                    .withHealth(2)
+                    .withDamage(2),
+            ]
+        );
+
+        const stats = log.filter((line) => line.indexOf('FIGHT! Shark [')+1)[0].match(/\[.+?\]/)[0];
+
+        chai.equal(stats, "[+6/+10]");
+        chai.equal(log[log.length - 1], "[Win]");
+    });
+
+    it("Shark friend faint doesn't double trigger when triggers looped.", async () => {
+        const log = await battle(
+            [
+                Pet("Shark")
+                    .withHealth(6)
+                    .withDamage(2),
+                Pet("Snail")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Turtle")
+                    .withHealth(4)
+                    .withDamage(5),
+            ],
+            [
+                Pet("Mosquito")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Ant")
+                    .withHealth(2)
+                    .withDamage(1),
+                Pet("Pig")
+                    .withHealth(3)
+                    .withDamage(1),
+            ]
+        );
+
+        // console.log(log);
+        const sharkTriggers = log.filter((line) => line.indexOf('Activated Shark trigger')+1).length
+
+        chai.equal(sharkTriggers, 1);
+        chai.equal(log[log.length - 1], "[Win]");
+    });
+
+    it("Turtle gives items behind", async () => {
+        const log = await battle(
+            [
+                Pet("Shark")
+                    .withHealth(16)
+                    .withDamage(16),
+            ],
+            [
+                Pet("Turtle")
+                    .withHealth(4)
+                    .withDamage(4)
+                    .withExperience(3),
+                Pet("Rabbit")
+                    .withHealth(4)
+                    .withDamage(4),
+                Pet("Rabbit")
+                    .withHealth(4)
+                    .withDamage(4),
+            ]
+        );
+
+        chai.equal(log[log.length - 1], "[Loss]");
+    });
+
 
     it("Blowfish beats 3 ants in 2 rounds.", async () => {
         const log = await battle(
@@ -98,7 +247,7 @@ describe("SuperAdvancePets Engine", () => {
         chai.equal(log[log.length - 1], "[Loss]");
     });
 
-    it("Doplhin beats 2 ants in 1 rounds.", async () => {
+    it("Dolphin beats 2 ants in 1 rounds.", async () => {
         const log = await battle(
             [
                 Pet("Ant")
@@ -119,7 +268,7 @@ describe("SuperAdvancePets Engine", () => {
         chai.equal(log[log.length - 1], "[Loss]");
     });
 
-    it("Specific: Animals cleared after Peacock", async () => {
+    it("Animals cleared after Peacock", async () => {
         const log = await battle(
             [
                 Pet("Duck")
@@ -144,9 +293,6 @@ describe("SuperAdvancePets Engine", () => {
                     .withDamage(2)
             ]
         );
-
-        console.log(log);
-
         chai.equal(log[log.length - 1], "[Win]");
     });
 });

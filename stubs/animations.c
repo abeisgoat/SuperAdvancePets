@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "../src/mem_manager_enums.h"
+
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -42,6 +44,9 @@ void animateStatAttackToTeamPosition(int from, int to) {
 void animateDamageToTeamPosition(int from, int to) {
     printf(ANSI_COLOR_RED ">> Animation damage from %d to %d" ANSI_COLOR_RESET "\n", from, to);
 }
+void animateIconToTeamPosition(int from, int to, enum UIIcon icon) {
+    printf(ANSI_COLOR_RED ">> Animation icon %d from %d to %d" ANSI_COLOR_RESET "\n", icon, from, to);
+}
 
 void animateAbilityFromTeamPosition(int from, int to) {
 
@@ -72,3 +77,7 @@ void cleanUp() {
 }
 
 void sleep(int frames) {}
+
+int isAnimating() {
+    return 0;
+}

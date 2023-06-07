@@ -2050,6 +2050,30 @@ engine/triggers.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/triggers.c.s
 .PHONY : engine/triggers.c.s
 
+src/animations.o: src/animations.c.o
+.PHONY : src/animations.o
+
+# target to build an object file
+src/animations.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/animations.c.o
+.PHONY : src/animations.c.o
+
+src/animations.i: src/animations.c.i
+.PHONY : src/animations.i
+
+# target to preprocess a source file
+src/animations.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/animations.c.i
+.PHONY : src/animations.c.i
+
+src/animations.s: src/animations.c.s
+.PHONY : src/animations.s
+
+# target to generate assembly for a file
+src/animations.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/src/animations.c.s
+.PHONY : src/animations.c.s
+
 src/mem_manager.o: src/mem_manager.c.o
 .PHONY : src/mem_manager.o
 
@@ -2513,6 +2537,9 @@ help:
 	@echo "... engine/triggers.o"
 	@echo "... engine/triggers.i"
 	@echo "... engine/triggers.s"
+	@echo "... src/animations.o"
+	@echo "... src/animations.i"
+	@echo "... src/animations.s"
 	@echo "... src/mem_manager.o"
 	@echo "... src/mem_manager.i"
 	@echo "... src/mem_manager.s"

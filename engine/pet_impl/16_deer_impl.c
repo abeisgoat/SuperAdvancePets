@@ -1,12 +1,12 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
 
 void deerTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Deer trigger Faint");
     int level = expToLevel(selfPet->experience);
-    emptyPet(selfPet);
 
     animatePoofAtPosition(petPosition(usOrThem, us, them, selfPet));
     resolveAnimation();
@@ -24,7 +24,7 @@ void deerTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfP
             break;
     }
 
-    summonPet(8, selfPet);
+    summonPet(getPetByID(8), selfPet);
     selfPet->attack = stats;
     selfPet->health = stats;
 }

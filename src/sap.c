@@ -36,19 +36,15 @@ void gameloop() {
 
     int friendly[5] = {
 
-            0, 0, 0, 0, 0
-
+//            0, 0, 0, 0, 0
+    130050605, 240040202, 0, 240051008, 160050101
     };
     int enemies[5] = {
-            29420920,
-            1320910, // 1 Antbadger
-            3320910, // 2 beaver
-            4320910, // 2 bee
-            5320910, // 2 bison
+            0,0,0,0,0
     };
 
     int store[7] = {
-            29, 1, 2, 6, 0,  101, 107
+            42, 42, 42, 6, 0,  101, 107
     };
 
 
@@ -97,7 +93,7 @@ void gameloop() {
     REG_SND1CNT= SSQR_ENV_BUILD(12, 0, 7) | SSQR_DUTY1_2;
     REG_SND1FREQ= 0;
 
-    sap_song(0);
+//    sap_song(0);
     REG_BG1HOFS = 16;
 
     memcpy(pal_bg_mem, bgPal, bgPalLen);

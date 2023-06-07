@@ -13,4 +13,7 @@ int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
 int applyEndTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * target,  PetTeam store);
 int applySellTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
+int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet,  PetTeam store);
+int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store);
+int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 #endif //SUPERADVANCEPETSCLI_TRIGGERS_H

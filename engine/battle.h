@@ -22,3 +22,6 @@ void freeze(int i);
 void unfreeze(int i);
 int isFrozen(int i);
 void resolveTriggers();
+void summonPet(struct Pet * src, struct Pet * dest);
+void stackPets(struct Pet * pet, struct Pet * other);
+int buyPet(struct Pet * pet);

@@ -1,5 +1,6 @@
 #ifndef SUPERADVANCEPETSCLI_ANIMATIONS_H
 #define SUPERADVANCEPETSCLI_ANIMATIONS_H
+#include "mem_manager_enums.h"
 void animateToTeamPosition(int from, int to);
 void resolveAnimation();
 void  animateStatsToTeamPosition(int from, int to);
@@ -16,4 +17,6 @@ void sleep(int frames);
 void animateDeath(struct Pet * structPet);
 void resolveDeaths();
 void cleanUp(struct Pet * pet);
+void animateIconToTeamPosition(int from, int to, enum UIIcon icon);
+int isAnimating();
 #endif //SUPERADVANCEPETSCLI_ANIMATIONS_H

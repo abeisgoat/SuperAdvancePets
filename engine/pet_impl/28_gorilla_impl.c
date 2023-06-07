@@ -7,7 +7,8 @@ int gorillaTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * self
     printf("Activated Gorilla trigger Hurt");
 
     if (selfPet->activations < expToLevel(selfPet->experience)) {
-        animatePoofAtPosition(petPosition(usOrThem, us, them, selfPet));
+        int selfPos = petPosition(usOrThem, us, them, selfPet);
+        animateIconToTeamPosition(selfPos, selfPos, UIIcon_Melon);
         resolveAnimation();
         selfPet->heldItem = 109;
         selfPet->activations++;

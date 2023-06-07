@@ -7,7 +7,6 @@ void registerPet(int petId, const struct Pet * pet, const struct PetText * petTe
 void registerFood(int petId, const struct Pet * pet, const struct PetText * petText);
 struct Pet * getPetByID(int petId);
 const struct PetText * getPetTextByID(int petId);
-void summonPet(int petId, struct Pet * dest);
 void emptyPet(struct Pet * dest);
 void swapPets(struct Pet * src, struct Pet * dest);
 void clonePet(struct Pet * src, struct Pet * dest);

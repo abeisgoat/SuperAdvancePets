@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText DogText = {
         .name = "Dog",
         .abilities = {
-                "Friend summoned: Gain +1 Attack or +1 Health.",
-                "Friend summoned: Gain +2 Attack or +2 Health.",
-                "Friend summoned: Gain +3 Attack or +3 Health."},
+                "Friend summoned: Gain +1 Attack or +1 Health until end of battle.",
+                "Friend summoned: Gain +2 Attack or +2 Health until end of battle.",
+                "Friend summoned: Gain +3 Attack or +3 Health until end of battle."},
 };
 
 EWRAM_DATA const static struct Pet Dog = {

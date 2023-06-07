@@ -11,7 +11,7 @@
 int xOffset=264;
 int result = 0;
 
-int getWorldXForPetPosition(int petPosition) {
+int getWorldXForPetPositionInBattle(int petPosition) {
     if (petPosition <= 4) {
         return xOffset + (18 * petPosition);
     } else {
@@ -29,7 +29,7 @@ void resetAnimalSpritesForBattle() {
         if (pet->id) {
             pet->pin = ++petPins;
             ps->petPin = pet->pin;
-            ps->worldX = getWorldXForPetPosition(i)-120;
+            ps->worldX = getWorldXForPetPositionInBattle(i) - 120;
             ps->worldY = 67;
             ps->flip = 1;
             ps->frozen = 0;
@@ -45,7 +45,7 @@ void resetAnimalSpritesForBattle() {
         if (pet->id) {
             pet->pin = ++petPins;
             ps->petPin = petPins;
-            ps->worldX = getWorldXForPetPosition(i+5)+120;
+            ps->worldX = getWorldXForPetPositionInBattle(i + 5) + 120;
             ps->worldY = 67;
             ps->flip = 0;
             ps->frozen = 0;
@@ -84,7 +84,7 @@ void tickSceneBattle() {
             struct PetSprite * ps = getPetSprite(i);
 
             if (ps->petPin) {
-                int dx = getWorldXForPetPosition(i);
+                int dx = getWorldXForPetPositionInBattle(i);
 
                 if (ps->worldX < dx) {
                     ps->worldX += 1;

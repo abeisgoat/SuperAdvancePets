@@ -20,6 +20,16 @@ int cursorMem = 0;
 
 int pb = 0;
 
+int getWorldXForPetPositionInStore(int petPosition) {
+    int xOffset=52;
+    if (petPosition <= 4) {
+        return xOffset + (18 * petPosition);
+    } else {
+        return xOffset + 100 + (18 * (petPosition-5));
+    }
+}
+
+
 void setupStoreUI() {
     OBJ_ATTR  * sprite = getOAMSprite(105);
     obj_set_attr(sprite,
@@ -212,7 +222,7 @@ void cancelAction() {
 void prepareSceneStore() {
     setupStoreUI();
     nextTurn();
-    randomizeStore();
+//    randomizeStore();
     resetBankForTurn();
     hideLabels();
 
@@ -358,25 +368,28 @@ void tickSceneStore() {
                     struct Pet * other = getPlayerTeamPet(cursorX);
                     struct Pet * heldPet = getPlayerTeamPet(cursorHeldX);
 
-                    int cost = -1;
-                    if (cursorHeldY == 1) {
-                        heldPet = getEnemyTeamPet(cursorHeldX);
-                        cost = getPetCost(heldPet);
-                    }
+                    if (expToLevel(other->experience) == 3 || expToLevel(heldPet->experience) == 3) {
+                        cancelAction();
+                    } else {
+                        int cost = -1;
+                        if (cursorHeldY == 1) {
+                            heldPet = getEnemyTeamPet(cursorHeldX);
+                            cost = getPetCost(heldPet);
+                        }
 
-                    if (cost >= 0 && spendBankMoney(cost) == 0) {
-                        cancelAction();
-                    }  else {
-                        unfreeze(cursorX);
-                        other->experience = max(other->experience, heldPet->experience) + 1;
-                        other->health++;
-                        other->attack++;
-                        emptyPet(heldPet);
-                        int oldX = cursorX;
-                        int oldY = cursorY;
-                        cancelAction();
-                        cursorY = oldY;
-                        cursorX = oldX;
+                        if (cost >= 0 && spendBankMoney(cost) == 0) {
+                            cancelAction();
+                        } else {
+                            unfreeze(cursorHeldX);
+                            buyPet(heldPet);
+                            // TODO: Stacked pets probably result in level of held pet being applied to buy trigger
+                            stackPets(heldPet, other);
+                            int oldX = cursorX;
+                            int oldY = cursorY;
+                            cancelAction();
+                            cursorY = oldY;
+                            cursorX = oldX;
+                        }
                     }
 
                 }
@@ -399,8 +412,9 @@ void tickSceneStore() {
                     if (cost >= 0 && spendBankMoney(cost) == 0) {
                         cancelAction();
                     }  else {
-                        unfreeze(cursorX);
+                        unfreeze(cursorHeldX);
                         clonePet(heldPet, getPlayerTeamPet(cursorX));
+                        buyPet(getPlayerTeamPet(cursorX));
                         emptyPet(heldPet);
                         int oldX = cursorX;
                         int oldY = cursorY;
@@ -426,7 +440,7 @@ void tickSceneStore() {
         } else if (item->id > 100) {
             int triggered = buyItemAtPosition(cursorX);
             if (!triggered) {
-                unfreeze(cursorX);
+                unfreeze(cursorHeldX);
                 cursorHeldX = cursorX;
                 cursorHeldY = cursorY;
                 cursorOpen = 0;
@@ -540,13 +554,17 @@ void tickSceneStore() {
         sprite = getOAMSprite(105);
         obj_set_pos(sprite, -16, -16);
 
+
+        endTurn();
+        while (isAnimating()) {
+            tickMainLoop();
+        }
         setScene(1);
 
         for (int t = 0; t < 10; t++) {
             tickMainLoop();
         }
 
-        endTurn();
         sprite = getOAMSprite(101);
         obj_set_pos(sprite, 208, 0);
 

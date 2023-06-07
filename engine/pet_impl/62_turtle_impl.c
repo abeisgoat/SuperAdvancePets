@@ -3,7 +3,6 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: Implement Turtle Faint (hecka wrong)
 void turtleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Turtle trigger Faint");
 
@@ -18,15 +17,15 @@ void turtleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * sel
 
         struct Pet * adjacentPetBehind = getPetByPosition(usOrThem, us, them, selfPos + posModifier);
 
-        if (adjacentPetBehind->id > 0) {
-            animateDamageToTeamPosition(selfPos, selfPos + posModifier);
-        }
-        resolveAnimation();
+        if (!isDead(adjacentPetBehind)) {
+            if (adjacentPetBehind->id > 0) {
+                animateIconToTeamPosition(selfPos, selfPos + posModifier, UIIcon_Melon);
+            }
+            resolveAnimation();
 
-        int damage = 1;
-
-        if (adjacentPetBehind->id > 0) {
-            damagePet(usOrThem, us, them, store, adjacentPetBehind, damage);
+            if (adjacentPetBehind->id > 0) {
+                adjacentPetBehind->heldItem = 109;
+            }
         }
     }
 }

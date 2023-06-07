@@ -20,7 +20,7 @@ int getMemForUIIcon(enum UIIcon icon);
 int getMemForCursor(int frame);
 void initSpriteMem();
 int loadLabel(int upperOrLower, enum UILabels label);
-int loadThrowable(enum UIThrowable label);
+int loadIconAsThrowable(enum UIIcon icon);
 int getMemForPet(int s);
 int getMemForHeldItem(int id);
 int getMemFor32x32UI(enum UIElements32x32 element);

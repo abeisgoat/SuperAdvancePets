@@ -75,7 +75,7 @@ exports.Pet = function Pet(name) {
             return self;
         },
         withExperience(exp) {
-            animal.exp = exp;
+            animal.experience = exp;
             return self;
         },
         build() {

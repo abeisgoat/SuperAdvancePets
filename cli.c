@@ -22,6 +22,7 @@ void deserializeTeam(char str[], int team[5]) {
 }
 void main(int argc, char **argv) {
     prepareEngine();
+    srand(0);
 
     int us[5] = {};
     int them[5] = {};

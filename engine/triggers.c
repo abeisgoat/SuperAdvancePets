@@ -81,6 +81,9 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
+        case 13: // Crab
+            crabTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 15: // Crocodile
             crocodileTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -105,11 +108,19 @@ int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 
 int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     switch (pet->id) {
-        case 37:
+        case 12: // Cow
+            cowTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 37: // Otter
             otterTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
-        case 102:
+        case 42: // Pig
+            pigTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 102: // Can
             cannedFoodTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
@@ -239,6 +250,37 @@ int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
     switch (pet->id) {
         case 64:
             wormTriggerEatsShopFood(usOrThem, us, them, pet, pet, store);
+            return 1;
+    }
+    return 0;
+}
+
+int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    switch (pet->id) {
+        case 24:
+            fishTriggerLevelUp(usOrThem, us, them, pet, pet, store);
+            return 1;
+        case 42:
+            pigTriggerLevelUp(usOrThem, us, them, pet, pet, store);
+            return 1;
+    }
+    return 0;
+}
+
+
+int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
+    switch (pet->id) {
+        case 50: // Shark
+            sharkTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
+    }
+    return 0;
+}
+
+int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
+    switch (pet->id) {
+        case 19: // Dog
+            dogTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
             return 1;
     }
     return 0;

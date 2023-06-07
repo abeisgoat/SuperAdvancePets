@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText CrabText = {
 EWRAM_DATA const static struct Pet Crab = {
         .id =  13,
         .attack =  3,
-        .health =  3,
+        .health =  1,
         .tier = 2
 };
-void crabTriggerBuy(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void crabTriggerStartOfBattle(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
