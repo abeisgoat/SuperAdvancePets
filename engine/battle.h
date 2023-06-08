@@ -29,3 +29,4 @@ void postSummonPet(struct Pet * pet);
 int getFoodMultiple();
 int nextTurn();
 void postNextTurn();
+void seed();

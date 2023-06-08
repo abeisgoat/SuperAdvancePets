@@ -1,40 +1,15 @@
 #include <tonc.h>
 #include <string.h>
+#include <stdlib.h>
 #include "../sprites/generated/logo.h"
+#include "../engine/battle.h"
 
-//u8 txt_scrolly= 8;
-//
-//const char *names[]=
-//        {   "C ", "C#", "D ", "D#", "E ", "F ", "F#", "G ", "G#", "A ", "A#", "B "  };
-//
-//// === FUNCTIONS ======================================================
-//
-//// Show the octave the next note will be in
-//void note_prep(int octave)
-//{
-//    char str[32];
-//    siprintf(str, "[  %+2d]", octave);
-//    se_puts(8, txt_scrolly, str, 0x1000);
-//}
-//
-//
-//// Play a note and show which one was played
+int seedframes = 0;
 void note_play(int note, int octave)
 {
     char str[32];
 
-    // Clear next top and current rows
-//    SBB_CLEAR_ROW(31, (txt_scrolly/8-2)&31);
-//    SBB_CLEAR_ROW(31, txt_scrolly/8);
-//
-//    // Display note and scroll
-//    siprintf(str, "%02s%+2d", names[note], octave);
-//    se_puts(16, txt_scrolly, str, 0);
-//
-//    txt_scrolly -= 8;
-//    REG_BG0VOFS= txt_scrolly-8;
-
-    // Play the actual note
+    seedframes++;
     REG_SND1FREQ = SFREQ_RESET | SND_RATE(note, octave);
 }
 
@@ -44,6 +19,7 @@ int wait(int count) {
         if(key_hit(KEY_START)) {
             return 1;
         }
+        seedframes++;
         VBlankIntrDelay(1);
     }
     return 0;
@@ -74,7 +50,6 @@ int halfNote(int note, int octave, int speed) {
     return wait(16*speed);
 }
 
-int note = 0;
 void sap_song(int f) {
     int B_FLAT = NOTE_BES;
     int E_FLAT = NOTE_DIS;
@@ -111,4 +86,6 @@ void sap_song(int f) {
         start = tripletNote(F, octave, speed);
         if (start) break;
     }
+
+    srand(seedframes);
 }

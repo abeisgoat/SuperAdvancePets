@@ -462,7 +462,6 @@ int battle() {
 }
 
 void prepareEngine() {
-    srand(time(NULL));
     registerPet(Ant.id, &Ant, &AntText);
     registerPet(Badger.id, &Badger, &BadgerText);
     registerPet(Beaver.id, &Beaver, &BeaverText);

@@ -222,7 +222,7 @@ void cancelAction() {
 void prepareSceneStore() {
     setupStoreUI();
     nextTurn();
-//    randomizeStore();
+    randomizeStore();
     resetBankForTurn();
     hideLabels();
 
@@ -518,7 +518,7 @@ void tickSceneStore() {
         sleep(10);
     }
 
-    if ((key_hit(KEY_RIGHT) || key_hit(KEY_LEFT)) && (!cursorHeldPetID || (cursorHeldY == 1 && cursorY == 0) || (cursorHeldY == 0 && cursorY == 0))) {
+    if ((key_hit(KEY_RIGHT) || key_hit(KEY_LEFT))) {
         if (key_hit(KEY_RIGHT)) {
             cursorX += 1;
         }
@@ -529,7 +529,7 @@ void tickSceneStore() {
         updateLabels();
     }
 
-    if (key_hit(KEY_DOWN) && !cursorHeldPetID) {
+    if (key_hit(KEY_DOWN) && (!cursorHeldPetID || cursorHeldY != 0)) {
         cursorY += 1;
         updateLabels();
     }

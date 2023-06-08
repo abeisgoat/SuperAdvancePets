@@ -93,7 +93,7 @@ void gameloop() {
     REG_SND1CNT= SSQR_ENV_BUILD(12, 0, 7) | SSQR_DUTY1_2;
     REG_SND1FREQ= 0;
 
-//    sap_song(0);
+    sap_song(0);
     REG_BG1HOFS = 16;
 
     memcpy(pal_bg_mem, bgPal, bgPalLen);
