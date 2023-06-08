@@ -1,6 +1,7 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../../src/tick.h"
 #include <stdio.h>
 
 void duckTriggerSell(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
@@ -19,23 +20,10 @@ void duckTriggerSell(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPe
             break;
     }
 
-    // TODO Animationed stats for store animals don't work
-//    int selfPos = petPosition(usOrThem, us, them, selfPet);
-
-//    for (int i=0; i<7; i++) {
-//        struct Pet * storePet = &store[i];
-//        if (storePet->id > 0 && storePet->id < 100) {
-//            int storePos = storePosition(store, storePet);
-//            animateStatsToTeamPosition(selfPos, storePos);
-//        }
-//    }
-//
-//    resolveAnimation();
-//
     for (int i=0; i<7; i++) {
         struct Pet * storePet = &store[i];
 
-        if (storePet->id > 0 && storePet->id < 100) {
+        if (storePet->id > 0 && !isItem(storePet->id)) {
             storePet->health += health;
         }
     }

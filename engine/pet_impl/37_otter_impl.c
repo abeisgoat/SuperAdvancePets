@@ -3,7 +3,6 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO This trigger based on store position, not held position
 void otterTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Otter trigger Buy");
     for (int l=1; l<= expToLevel(selfPet->experience); l++) {

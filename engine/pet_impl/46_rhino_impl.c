@@ -3,8 +3,10 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void rhinoTriggerKnockOut(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
+int rhinoTriggerKnockOut(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Rhino trigger KnockOut");
+
+    if (isDead(selfPet)) return 0;
 
     struct Pet * target;
     if (usOrThem == 0) {
@@ -20,6 +22,7 @@ void rhinoTriggerKnockOut(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
         int targetPos = petPosition(usOrThem, us, them, target);
         animateDamageToTeamPosition(selfPos, targetPos);
         resolveAnimation();
-        damagePet(usOrThem, us, them, store, selfPet, target, damage);
+        return damagePet(usOrThem, us, them, store, selfPet, target, damage);
     }
+    return 0;
 }

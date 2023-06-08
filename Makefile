@@ -601,30 +601,6 @@ engine/food_impl/117_sushi_impl.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/117_sushi_impl.c.s
 .PHONY : engine/food_impl/117_sushi_impl.c.s
 
-engine/food_impl/118_peanuts_impl.o: engine/food_impl/118_peanuts_impl.c.o
-.PHONY : engine/food_impl/118_peanuts_impl.o
-
-# target to build an object file
-engine/food_impl/118_peanuts_impl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/118_peanuts_impl.c.o
-.PHONY : engine/food_impl/118_peanuts_impl.c.o
-
-engine/food_impl/118_peanuts_impl.i: engine/food_impl/118_peanuts_impl.c.i
-.PHONY : engine/food_impl/118_peanuts_impl.i
-
-# target to preprocess a source file
-engine/food_impl/118_peanuts_impl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/118_peanuts_impl.c.i
-.PHONY : engine/food_impl/118_peanuts_impl.c.i
-
-engine/food_impl/118_peanuts_impl.s: engine/food_impl/118_peanuts_impl.c.s
-.PHONY : engine/food_impl/118_peanuts_impl.s
-
-# target to generate assembly for a file
-engine/food_impl/118_peanuts_impl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/food_impl/118_peanuts_impl.c.s
-.PHONY : engine/food_impl/118_peanuts_impl.c.s
-
 engine/globals.o: engine/globals.c.o
 .PHONY : engine/globals.o
 
@@ -2357,9 +2333,6 @@ help:
 	@echo "... engine/food_impl/117_sushi_impl.o"
 	@echo "... engine/food_impl/117_sushi_impl.i"
 	@echo "... engine/food_impl/117_sushi_impl.s"
-	@echo "... engine/food_impl/118_peanuts_impl.o"
-	@echo "... engine/food_impl/118_peanuts_impl.i"
-	@echo "... engine/food_impl/118_peanuts_impl.s"
 	@echo "... engine/globals.o"
 	@echo "... engine/globals.i"
 	@echo "... engine/globals.s"

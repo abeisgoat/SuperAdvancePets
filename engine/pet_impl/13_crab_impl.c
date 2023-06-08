@@ -8,6 +8,9 @@ void crabTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet
     int maxHealth = 0;
     int healerPos = 0;
 
+    if (isDead(selfPet)) {
+        return;
+    }
 
     for (int i=0; i<=4; i++) {
         if (us[i].health > maxHealth) {

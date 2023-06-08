@@ -152,7 +152,7 @@ void updateLabels() {
     }else if (cursorHeldPetID) {
         if (cursorHeldY == 1) {
            hideTopLabel();
-            if (cursorHeldPetID < 100) {
+            if (!isItem(cursorHeldPetID)) {
                 if (hoveredId == cursorHeldPetID) {
                     showLabels();
                     loadLabel(0, UILabel_Stack);
@@ -161,7 +161,7 @@ void updateLabels() {
                     loadLabel(0, UILabel_Place);
                 }
 
-            } else if (cursorHeldPetID > 100) {
+            } else if (isItem(cursorHeldPetID)) {
                 if (hoveredId > 0) {
                     showLabels();
                     loadLabel(0, UILabel_Buy);
@@ -285,6 +285,9 @@ void prepareSceneStore() {
                  ATTR2_PALBANK(pb) | ATTR2_PRIO(4) | getMemForCursor(0));
 
     obj_set_pos(sprite, 0, 0);
+
+    tickMainLoop();
+    postNextTurn();
 }
 
 void updateCursor() {
@@ -421,7 +424,7 @@ void tickSceneStore() {
                             cancelAction();
                         } else {
                             unfreeze(cursorHeldX);
-                            buyPet(heldPet);
+                            postBuyPet(heldPet);
                             // TODO: Stacked pets probably result in level of held pet being applied to buy trigger
                             stackPets(heldPet, other);
                             int oldX = cursorX;
@@ -454,12 +457,11 @@ void tickSceneStore() {
                     }  else {
                         unfreeze(cursorHeldX);
                         struct Pet * dest = getPlayerTeamPet(cursorX);
-                        clonePet(heldPet, dest);
+//                        clonePet(heldPet, dest);
 
                         getPetSprite(cursorX)->visiblePet = 1;
                         obj_set_pos(getOAMSprite(105), -16, -16);
 
-                        buyPet(heldPet);
                         summonPet(heldPet, dest);
                         emptyPet(heldPet);
                         resetAnimalSpritesForStore();
@@ -469,6 +471,7 @@ void tickSceneStore() {
                         cancelAction();
                         cursorY = oldY;
                         cursorX = oldX;
+                        postBuyPet(dest);
                         postSummonPet(dest);
                     }
                 }

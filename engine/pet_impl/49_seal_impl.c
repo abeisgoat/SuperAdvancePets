@@ -6,8 +6,8 @@
 void sealTriggerEatsShopFood(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Seal trigger EatsShopFood");
 
-    struct Pet * friend1 = randomOtherTeamMember(them, selfPet);
-    struct Pet * friend2 = randomOtherTeamMember(them, friend1);
+    struct Pet * friend1 = randomOtherTeamMember(us, selfPet);
+    struct Pet * friend2 = randomOtherTeamMember(us, friend1);
 
     int givePos = petPosition(usOrThem, us, them, selfPet);
     int friend1Pos = petPosition(usOrThem, us, them, friend1);

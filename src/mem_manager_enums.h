@@ -20,7 +20,8 @@ enum UIIcon {
     UIIcon_Stats,
     UIIcon_StatAttack,
     UIIcon_StatHealth,
-    UIIcon_Damage
+    UIIcon_Damage,
+    UIIcon_Coconut
 };
 
 enum UIElements32x16 {

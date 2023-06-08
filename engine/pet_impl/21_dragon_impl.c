@@ -3,8 +3,8 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-void dragonTriggerBuyPet(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Dragon trigger BuyPet");
+void dragonTriggerBuyFriend(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
+    printf("Activated Dragon trigger buy friend");
     int isTierOne = activatingPet->tier == 1;
 
     if (!isTierOne) return;
@@ -14,7 +14,7 @@ void dragonTriggerBuyPet(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
     for (int i = 0; i <=4; i++) {
         struct Pet * friend = &us[i];
 
-        if (friend->id) {
+        if (friend->id && friend != selfPet) {
             int friendPos = petPosition(usOrThem, us, them, friend);
             animateStatsToTeamPosition(selfPos, friendPos);
         }
@@ -38,7 +38,7 @@ void dragonTriggerBuyPet(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
     for (int i = 0; i <=4; i++) {
         struct Pet * friend = &us[i];
 
-        if (friend->id) {
+        if (friend->id && friend != selfPet) {
             friend->health += stats;
             friend->attack += stats;
         }

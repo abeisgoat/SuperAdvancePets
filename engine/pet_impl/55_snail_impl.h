@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Snail = {
         .health =  2,
         .tier = 3
 };
-void snailTriggerBuyAfterLoss(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void snailTriggerBuy(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

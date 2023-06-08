@@ -45,7 +45,7 @@ void updateAnimalSprites() {
             int gfxMem = usePetGfxMem(pet->id, s);
 
 
-            if (pet->id > 100) {
+            if (isItem(pet->id)) {
                 ps->visibleStats = 0;
             }
 
@@ -60,7 +60,7 @@ void updateAnimalSprites() {
 
             obj_set_pos(sprite, ps->screenX, ps->screenY);
 
-            if (getPetHealth(pet) == 0 && pet->id < 100) {
+            if (getPetHealth(pet) == 0 && !isItem(pet->id)) {
 //                sprite->attr1 ^= ATTR1_VFLIP;
                 sprite->attr2 = ATTR2_PALBANK(pb) | ATTR2_PRIO(2) | getMemFor16x16UI(UIElement_Bandaid);
             }

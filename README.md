@@ -107,6 +107,7 @@ mv ui_8x8_138.png pngs/uiChili8x8.png
 mv ui_8x8_139.png pngs/uiMelon8x8.png
 mv ui_8x8_140.png pngs/uiMeatBone8x8.png
 mv ui_8x8_141.png pngs/uiHoney8x8.png
+mv ui_8x8_142.png pngs/uiCoconut8x8.png
 mv ui_8x8_154.png pngs/uiSteak8x8.png
 mv ui_8x8_155.png pngs/uiMushroom8x8.png
 mv ui_8x8_156.png pngs/uiGarlic8x8.png

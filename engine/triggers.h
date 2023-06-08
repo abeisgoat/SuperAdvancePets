@@ -8,6 +8,7 @@ int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyBeforeAttackTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
+int applyKnockoutTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
 int applyEndTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
@@ -16,4 +17,8 @@ int applySellTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet,  PetTeam store);
 int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store);
 int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
+int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store);
+int applyFriendAfterAttackTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store);
+int applyBuyFriendTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store);
+int applyFriendEatsTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store);
 #endif //SUPERADVANCEPETSCLI_TRIGGERS_H

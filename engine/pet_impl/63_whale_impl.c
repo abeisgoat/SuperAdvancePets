@@ -4,7 +4,6 @@
 #include "../battle.h"
 #include <stdio.h>
 
-// TODO: Implement Whale StartOfBattle
 void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Whale trigger StartOfBattle");
 
@@ -27,20 +26,21 @@ void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pe
 }
 
 void whaleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
+    printf("Activated Whale trigger faint");
     if (selfPet->id < 300) return;
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
     int exp = selfPet->experience;
     int id = (selfPet->id) - 300;
+    int lvl = expToLevel(selfPet->experience);
 
-    emptyPet(selfPet);
     animatePoofAtPosition(selfPos);
     resolveAnimation();
 
     summonPet(getPetByID(id), selfPet);
-    int lvl = expToLevel(selfPet->experience);
     selfPet->experience = exp;
     selfPet->health *= lvl;
     selfPet->attack *= lvl;
+    selfPet->activations = 0;
     postSummonPet(selfPet);
 }

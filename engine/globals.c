@@ -2,6 +2,8 @@
 #include "../src/animations.h"
 #include "triggers.h"
 #include "food_impl/118_peanuts_impl.h"
+#include "../src/tick.h"
+#include "food_impl/119_coconut_impl.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -175,12 +177,25 @@ void registerFood(int petId, const struct Pet * pet, const struct PetText * petT
     }
 }
 
+int isItem(int id) {
+    return id > 100 && id < 200;
+}
+
+int getRemappedId(int id) {
+    if (id > 300) {
+        return Whale.id;
+    } else if (id > 200) {
+        return Parrot.id;
+    }
+    return id;
+}
 const struct PetText* getPetTextByID(int petId) {
-    return petTexts[petId];
+    return petTexts[getRemappedId(petId)];
 }
 
 struct Pet * getPetByID(int petId) {
-    if (petId < 100) {
+    petId = getRemappedId(petId);
+    if (!isItem(petId)) {
         return pets[petId];
     } else {
         return foods[petId-101];
@@ -449,27 +464,34 @@ int getPetUsOrThem(PetTeam us, PetTeam them, struct Pet *pet) {
     }
 }
 
-void damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *attacker, struct Pet *pet, int damage) {
-    if (pet->heldItem == Melon.id) {
+int damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet *attacker, struct Pet *target, int damage) {
+    if (target->heldItem == Melon.id) {
         printf("Melon used.\n");
-        pet->heldItem = 0;
+        target->heldItem = 0;
         damage -= 20;
     }
 
-    if (pet->heldItem == Garlic.id) {
+    if (target->heldItem == Garlic.id) {
         printf("Garlic used.\n");
         damage -= 2;
     }
 
+    if (target->heldItem == Coconut.id) {
+        printf("Coconut used.");
+        damage = 0;
+        target->heldItem = 0;
+    }
+
     if (damage > 0) {
-        // Dunno why I can't do Peanuts.id here, maybe cause it's only a header file?
-        if (attacker->heldItem == 118) {
-            damage = pet->health;
+        if (attacker->heldItem == Peanuts.id) {
+            damage = target->health;
             attacker->heldItem = 0;
         }
-        pet->health -= damage;
-        pet->hurt++;
+        target->health -= damage;
+        target->hurt++;
     }
+
+    return isDead(target);
 }
 
 void printPet(struct Pet * pet) {
@@ -664,7 +686,7 @@ int getTurn() {
     return turn;
 }
 
-int nextTurn() {
+int addTurn() {
     turn += 1;
     return turn;
 }

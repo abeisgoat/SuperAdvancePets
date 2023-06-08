@@ -2,10 +2,20 @@
 #include "battle.h"
 #include "impl.h"
 
+int getTriggerID(int id) {
+    if (id > 300) {
+        id = Whale.id;
+    } else if (id > 200) {
+        id = id - 200; // Parrot
+    }
+    return id;
+}
+
 int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     if (pet->activations > 0) return 0;
 
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 1: // Ant
             antTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
@@ -55,15 +65,16 @@ int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, 
             pet->activations++;
             return 1;
         case 63: // Whale
-            whaleTriggerFaint(usOrThem, us, them, pet, pet, store);
             pet->activations++;
+            whaleTriggerFaint(usOrThem, us, them, pet, pet, store);
             return 1;
     }
     return 0;
 }
 
 int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 6: // Blowfish
             blowfishTriggerHurt(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -80,7 +91,8 @@ int applyHurtTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 }
 
 int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 13: // Crab
             crabTriggerStartOfBattle(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -110,7 +122,8 @@ int applyBattleStartTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 }
 
 int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 12: // Cow
             cowTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
@@ -123,12 +136,20 @@ int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, Pe
             pigTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
+        case 55: // Snail
+            snailTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
         case 102: // Can
             cannedFoodTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
         case 113:
             pizzaTriggerBuy(usOrThem, us, them, pet, pet, store);
+            pet->activations++;
+            return 1;
+        case 117:
+            sushiTriggerBuy(usOrThem, us, them, pet, pet, store);
             pet->activations++;
             return 1;
         default:
@@ -138,7 +159,8 @@ int applyBuyTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, Pe
 }
 
 int applySellTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 3:
             beaverTriggerSell(usOrThem, us, them, pet, pet, store);
             pet->activations++;
@@ -159,7 +181,8 @@ int applySellTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, P
 
 
 int applyEndTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 5: // Bison
             bisonTriggerEndOfTurn(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -182,7 +205,8 @@ int applyEndTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet
 }
 
 int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * target, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 101:
             appleTriggerBuyAssign(usOrThem, us, them, pet, target, store);
             pet->activations++;
@@ -239,18 +263,27 @@ int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * p
             steakTriggerBuyAssign(usOrThem, us, them, pet, target, store);
             pet->activations++;
             return 1;
-        case 117:
-            sushiTriggerBuyAssign(usOrThem, us, them, pet, target, store);
-            pet->activations++;
-            return 1;
         default:
             break;
     }
     return 0;
 }
 
+int applyKnockoutTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 46:
+            return rhinoTriggerKnockOut(usOrThem, us, them, pet, pet, store);
+    }
+    return 0;
+}
+
 int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 49:
+            sealTriggerEatsShopFood(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 64:
             wormTriggerEatsShopFood(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -258,8 +291,19 @@ int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
     return 0;
 }
 
+int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 59:
+            swanTriggerStartOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
+    }
+    return 0;
+}
+
 int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 24:
             fishTriggerLevelUp(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -272,7 +316,8 @@ int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet
 
 
 int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 38: // Ox
             oxTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
             return 1;
@@ -284,7 +329,8 @@ int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 }
 
 int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 19: // Dog
             dogTriggerFriendSummoned(usOrThem, us, them, pet, activatingPet, store);
             return 1;
@@ -298,8 +344,42 @@ int applyFriendSummonTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
     return 0;
 }
 
+int applyFriendAfterAttackTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 56:
+            snakeTriggerAfterAttack(usOrThem, us, them, pet, activatingPet, store);
+            pet->activations++;
+            return 1;
+    }
+    return 0;
+}
+
+int applyFriendEatsTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 43:
+            rabbitTriggerPetEatsShopFood(usOrThem, us, them, pet, activatingPet, store);
+            pet->activations++;
+            return 1;
+    }
+    return 0;
+}
+
+int applyBuyFriendTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
+        case 21:
+            dragonTriggerBuyFriend(usOrThem, us, them, pet, activatingPet, store);
+            pet->activations++;
+            return 1;
+    }
+    return 0;
+}
+
 int applyBeforeAttackTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
-    switch (pet->id) {
+    int id = getTriggerID(pet->id);
+    switch (id) {
         case 7:
             boarTriggerBeforeAttack(usOrThem, us, them, pet, pet, store);
             pet->activations++;

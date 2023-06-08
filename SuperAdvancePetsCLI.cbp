@@ -219,10 +219,11 @@
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/food_impl/117_sushi_impl.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/food_impl/118_peanuts_impl.c">
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/food_impl/118_peanuts_impl.h">
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
-		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/food_impl/118_peanuts_impl.h">
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/food_impl/119_coconut_impl.h">
+			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/globals.c">

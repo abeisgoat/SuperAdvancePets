@@ -226,7 +226,7 @@ void resolveDeaths() {
         struct PetSprite *ps = getPetSprite(i);
         struct Pet *pet = getPetByPin(ps->petPin);
 
-        if (pet->id < 100 && isDead(pet)) {
+        if (!isItem(pet->id) && isDead(pet)) {
             ps->petPin = 0;
         }
         if (pet->id > 100 && pet->activations > 0) {

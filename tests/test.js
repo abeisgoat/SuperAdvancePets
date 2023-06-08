@@ -1,29 +1,29 @@
 const chai = require("chai").assert;
 const {Pet, battle} = require("./helpers");
 
-console.log([
-    Pet("Monkey")
-        .withHealth(5)
-        .withDamage(6)
-        .withExperience(5),
-    Pet("Bison")
-        .withHealth(2)
-        .withDamage(2)
-        .withExperience(3),
-    Pet("Giraffe")
-        .withHealth(3)
-        .withDamage(3)
-        .withExperience(2),
-    Pet("Peacock")
-        .withHealth(8)
-        .withDamage(10)
-        .withExperience(5),
-    Pet("Crocodile")
-        .withHealth(6)
-        .withDamage(5)
-        .withExperience(5),
-
-].map((a) => a.build()).map((v) => parseInt(v)))
+// console.log([
+//     Pet("Monkey")
+//         .withHealth(5)
+//         .withDamage(6)
+//         .withExperience(5),
+//     Pet("Bison")
+//         .withHealth(2)
+//         .withDamage(2)
+//         .withExperience(3),
+//     Pet("Giraffe")
+//         .withHealth(3)
+//         .withDamage(3)
+//         .withExperience(2),
+//     Pet("Peacock")
+//         .withHealth(8)
+//         .withDamage(10)
+//         .withExperience(5),
+//     Pet("Crocodile")
+//         .withHealth(6)
+//         .withDamage(5)
+//         .withExperience(5),
+//
+// ].map((a) => a.build()).map((v) => parseInt(v)))
 describe("SuperAdvancePets Engine", () => {
     it("Equal ants tie", async () => {
         const log = await battle(
@@ -294,6 +294,26 @@ describe("SuperAdvancePets Engine", () => {
             ]
         );
         chai.equal(log[log.length - 1], "[Win]");
+    });
+
+    it("Whale can eat / respawn friend ahead.", async () => {
+        const log = await battle(
+            [
+                Pet("Whale")
+                    .withHealth(2)
+                    .withDamage(2),
+                Pet("Deer")
+                    .withHealth(2)
+                    .withDamage(2),
+            ],
+            [
+                Pet("Ant")
+                    .withHealth(10)
+                    .withDamage(10)
+            ]
+        );
+
+        chai.equal(log[log.length - 1], "[Tie]");
     });
 });
 

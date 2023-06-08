@@ -12,7 +12,7 @@ EWRAM_DATA const static struct PetText MammothText = {
 EWRAM_DATA const static struct Pet Mammoth = {
         .id =  34,
         .attack =  3,
-        .health =  10,
+        .health =  9,
         .tier = 6
 };
 void mammothTriggerFaint(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

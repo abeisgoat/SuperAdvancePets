@@ -30,8 +30,6 @@
 #define CBB_12 4
 #define SBB_12 6
 
-// TODO Picking up empty spot after moving causes weird dupe
-
 void gameloop() {
     readyTick();
     prepareEngine();
@@ -46,7 +44,7 @@ void gameloop() {
     };
 
     int store[7] = {
-            61, 42, 42, 6, 0,  101, 33
+            21, 1, 2, 3, 43, 101, 101
     };
 
 

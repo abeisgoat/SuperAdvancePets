@@ -1,7 +1,6 @@
 #include "../pets.h"
 #include <tonc_types.h>
 
-// TODO Implement modifier for food eatin
 EWRAM_DATA const static struct PetText CatText = {
         .name = "Cat",
         .abilities = {

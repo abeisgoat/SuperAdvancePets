@@ -5,7 +5,8 @@
 #include "triggers.h"
 #include <time.h>
 #include <stdlib.h>
-#include <tonc.h>
+
+#define amax(a,b)            (((a) > (b)) ? (a) : (b))
 
 PetTeam backedUpTeam = {
         {}, {}, {}, {}, {}
@@ -46,6 +47,17 @@ void unfreeze(int i) {
 
 int isFrozen(int i) {
     return frozenTeam[i].id > 0 ? 1 : 0;
+}
+
+int nextTurn() {
+    return addTurn();
+}
+
+void postNextTurn() {
+    for (int i = 0; i <= 4;i++) {
+        struct Pet * pet = getPlayerTeamPet(i);
+        applyStartOfTurnTrigger(0, playerTeam, enemyTeam, pet, enemyTeam);
+    }
 }
 
 void resetTeams() {
@@ -103,8 +115,16 @@ int buyItemAtPosition(int index) {
     return 1;
 }
 
-int buyPet(struct Pet * pet) {
-    return applyBuyTrigger(0, playerTeam, enemyTeam, pet, enemyTeam);
+int postBuyPet(struct Pet * pet) {
+    int triggers = applyBuyTrigger(0, playerTeam, enemyTeam, pet, enemyTeam);
+
+    for (int i=0; i<=4;i++) {
+        if (getPlayerTeamPet(i)->id > 0) {
+            triggers += applyBuyFriendTrigger(0, playerTeam, enemyTeam, getPlayerTeamPet(i), pet, enemyTeam);
+        }
+    }
+
+    return triggers;
 }
 
 int buyAssignItemAtPosition(int index, int target) {
@@ -123,6 +143,10 @@ int buyAssignItemAtPosition(int index, int target) {
     spendBankMoney(cost);
 
     trigger += applyEatsShopFoodTrigger(0, playerTeam, enemyTeam, activatingPet, enemyTeam);
+
+    for (int i=0; i<=4; i++) {
+        trigger += applyFriendEatsTrigger(0, playerTeam, enemyTeam, getPlayerTeamPet(i), activatingPet, enemyTeam);
+    }
 
     resolveDeaths();
     resolveAnimation();
@@ -247,7 +271,7 @@ void endTurn() {
 void sellPet(int index) {
     struct Pet * pet = getPlayerTeamPet(index);
     int sellPrice = expToLevel(pet->experience);
-    tte_set_pos(20, 20);
+
     if (pet->cost < -1) {
         sellPrice += -pet->cost -1;
     }
@@ -259,8 +283,8 @@ void sellPet(int index) {
 
 void stackPets(struct Pet * pet, struct Pet * other) {
 
-    int oldLevel = max(expToLevel(pet->experience), expToLevel(other->experience));
-    other->experience = max(other->experience, pet->experience) + 1;
+    int oldLevel = amax(expToLevel(pet->experience), expToLevel(other->experience));
+    other->experience = amax(other->experience, pet->experience) + 1;
     int newLevel = expToLevel(other->experience);
 
     if (newLevel > oldLevel) {
@@ -272,6 +296,19 @@ void stackPets(struct Pet * pet, struct Pet * other) {
     emptyPet(pet);
     other->health++;
     other->attack++;
+}
+
+int getFoodMultiple() {
+    int multiple = 1;
+
+    for (int i = 0; i<=4; i++) {
+        struct Pet * pet = getPlayerTeamPet(i);
+        if (pet->id == Cat.id) {
+            multiple += expToLevel(pet->experience);
+        }
+    }
+
+    return multiple;
 }
 
 int lastResult;
@@ -312,8 +349,8 @@ int battle() {
         return step;
     }
 
-    struct Pet *PlayerFighter;
-    struct Pet *EnemyFighter;
+    struct Pet *playerFighter;
+    struct Pet *enemyFighter;
 
     printf("[Battle begin %i vs %i]\n", playerTeamSize(), enemyTeamSize());
 
@@ -322,6 +359,7 @@ int battle() {
         int enemyHasPet = shuffleLeftUntilPet(enemyTeam);
         animateShuffleAtPosition(0, 0);
         resolveAnimation();
+
 
         sleep(30);
 
@@ -335,20 +373,21 @@ int battle() {
         }
 
 
-        PlayerFighter = getRightMostPet(playerTeam);
-        EnemyFighter = getLeftMostPet(enemyTeam);
+
+        playerFighter = getRightMostPet(playerTeam);
+        enemyFighter = getLeftMostPet(enemyTeam);
 
         applyBeforeAttackTrigger(
                 0,
-            playerTeam,
-            enemyTeam,
-            PlayerFighter, storeTeam);
+                playerTeam,
+                enemyTeam,
+                playerFighter, storeTeam);
 
         applyBeforeAttackTrigger(
                 1,
                 enemyTeam,
                 playerTeam,
-                EnemyFighter, storeTeam);
+                enemyFighter, storeTeam);
 
         step = stepForward(step);
         if (step < 0) {
@@ -356,33 +395,55 @@ int battle() {
             return step;
         }
 
-        printf("%i :: Player %s has item %i\n", step, *getPetTextByID(PlayerFighter->id)->name, PlayerFighter->heldItem);
-        printf("%i :: Enemy %s has item %i\n", step, *getPetTextByID(EnemyFighter->id)->name, EnemyFighter->heldItem);
+        printf("%i :: Player %s has item %i\n", step, *getPetTextByID(playerFighter->id)->name, playerFighter->heldItem);
+        printf("%i :: Enemy %s has item %i\n", step, *getPetTextByID(enemyFighter->id)->name, enemyFighter->heldItem);
 
         printf("%i :: FIGHT! %s [+%i/+%i] vs %s [+%i/+%i]\n",
                step,
-               *getPetTextByID(PlayerFighter->id)->name,
-               getPetAttack(PlayerFighter),
-               getPetHealth(PlayerFighter),
-               *getPetTextByID(EnemyFighter->id)->name,
-               getPetAttack(EnemyFighter),
-               getPetHealth(EnemyFighter));
+               *getPetTextByID(playerFighter->id)->name,
+               getPetAttack(playerFighter),
+               getPetHealth(playerFighter),
+               *getPetTextByID(enemyFighter->id)->name,
+               getPetAttack(enemyFighter),
+               getPetHealth(enemyFighter));
 
         printf("%i :: [>> Animate head-on attack <<]\n", step);
-        animateFighterAttack(PlayerFighter, EnemyFighter);
+        animateFighterAttack(playerFighter, enemyFighter);
         resolveAnimation();
 
-        int playerAttack = getPetAttack(PlayerFighter);
-        int enemyAttack = getPetAttack(EnemyFighter);
-        damagePet(1, enemyTeam, playerTeam, storeTeam, EnemyFighter, PlayerFighter, enemyAttack);
-        damagePet(0, playerTeam, enemyTeam, storeTeam, PlayerFighter, EnemyFighter, playerAttack);
+        int playerAttack = getPetAttack(playerFighter);
+        int enemyAttack = getPetAttack(enemyFighter);
+        int playerKnockout = 0;
+        int enemyKnockout = 0;
 
-        if (PlayerFighter->heldItem == Chili.id) {
-            damagePet(0, playerTeam, enemyTeam, storeTeam, PlayerFighter, &enemyTeam[1], playerAttack);
+        enemyKnockout += damagePet(1, enemyTeam, playerTeam, storeTeam, enemyFighter, playerFighter, enemyAttack);
+        playerKnockout += damagePet(0, playerTeam, enemyTeam, storeTeam, playerFighter, enemyFighter, playerAttack);
+
+        if (playerFighter->heldItem == Chili.id) {
+            playerKnockout += damagePet(0, playerTeam, enemyTeam, storeTeam, playerFighter, &enemyTeam[1], playerAttack);
         }
 
-        if (EnemyFighter->heldItem == Chili.id) {
-            damagePet(1, enemyTeam, playerTeam, storeTeam, EnemyFighter, &playerTeam[3], enemyAttack);
+        if (enemyFighter->heldItem == Chili.id) {
+            enemyKnockout += damagePet(1, enemyTeam, playerTeam, storeTeam, enemyFighter, &playerTeam[3], enemyAttack);
+        }
+
+        for (int i=0; i<=4; i++) {
+            applyFriendAfterAttackTrigger(0, playerTeam, enemyTeam, &playerTeam[i], playerFighter, playerTeam);
+            applyFriendAfterAttackTrigger(1, enemyTeam, playerTeam, &enemyTeam[i], enemyFighter, enemyTeam);
+        }
+
+        if (playerKnockout) {
+            while (playerKnockout) {
+                playerKnockout = 0;
+                playerKnockout += applyKnockoutTrigger(0, playerTeam, enemyTeam, playerFighter, playerTeam);
+            }
+        }
+
+        if (enemyKnockout) {
+            while (enemyKnockout) {
+                enemyKnockout = 0;
+                enemyKnockout += applyKnockoutTrigger(1, enemyTeam, playerTeam, enemyFighter, playerTeam);
+            }
         }
 
         resolveAnimation();

@@ -11,6 +11,7 @@ exports.battle = function battle(us, them) {
     const stderr = [];
     return new Promise((resolve, reject) => {
         const childProcess = spawn(binaryPath, arguments);
+        console.log(`${binaryPath} ${arguments.join(" ")}`)
 
         childProcess.stdout.on("data", (data) => {
             stdout.push(data.toString());
