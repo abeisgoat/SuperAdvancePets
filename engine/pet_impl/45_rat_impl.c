@@ -4,8 +4,10 @@
 #include <stdio.h>
 
 // TODO: Verify rat
+// TODO: ../SuperAdvancePetsCLI battle 360020404,240000203,010010302,030010303,450000405 030040606,370020304,140000102,240020405,030000202
+
 void ratTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Rat trigger Faint");
+    printf("Activated Rat trigger Faint\n");
 
     for (int l=1; l<= expToLevel(selfPet->experience); l++) {
         int hasSpace;

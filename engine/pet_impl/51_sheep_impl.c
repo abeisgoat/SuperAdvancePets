@@ -6,7 +6,7 @@
 
 // Todo: make spwaning multiple boys work
 void sheepTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Sheep trigger Faint");
+    printf("Activated Sheep trigger Faint\n");
 
 
     for (int l=1; l<= 2; l++) {

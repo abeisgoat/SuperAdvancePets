@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 // Todo: make spwaning multiple boys work
+// TODO: ../SuperAdvancePetsCLI battle 490010409,520030506,420000301,330021106,160010202 310050706,260010606,240050708,470020705,640030606
 void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Rooster trigger Faint");
 

@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void flamingoTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Flamingo trigger Faint");
+    printf("Activated Flamingo trigger Faint\n");
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
 

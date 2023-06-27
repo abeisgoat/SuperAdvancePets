@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 void oxTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Ox trigger friend faints");
+    printf("Activated Ox trigger friend faints\n");
 
     int activatingPos = petPosition(usOrThem, us, them, activatingPet);
     int selfPos = petPosition(usOrThem, us, them, selfPet);

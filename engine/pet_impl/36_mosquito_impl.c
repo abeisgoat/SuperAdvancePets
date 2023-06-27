@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void mosquitoTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Mosquito trigger StartOfBattle");
+    printf("Activated Mosquito trigger StartOfBattle\n");
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
 

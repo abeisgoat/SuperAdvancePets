@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void skunkTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Skunk trigger StartOfBattle");
+    printf("Activated Skunk trigger StartOfBattle\n");
     struct Pet * target;
     int highestHealth = 0;
     for (int i=0; i<=4; i++) {

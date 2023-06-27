@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void camelTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Camel trigger Hurt");
+    printf("Activated Camel trigger Hurt\n");
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);
 

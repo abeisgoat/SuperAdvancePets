@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void mammothTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Mammoth trigger Faint");
+    printf("Activated Mammoth trigger Faint\n");
 
     int stats = expToLevel(selfPet->experience)*2;
     int selfPos = petPosition(usOrThem, us, them, selfPet);

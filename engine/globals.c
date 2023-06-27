@@ -477,7 +477,7 @@ int damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet 
     }
 
     if (target->heldItem == Coconut.id) {
-        printf("Coconut used.");
+        printf("Coconut used.\n");
         damage = 0;
         target->heldItem = 0;
     }
@@ -501,6 +501,16 @@ void printPet(struct Pet * pet) {
         return;
     }
     printf("%s %d/%d @ Lvl %d (%d experience)\n", *text->name, pet->attack, pet->health, expToLevel(pet->experience), pet->experience);
+}
+
+char* serializePet(struct Pet pet) {
+    char* serialized;
+    int item = pet.heldItem;
+    if (item > 100) {
+        item -= 100;
+    }
+    sprintf(serialized, "%02d%02d%d%02d%02d", pet.id, item, pet.experience, pet.attack, pet.health);
+    return serialized;
 }
 
 void deserializePet(int num, struct Pet * dest) {
