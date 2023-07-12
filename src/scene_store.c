@@ -411,7 +411,10 @@ void tickSceneStore() {
                     struct Pet * other = getPlayerTeamPet(cursorX);
                     struct Pet * heldPet = getPlayerTeamPet(cursorHeldX);
 
-                    if (expToLevel(other->experience) == 3 || expToLevel(heldPet->experience) == 3) {
+//                    char msg[10];
+//                    sprintf(msg, "cx %d",expToLevel(heldPet->experience));
+//                    tte_write(msg);
+                    if (expToLevel(other->experience) == 3 || (cursorHeldY == 0 && expToLevel(heldPet->experience) == 3)) {
                         cancelAction();
                     } else {
                         int cost = -1;
@@ -542,7 +545,7 @@ void tickSceneStore() {
     updateCursor();
 
     if (key_hit(KEY_L)) {
-        if (getBankMoney() >= 1) {
+        if (getBankMoney() >= 1 && cursorHeldPetID == 0) {
             spendBankMoney(1);
             sprite = getOAMSprite(100);
             obj_set_pos(sprite, 0, -2);

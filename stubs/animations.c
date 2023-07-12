@@ -68,6 +68,8 @@ void resolveDeaths() {
 
 }
 
+void resolveSpawns() {}
+
 void animateFighterAttack() {
 
 }

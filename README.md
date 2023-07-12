@@ -152,6 +152,10 @@ mv ui_16x16_36.png pngs/uiBandaid.png
 mv ui_16x16_46.png pngs/uiButtonAOutline.png
 mv ui_16x16_47.png pngs/uiButtonBOutline.png
 
+mv ui_16x16_68.png pngs/poofFrame0.png
+mv ui_16x16_69.png pngs/poofFrame1.png
+mv ui_16x16_70.png pngs/poofFrame2.png
+
 mv ui_16x16_62.png pngs/uiBannerShort.png
 
 rm ui_16x16_*.png

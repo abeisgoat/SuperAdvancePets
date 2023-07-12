@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "battle.h"
 #include "impl.h"
+#include "../src/animations.h"
 
 int getTriggerID(int id) {
     if (id > 300) {
@@ -303,15 +304,27 @@ int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 
 int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
+    int triggered = 0;
     switch (id) {
         case 24:
             fishTriggerLevelUp(usOrThem, us, them, pet, pet, store);
-            return 1;
+            triggered = 1;
+            break;
         case 42:
             pigTriggerLevelUp(usOrThem, us, them, pet, pet, store);
-            return 1;
+            triggered = 1;
+            break;
     }
-    return 0;
+
+    for (int i = 0; i < 7; i++) {
+        if (store[i].id == 0) {
+            clonePet(getRandomPetFromNextTier(getTurn()), &store[i]);
+            animatePoofAtPosition(i+5);
+            break;
+        }
+    }
+
+    return triggered;
 }
 
 

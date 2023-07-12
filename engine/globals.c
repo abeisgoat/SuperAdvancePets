@@ -270,6 +270,21 @@ int getLastEnemyTeamPosition(int usOrThem, PetTeam us, PetTeam them) {
     return -1;
 }
 
+int petTeamPosition(int usOrThem, PetTeam us, struct Pet * pet) {
+    for (int i=0; i<=4; i++) {
+        if (usOrThem == 0) {
+            if (&us[4-i] == pet) {
+                return 4-i;
+            }
+        } else {
+            if (&us[i] == pet) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+
 int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet) {
     for (int i=0; i<=4; i++) {
         if (usOrThem == 0) {
@@ -352,6 +367,81 @@ struct Pet * getLeftMostPet(PetTeam team) {
         }
     }
     return &EmptyPet;
+}
+
+int makeRoomLeftAt(PetTeam team, int index) {
+    int firstLeftEmpty = -1;
+    for (int i=index; i>=0; i--) {
+        if (team[i].id == 0) {
+            firstLeftEmpty = i;
+            break;
+        }
+    }
+    printf("first empty left is %d %d\n", firstLeftEmpty, index);
+    if (firstLeftEmpty == -1) return 0;
+
+    for (int i=firstLeftEmpty+1; i < 5; i++) {
+        if (team[i-1].id == 0 && team[i].id != 0) {
+            clonePet(&team[i], &team[i-1]);
+            emptyPet(&team[i]);
+            printf(">>> left shuffling %d to %d\n", i, i-1);
+        }
+    }
+
+    int success = 0;
+
+    if (team[index].id == 0) {
+        success = 1;
+    }
+
+    return success;
+}
+
+int makeRoomRightAt(PetTeam team, int index) {
+    int firstRightEmpty = -1;
+    for (int i=index; i<5; i++) {
+        if (team[i].id == 0) {
+            firstRightEmpty = i;
+            break;
+        }
+    }
+    printf("first empty right is %d %d\n", firstRightEmpty, index);
+
+    if (firstRightEmpty == -1) return 0;
+
+    for (int i=firstRightEmpty-1; i >= 0; i--) {
+        if (team[i+1].id == 0 && team[i].id != 0) {
+            clonePet(&team[i], &team[i+1]);
+            emptyPet(&team[i]);
+            printf(">>> shuffling %d to %d\n", i, i+1);
+        }
+    }
+
+    int success = 0;
+
+    if (team[index].id == 0) {
+        success = 1;
+    }
+
+    return success;
+}
+
+int tryToMakeRoom(int usOrThem, PetTeam team, int index) {
+    printf("trying to make room %d\n", usOrThem);
+    int success;
+    if (usOrThem == 0) {
+        success = makeRoomLeftAt(team, index);
+        if (!success) {
+            success = makeRoomRightAt(team, index);
+        }
+    } else {
+        success = makeRoomRightAt(team, index);
+        if (!success) {
+            success = makeRoomLeftAt(team, index);
+        }
+    }
+
+    return success;
 }
 
 int shuffleRightOnce(PetTeam team) {
@@ -527,13 +617,6 @@ void deserializePet(int num, struct Pet * dest) {
     heldItemOffset = heldItem * 100000;
     id = (num - attackOffset -defenseOffset - experienceOffset - heldItemOffset) / 10000000;
 
-
-//    defence = num % 100;
-//    attack = ((num % 10000) - defence) / 100;
-//    experience = ((num % 100000) - attack - defence) / 10000;
-//    heldItem = ((num % 10000000) - attack - defence - experience) / 100000;
-//    id = ((num % 100000000) - attack - defence - experience - heldItem) / 100000000;
-
     emptyPet(dest);
     dest->id = id;
     dest->attack = attack;
@@ -541,6 +624,23 @@ void deserializePet(int num, struct Pet * dest) {
     dest->heldItem = heldItem;
     dest->experience = experience;
     printPet(dest);
+}
+
+struct Pet * getRandomPetFromNextTier(int turn) {
+    if (turn > 2) {
+        return tier3Pets[rand() % tier3PetsFullness];
+    }
+    if (turn > 4) {
+        return tier4Pets[rand() % tier4PetsFullness];
+    }
+    if (turn > 6) {
+        return tier5Pets[rand() % tier5PetsFullness];
+    }
+    if (turn > 8) {
+        return tier6Pets[rand() % tier6PetsFullness];
+    }
+
+    return tier2Pets[rand() % tier2PetsFullness];
 }
 
 struct Pet * getIndexedPetFromTier(int index) {

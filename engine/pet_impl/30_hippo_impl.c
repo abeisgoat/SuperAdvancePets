@@ -7,6 +7,6 @@ void hippoTriggerKnockOut(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
     printf("Activated Hippo trigger KnockOut");
 
     int stats = expToLevel(selfPet->experience) * 3;
-    selfPet->battleModifierHealth += stats;
-    selfPet->battleModifierAttack += stats;
+    selfPet->attack += stats;
+    selfPet->health += stats;
 }

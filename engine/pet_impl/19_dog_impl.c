@@ -7,6 +7,8 @@
 void dogTriggerFriendSummoned(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Dog trigger Friend Summoned");
 
+    if (activatingPet == selfPet) return;
+
     int attackOrHealth = rand()%2;
 
     int stat = 1;

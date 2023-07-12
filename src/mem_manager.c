@@ -14,7 +14,7 @@ const int memStartOfIcons = memStartOfExp + 40;
 const int memThrowable = memStartOfIcons + 64;
 const int memCursor = memThrowable + 4;
 const int memStartOfSquareUI =  memCursor + 16;
-const int memStartOf32x32UI = memStartOfSquareUI + 8*8;
+const int memStartOf32x32UI = memStartOfSquareUI + 8*11;
 
 int getMemForPet(int s) {
     return s * 10;
@@ -214,6 +214,10 @@ void initSpriteMem() {
     memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_TrophyEmpty)], uiTrophyEmpty16x16Tiles, uiTrophyEmpty16x16TilesLen);
     memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_Heart)], uiHeart16x16Tiles, uiHeart16x16TilesLen);
     memcpy(&tile_mem[4][getMemFor16x16UI(UIElement_HeartEmpty)], uiHeartEmpty16x16Tiles, uiHeartEmpty16x16TilesLen);
+
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIPoof_Frame0)], poofFrame0Tiles, poofFrame0TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIPoof_Frame1)], poofFrame1Tiles, poofFrame1TilesLen);
+    memcpy(&tile_mem[4][getMemFor16x16UI(UIPoof_Frame2)], poofFrame2Tiles, poofFrame2TilesLen);
 }
 
 int usePetGfxMem(int id, int pos) {
