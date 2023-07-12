@@ -331,6 +331,9 @@ int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet
 int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 26: // Fly
+            flyTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
         case 38: // Ox
             oxTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
             return 1;

@@ -81,6 +81,7 @@ void animatePoofAtPosition(int pos) {
         x = getWorldXForPetPositionInBattle(pos) - 240;
         y = 67;
     } else {
+        // TODO: Fix this for enemy team poofs
         if (pos >= 5) {
             pos -= 5;
             y = 84;

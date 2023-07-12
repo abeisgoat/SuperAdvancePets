@@ -11,6 +11,10 @@ int isHurt(struct Pet *pet) {
     return pet->hurt > 0;
 }
 
+int isEmptyish(struct Pet *pet) {
+    return pet->id == 0 || isDead(pet);
+}
+
 int isDead(struct Pet *pet) {
     return pet->id > 0 && (pet->health + pet->battleModifierHealth) <= 0;
 }
@@ -372,13 +376,15 @@ struct Pet * getLeftMostPet(PetTeam team) {
 int makeRoomLeftAt(PetTeam team, int index) {
     int firstLeftEmpty = -1;
     for (int i=index; i>=0; i--) {
-        if (team[i].id == 0) {
+        printf("index: %d == %d\n", i, team[i].id);
+        if (team[i].id == 0 || isDead(&team[i])) {
             firstLeftEmpty = i;
             break;
         }
     }
     printf("first empty left is %d %d\n", firstLeftEmpty, index);
     if (firstLeftEmpty == -1) return 0;
+    if (index == firstLeftEmpty) return 1;
 
     for (int i=firstLeftEmpty+1; i < 5; i++) {
         if (team[i-1].id == 0 && team[i].id != 0) {
@@ -400,7 +406,7 @@ int makeRoomLeftAt(PetTeam team, int index) {
 int makeRoomRightAt(PetTeam team, int index) {
     int firstRightEmpty = -1;
     for (int i=index; i<5; i++) {
-        if (team[i].id == 0) {
+        if (isEmptyish(&team[i])) {
             firstRightEmpty = i;
             break;
         }
@@ -408,6 +414,7 @@ int makeRoomRightAt(PetTeam team, int index) {
     printf("first empty right is %d %d\n", firstRightEmpty, index);
 
     if (firstRightEmpty == -1) return 0;
+    if (index == firstRightEmpty) return 1;
 
     for (int i=firstRightEmpty-1; i >= 0; i--) {
         if (team[i+1].id == 0 && team[i].id != 0) {
@@ -427,7 +434,7 @@ int makeRoomRightAt(PetTeam team, int index) {
 }
 
 int tryToMakeRoom(int usOrThem, PetTeam team, int index) {
-    printf("trying to make room %d\n", usOrThem);
+    printf("trying to make room %d\n", index);
     int success;
     if (usOrThem == 0) {
         success = makeRoomLeftAt(team, index);
@@ -626,20 +633,43 @@ void deserializePet(int num, struct Pet * dest) {
     printPet(dest);
 }
 
-struct Pet * getRandomPetFromNextTier(int turn) {
-    if (turn > 2) {
+struct Pet * getRandomPetFromTier(int tier) {
+    if (tier == 6) {
+        return tier6Pets[rand() % tier6PetsFullness];
+    }
+
+    if (tier == 5) {
+        return tier5Pets[rand() % tier5PetsFullness];
+    }
+
+    if (tier == 4) {
+        return tier4Pets[rand() % tier4PetsFullness];
+    }
+
+    if (tier == 3) {
         return tier3Pets[rand() % tier3PetsFullness];
     }
-    if (turn > 4) {
-        return tier4Pets[rand() % tier4PetsFullness];
+
+    if (tier == 2) {
+        return tier2Pets[rand() % tier2PetsFullness];
+    }
+
+    return tier1Pets[rand() % tier1PetsFullness];
+}
+
+struct Pet * getRandomPetFromNextTier(int turn) {
+    if (turn > 8) {
+        return tier6Pets[rand() % tier6PetsFullness];
     }
     if (turn > 6) {
         return tier5Pets[rand() % tier5PetsFullness];
     }
-    if (turn > 8) {
-        return tier6Pets[rand() % tier6PetsFullness];
+    if (turn > 4) {
+        return tier4Pets[rand() % tier4PetsFullness];
     }
-
+    if (turn > 2) {
+        return tier3Pets[rand() % tier3PetsFullness];
+    }
     return tier2Pets[rand() % tier2PetsFullness];
 }
 

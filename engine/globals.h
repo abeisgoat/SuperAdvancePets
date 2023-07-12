@@ -20,6 +20,8 @@ int petPosition(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet);
 int petTeamPosition(int usOrThem, PetTeam us, struct Pet * pet);
 struct Pet * getPetByPosition(int usOrThem, PetTeam us, PetTeam them, int pos);
 void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest, PetTeam frozenTeam);
+struct Pet * getRandomPetFromTier(int tier);
+int isEmptyish(struct Pet *pet);
 char* serializePet(struct Pet pet);
 int storePosition(PetTeam store, struct Pet *pet);
 int expToLevel(int exp);
