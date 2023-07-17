@@ -21,8 +21,8 @@ void spiderTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * sel
         resolveAnimation();
 
         summonPet(getRandomPetFromTier(3), space);
-        space->attack = 1;// lvl * 2;
-        space->health = 1;//lvl * 2;
+        space->attack = lvl * 2;
+        space->health = lvl * 2;
         resolveSpawns();
         postSummonPet(space);
     } else {

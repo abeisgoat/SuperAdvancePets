@@ -15,6 +15,14 @@ int getTriggerID(int id) {
 int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     if (pet->activations > 0) return 0;
 
+    if (pet->heldItem == Honey.id) {
+        honeyFaintTrigger(usOrThem, us, them, pet, pet, store);
+    }
+
+    if (pet->heldItem == Mushroom.id) {
+        //
+    }
+
     int id = getTriggerID(pet->id);
     switch (id) {
         case 1: // Ant
@@ -273,6 +281,8 @@ int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * p
 int applyKnockoutTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 30:
+            return hippoTriggerKnockOut(usOrThem, us, them, pet, pet, store);
         case 46:
             return rhinoTriggerKnockOut(usOrThem, us, them, pet, pet, store);
     }
@@ -295,6 +305,9 @@ int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
 int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 58:
+            squirrelTriggerStartOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 59:
             swanTriggerStartOfTurn(usOrThem, us, them, pet, pet, store);
             return 1;

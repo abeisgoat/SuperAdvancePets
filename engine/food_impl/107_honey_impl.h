@@ -16,3 +16,4 @@ EWRAM_DATA const static struct Pet Honey = {
         .tier = 1
 };
 void honeyTriggerBuyAssign(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+void honeyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

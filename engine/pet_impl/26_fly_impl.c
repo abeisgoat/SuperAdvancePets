@@ -4,7 +4,6 @@
 #include "../battle.h"
 #include <stdio.h>
 
-// TODO: Verify fly
 void flyTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Fly trigger Friend Faint");
     if (selfPet->activations == 3 || activatingPet->id == 66) return;
@@ -23,8 +22,8 @@ void flyTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * 
         resolveAnimation();
 
         summonPet(getPetByID(66), space);
-        space->attack = 1;//lvl * 2;
-        space->health = 1;//lvl * 2;
+        space->attack = lvl * 2;
+        space->health = lvl * 2;
         resolveSpawns();
         postSummonPet(space);
     } else {

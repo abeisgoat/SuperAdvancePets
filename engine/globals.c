@@ -579,10 +579,19 @@ int damagePet(int usOrThem, PetTeam us, PetTeam them, PetTeam store, struct Pet 
         target->heldItem = 0;
     }
 
+    if (attacker->heldItem == Steak.id) {
+        printf("Steam used.\n");
+        damage += 20;
+        attacker->heldItem = 0;
+    }
+
     if (damage > 0) {
         if (attacker->heldItem == Peanuts.id) {
             damage = target->health;
             attacker->heldItem = 0;
+        }
+        if (attacker->heldItem == MeatBone.id) {
+            damage += 3;
         }
         target->health -= damage;
         target->hurt++;

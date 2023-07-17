@@ -4,9 +4,9 @@
 EWRAM_DATA const static struct PetText SquirrelText = {
         .name = "Squirrel",
         .abilities = {
-                "Start of turn: Add one shop food and discount them by 1 gold.",
-                "Start of turn: Add one shop food and discount them by 2 gold.",
-                "Start of turn: Add one shop food and discount them by 3 gold."},
+                "Start of turn: Discount them by 1 gold.",
+                "Start of turn: Discount them by 2 gold.",
+                "Start of turn: Discount them by 3 gold."},
 };
 
 EWRAM_DATA const static struct Pet Squirrel = {

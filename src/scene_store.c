@@ -223,6 +223,10 @@ void prepareSceneStore() {
     setupStoreUI();
     nextTurn();
     randomizeStore();
+    int store[7] = {
+            21, 1, 2, 3, 43, 101, 115
+    };
+//    forceStore(store);
     resetBankForTurn();
     hideLabels();
 
@@ -399,6 +403,9 @@ void tickSceneStore() {
                     };
                     unfreeze(cursorHeldX);
                 }
+                // TODO: Make pilling not flicker animals
+                resetAnimalSpritesForStore();
+                screenAnimalSprites();
                 int oldX = cursorX;
                 int oldY = cursorY;
                 cancelAction();

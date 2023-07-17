@@ -274,6 +274,8 @@ void resolveDeaths() {
 
 void resolveSpawns() {
     int petPins = 0;
+
+    // TODO: Allow respawnSpawns to be called in store
     for (int i=0; i <=4; i++) {
         struct Pet *pet = getPlayerTeamPet(i);
         struct PetSprite * ps = getPetSprite(i);
