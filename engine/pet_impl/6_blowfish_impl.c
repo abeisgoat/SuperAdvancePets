@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void blowfishTriggerHurt(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Blowfish trigger Hurt");
+    printf("Activated Blowfish trigger Hurt\n");
 
     struct Pet * enemy = randomOtherTeamMember(them, selfPet);
 
