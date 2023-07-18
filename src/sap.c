@@ -35,15 +35,16 @@ void gameloop() {
     prepareEngine();
 
     int friendly[5] = {
-
-//            0, 0, 0, 0, 0
-    260050101, 240040202, 0, 590051008, 580050110
+            0, 0, 0, 0, 0
+//            420000301,10030504,450000101,310000201,130000301
     };
     int enemies[5] = {
             0,0,0,0,0
     };
 
-    prepareTeams(friendly, enemies);
+
+    preparePlayerTeam(friendly);
+    prepareEnemyTeam( enemies);
 
 
     tte_set_pos(32, 0);

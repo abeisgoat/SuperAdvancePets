@@ -238,6 +238,14 @@
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>
 		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/opponents.c">
+			<Option target="SuperAdvancePets"/>
+			<Option target="SuperAdvancePetsCLI"/>
+		</Unit>
+		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/opponents.h">
+			<Option target="SuperAdvancePets"/>
+			<Option target="SuperAdvancePetsCLI"/>
+		</Unit>
 		<Unit filename="/home/abe/Development/SuperAdvancePets/engine/pet_data.c">
 			<Option target="SuperAdvancePets"/>
 			<Option target="SuperAdvancePetsCLI"/>

@@ -3,7 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-//TODO: Make swan animate
+//TODO(LOWPRI): Make swan animate
 void swanTriggerStartOfTurn(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Swan trigger StartOfTurn");
 //    int selfPos = petPosition(usOrThem, us, them, selfPet);

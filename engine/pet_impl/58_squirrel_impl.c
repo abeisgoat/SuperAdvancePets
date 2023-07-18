@@ -3,7 +3,7 @@
 #include "../../src/animations.h"
 #include <stdio.h>
 
-// TODO: make squrrel animate
+// TODO(LOWPRI): make squrrel animate
 void squirrelTriggerStartOfTurn(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Squirrel trigger StartOfTurn");
 

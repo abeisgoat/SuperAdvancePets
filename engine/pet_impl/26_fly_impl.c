@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 void flyTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Fly trigger Friend Faint");
+    printf("Activated Fly trigger Friend Faint\n");
     if (selfPet->activations == 3 || activatingPet->id == 66) return;
 
     struct Pet * space;

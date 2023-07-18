@@ -1,6 +1,6 @@
 int battle();
 void prepareEngine();
-void prepareTeams(int friendly[5], int enemies[5]);
+//void prepareTeams(int friendly[5], int enemies[5]);
 void forceStore(int store[7]);
 struct Pet * getPlayerTeamPet(int index);
 struct Pet * getEnemyTeamPet(int index);
@@ -29,4 +29,6 @@ void postSummonPet(struct Pet * pet);
 int getFoodMultiple();
 int nextTurn();
 void postNextTurn();
+void preparePlayerTeam(int friendly[5]);
+void prepareEnemyTeam(int enemies[5]);
 void seed();

@@ -1,42 +1,32 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
-
-// TODO: Verify rat
-// TODO: ../SuperAdvancePetsCLI battle 360020404,240000203,010010302,030010303,450000405 030040606,370020304,140000102,240020405,030000202
 
 void ratTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Rat trigger Faint\n");
 
-    for (int l=1; l<= expToLevel(selfPet->experience); l++) {
-        int hasSpace;
-        struct Pet * space;
-        if (usOrThem == 0) {
-            if (shuffleRightUntilEmpty(them) == 2) {
-                hasSpace = 1;
-                space = &them[0];
-            }
-        }
+    struct Pet * space;
+    int lvl = expToLevel(selfPet->experience);
+    for (int l=1; l<= lvl; l++) {
+        int ratPos = 0;
         if (usOrThem == 1) {
-            if (shuffleLeftUntilEmpty(them) == 2) {
-                hasSpace = 1;
-                space = &them[4];
-            }
+            ratPos = 4;
         }
+        int hasSpace = tryToMakeRoom(usOrThem, them, ratPos);
 
         resolveAnimation();
         if (hasSpace) {
-            int spawnPos = 5;
-            if (usOrThem == 1) {
-                spawnPos = 4;
-            }
-            animatePoofAtPosition(spawnPos);
+            space = &them[ratPos];
+            animatePoofAtPosition(ratPos);
             resolveAnimation();
 
-            space->id = 17;
-            space->attack = 1;
-            space->health = 1;
+            summonPet(getPetByID(17), space);
+//            space->attack = lvl;
+//            space->health = lvl;
+            resolveSpawns();
+            postSummonPet(space);
         } else {
             return;
         }

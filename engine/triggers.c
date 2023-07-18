@@ -20,7 +20,7 @@ int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, 
     }
 
     if (pet->heldItem == Mushroom.id) {
-        //
+        // TODO mushroom
     }
 
     int id = getTriggerID(pet->id);

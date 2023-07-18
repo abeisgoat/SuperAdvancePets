@@ -589,7 +589,7 @@ void randomizeStore() {
     randomizeStoreViaTurn(getTurn(), 1, enemyTeam, frozenTeam);
 }
 
-void prepareTeams(int friendly[5], int enemies[5]) {
+void preparePlayerTeam(int friendly[5]) {
     printf("Friendly Team:\n");
     for (int i=0; i <= 4; i++) {
         if (friendly[i] > 0) {
@@ -601,6 +601,9 @@ void prepareTeams(int friendly[5], int enemies[5]) {
             emptyPet(&playerTeam[i]);
         }
     }
+}
+
+void prepareEnemyTeam(int enemies[5]) {
     printf("Enemy Team:\n");
     for (int i=0; i <= 4; i++) {
         if (enemies[i] > 0) {

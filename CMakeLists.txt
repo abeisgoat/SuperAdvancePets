@@ -15,7 +15,7 @@ add_executable(SuperAdvancePets
         ${TONC}/tonc.h
         ${SpritesC} ${SpritesH}
         ${EngineC} ${EngineH}
-        src/sap.c src/mem_manager_enums.h src/tick.h src/tick.c src/scene_store.c src/scene_store.h engine/triggers.h src/music.c src/music.h src/ui.c src/scene_results.c src/mem_manager.c src/scene_battle.c src/animations.c engine/food_impl/119_coconut_impl.h)
+        src/sap.c src/mem_manager_enums.h src/tick.h src/tick.c src/scene_store.c src/scene_store.h engine/triggers.h src/music.c src/music.h src/ui.c src/scene_results.c src/mem_manager.c src/scene_battle.c src/animations.c engine/food_impl/119_coconut_impl.h engine/opponents.c engine/opponents.h)
 
 project(SuperAdvancePetsCLI C)
 
@@ -34,4 +34,4 @@ add_executable(SuperAdvancePetsCLI
         ${PetImplC} ${PetImplH}
         ${FoodImplC} ${FoodImplH}
         ${EngineC} ${EngineH}
-        cli.c)
+        cli.c engine/opponents.c engine/opponents.h)

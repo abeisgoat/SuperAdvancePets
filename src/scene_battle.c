@@ -7,6 +7,7 @@
 #include "structs.h"
 #include "animations.h"
 #include "ui.h"
+#include "../engine/opponents.h"
 
 int xOffset=264;
 int result = 0;
@@ -18,8 +19,6 @@ int getWorldXForPetPositionInBattle(int petPosition) {
         return xOffset + 100 + (18 * (petPosition-5));
     }
 }
-
-
 
 void resetAnimalSpritesForBattle() {
     int petPins = 0;
@@ -59,6 +58,7 @@ void resetAnimalSpritesForBattle() {
 }
 
 void prepareSceneBattle() {
+    loadOpponentTeam(getTurn());
     for (int i=0; i <=12; i++) {
         struct PetSprite * ps = getPetSprite(i);
         ps->visiblePet = 1;

@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void turkeyTriggerFriendSummoned(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Turkey trigger FriendSummoned");
+    printf("Activated Turkey trigger FriendSummoned\n");
     if (selfPet == activatingPet) return;
 
     int stats = expToLevel(selfPet->experience) * 3;

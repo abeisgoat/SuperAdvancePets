@@ -223,9 +223,10 @@ void prepareSceneStore() {
     setupStoreUI();
     nextTurn();
     randomizeStore();
-    int store[7] = {
-            21, 1, 2, 3, 43, 101, 115
-    };
+//    int store[7] = {
+//            370040506,310010302,240030506,140000102,290000302
+//
+//    };
 //    forceStore(store);
     resetBankForTurn();
     hideLabels();
@@ -436,6 +437,8 @@ void tickSceneStore() {
                             unfreeze(cursorHeldX);
                             postBuyPet(heldPet);
                             // TODO: Stacked pets probably result in level of held pet being applied to buy trigger
+                            // TODO: Stacking lvl 2 on a lvl 2 is wrong?
+                            // TODO: can't freeze food?
                             stackPets(heldPet, other);
                             int oldX = cursorX;
                             int oldY = cursorY;

@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Whale trigger StartOfBattle");
+    printf("Activated Whale trigger StartOfBattle\n");
 
     int ahead = 1;
     if (usOrThem == 1) {
@@ -26,7 +26,7 @@ void whaleTriggerStartOfBattle(int usOrThem, PetTeam us, PetTeam them, struct Pe
 }
 
 void whaleTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
-    printf("Activated Whale trigger faint");
+    printf("Activated Whale trigger faint\n");
     if (selfPet->id < 300) return;
 
     int selfPos = petPosition(usOrThem, us, them, selfPet);

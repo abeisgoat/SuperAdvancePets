@@ -1,9 +1,9 @@
 
 #include "../globals.h"
+#include "../../src/animations.h"
 #include <stdio.h>
 
 // TODO: If summoned from spider friendfaint appears to be invoked
-// TODO: Needs animations
 void oxTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Ox trigger friend faints\n");
 
@@ -19,5 +19,7 @@ void oxTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * s
 
     int stats = expToLevel(expToLevel(selfPos)) * 1;
     selfPet->attack += stats;
+    animateIconToTeamPosition(selfPos, selfPos, UIIcon_Melon);
+    resolveAnimation();
     selfPet->heldItem = 109;
 }

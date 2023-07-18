@@ -628,6 +628,33 @@ engine/globals.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/globals.c.s
 .PHONY : engine/globals.c.s
 
+engine/opponents.o: engine/opponents.c.o
+.PHONY : engine/opponents.o
+
+# target to build an object file
+engine/opponents.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/opponents.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/opponents.c.o
+.PHONY : engine/opponents.c.o
+
+engine/opponents.i: engine/opponents.c.i
+.PHONY : engine/opponents.i
+
+# target to preprocess a source file
+engine/opponents.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/opponents.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/opponents.c.i
+.PHONY : engine/opponents.c.i
+
+engine/opponents.s: engine/opponents.c.s
+.PHONY : engine/opponents.s
+
+# target to generate assembly for a file
+engine/opponents.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePets.dir/build.make CMakeFiles/SuperAdvancePets.dir/engine/opponents.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SuperAdvancePetsCLI.dir/build.make CMakeFiles/SuperAdvancePetsCLI.dir/engine/opponents.c.s
+.PHONY : engine/opponents.c.s
+
 engine/pet_data.o: engine/pet_data.c.o
 .PHONY : engine/pet_data.o
 
@@ -2336,6 +2363,9 @@ help:
 	@echo "... engine/globals.o"
 	@echo "... engine/globals.i"
 	@echo "... engine/globals.s"
+	@echo "... engine/opponents.o"
+	@echo "... engine/opponents.i"
+	@echo "... engine/opponents.s"
 	@echo "... engine/pet_data.o"
 	@echo "... engine/pet_data.i"
 	@echo "... engine/pet_data.s"

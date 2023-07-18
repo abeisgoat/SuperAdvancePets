@@ -1,0 +1,1 @@
+void loadOpponentTeam(int turn);
