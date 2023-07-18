@@ -12,6 +12,7 @@
   "dependencies": {
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "sqlite3": "^5.1.6"
   }
 }
