@@ -288,6 +288,7 @@ void readyTick() {
     activeScene = 0;
 }
 void reset() {
+    // TOOD: Make reset clear properly
     r = -1;
 }
 // Progress main game loop

@@ -11,6 +11,7 @@ void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
 
     int lvl = expToLevel(selfPet->experience);
     selfPet->id = 0;
+    int attack = selfPet->attack;
     for (int l=1; l<= lvl; l++) {
         struct Pet * space;
         int selfPos = petTeamPosition(usOrThem, us, selfPet);
@@ -25,7 +26,7 @@ void roosterTriggerFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * se
             resolveAnimation();
 
             summonPet(getPetByID(11), space);
-            space->attack = max(selfPet->attack / 2, 1);
+            space->attack = max(attack / 2, 1);
             space->health = 1;
             resolveSpawns();
             postSummonPet(space);
