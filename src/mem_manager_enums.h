@@ -56,6 +56,10 @@ enum UIElements16x16 {
     UIElement_Heart,
     UIElement_HeartEmpty,
     UIElement_Trophy,
-    UIElement_TrophyEmpty
+    UIElement_TrophyEmpty,
+
+    UIPoof_Frame0,
+    UIPoof_Frame1,
+    UIPoof_Frame2,
 };
 #endif //SUPERADVANCEPETSCLI_MEM_MANAGER_ENUMS_H

@@ -33,6 +33,7 @@ void resetAnimalSpritesForBattle() {
             ps->worldY = 67;
             ps->flip = 1;
             ps->frozen = 0;
+            ps->shortStat = 0;
             ps->visibleStats = 0;
         } else {
             ps->petPin = 0;

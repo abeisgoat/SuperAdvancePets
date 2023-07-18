@@ -16,6 +16,7 @@ void animateShuffleAtPosition(int from, int to);
 void sleep(int frames);
 void animateDeath(struct Pet * structPet);
 void resolveDeaths();
+void resolveSpawns();
 void cleanUp(struct Pet * pet);
 void animateIconToTeamPosition(int from, int to, enum UIIcon icon);
 int isAnimating();

@@ -1,34 +1,34 @@
 
 #include "../globals.h"
 #include "../../src/animations.h"
+#include "../battle.h"
 #include <stdio.h>
 
-// TODO: Verify fly
 void flyTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Fly trigger Friend Faint");
+    if (selfPet->activations == 3 || activatingPet->id == 66) return;
 
-    if (activatingPet->id == 66 || selfPet->activations == 3) return;
+    struct Pet * space;
+    int activatingPos = petTeamPosition(usOrThem, us, activatingPet);
 
-    int stats = 2;
-    switch (expToLevel(selfPet->experience)) {
-        case 1:
-            stats *= 1;
-            break;
-        case 2:
-            stats *= 2;
-            break;
-        case 3:
-            stats *= 3;
-            break;
-    }
+//    activatingPet->id = 0;
+    int hasSpace = tryToMakeRoom(usOrThem, us, activatingPos);
+    int lvl = expToLevel(selfPet->experience);
 
-    emptyPet(activatingPet);
-    animatePoofAtPosition(petPosition(usOrThem, us, them, selfPet));
     resolveAnimation();
+    if (hasSpace) {
+        space = &us[activatingPos];
+        animatePoofAtPosition(activatingPos);
+        resolveAnimation();
 
-    activatingPet->id = 66;
-    activatingPet->health = stats;
-    activatingPet->attack = stats;
+        summonPet(getPetByID(66), space);
+        space->attack = lvl * 2;
+        space->health = lvl * 2;
+        resolveSpawns();
+        postSummonPet(space);
+    } else {
+        return;
+    }
 
     selfPet->activations++;
 }

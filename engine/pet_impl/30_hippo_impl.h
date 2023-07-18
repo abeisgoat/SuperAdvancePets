@@ -15,4 +15,4 @@ EWRAM_DATA const static struct Pet Hippo = {
         .health =  5,
         .tier = 4
 };
-void hippoTriggerKnockOut(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);
+int hippoTriggerKnockOut(int usOrThem, PetTeam pt, PetTeam et, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store);

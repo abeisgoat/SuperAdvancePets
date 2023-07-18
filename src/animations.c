@@ -72,6 +72,42 @@ void animateToTeamPosition(int from, int to) {
 }
 
 void animatePoofAtPosition(int pos) {
+    OBJ_ATTR *sprite = getOAMSprite(111);
+
+    int x;
+    int y;
+
+    if (getScene() == 1) {
+        x = getWorldXForPetPositionInBattle(pos) - 240;
+        y = 67;
+    } else {
+        // TODO: Fix this for enemy team poofs
+        if (pos >= 5) {
+            pos -= 5;
+            y = 84;
+        } else {
+            y = 54;
+        }
+        x = 49 + (pos * 18);
+    }
+
+    int poofMem = getMemFor16x16UI(UIPoof_Frame0);
+    obj_set_attr(sprite,
+                 ATTR0_SQUARE | ATTR0_8BPP,
+                 ATTR1_SIZE_16x16,
+                 ATTR2_PALBANK(0) | ATTR2_PRIO(5) | poofMem);
+    obj_set_pos(sprite, x, y);
+
+    sleep(15);
+    poofMem = getMemFor16x16UI(UIPoof_Frame1);
+    sprite->attr2 = ATTR2_PALBANK(0) | ATTR2_PRIO(5) | poofMem;
+
+    sleep(15);
+    poofMem = getMemFor16x16UI(UIPoof_Frame2);
+    sprite->attr2 = ATTR2_PALBANK(0) | ATTR2_PRIO(5) | poofMem;
+
+    sleep(20);
+    obj_set_pos(sprite, -16,-16);
 }
 
 void queueThrowableToTeamPosition(int from, int to, enum UIIcon icon) {
@@ -234,6 +270,44 @@ void resolveDeaths() {
         }
     }
     deaths = 0;
+}
+
+void resolveSpawns() {
+    int petPins = 0;
+
+    // TODO: Allow respawnSpawns to be called in store
+    for (int i=0; i <=4; i++) {
+        struct Pet *pet = getPlayerTeamPet(i);
+        struct PetSprite * ps = getPetSprite(i);
+        if (pet->id) {
+            pet->pin = ++petPins;
+            ps->petPin = pet->pin;
+            ps->worldX = getWorldXForPetPositionInBattle(i);
+            ps->worldY = 67;
+            ps->flip = 1;
+            ps->shortStat = 0;
+            ps->visibleStats = 1;
+        } else {
+            ps->petPin = 0;
+        }
+    }
+
+    for (int i=0; i <=4; i++) {
+        struct Pet *pet = getEnemyTeamPet(i);
+        struct PetSprite * ps = getPetSprite(i+5);
+        if (pet->id) {
+            pet->pin = ++petPins;
+            ps->petPin = petPins;
+            ps->worldX = getWorldXForPetPositionInBattle(i + 5);
+            ps->worldY = 67;
+            ps->flip = 0;
+            ps->shortStat = 0;
+            ps->visibleStats = 1;
+        } else {
+            ps->petPin = 0;
+        }
+    }
+    screenAnimalSprites();
 }
 
 int in_progress=0;

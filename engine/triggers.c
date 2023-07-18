@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "battle.h"
 #include "impl.h"
+#include "../src/animations.h"
 
 int getTriggerID(int id) {
     if (id > 300) {
@@ -13,6 +14,14 @@ int getTriggerID(int id) {
 
 int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     if (pet->activations > 0) return 0;
+
+    if (pet->heldItem == Honey.id) {
+        honeyFaintTrigger(usOrThem, us, them, pet, pet, store);
+    }
+
+    if (pet->heldItem == Mushroom.id) {
+        //
+    }
 
     int id = getTriggerID(pet->id);
     switch (id) {
@@ -272,6 +281,8 @@ int applyBuyAssignTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * p
 int applyKnockoutTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 30:
+            return hippoTriggerKnockOut(usOrThem, us, them, pet, pet, store);
         case 46:
             return rhinoTriggerKnockOut(usOrThem, us, them, pet, pet, store);
     }
@@ -294,6 +305,9 @@ int applyEatsShopFoodTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet 
 int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 58:
+            squirrelTriggerStartOfTurn(usOrThem, us, them, pet, pet, store);
+            return 1;
         case 59:
             swanTriggerStartOfTurn(usOrThem, us, them, pet, pet, store);
             return 1;
@@ -303,21 +317,36 @@ int applyStartOfTurnTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet *
 
 int applyLevelUpTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
     int id = getTriggerID(pet->id);
+    int triggered = 0;
     switch (id) {
         case 24:
             fishTriggerLevelUp(usOrThem, us, them, pet, pet, store);
-            return 1;
+            triggered = 1;
+            break;
         case 42:
             pigTriggerLevelUp(usOrThem, us, them, pet, pet, store);
-            return 1;
+            triggered = 1;
+            break;
     }
-    return 0;
+
+    for (int i = 0; i < 7; i++) {
+        if (store[i].id == 0) {
+            clonePet(getRandomPetFromNextTier(getTurn()), &store[i]);
+            animatePoofAtPosition(i+5);
+            break;
+        }
+    }
+
+    return triggered;
 }
 
 
 int applyFriendFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, struct Pet * activatingPet, PetTeam store) {
     int id = getTriggerID(pet->id);
     switch (id) {
+        case 26: // Fly
+            flyTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
+            return 1;
         case 38: // Ox
             oxTriggerFriendFaint(usOrThem, us, them, pet, activatingPet, store);
             return 1;

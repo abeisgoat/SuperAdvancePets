@@ -2,6 +2,8 @@
 #include "../globals.h"
 #include <stdio.h>
 
+// TODO: If summoned from spider friendfaint appears to be invoked
+// TODO: Needs animations
 void oxTriggerFriendFaint(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Ox trigger friend faints\n");
 

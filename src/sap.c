@@ -37,19 +37,14 @@ void gameloop() {
     int friendly[5] = {
 
 //            0, 0, 0, 0, 0
-    130050605, 240040202, 0, 240051008, 230051212
+    260050101, 240040202, 0, 590051008, 580050110
     };
     int enemies[5] = {
             0,0,0,0,0
     };
 
-    int store[7] = {
-            21, 1, 2, 3, 43, 101, 101
-    };
-
-
     prepareTeams(friendly, enemies);
-    forceStore(store);
+
 
     tte_set_pos(32, 0);
 
