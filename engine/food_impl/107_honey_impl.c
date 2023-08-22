@@ -18,25 +18,11 @@ void honeyTriggerBuyAssign(int usOrThem, PetTeam us, PetTeam them, struct Pet * 
 void honeyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * selfPet, struct Pet * activatingPet, PetTeam store) {
     printf("Activated Honey faint trigger Buy");
 
-
-    struct Pet * space;
-    int selfPos = petTeamPosition(usOrThem, us, selfPet);
-
-    selfPet->id = 0;
-    int hasSpace = tryToMakeRoom(usOrThem, us, selfPos);
-
+    animatePoofAtPosition(petPosition(usOrThem, us, them, selfPet));
     resolveAnimation();
-    if (hasSpace) {
-        space = &us[selfPos];
-        animatePoofAtPosition(selfPos);
-        resolveAnimation();
 
-        summonPet(getPetByID(4), space);
-        space->attack = 1;
-        space->health = 1;
-        resolveSpawns();
-        postSummonPet(space);
-    } else {
-        return;
-    }
+    summonPet(getPetByID(4), selfPet);
+    selfPet->attack = 1;
+    selfPet->health = 1;
+    postSummonPet(selfPet);
 }

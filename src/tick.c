@@ -81,12 +81,12 @@ void updateAnimalSprites() {
                 obj_set_pos(sprite, -16, -16);
             }
 
-            if (ps->visibleStats) {
-                int lvl = expToLevel(pet->experience);
-                int expRemaining = expToRemainingToLevelUp(pet->experience);
-                int bottomMem = getBannerBottomForExp(expRemaining);
-                int topMem = getBannerTopForLvl(lvl);
-                int statOffsetY = 0;
+            int lvl = expToLevel(pet->experience);
+            int expRemaining = expToRemainingToLevelUp(pet->experience);
+            int bottomMem = getBannerBottomForExp(expRemaining);
+            int topMem = getBannerTopForLvl(lvl);
+            int statOffsetY = 0;
+
 
                 sprite = getOAMSprite(spriteCount++);
                 obj_set_attr(sprite,
@@ -107,6 +107,7 @@ void updateAnimalSprites() {
                     obj_set_pos(sprite, ps->screenX, ps->screenY - 34 + statOffsetY);
                 }
 
+            if (ps->visibleStats) {
                 sprite = getOAMSprite(spriteCount++);
 
                 int bannerYOffset = 0;
@@ -184,6 +185,8 @@ void updateAnimalSprites() {
                              ATTR1_SIZE_8,
                              ATTR2_PALBANK(pb) | ATTR2_PRIO(2)  | (getMemForNumber(damageOnes)));
                 obj_set_pos(sprite, ps->screenX + 10 + numXOffset, ps->screenY - 22 + numYOffset + statOffsetY);
+            } else if (!ps->frozen) {
+                obj_set_pos(sprite, -16, -16);
             }
         }
 

@@ -13,6 +13,7 @@ int getTriggerID(int id) {
 }
 
 int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, PetTeam store) {
+    int id = getTriggerID(pet->id);
     if (pet->activations > 0) return 0;
 
     if (pet->heldItem == Honey.id) {
@@ -23,7 +24,6 @@ int applyFaintTrigger(int usOrThem, PetTeam us, PetTeam them, struct Pet * pet, 
         // TODO mushroom
     }
 
-    int id = getTriggerID(pet->id);
     switch (id) {
         case 1: // Ant
             antTriggerFaint(usOrThem, us, them, pet, pet, store);

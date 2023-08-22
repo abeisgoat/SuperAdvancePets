@@ -58,6 +58,7 @@ void resetAnimalSpritesForBattle() {
 }
 
 void prepareSceneBattle() {
+    backupTeam();
     loadOpponentTeam(getTurn());
     for (int i=0; i <=12; i++) {
         struct PetSprite * ps = getPetSprite(i);
@@ -112,7 +113,7 @@ void tickSceneBattle() {
     sleep(90);
 
     if (!result) {
-        backupTeam();
+//        backupTeam();
         result = battle();
         restoreTeam();
         tte_set_pos(80,114);

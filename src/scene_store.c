@@ -223,6 +223,7 @@ void prepareSceneStore() {
     setupStoreUI();
     nextTurn();
     randomizeStore();
+//    restoreTeam();
 //    int store[7] = {
 //            370040506,310010302,240030506,140000102,290000302
 //
@@ -230,7 +231,6 @@ void prepareSceneStore() {
 //    forceStore(store);
     resetBankForTurn();
     hideLabels();
-
     for (int i=0; i<=4; i++) {
         struct Pet * pet = getPlayerTeamPet(i);
         pet->battleModifierHealth = 0;
@@ -260,6 +260,11 @@ void prepareSceneStore() {
     }
 
     tte_erase_screen();
+//    tte_set_pos(32, 0);
+//    char msg[10];
+//    sprintf(msg, "HELLO %i", isFrozen(0));
+//    tte_write(msg);
+
     updateGameplayInfo(1);
 
     // UI Left Bumper
@@ -505,7 +510,9 @@ void tickSceneStore() {
         } else if (item->id > 100) {
             int triggered = buyItemAtPosition(cursorX);
             if (!triggered) {
-                unfreeze(cursorHeldX);
+                if (cursorHeldPetID) {
+                    unfreeze(cursorHeldX);
+                }
                 cursorHeldX = cursorX;
                 cursorHeldY = cursorY;
                 cursorOpen = 0;

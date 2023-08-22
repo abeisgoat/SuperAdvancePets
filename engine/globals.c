@@ -780,7 +780,7 @@ void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest, PetTeam froze
     }
 
     for (int i=0; i< 7;i++) {
-        if (frozenTeam[i].id == 0) {
+        if (!isFrozen(i)) {
             struct Pet *randomPet;
             if (i < petToPlace) {
                 randomPet = getIndexedPetFromTier(rand() % petsInPlay);
@@ -798,6 +798,8 @@ void randomizeStoreViaTurn(int turn, int initialSet, PetTeam dest, PetTeam froze
             if (rand() % 10000 == 1) {
                 clonePet(&Sloth, &dest[i]);
             }
+        } else {
+//            clonePet(&frozenTeam[i], &dest[i]);
         }
     }
 }
